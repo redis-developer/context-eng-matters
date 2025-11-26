@@ -1214,3 +1214,83 @@ After calling the tool and getting results, provide a clear, helpful answer to t
         state["final_response"] = f"I encountered an error: {str(e)}"
         state["execution_path"].append("agent_failed")
         return state
+
+
+async def react_agent_node(state: WorkflowState) -> WorkflowState:
+    """
+    ReAct agent node with explicit Thought → Action → Observation loop.
+
+    This replaces the tool-calling agent with a ReAct pattern where the LLM:
+    1. Thinks about what to do (explicit reasoning)
+    2. Acts by calling a tool or finishing
+    3. Observes the result
+    4. Repeats until task is complete
+
+    The reasoning trace is stored in state for transparency.
+    """
+    from .react_agent import ReActAgent
+    from .react_parser import format_observation
+
+    start_time = time.perf_counter()
+
+    query = state["original_query"]
+    conversation_history = state.get("conversation_history", [])
+
+    logger.info(f"🤖 ReAct Agent: Processing query with explicit reasoning")
+
+    try:
+        # Create ReAct agent with base LLM (no tool binding)
+        llm = ChatOpenAI(model="gpt-4o", temperature=0.1, max_tokens=2000)
+        react_agent = ReActAgent(llm=llm, max_iterations=10)
+
+        # Run the ReAct loop
+        result = await react_agent.run(
+            query=query,
+            conversation_history=conversation_history,
+        )
+
+        # Convert ReActStep objects to dicts for state storage
+        reasoning_trace = []
+        for step in result.get("reasoning_trace", []):
+            step_dict = {
+                "type": "thought" if step.thought else "action",
+                "content": step.thought,
+                "action": step.action,
+                "input": step.action_input,
+                "observation": step.observation or "",
+                "iteration": len(reasoning_trace) + 1,
+            }
+            if step.action == "FINISH":
+                step_dict["type"] = "finish"
+            reasoning_trace.append(step_dict)
+
+        # Update state
+        latency = (time.perf_counter() - start_time) * 1000
+
+        state["final_response"] = result["answer"]
+        state["reasoning_trace"] = reasoning_trace
+        state["react_iterations"] = result.get("iterations", 0)
+        state["execution_path"].append("react_agent_completed")
+        state["metrics"]["total_latency"] = latency
+
+        # Track LLM calls
+        llm_calls = state.get("llm_calls", {}).copy()
+        llm_calls["react_llm"] = result.get("iterations", 0)
+        state["llm_calls"] = llm_calls
+
+        logger.info(f"🤖 ReAct Agent complete in {latency:.2f}ms")
+        logger.info(f"   Iterations: {result.get('iterations', 0)}")
+        logger.info(f"   Reasoning steps: {len(reasoning_trace)}")
+
+        return state
+
+    except Exception as e:
+        logger.error(f"ReAct agent node failed: {e}")
+        import traceback
+        traceback.print_exc()
+
+        state["final_response"] = f"I encountered an error: {str(e)}"
+        state["execution_path"].append("react_agent_failed")
+        state["reasoning_trace"] = []
+        state["react_iterations"] = 0
+        return state
