@@ -25,16 +25,10 @@ from .redis_config import redis_config
 class CourseManager:
     """Manages course data and provides recommendation functionality."""
 
-    def __init__(self, config=None):
-        """Initialize CourseManager with optional config.
-
-        Args:
-            config: RedisConfig instance. If None, uses global redis_config.
-        """
-        self._config = config or redis_config
-        self.redis_client = self._config.redis_client
-        self.vector_index = self._config.vector_index
-        self.embeddings = self._config.embeddings
+    def __init__(self):
+        self.redis_client = redis_config.redis_client
+        self.vector_index = redis_config.vector_index
+        self.embeddings = redis_config.embeddings
 
     def _build_filters(self, filters: Dict[str, Any]) -> str:
         """Build filter expressions for Redis queries using RedisVL filter classes."""
@@ -110,7 +104,7 @@ class CourseManager:
         }
 
         # Store in Redis
-        key = f"{self._config.vector_index_name}:{course.id}"
+        key = f"{redis_config.vector_index_name}:{course.id}"
         self.redis_client.hset(key, mapping=course_data)
 
         return course.id

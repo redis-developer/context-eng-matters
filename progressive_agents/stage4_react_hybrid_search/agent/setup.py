@@ -11,13 +11,8 @@ from pathlib import Path
 from typing import Optional
 
 from redis_context_course import CourseManager
-from redis_context_course.redis_config import RedisConfig
 from redis_context_course.scripts.generate_courses import CourseGenerator
 from redis_context_course.scripts.ingest_courses import CourseIngestionPipeline
-
-# Progressive agents use the hierarchical_courses index
-# This index contains only courses with full syllabus data
-PROGRESSIVE_AGENTS_INDEX = "hierarchical_courses"
 
 # Configure logging
 logging.basicConfig(
@@ -96,9 +91,6 @@ async def initialize_course_manager(
     """
     Initialize the CourseManager for course search.
 
-    Uses the hierarchical_courses index which contains only courses
-    with full syllabus data (matching hierarchical_courses.json).
-
     Args:
         redis_url: Redis connection URL (defaults to env var REDIS_URL)
         auto_load: If True, automatically load courses if they don't exist
@@ -110,17 +102,9 @@ async def initialize_course_manager(
         redis_url = os.getenv("REDIS_URL", "redis://localhost:6379")
 
     logger.info(f"Initializing CourseManager with Redis URL: {redis_url}")
-    logger.info(f"📇 Using index: {PROGRESSIVE_AGENTS_INDEX}")
 
     try:
-        # Create config with hierarchical_courses index
-        config = RedisConfig(
-            redis_url=redis_url,
-            vector_index_name=PROGRESSIVE_AGENTS_INDEX
-        )
-
-        # Create CourseManager instance with custom config
-        course_manager = CourseManager(config=config)
+        course_manager = CourseManager()
 
         if auto_load:
             course_count = await load_courses_if_needed(course_manager)

@@ -40,11 +40,9 @@ console = Console()
 class CourseIngestionPipeline:
     """Pipeline for ingesting course catalog data into Redis."""
 
-    def __init__(self, config=None):
-        # Use provided config or global redis_config
-        self._config = config or redis_config
-        self.course_manager = CourseManager(config=self._config)
-        self.redis_client = self._config.redis_client
+    def __init__(self):
+        self.course_manager = CourseManager()
+        self.redis_client = redis_config.redis_client
 
     def load_catalog_from_json(self, filename: str) -> Dict[str, List[Dict[str, Any]]]:
         """Load course catalog data from JSON file."""
@@ -179,8 +177,7 @@ class CourseIngestionPipeline:
         console.print("[yellow]🧹 Clearing existing data...[/yellow]")
 
         # Clear course data
-        index_name = self._config.vector_index_name
-        course_keys = self.redis_client.keys(f"{index_name}:*")
+        course_keys = self.redis_client.keys(f"{redis_config.vector_index_name}:*")
         if course_keys:
             self.redis_client.delete(*course_keys)
             console.print(f"   Cleared {len(course_keys)} course records")
@@ -195,9 +192,8 @@ class CourseIngestionPipeline:
 
     def verify_ingestion(self) -> Dict[str, int]:
         """Verify the ingestion by counting stored records."""
-        index_name = self._config.vector_index_name
         course_count = len(
-            self.redis_client.keys(f"{index_name}:*")
+            self.redis_client.keys(f"{redis_config.vector_index_name}:*")
         )
         major_count = len(self.redis_client.keys("major:*"))
 
@@ -254,21 +250,12 @@ class CourseIngestionPipeline:
 )
 @click.option("--clear", is_flag=True, help="Clear existing data before ingestion")
 @click.option("--redis-url", help="Redis connection URL")
-@click.option(
-    "--index-name",
-    default="course_catalog",
-    help="Redis index name (default: course_catalog)",
-)
-def main(catalog: str, clear: bool, redis_url: str, index_name: str):
+def main(catalog: str, clear: bool, redis_url: str):
     """Ingest course catalog data into Redis for the Class Agent."""
 
     # Set Redis URL if provided
     if redis_url:
         os.environ["REDIS_URL"] = redis_url
-
-    # Set index name via environment variable
-    os.environ["COURSE_INDEX_NAME"] = index_name
-    console.print(f"[blue]📇 Using index: {index_name}[/blue]")
 
     # Check for required environment variables
     if not os.getenv("OPENAI_API_KEY"):
@@ -278,13 +265,8 @@ def main(catalog: str, clear: bool, redis_url: str, index_name: str):
         )
         sys.exit(1)
 
-    # Create new config with the specified index name
-    from redis_context_course.redis_config import RedisConfig
-
-    config = RedisConfig(vector_index_name=index_name)
-
-    # Run ingestion with the new config
-    pipeline = CourseIngestionPipeline(config=config)
+    # Run ingestion
+    pipeline = CourseIngestionPipeline()
 
     try:
         success = asyncio.run(pipeline.run_ingestion(catalog, clear))
