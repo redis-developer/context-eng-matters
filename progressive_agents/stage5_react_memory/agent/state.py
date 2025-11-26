@@ -80,6 +80,10 @@ class WorkflowState(TypedDict):
     execution_path: List[str]
     active_sub_question: Optional[str]
 
+    # ReAct-specific fields
+    reasoning_trace: List[Dict[str, Any]]  # Thought/Action/Observation history
+    react_iterations: int  # Number of ReAct loop iterations
+
     # Metrics and tracking
     metrics: WorkflowMetrics
     timestamp: str
@@ -163,6 +167,9 @@ def initialize_state(
         # Coordination
         "execution_path": [],
         "active_sub_question": None,
+        # ReAct
+        "reasoning_trace": [],
+        "react_iterations": 0,
         # Metrics
         "metrics": initialize_metrics(),
         "timestamp": datetime.now().isoformat(),

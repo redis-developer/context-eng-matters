@@ -40,6 +40,16 @@ IMPORTANT GUIDELINES:
 - Action Input must be valid JSON matching the tool's parameters
 - Use FINISH when you're ready to provide the final answer to the user
 - You can see conversation history, so use context from previous turns
+- Use "exact_match" strategy when the user mentions specific course codes (e.g., CS002, CS009)
+- Use "hybrid" strategy for topic-based searches (e.g., "machine learning courses")
+
+INTERPRETING SEARCH RESULTS:
+- If a search returns course data with an empty field (e.g., "prerequisites": []), that means NO VALUE exists
+- Empty prerequisites [] means "no prerequisites required" - this IS a valid answer
+- Empty syllabus or assignments means "not specified" - provide what IS available
+- Only retry a search if you get an actual error or no courses are found at all
+- Do NOT keep searching when you already have the course data
+- After 1-2 search attempts, use whatever information you have to answer the user
 
 EXAMPLES:
 

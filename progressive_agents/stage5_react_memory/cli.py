@@ -39,6 +39,7 @@ class MemoryAugmentedCLI:
         session_id: str = None,
         cleanup_on_exit: bool = False,
         debug: bool = False,
+        show_reasoning: bool = False,
     ):
         self.agent = None
         self.course_manager = None
@@ -47,6 +48,7 @@ class MemoryAugmentedCLI:
         self.session_id = session_id or f"session_{student_id}_{uuid.uuid4().hex[:8]}"
         self.cleanup_on_exit = cleanup_on_exit
         self.debug = debug
+        self.show_reasoning = show_reasoning
 
         # Register cleanup handler if requested
         if cleanup_on_exit:
@@ -130,6 +132,25 @@ class MemoryAugmentedCLI:
             enable_caching=False,
         )
 
+        # Show reasoning trace if enabled
+        if self.show_reasoning and result.get("reasoning_trace"):
+            print("🧠 Reasoning Trace:")
+            print("=" * 80)
+            for step in result["reasoning_trace"]:
+                if step["type"] == "thought":
+                    print(f"💭 Thought: {step['content']}")
+                elif step["type"] == "action":
+                    print(f"🔧 Action: {step['action']}")
+                    print(f"   Input: {step['input']}")
+                    obs = step['observation']
+                    obs_preview = obs[:200] + "..." if len(obs) > 200 else obs
+                    print(f"👁️  Observation: {obs_preview}")
+                elif step["type"] == "finish":
+                    print(f"✅ FINISH")
+                print()
+            print("=" * 80)
+            print()
+
         # Print the response
         print("📝 Answer:")
         print("-" * 80)
@@ -144,8 +165,8 @@ class MemoryAugmentedCLI:
             print(f"   Total Time: {metrics['total_latency']:.2f}ms")
             print(f"   Memory Load: {metrics.get('memory_load_latency', 0):.3f}s")
             print(f"   Memory Save: {metrics.get('memory_save_latency', 0):.3f}s")
-            print(f"   Sub-questions: {metrics['sub_question_count']}")
-            print(f"   Questions Researched: {metrics['questions_researched']}")
+            print(f"   ReAct Iterations: {result.get('react_iterations', 0)}")
+            print(f"   Reasoning Steps: {len(result.get('reasoning_trace', []))}")
             print(f"   Execution: {metrics['execution_path']}")
             print()
 
@@ -308,6 +329,11 @@ async def main():
         action="store_true",
         help="Show detailed error messages and tracebacks",
     )
+    parser.add_argument(
+        "--show-reasoning",
+        action="store_true",
+        help="Show ReAct reasoning trace",
+    )
 
     args = parser.parse_args()
 
@@ -321,6 +347,7 @@ async def main():
             session_id=args.session_id,
             cleanup_on_exit=cleanup_on_exit,
             debug=args.debug,
+            show_reasoning=args.show_reasoning,
         )
         await cli.initialize()
         await cli.simulate_mode()
@@ -331,6 +358,7 @@ async def main():
             session_id=args.session_id,
             cleanup_on_exit=cleanup_on_exit,
             debug=args.debug,
+            show_reasoning=args.show_reasoning,
         )
         await cli.initialize()
         await cli.ask_question(args.query, show_details=True)
@@ -341,6 +369,7 @@ async def main():
             session_id=args.session_id,
             cleanup_on_exit=cleanup_on_exit,
             debug=args.debug,
+            show_reasoning=args.show_reasoning,
         )
         await cli.initialize()
         await cli.interactive_mode()

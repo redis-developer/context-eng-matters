@@ -26,6 +26,7 @@ from .nodes import (
     handle_greeting_node,
     initialize_nodes,
     load_working_memory_node,
+    react_agent_node,  # NEW: ReAct agent node
     research_node,
     save_working_memory_node,
     synthesize_response_node,
@@ -59,7 +60,7 @@ def create_workflow(course_manager):
     workflow.add_node("load_memory", load_working_memory_node)  # Load working memory
     workflow.add_node("classify_intent", classify_intent_node)  # Classify intent
     workflow.add_node("handle_greeting", handle_greeting_node)  # Handle greetings
-    workflow.add_node("agent", agent_node)  # NEW: Agent with tool calling
+    workflow.add_node("react_agent", react_agent_node)  # ReAct agent with explicit reasoning
     workflow.add_node("save_memory", save_working_memory_node)  # Save working memory
 
     # Set entry point to load memory first
@@ -73,7 +74,7 @@ def create_workflow(course_manager):
         if intent == "GREETING":
             return "handle_greeting"
         else:
-            return "agent"  # Route to agent for all non-greeting queries
+            return "react_agent"  # Route to ReAct agent for all non-greeting queries
 
     # Add edges
     workflow.add_edge("load_memory", "classify_intent")  # Load memory first
@@ -82,11 +83,11 @@ def create_workflow(course_manager):
         route_after_intent,
         {
             "handle_greeting": "handle_greeting",
-            "agent": "agent",
+            "react_agent": "react_agent",
         },
     )
     workflow.add_edge("handle_greeting", "save_memory")  # Save even for greetings
-    workflow.add_edge("agent", "save_memory")  # Agent → save memory
+    workflow.add_edge("react_agent", "save_memory")  # ReAct agent → save memory
     workflow.add_edge("save_memory", END)  # End after saving
 
     # Compile and return
