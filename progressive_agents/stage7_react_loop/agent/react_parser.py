@@ -78,20 +78,21 @@ def validate_action_input(action_input: str) -> Optional[Dict[str, Any]]:
         return None
 
 
-def format_observation(result: str, max_length: int = 500) -> str:
+def format_observation(result: str, max_length: int = 8000) -> str:
     """
     Format tool result as observation for ReAct loop.
 
     Args:
         result: Raw tool result
-        max_length: Maximum length of observation
+        max_length: Maximum length of observation (default 8000 chars ≈ 2000 tokens)
+                   This should be large enough to include full syllabus data.
 
     Returns:
         Formatted observation string
     """
     # Truncate if too long
     if len(result) > max_length:
-        result = result[:max_length] + "..."
+        result = result[:max_length] + "... [truncated]"
 
     return f"Observation: {result}"
 

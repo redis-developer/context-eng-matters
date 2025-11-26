@@ -48,8 +48,18 @@ def initialize_tools(manager: CourseManager):
 
     # Load hierarchical courses with full syllabi
     try:
+        # OLD PATH (incorrect - looked in progressive_agents/stage7_react_loop/src/...):
+        # data_path = (
+        #     Path(__file__).parent.parent / "src"
+        #     / "redis_context_course"
+        #     / "data"
+        #     / "hierarchical"
+        #     / "hierarchical_courses.json"
+        # )
+        # CORRECT PATH: Go up to repo root, then into src/
         data_path = (
-            Path(__file__).parent.parent / "src"
+            Path(__file__).parent.parent.parent.parent
+            / "src"
             / "redis_context_course"
             / "data"
             / "hierarchical"

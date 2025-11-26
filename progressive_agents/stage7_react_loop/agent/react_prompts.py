@@ -53,6 +53,14 @@ IMPORTANT GUIDELINES:
 - Do NOT store temporary information, course details, or general questions
 - Use FINISH when you're ready to provide the final answer to the user
 
+INTERPRETING SEARCH RESULTS:
+- If a search returns course data with an empty field (e.g., "prerequisites": []), that means the field has NO VALUE - not that the search failed
+- Empty prerequisites [] means "no prerequisites required" - this IS a valid answer
+- Empty syllabus or assignments means "not specified" - provide what IS available
+- Only retry a search if you get an actual error or no courses are found at all
+- Do NOT keep searching with different strategies when you already have the course data
+- After 1-2 search attempts, use whatever information you have to answer the user
+
 EXAMPLES:
 
 Example 1: Simple course search
@@ -102,6 +110,17 @@ Observation: Found 5 courses: CS101, CS102, CS103, CS104, CS105
 Thought: I have enough information to provide personalized recommendations.
 Action: FINISH
 Action Input: Based on your interest in machine learning and preference for online courses, I recommend CS101 (Introduction to ML) and CS102 (Deep Learning Fundamentals). Both are available online and will give you a strong foundation in ML.
+
+Example 4: Handling empty prerequisites (IMPORTANT - don't over-search)
+User: "What are the prerequisites for CS002?"
+Thought: The user is asking about prerequisites for a specific course. I'll search with exact match.
+Action: search_courses
+Action Input: {"query": "CS002", "intent": "PREREQUISITES", "search_strategy": "exact_match", "course_codes": ["CS002"], "information_type": ["prerequisites"]}
+Observation: Found CS002 - Machine Learning Fundamentals. Prerequisites: [] (empty). Level: Advanced. Description: Introduction to ML algorithms...
+
+Thought: I found the course and it has an empty prerequisites array. This means CS002 has NO prerequisites required - this is a valid answer, not missing data. I should NOT search again.
+Action: FINISH
+Action Input: CS002 (Machine Learning Fundamentals) has no formal prerequisites listed. However, since it's an advanced-level course, having a background in programming (especially Python) and basic statistics would be helpful.
 
 Now, respond to the user's query using this format."""
 

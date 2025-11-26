@@ -205,7 +205,9 @@ async def react_agent_node(state: WorkflowState) -> WorkflowState:
                 else:
                     # Execute tool
                     tool_result = await execute_react_tool(action, action_input, student_id)
-                    observation = format_observation(tool_result, max_length=500)
+                    # Use larger max_length to avoid truncating syllabus/detailed course data
+                    # 8000 chars ≈ 2000 tokens, sufficient for hierarchical course info
+                    observation = format_observation(tool_result, max_length=8000)
                     logger.info(f"      👁️  Observation: {tool_result[:100]}...")
 
                     # Log to reasoning trace
