@@ -1,6 +1,60 @@
 # Stage 6: Long-term Memory Tools
 
+## 📍 Position in Learning Path
+
+| Previous | Current | Next |
+|----------|---------|------|
+| [Stage 5: Memory](../stage5_memory_augmented/) or [Stage 5 ReAct](../stage5_react_memory/) | **Stage 6: Long-term Memory** | [Stage 7: Full ReAct](../stage7_react_loop/) |
+
 This stage adds **long-term memory tools** for cross-session personalization and preference management.
+
+---
+
+## 🎯 Purpose
+
+Stage 5 introduced working memory for session continuity. This stage adds **explicit long-term memory tools** that let the agent:
+- Store user preferences that persist across sessions
+- Recall preferences to personalize recommendations
+- Combine working memory + long-term memory + RAG
+
+**Key Learning**: "Long-term memory enables cross-session personalization. The agent remembers you."
+
+---
+
+## 📚 Related Notebooks
+
+| Notebook | Concepts Applied | Implementation in This Stage |
+|----------|-----------------|------------------------------|
+| [Section 3: Working and Long-term Memory](../../notebooks/section-3-memory-systems/01_working_and_longterm_memory.ipynb) | Long-term memory types, persistence | `tools.py: remember_user_info, recall_user_info` |
+| [Section 3: Combining Memory with Retrieved Context](../../notebooks/section-3-memory-systems/02_combining_memory_with_retrieved_context.ipynb) | Memory + RAG integration | Agent combines memory + search |
+| [Section 4: Building Course Advisor Agent](../../notebooks/section-4-tools-and-agents/02_building_course_advisor_agent.ipynb) | Multi-tool agents | `agent_node()` with 3 tools |
+
+### Key Notebook Concepts Demonstrated
+
+**From Section 3, Notebook 1 - "Working and Long-term Memory":**
+- **Long-term Memory Types**: Semantic (facts) vs Episodic (events)
+- **Memory Persistence**: Cross-session storage
+- **Memory Topics**: Organizing memories with tags
+
+**From Section 4, Notebook 2 - "Building Course Advisor Agent":**
+- **Multi-Tool Decision Making**: LLM chooses between 3 tools
+- **Tool Composition**: Combining memory + search in single turn
+
+**Study Path**: Read Section 3, Notebook 1's long-term memory section, then examine this stage's `tools.py` to see the implementation.
+
+---
+
+## 🔄 What Changed from Stage 5
+
+| Feature | Stage 5 | Stage 6 |
+|---------|---------|---------|
+| **Working Memory** | Yes | Yes |
+| **Long-term Memory** | No | **Cross-session** |
+| **Tools** | 1 (search_courses) | **3** (search_courses + memory tools) |
+| **Personalization** | Session-only | **Persistent preferences** |
+| **Reasoning** | Hidden (tool-calling) | Hidden (tool-calling) |
+
+---
 
 ## 🏗️ Architecture
 
@@ -30,24 +84,6 @@ graph TD
         RC -.->|Read| LTM
     end
 ```
-
-## 🆕 What's New (vs Stage 5)
-
-| Feature | Stage 5 | Stage 6 |
-|---------|---------|---------|
-| **Working Memory** | ✅ Yes | ✅ Yes |
-| **Long-term Memory** | ❌ No | ✅ **Cross-session** |
-| **Tools** | 1 (search_courses) | **3** (search_courses + memory tools) |
-| **Personalization** | Session-only | **Persistent preferences** |
-| **Reasoning** | Hidden (tool-calling) | Hidden (tool-calling) |
-
-## 📖 Notebook Concepts Demonstrated
-
-| Concept | Notebook | Implementation |
-|---------|----------|----------------|
-| Long-term memory | Section 3: `01_working_and_longterm_memory.ipynb` | `tools.py: remember_user_info, recall_user_info` |
-| Memory + RAG | Section 3: `02_combining_memory_with_retrieved_context.ipynb` | Agent combines memory + search |
-| Multi-tool agents | Section 4: `02_building_course_advisor_agent.ipynb` | `agent_node()` with 3 tools |
 
 ## 🔧 Available Tools
 
@@ -261,10 +297,17 @@ curl http://localhost:8088/health
 
 ---
 
-## References
+## 🔗 Related Resources
 
-- **Stage 5:** Working memory (multi-turn conversations)
-- **Section 3 Notebooks:** Long-term memory patterns
-- **Section 4 Notebooks:** Memory tools implementation
-- **Agent Memory Server:** https://github.com/redis/agent-memory-server
+### Learning Path Navigation
+- **Previous**: [Stage 5: Memory](../stage5_memory_augmented/) or [Stage 5 ReAct](../stage5_react_memory/)
+- **Next**: [Stage 7: Full ReAct](../stage7_react_loop/) - Complete implementation with visible reasoning
+
+### Notebooks to Study
+- **[Section 3: Working and Long-term Memory](../../notebooks/section-3-memory-systems/01_working_and_longterm_memory.ipynb)**: Long-term memory fundamentals
+- **[Section 4: Building Course Advisor Agent](../../notebooks/section-4-tools-and-agents/02_building_course_advisor_agent.ipynb)**: Multi-tool agent patterns
+- **[Section 4: Semantic Tool Selection](../../notebooks/section-4-tools-and-agents/04_semantic_tool_selection.ipynb)**: Scaling to more tools
+
+### Technical Resources
+- **Agent Memory Server**: https://github.com/redis/agent-memory-server
 

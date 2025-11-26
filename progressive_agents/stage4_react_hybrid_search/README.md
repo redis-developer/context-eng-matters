@@ -1,6 +1,54 @@
 # Stage 4 ReAct: Hybrid Search with ReAct Loop
 
+## 📍 Position in Learning Path
+
+| Previous | Current | Next |
+|----------|---------|------|
+| [Stage 4: Hybrid Search](../stage4_hybrid_search_with_ner/) | **Stage 4 ReAct** | [Stage 5: Memory](../stage5_memory_augmented/) or [Stage 5 ReAct](../stage5_react_memory/) |
+
 This stage combines the hybrid search capabilities of Stage 4 with an explicit **ReAct** (Reasoning + Acting) loop for transparent reasoning.
+
+---
+
+## 🎯 Purpose
+
+The ReAct pattern makes the agent's decision-making process **visible and debuggable**. Instead of opaque tool-calling, you see:
+- **Thought**: What the agent is thinking
+- **Action**: What tool it decides to use
+- **Observation**: What results it receives
+
+**Key Learning**: "Transparent reasoning improves debugging, trust, and understanding of agent behavior."
+
+---
+
+## 📚 Related Notebooks
+
+| Notebook | Concepts Applied | Implementation in This Stage |
+|----------|-----------------|------------------------------|
+| [Section 4: Tools and LangGraph Fundamentals](../../notebooks/section-4-tools-and-agents/01_tools_and_langgraph_fundamentals.ipynb) | ReAct pattern, agent loops | `react_agent.py` - ReAct loop implementation |
+| [Section 2: Crafting and Optimizing Context](../../notebooks/section-2-retrieved-context-engineering/02_crafting_and_optimizing_context.ipynb) | Hybrid search, progressive disclosure | `tools.py: search_courses_sync()` |
+
+### Key Notebook Concepts Demonstrated
+
+**From Section 4, Notebook 1 - "Tools and LangGraph Fundamentals":**
+- **ReAct Pattern**: Thought → Action → Observation loop
+- **Iterative Reasoning**: Multiple iterations until task complete
+- **Explicit Termination**: FINISH action to end loop
+
+**Study Path**: Read Section 4, Notebook 1's ReAct section, then examine `react_agent.py` and `react_prompts.py` to see the implementation.
+
+---
+
+## 🔄 What Changed from Stage 4
+
+| Feature | Stage 4 | Stage 4 ReAct |
+|---------|---------|---------------|
+| **Reasoning** | Hidden (tool-calling) | **Visible** (Thought → Action → Observation) |
+| **Decision Process** | Opaque LLM | **Transparent** reasoning trace |
+| **Debugging** | Harder | **Easier** with `--show-reasoning` |
+| **Iterations** | 1 | 2-3 (explicit loop) |
+
+---
 
 ## 🏗️ Architecture
 
@@ -19,23 +67,6 @@ graph TD
 
     F --> R[Response + Reasoning Trace]
 ```
-
-## 🆕 What's New (vs Stage 4)
-
-| Feature | Stage 4 | Stage 4 ReAct |
-|---------|---------|---------------|
-| **Reasoning** | Hidden (tool-calling) | **Visible** (Thought → Action → Observation) |
-| **Decision Process** | Opaque LLM | **Transparent** reasoning trace |
-| **Debugging** | Harder | **Easier** with `--show-reasoning` |
-| **Iterations** | 1 | 2-3 (explicit loop) |
-
-## 📖 Notebook Concepts Demonstrated
-
-| Concept | Notebook | Implementation |
-|---------|----------|----------------|
-| ReAct pattern | Section 4: `01_tools_and_langgraph_fundamentals.ipynb` | `react_agent.py` |
-| Hybrid search | Section 2: `02_crafting_and_optimizing_context.ipynb` | `tools.py: search_courses_sync()` |
-| Progressive disclosure | Section 2: `02_crafting_and_optimizing_context.ipynb` | `HierarchicalContextAssembler` |
 
 ## 🚀 Usage
 
@@ -113,7 +144,15 @@ stage4_react_hybrid_search/
 ================================================================================
 ```
 
-## ⏭️ Next Stage
+## 🔗 Related Resources
 
-**Stage 5 React** (`stage5_react_memory/`): Add working memory for multi-turn conversations while keeping visible reasoning.
+### Learning Path Navigation
+- **Previous**: [Stage 4: Hybrid Search](../stage4_hybrid_search_with_ner/) - Same features without visible reasoning
+- **Next Options**:
+  - [Stage 5: Memory](../stage5_memory_augmented/) - Add working memory (hidden reasoning)
+  - [Stage 5 ReAct](../stage5_react_memory/) - Add working memory with visible reasoning
+
+### Notebooks to Study
+- **[Section 4: Tools and LangGraph Fundamentals](../../notebooks/section-4-tools-and-agents/01_tools_and_langgraph_fundamentals.ipynb)**: ReAct pattern fundamentals
+- **[Section 3: Working and Long-term Memory](../../notebooks/section-3-memory-systems/01_working_and_longterm_memory.ipynb)**: Prepare for Stage 5
 

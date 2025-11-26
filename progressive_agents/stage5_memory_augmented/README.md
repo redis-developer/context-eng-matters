@@ -1,6 +1,63 @@
 # Stage 5: Memory-Augmented Agent (Tool-Calling)
 
+## 📍 Position in Learning Path
+
+| Previous | Current | Next |
+|----------|---------|------|
+| [Stage 4: Hybrid Search](../stage4_hybrid_search_with_ner/) or [Stage 4 ReAct](../stage4_react_hybrid_search/) | **Stage 5: Memory** | [Stage 5 ReAct](../stage5_react_memory/) or [Stage 6: Long-term Memory](../stage6_longterm_memory/) |
+
 This stage adds **working memory** using Redis Agent Memory Server for multi-turn conversations.
+
+---
+
+## 🎯 Purpose
+
+Previous stages treated each query independently. This stage introduces **working memory** to enable:
+- Multi-turn conversations with context
+- Follow-up questions ("What about that course?")
+- Session resumption
+
+**Key Learning**: "Working memory enables conversation continuity. The agent can now reference previous turns."
+
+---
+
+## 📚 Related Notebooks
+
+This stage directly implements concepts from Section 3:
+
+| Notebook | Concepts Applied | Implementation in This Stage |
+|----------|-----------------|------------------------------|
+| [Section 3: Working and Long-term Memory](../../notebooks/section-3-memory-systems/01_working_and_longterm_memory.ipynb) | Working memory, grounding problem | `nodes.py: load/save_working_memory_node()` |
+| [Section 3: Combining Memory with Retrieved Context](../../notebooks/section-3-memory-systems/02_combining_memory_with_retrieved_context.ipynb) | Memory + RAG integration | Agent combines history + search |
+| [Section 4: Tools and LangGraph Fundamentals](../../notebooks/section-4-tools-and-agents/01_tools_and_langgraph_fundamentals.ipynb) | Tool calling patterns | `agent_node()` with `bind_tools()` |
+
+### Key Notebook Concepts Demonstrated
+
+**From Section 3, Notebook 1 - "Working and Long-term Memory":**
+- **The Grounding Problem**: Why "What are its prerequisites?" fails without memory
+- **Working Memory**: Session-scoped conversation storage
+- **Memory Lifecycle**: Load → Process → Save pattern
+
+**From Section 3, Notebook 2 - "Combining Memory with Retrieved Context":**
+- **All Four Context Types**: System + User + Conversation + Retrieved
+- **Memory-Enhanced RAG**: Combining conversation history with search results
+- **Stateful Conversations**: Building context across turns
+
+**Study Path**: Read Section 3, Notebooks 1-2 to understand memory theory, then examine this stage's `nodes.py` to see the load/save implementation.
+
+---
+
+## 🔄 What Changed from Stage 4
+
+| Feature | Stage 4 | Stage 5 |
+|---------|---------|---------|
+| **Memory** | None | **Working memory** (session-scoped) |
+| **Multi-turn** | Each query independent | **Conversation continuity** |
+| **Session** | None | **Resume by session_id** |
+| **Follow-ups** | "What about that?" fails | **Pronoun resolution** |
+| **Reasoning** | Hidden (tool-calling) | Hidden (tool-calling) |
+
+---
 
 ## 🏗️ Architecture
 
@@ -23,34 +80,6 @@ graph TD
         SM -.->|Write| AMS
     end
 ```
-
-## 🆕 What's New (vs Stage 4)
-
-| Feature | Stage 4 | Stage 5 |
-|---------|---------|---------|
-| **Memory** | None | **Working memory** (session-scoped) |
-| **Multi-turn** | ❌ Each query independent | ✅ **Conversation continuity** |
-| **Session** | None | ✅ **Resume by session_id** |
-| **Follow-ups** | ❌ "What about that?" fails | ✅ **Pronoun resolution** |
-| **Reasoning** | Hidden (tool-calling) | Hidden (tool-calling) |
-
-## 📖 Notebook Concepts Demonstrated
-
-| Concept | Notebook | Implementation |
-|---------|----------|----------------|
-| Working memory | Section 3: `01_working_and_longterm_memory.ipynb` | `nodes.py: load/save_working_memory_node()` |
-| Memory + RAG | Section 3: `02_combining_memory_with_retrieved_context.ipynb` | Agent combines history + search |
-| Tool calling | Section 4: `01_tools_and_langgraph_fundamentals.ipynb` | `agent_node()` with `bind_tools()` |
-
-## 🆕 New Features vs Stage 4
-
-| Feature | Stage 4 | Stage 5 |
-|---------|---------|---------|
-| **Conversation continuity** | ❌ Each query independent | ✅ Multi-turn conversations |
-| **Session management** | ❌ No sessions | ✅ Resume by session_id |
-| **Context from previous turns** | ❌ No memory | ✅ Full conversation history |
-| **Follow-up questions** | ❌ "What about CS004?" fails | ✅ "What about that course?" works |
-| **Personalization** | ❌ No user preferences | ✅ Auto-extracted preferences |
 
 ## 📝 Example Conversation Flow
 
@@ -199,18 +228,20 @@ Stage 5 focuses on:
 - No checkpointing (not needed for this demo)
 - Educational clarity over production features
 
-## 📚 Related Resources
+## 🔗 Related Resources
 
-- **Section 3 Notebooks**: Memory fundamentals and patterns
+### Learning Path Navigation
+- **Previous**: [Stage 4: Hybrid Search](../stage4_hybrid_search_with_ner/) or [Stage 4 ReAct](../stage4_react_hybrid_search/)
+- **Next Options**:
+  - [Stage 5 ReAct](../stage5_react_memory/) - Same features with visible reasoning
+  - [Stage 6: Long-term Memory](../stage6_longterm_memory/) - Add explicit memory tools
+
+### Notebooks to Study
+- **[Section 3: Working and Long-term Memory](../../notebooks/section-3-memory-systems/01_working_and_longterm_memory.ipynb)**: Memory fundamentals
+- **[Section 3: Combining Memory with Retrieved Context](../../notebooks/section-3-memory-systems/02_combining_memory_with_retrieved_context.ipynb)**: Memory + RAG integration
+- **[Section 3: Managing Long Conversations](../../notebooks/section-3-memory-systems/03_manage_long_conversations_with_compression_strategies.ipynb)**: Compression strategies for long sessions
+
+### Technical Resources
 - **Reference Agent**: Production-ready implementation with full memory architecture
 - **Agent Memory Server**: https://github.com/redis/agent-memory-server
-- **Stage 4**: Hybrid search + NER (foundation for this stage)
-
-## 🎯 Next Steps
-
-After mastering Stage 5, explore:
-- Adding long-term memory tools (like reference agent)
-- LangGraph checkpointing for graph state persistence
-- Memory compression strategies
-- Production deployment patterns
 

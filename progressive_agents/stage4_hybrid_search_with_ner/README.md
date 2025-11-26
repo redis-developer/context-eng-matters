@@ -1,6 +1,58 @@
 # Stage 4: Hybrid Search with Named Entity Recognition (NER)
 
+## 📍 Position in Learning Path
+
+| Previous | Current | Next |
+|----------|---------|------|
+| [Stage 3: Full Agent](../stage3_full_agent_without_memory/) | **Stage 4: Hybrid Search + NER** | [Stage 4 ReAct](../stage4_react_hybrid_search/) or [Stage 5: Memory](../stage5_memory_augmented/) |
+
 This stage adds **Named Entity Recognition (NER)** and **hybrid search** to combine exact course code matching with semantic search.
+
+---
+
+## 🎯 Purpose
+
+When users ask about specific courses like "CS002", semantic search alone may not find exact matches. This stage introduces **hybrid search** that combines:
+- **Exact matching** for course codes (CS002, MATH101)
+- **Semantic search** for topics and concepts
+
+**Key Learning**: "Different query types need different search strategies. NER helps identify which strategy to use."
+
+---
+
+## 📚 Related Notebooks
+
+| Notebook | Concepts Applied | Implementation in This Stage |
+|----------|-----------------|------------------------------|
+| [Section 2: Crafting and Optimizing Context](../../notebooks/section-2-retrieved-context-engineering/02_crafting_and_optimizing_context.ipynb) | Hybrid search strategies, progressive disclosure | `tools.py: search_courses_sync()` with FilterQuery |
+| [Section 4: Building Course Advisor Agent](../../notebooks/section-4-tools-and-agents/02_building_course_advisor_agent.ipynb) | Intent classification, agent architecture | `nodes.py: classify_intent_node(), extract_entities_node()` |
+
+### Key Notebook Concepts Demonstrated
+
+**From Section 2, Notebook 2 - "Crafting and Optimizing Context":**
+- **Hybrid Search**: Combining exact match + semantic search
+- **Progressive Disclosure**: Summaries for all, details for top matches
+- **Hierarchical Context Assembly**: `HierarchicalContextAssembler`
+
+**From Section 4, Notebook 2 - "Building Course Advisor Agent":**
+- **Intent Classification**: Detect query type to choose search strategy
+- **Entity Extraction**: Identify course codes, topics, departments
+
+**Study Path**: Review Section 2, Notebook 2's hybrid search section, then examine this stage's `tools.py` to see FilterQuery implementation.
+
+---
+
+## 🔄 What Changed from Stage 3
+
+| Feature | Stage 3 | Stage 4 |
+|---------|---------|---------|
+| **Search** | Semantic only | **Hybrid** (exact + semantic) |
+| **Course Codes** | Fuzzy match | **Exact match** via FilterQuery |
+| **NER** | None | **Extracts** codes, topics, departments |
+| **Context** | Hierarchical | Hierarchical with **targeted extraction** |
+| **Token Usage** | ~700 | ~1000 (more precise results) |
+
+---
 
 ## 🏗️ Architecture
 
@@ -696,30 +748,29 @@ Or test interactively:
 python cli.py
 ```
 
-## 📚 Related Resources
+## 🔗 Related Resources
+
+### Learning Path Navigation
+- **Previous**: [Stage 3: Full Agent](../stage3_full_agent_without_memory/) - LangGraph workflow without hybrid search
+- **Next Options**:
+  - [Stage 4 ReAct](../stage4_react_hybrid_search/) - Same features with visible reasoning
+  - [Stage 5: Memory](../stage5_memory_augmented/) - Add working memory for conversations
+
+### Notebooks to Study
+- **[Section 2: Crafting and Optimizing Context](../../notebooks/section-2-retrieved-context-engineering/02_crafting_and_optimizing_context.ipynb)**: Hybrid search strategies
+- **[Section 4: Building Course Advisor Agent](../../notebooks/section-4-tools-and-agents/02_building_course_advisor_agent.ipynb)**: Agent architecture patterns
 
 ### Stage Comparison
-- **Comparison Document**: `../HIERARCHICAL_RETRIEVAL_COMPARISON.md` - Detailed side-by-side comparison of all 3 stages
-- **Implementation Guide**: `../../HIERARCHICAL_RETRIEVAL_IMPLEMENTATION.md` - Complete implementation details
 - **Stage 1**: Information overload baseline (~6,133 tokens)
 - **Stage 2**: Context-engineered flat retrieval (~539 tokens)
-- **Stage 3**: Hierarchical retrieval with progressive disclosure (~700 tokens) ← **You are here**
+- **Stage 3**: Hierarchical retrieval (~700 tokens)
+- **Stage 4**: Hybrid search with NER (~1,000 tokens) ← **You are here**
 
 ### Technical Resources
-- **Section 2 Notebooks**: Context engineering techniques
 - **Hierarchical Models**: `redis_context_course/hierarchical_models.py`
 - **Context Assemblers**: `redis_context_course/hierarchical_context.py`
 - **CourseManager**: Redis-based course search (`redis_context_course.course_manager`)
 - **LangGraph Docs**: https://langchain-ai.github.io/langgraph/
-
-### Course Data
-- **Hierarchical Courses**: `redis_context_course/data/hierarchical/hierarchical_courses.json`
-- **Course Catalog**: `redis_context_course/data/hierarchical/COURSE_CATALOG.md`
-- **Course Generator**: `redis_context_course/scripts/generate_hierarchical_courses.py`
-
-## 🤝 Contributing
-
-This is part of the Redis University context engineering course. Improvements and extensions are welcome!
 
 ## 📄 License
 
