@@ -1,79 +1,85 @@
-# Stage 5: Memory-Augmented Agent
+# Stage 5 ReAct: Working Memory with Visible Reasoning
 
-**Goal**: Add working memory using Redis Agent Memory Server for multi-turn conversations and session continuity.
-
-## 🎯 What This Stage Demonstrates
-
-This stage builds on Stage 4 by adding **working memory** to enable:
-
-- ✅ **Multi-turn conversations** - Reference previous questions and answers
-- ✅ **Session continuity** - Resume conversations later with the same context
-- ✅ **Conversation history** - Full context from previous turns
-- ✅ **Automatic memory extraction** - Agent Memory Server extracts important facts to long-term storage
+This stage combines **working memory** with the **ReAct** (Reasoning + Acting) loop for transparent multi-turn conversations.
 
 ## 🏗️ Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                    Stage 5: Memory-Augmented Agent                          │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐                 │
-│  │ Load Working │ -> │   Classify   │ -> │   Extract    │                 │
-│  │   Memory     │    │    Intent    │    │   Entities   │                 │
-│  └──────────────┘    └──────────────┘    └──────────────┘                 │
-│         │                    │                    │                         │
-│         v                    v                    v                         │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐                 │
-│  │  Decompose   │ -> │    Cache     │ -> │   Research   │                 │
-│  │    Query     │    │    Check     │    │   (Hybrid)   │                 │
-│  └──────────────┘    └──────────────┘    └──────────────┘                 │
-│         │                    │                    │                         │
-│         v                    v                    v                         │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐                 │
-│  │   Quality    │ -> │  Synthesize  │ -> │Save Working  │                 │
-│  │  Evaluation  │    │   Response   │    │   Memory     │                 │
-│  └──────────────┘    └──────────────┘    └──────────────┘                 │
-│                                                   │                         │
-│                                                   v                         │
-│                                                 [END]                       │
-│                                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    Q[Query] --> LM[Load Working Memory]
+    LM --> IC[Classify Intent]
+    IC -->|GREETING| HG[Handle Greeting]
+    IC -->|Other| RA[ReAct Agent]
 
-Memory Architecture:
-┌─────────────────────────────────────────────────────────────────────────────┐
-│ Working Memory (Agent Memory Server)                                        │
-│ ─────────────────────────────────────────────────────────────────────────── │
-│ • Session-scoped conversation history                                       │
-│ • Loaded at start of each turn                                             │
-│ • Saved at end of each turn                                                │
-│ • Auto-extracts important facts to long-term memory                        │
-│                                                                             │
-│ Long-term Memory (Agent Memory Server)                                      │
-│ ─────────────────────────────────────────────────────────────────────────── │
-│ • Cross-session persistent knowledge                                        │
-│ • User preferences, course history, goals                                   │
-│ • Searchable via semantic vector search                                     │
-│ • Automatically populated by working memory extraction                      │
-└─────────────────────────────────────────────────────────────────────────────┘
+    subgraph ReAct Loop
+        RA --> T1[💭 Thought: Analyze + use history]
+        T1 --> A1[🔧 Action: search_courses]
+        A1 --> O1[👁️ Observation: Results]
+        O1 --> T2[💭 Thought: Evaluate]
+        T2 --> |Need more| A1
+        T2 --> |Done| F[✅ FINISH]
+    end
+
+    F --> SM[Save Working Memory]
+    HG --> SM
+    SM --> END[Response + Reasoning Trace]
+
+    subgraph Memory Layer
+        LM -.->|Read| AMS[(Agent Memory Server)]
+        SM -.->|Write| AMS
+    end
 ```
 
-## 🆕 New Features vs Stage 4
+## 🆕 What's New (vs Stage 5 Memory-Augmented)
 
-| Feature | Stage 4 | Stage 5 |
-|---------|---------|---------|
-| **Conversation continuity** | ❌ Each query independent | ✅ Multi-turn conversations |
-| **Session management** | ❌ No sessions | ✅ Resume by session_id |
-| **Context from previous turns** | ❌ No memory | ✅ Full conversation history |
-| **Follow-up questions** | ❌ "What about CS004?" fails | ✅ "What about that course?" works |
-| **Personalization** | ❌ No user preferences | ✅ Auto-extracted preferences |
+| Feature | Stage 5 (Tool-Calling) | Stage 5 ReAct |
+|---------|------------------------|---------------|
+| **Memory** | ✅ Working memory | ✅ Working memory |
+| **Multi-turn** | ✅ Conversation continuity | ✅ Conversation continuity |
+| **Reasoning** | Hidden (tool-calling) | **Visible** (Thought → Action → Observation) |
+| **Debugging** | Harder | **Easier** with `--show-reasoning` |
 
-## 📝 Example Conversation Flow
+## 📖 Notebook Concepts Demonstrated
+
+| Concept | Notebook | Implementation |
+|---------|----------|----------------|
+| ReAct pattern | Section 4: `01_tools_and_langgraph_fundamentals.ipynb` | `react_agent.py: ReActAgent` |
+| Working memory | Section 3: `01_working_and_longterm_memory.ipynb` | `nodes.py: load/save_working_memory_node()` |
+| Memory + RAG | Section 3: `02_combining_memory_with_retrieved_context.ipynb` | Agent combines history + search |
+
+## 🚀 Usage
+
+```bash
+cd progressive_agents/stage5_react_memory
+
+# Multi-turn with visible reasoning
+python cli.py --student-id alice --session-id s1 --show-reasoning "What is CS004?"
+python cli.py --student-id alice --session-id s1 --show-reasoning "Tell me more about it"
+
+# Interactive mode
+python cli.py --student-id alice
+```
+
+## 📝 Example: Multi-turn with Reasoning Trace
 
 ```
 Turn 1:
 User: "What is CS004?"
-Agent: "CS004 is Computer Vision, an advanced course covering image processing..."
+
+🧠 Reasoning Trace:
+================================================================================
+💭 Thought: The user is asking about a specific course. I'll use exact match.
+
+🔧 Action: search_courses
+   Input: {"query": "CS004", "intent": "GENERAL", "search_strategy": "exact_match"}
+👁️  Observation: Found CS004 - Computer Vision...
+
+💭 Thought: I have the course information. I can provide a complete answer.
+
+✅ FINISH
+================================================================================
+
+Answer: CS004 is Computer Vision, an advanced course covering image processing...
        [Saves to working memory]
 
 Turn 2 (same session):

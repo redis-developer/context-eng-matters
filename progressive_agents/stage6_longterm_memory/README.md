@@ -1,82 +1,90 @@
 # Stage 6: Long-term Memory Tools
 
-**Building on Stage 5:** Adds long-term memory tools for cross-session personalization.
+This stage adds **long-term memory tools** for cross-session personalization and preference management.
 
-## What's New in Stage 6
+## 🏗️ Architecture
 
-Stage 6 extends Stage 5 by adding **two new LangChain tools** that enable the agent to manage long-term memory:
+```mermaid
+graph TD
+    Q[Query] --> LM[Load Working Memory]
+    LM --> IC[Classify Intent]
+    IC -->|GREETING| HG[Handle Greeting]
+    IC -->|Other| A[Agent + Tools]
 
-1. **`search_memories_tool`** - Search student's long-term memory for preferences, goals, and facts
-2. **`store_memory_tool`** - Store important information to long-term memory
+    A -->|search_courses| SC[Course Search]
+    A -->|remember_user_info| RM[Store to Long-term Memory]
+    A -->|recall_user_info| RC[Search Long-term Memory]
 
-### Key Capabilities
+    SC --> A
+    RM --> A
+    RC --> A
 
-✅ **Store student preferences** ("I prefer online courses")  
-✅ **Store career goals** ("I want to work in AI research")  
-✅ **Store constraints** ("I can only take evening classes")  
-✅ **Search memories** to personalize recommendations  
-✅ **Cross-session persistence** (memories survive across sessions)  
-✅ **Multi-tool decision-making** (LLM chooses between 3 tools)  
+    A --> SM[Save Working Memory]
+    HG --> SM
+    SM --> END[Response]
 
----
-
-## Architecture
-
-### Workflow Graph
-
-```
-START
-  ↓
-load_working_memory (scripted)
-  ↓
-classify_intent
-  ↓
-  ├─ GREETING → handle_greeting → save_working_memory → END
-  └─ OTHER → agent → save_working_memory → END
+    subgraph Memory Layer
+        LM -.->|Read| AMS[(Agent Memory Server)]
+        SM -.->|Write| AMS
+        RM -.->|Write| LTM[(Long-term Memory)]
+        RC -.->|Read| LTM
+    end
 ```
 
-**Same workflow structure as Stage 5!** Only the agent's capabilities expand.
-
-### Tools Available
-
-| Tool | Purpose | When LLM Uses It |
-|------|---------|------------------|
-| **search_courses** | Search course catalog | Find courses matching query |
-| **search_memories** | Search long-term memory | Recall student preferences/goals |
-| **store_memory** | Store to long-term memory | Student shares preferences/goals |
-
----
-
-## Comparison: Stage 5 vs Stage 6
+## 🆕 What's New (vs Stage 5)
 
 | Feature | Stage 5 | Stage 6 |
 |---------|---------|---------|
 | **Working Memory** | ✅ Yes | ✅ Yes |
-| **Long-term Memory** | ❌ No | ✅ Yes |
-| **Tools** | 1 (search_courses) | 3 (search_courses, search_memories, store_memory) |
-| **Personalization** | Session-only | Cross-session |
-| **Memory Control** | Scripted (load/save) | Hybrid (scripted working + agentic long-term) |
-| **Use Case** | Multi-turn Q&A | Personalized advisor |
+| **Long-term Memory** | ❌ No | ✅ **Cross-session** |
+| **Tools** | 1 (search_courses) | **3** (search_courses + memory tools) |
+| **Personalization** | Session-only | **Persistent preferences** |
+| **Reasoning** | Hidden (tool-calling) | Hidden (tool-calling) |
 
----
+## 📖 Notebook Concepts Demonstrated
 
-## Usage
+| Concept | Notebook | Implementation |
+|---------|----------|----------------|
+| Long-term memory | Section 3: `01_working_and_longterm_memory.ipynb` | `tools.py: remember_user_info, recall_user_info` |
+| Memory + RAG | Section 3: `02_combining_memory_with_retrieved_context.ipynb` | Agent combines memory + search |
+| Multi-tool agents | Section 4: `02_building_course_advisor_agent.ipynb` | `agent_node()` with 3 tools |
 
-### Prerequisites
+## 🔧 Available Tools
 
-1. **Agent Memory Server** running on `http://localhost:8088`
-2. **Redis** running on `localhost:6379`
-3. **OpenAI API key** set in environment
-4. **Student ID** required for all queries
+| Tool | Purpose | Example Trigger |
+|------|---------|-----------------|
+| **search_courses** | Search course catalog | "Find ML courses" |
+| **remember_user_info** | Store to long-term memory | "I prefer online courses" |
+| **recall_user_info** | Search long-term memory | "What did I say I liked?" |
 
-### Interactive Mode
+## 🚀 Usage
 
 ```bash
-# Start interactive session (STUDENT ID REQUIRED)
-python cli.py --student-id alice
+cd progressive_agents/stage6_longterm_memory
 
-# Resume existing session
-python cli.py --student-id alice --session-id sess_001
+# Store preference then get recommendations
+python cli.py --student-id alice "I prefer online courses"
+python cli.py --student-id alice "What courses match my preferences?"
+
+# Interactive mode
+python cli.py --student-id alice
+```
+
+## 📝 Example: Personalized Recommendations
+
+```
+Turn 1:
+User: "I want to focus on machine learning and prefer online courses"
+Agent: [Calls remember_user_info with preferences]
+       "I've noted your preferences. Let me find matching courses..."
+       [Calls search_courses]
+       "Here are some online ML courses that match your interests..."
+
+Turn 2 (new session):
+User: "What courses should I take?"
+Agent: [Calls recall_user_info to retrieve preferences]
+       [Calls search_courses with filters]
+       "Based on your preference for online ML courses, I recommend..."
 ```
 
 **Note:** `--student-id` is required! This identifies the student for long-term memory storage.

@@ -1,83 +1,139 @@
-# Stage 6: Long-term Memory Tools
+# Stage 7: Full Memory with ReAct Loop
 
-**Building on Stage 5:** Adds long-term memory tools for cross-session personalization.
+The **final stage** combining all features: working memory, long-term memory, and **visible ReAct reasoning**.
 
-## What's New in Stage 6
+## 🏗️ Architecture
 
-Stage 6 extends Stage 5 by adding **two new LangChain tools** that enable the agent to manage long-term memory:
+```mermaid
+graph TD
+    Q[Query] --> LM[Load Working Memory]
+    LM --> IC[Classify Intent]
+    IC -->|GREETING| HG[Handle Greeting]
+    IC -->|Other| RA[ReAct Agent]
 
-1. **`search_memories_tool`** - Search student's long-term memory for preferences, goals, and facts
-2. **`store_memory_tool`** - Store important information to long-term memory
+    subgraph ReAct Loop
+        RA --> T1[💭 Thought: Analyze + plan]
+        T1 --> A1[🔧 Action: choose tool]
+        A1 --> O1[👁️ Observation: Results]
+        O1 --> T2[💭 Thought: Evaluate]
+        T2 --> |Need more| A1
+        T2 --> |Done| F[✅ FINISH]
+    end
 
-### Key Capabilities
+    subgraph Available Tools
+        A1 -->|search| SC[search_courses]
+        A1 -->|store| RM[remember_user_info]
+        A1 -->|recall| RC[recall_user_info]
+    end
 
-✅ **Store student preferences** ("I prefer online courses")  
-✅ **Store career goals** ("I want to work in AI research")  
-✅ **Store constraints** ("I can only take evening classes")  
-✅ **Search memories** to personalize recommendations  
-✅ **Cross-session persistence** (memories survive across sessions)  
-✅ **Multi-tool decision-making** (LLM chooses between 3 tools)  
+    F --> SM[Save Working Memory]
+    HG --> SM
+    SM --> END[Response + Reasoning Trace]
 
----
-
-## Architecture
-
-### Workflow Graph
-
+    subgraph Memory Layer
+        LM -.->|Read| AMS[(Agent Memory Server)]
+        SM -.->|Write| AMS
+        RM -.->|Write| LTM[(Long-term Memory)]
+        RC -.->|Read| LTM
+    end
 ```
-START
-  ↓
-load_working_memory (scripted)
-  ↓
-classify_intent
-  ↓
-  ├─ GREETING → handle_greeting → save_working_memory → END
-  └─ OTHER → agent → save_working_memory → END
-```
 
-**Same workflow structure as Stage 5!** Only the agent's capabilities expand.
+## 🆕 What's New (vs Stage 6)
 
-### Tools Available
-
-| Tool | Purpose | When LLM Uses It |
-|------|---------|------------------|
-| **search_courses** | Search course catalog | Find courses matching query |
-| **search_memories** | Search long-term memory | Recall student preferences/goals |
-| **store_memory** | Store to long-term memory | Student shares preferences/goals |
-
----
-
-## Comparison: Stage 5 vs Stage 6
-
-| Feature | Stage 5 | Stage 6 |
+| Feature | Stage 6 | Stage 7 |
 |---------|---------|---------|
 | **Working Memory** | ✅ Yes | ✅ Yes |
-| **Long-term Memory** | ❌ No | ✅ Yes |
-| **Tools** | 1 (search_courses) | 3 (search_courses, search_memories, store_memory) |
-| **Personalization** | Session-only | Cross-session |
-| **Memory Control** | Scripted (load/save) | Hybrid (scripted working + agentic long-term) |
-| **Use Case** | Multi-turn Q&A | Personalized advisor |
+| **Long-term Memory** | ✅ Yes | ✅ Yes |
+| **Tools** | 3 | 3 (same) |
+| **Reasoning** | Hidden (tool-calling) | **Visible (ReAct)** |
+| **Debugging** | Harder | **`--show-reasoning` flag** |
 
----
+## 📖 Notebook Concepts Demonstrated
 
-## Usage
+| Concept | Notebook | Implementation |
+|---------|----------|----------------|
+| ReAct pattern | Section 4: `01_tools_and_langgraph_fundamentals.ipynb` | `react_agent.py: ReActAgent` |
+| Working memory | Section 3: `01_working_and_longterm_memory.ipynb` | `nodes.py: load/save_working_memory_node()` |
+| Long-term memory | Section 3: `01_working_and_longterm_memory.ipynb` | `tools.py: remember/recall_user_info` |
+| Memory + RAG | Section 3: `02_combining_memory_with_retrieved_context.ipynb` | Agent combines all sources |
 
-### Prerequisites
+## 🔧 Available Tools
 
-1. **Agent Memory Server** running on `http://localhost:8088`
-2. **Redis** running on `localhost:6379`
-3. **OpenAI API key** set in environment
-4. **Student ID** required for all queries
+| Tool | Purpose | Example Trigger |
+|------|---------|-----------------|
+| **search_courses** | Search course catalog | "Find ML courses" |
+| **remember_user_info** | Store to long-term memory | "I prefer online courses" |
+| **recall_user_info** | Search long-term memory | "What did I say I liked?" |
 
-### Interactive Mode
+## 🚀 Usage
 
 ```bash
-# Start interactive session (STUDENT ID REQUIRED)
-python cli.py --student-id alice
+cd progressive_agents/stage7_react_loop
 
-# Resume existing session
-python cli.py --student-id alice --session-id sess_001
+# Show reasoning trace
+python cli.py --student-id alice --show-reasoning "What ML courses are good for beginners?"
+
+# Store preference with visible reasoning
+python cli.py --student-id alice --show-reasoning "I prefer online courses"
+
+# Interactive mode
+python cli.py --student-id alice
 ```
+
+## 📝 Example: Full Pipeline with Reasoning
+
+```
+User: "I prefer online courses. What ML courses do you recommend?"
+
+🧠 Reasoning Trace:
+================================================================================
+💭 Thought: The user expressed a preference AND asked for recommendations.
+            I should store the preference first, then search for courses.
+
+🔧 Action: remember_user_info
+   Input: {"user_id": "alice", "info_type": "preference", "info": "prefers online courses"}
+👁️  Observation: Successfully stored user preference.
+
+💭 Thought: Now I should search for ML courses, filtering for online format.
+
+🔧 Action: search_courses
+   Input: {"query": "machine learning", "intent": "GENERAL", "search_strategy": "hybrid"}
+👁️  Observation: Found 5 courses: CS002 (ML Fundamentals, Online), ...
+
+💭 Thought: I have courses and stored the preference. I can provide recommendations.
+
+✅ FINISH
+================================================================================
+
+Answer: I've noted your preference for online courses! Here are some ML courses available online:
+        1. CS002 - Machine Learning Fundamentals (Online, Beginner)
+        2. CS006 - Deep Learning and Neural Networks (Online, Advanced)
+        ...
+```
+
+## 📁 File Structure
+
+```
+stage7_react_loop/
+├── cli.py                    # CLI with --show-reasoning
+├── README.md                 # This file
+└── agent/
+    ├── __init__.py
+    ├── react_agent.py        # ReAct loop implementation
+    ├── react_parser.py       # Thought/Action/Observation parser
+    ├── react_prompts.py      # System prompt with 3 tools
+    ├── nodes.py              # Memory nodes + react_agent_node
+    ├── tools.py              # search_courses, remember, recall
+    ├── state.py              # WorkflowState with reasoning_trace
+    ├── setup.py              # Initialization
+    └── workflow.py           # LangGraph graph
+```
+
+## ⬅️ Previous Stages
+
+- **Stage 6** (`stage6_longterm_memory/`): Same tools but hidden reasoning
+- **Stage 5R** (`stage5_react_memory/`): ReAct + working memory (no long-term)
+- **Stage 4R** (`stage4_react_hybrid_search/`): ReAct + hybrid search (no memory)
 
 **Note:** `--student-id` is required! This identifies the student for long-term memory storage.
 
