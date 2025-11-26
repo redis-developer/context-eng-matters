@@ -4,9 +4,6 @@ version = "1.0.0"
 description = "Context Engineering Course - A comprehensive, hands-on course teaching practical context engineering patterns for AI agents using Redis, Agent Memory Server, LangChain, and LangGraph"
 readme = "README.md"
 requires-python = ">=3.10"
-authors = [
-    {name = "Redis AI Resources Team", email = "redis-ai@redis.com"},
-]
 license = {text = "MIT"}
 keywords = [
     "redis",
@@ -93,9 +90,10 @@ dev = [
 ]
 
 [project.scripts]
-redis-class-agent = "redis_context_course.cli:main"
 generate-courses = "redis_context_course.scripts.generate_courses:main"
+generate-hierarchical-courses = "redis_context_course.scripts.generate_hierarchical_courses:main"
 ingest-courses = "redis_context_course.scripts.ingest_courses:main"
+load-hierarchical-courses = "redis_context_course.scripts.load_hierarchical_courses:main"
 
 [project.urls]
 Homepage = "https://github.com/redis-developer/redis-ai-resources"

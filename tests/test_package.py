@@ -49,16 +49,15 @@ def test_manager_imports():
         pytest.fail(f"Failed to import managers: {e}")
 
 
-def test_agent_imports():
-    """Test that agent imports work correctly."""
+def test_tools_module_imports():
+    """Test that tools module imports work correctly."""
     try:
-        from redis_context_course.agent import AgentState, ClassAgent
+        from redis_context_course.tools import create_agent_tools
 
-        assert ClassAgent is not None
-        assert AgentState is not None
+        assert create_agent_tools is not None
 
     except ImportError as e:
-        pytest.fail(f"Failed to import agent: {e}")
+        pytest.fail(f"Failed to import tools: {e}")
 
 
 def test_scripts_imports():
@@ -73,16 +72,16 @@ def test_scripts_imports():
         pytest.fail(f"Failed to import scripts: {e}")
 
 
-def test_cli_imports():
-    """Test that CLI imports work correctly."""
+def test_create_agent_tools_exists():
+    """Test that create_agent_tools function exists in the package."""
     try:
-        from redis_context_course import cli
+        from redis_context_course import create_agent_tools
 
-        assert cli is not None
-        assert hasattr(cli, "main")
+        assert create_agent_tools is not None
+        assert callable(create_agent_tools)
 
     except ImportError as e:
-        pytest.fail(f"Failed to import CLI: {e}")
+        pytest.fail(f"Failed to import create_agent_tools: {e}")
 
 
 def test_tools_imports():

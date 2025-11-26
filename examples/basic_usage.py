@@ -121,7 +121,7 @@ def demo_package_info():
         ("MemoryManager", "Handles long-term memory (cross-session knowledge)"),
         ("WorkingMemory", "Handles working memory (task-focused context)"),
         ("CourseManager", "Course storage and recommendation engine"),
-        ("ClassAgent", "LangGraph-based conversational agent"),
+        ("create_agent_tools", "Tool functions for building agents"),
         ("RedisConfig", "Redis connection and index management"),
     ]
 
@@ -153,17 +153,17 @@ def demo_usage_examples():
     print(")")
     print("```")
 
-    print("\n2. Agent Usage (requires dependencies):")
+    print("\n2. Tool Usage (for building agents):")
     print("```python")
-    print("import asyncio")
-    print("from redis_context_course import ClassAgent")
+    print("from redis_context_course import CourseManager, create_agent_tools")
+    print("from agent_memory_client import MemoryAPIClient, MemoryClientConfig")
     print("")
-    print("async def main():")
-    print("    agent = ClassAgent('student_123')")
-    print("    response = await agent.chat('I want to learn programming')")
-    print("    print(response)")
+    print("# Initialize components")
+    print("course_manager = CourseManager()")
+    print("memory_client = MemoryAPIClient(config=MemoryClientConfig(...))")
     print("")
-    print("asyncio.run(main())")
+    print("# Create tools for your agent")
+    print("tools = create_agent_tools(course_manager, memory_client, 'student_123')")
     print("```")
 
     print("\n3. Command Line Usage:")
