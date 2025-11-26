@@ -78,22 +78,13 @@ docker-compose up -d
 docker ps
 ```
 
-### 5. Load Course Data into Redis
-
-The progressive agents require course data in Redis. The data must be loaded into the `hierarchical_courses` index, which contains courses with complete syllabus information.
+### 5. Load Course Data
 
 ```bash
-# Ingest courses into the hierarchical_courses index (required for progressive agents)
+# Ingest courses into Redis (required for progressive agents)
 uv run python -m redis_context_course.scripts.ingest_courses \
-  --catalog src/redis_context_course/data/courses.json \
-  --index-name hierarchical_courses \
-  --clear
+  --catalog src/redis_context_course/data/courses.json --clear
 ```
-
-> **Note:** The `courses.json` file is synced with `hierarchical_courses.json` to ensure all courses have complete syllabus data. If you modify the hierarchical data, regenerate `courses.json`:
-> ```bash
-> uv run python src/redis_context_course/scripts/generate_courses_from_hierarchical.py
-> ```
 
 ### 6. Verify Installation
 

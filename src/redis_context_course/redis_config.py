@@ -25,8 +25,7 @@ class RedisConfig:
         checkpoint_namespace: str = "class_agent",
     ):
         self.redis_url = redis_url or os.getenv("REDIS_URL", "redis://localhost:6379")
-        # Allow override via environment variable for progressive agents
-        self.vector_index_name = os.getenv("COURSE_INDEX_NAME", vector_index_name)
+        self.vector_index_name = vector_index_name
         self.checkpoint_namespace = checkpoint_namespace
 
         # Initialize connections
