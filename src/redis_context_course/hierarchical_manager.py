@@ -23,6 +23,8 @@ from .redis_config import redis_config
 logger = logging.getLogger(__name__)
 
 
+# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
+# This class is used only by scripts/load_hierarchical_courses.py for data loading
 class HierarchicalCourseManager:
     """
     Manages two-tier course retrieval for progressive disclosure.
@@ -35,6 +37,9 @@ class HierarchicalCourseManager:
     - Fast initial search across all courses
     - Detailed information only for relevant courses
     - Efficient context budget management
+
+    Note: This class is experimental API surface. Progressive agents use
+    CourseManager with HierarchicalContextAssembler instead of this unified manager.
     """
 
     def __init__(

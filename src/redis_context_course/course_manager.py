@@ -109,6 +109,8 @@ class CourseManager:
 
         return course.id
 
+    # EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
+    # Code typically uses get_course_by_code() instead
     async def get_course(self, course_id: str) -> Optional[Course]:
         """Retrieve a course by ID."""
         key = f"{redis_config.vector_index_name}:{course_id}"

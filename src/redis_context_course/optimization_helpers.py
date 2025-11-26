@@ -16,7 +16,9 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 
 
+# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
 # Token Counting (from Section 4, notebook 01_context_window_management.ipynb)
+# Notebooks implement inline versions for educational clarity
 def count_tokens(text: str, model: str = "gpt-4o") -> int:
     """
     Count tokens in text for a specific model.
@@ -36,6 +38,8 @@ def count_tokens(text: str, model: str = "gpt-4o") -> int:
     return len(encoding.encode(text))
 
 
+# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
+# Notebooks implement inline versions for educational clarity
 def estimate_token_budget(
     system_prompt: str,
     working_memory_messages: int,
@@ -84,6 +88,7 @@ def estimate_token_budget(
     }
 
 
+# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
 # Retrieval Strategies (from Section 4, notebook 02_retrieval_strategies.ipynb)
 async def hybrid_retrieval(
     query: str, summary_view: str, search_function, limit: int = 3
@@ -115,6 +120,7 @@ Relevant items for this query:
     return context
 
 
+# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
 # Structured Views (from Section 4, notebook 05_crafting_data_for_llms.ipynb)
 async def create_summary_view(
     items: List[Any],
@@ -163,6 +169,7 @@ async def create_summary_view(
     return "\n".join(summary_parts)
 
 
+# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
 async def create_user_profile_view(
     user_data: Dict[str, Any], memories: List[Any], llm: ChatOpenAI
 ) -> str:
@@ -222,6 +229,7 @@ Create sections for:
     return "\n".join(profile_parts)
 
 
+# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
 # Tool Optimization (from Section 4, notebook 04_tool_optimization.ipynb)
 def filter_tools_by_intent(
     query: str, tool_groups: Dict[str, List], default_group: str = "search"
@@ -258,6 +266,7 @@ def filter_tools_by_intent(
     return tool_groups.get(default_group, [])
 
 
+# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
 async def classify_intent_with_llm(
     query: str, intents: List[str], llm: ChatOpenAI
 ) -> str:
@@ -301,6 +310,7 @@ Respond with only the category name.
     return intent
 
 
+# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
 # Grounding Helpers (from Section 4, notebook 03_grounding_with_memory.ipynb)
 def extract_references(query: str) -> Dict[str, List[str]]:
     """
@@ -342,6 +352,7 @@ def extract_references(query: str) -> Dict[str, List[str]]:
     return references
 
 
+# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
 # Utility Functions
 def format_context_for_llm(
     system_instructions: str,

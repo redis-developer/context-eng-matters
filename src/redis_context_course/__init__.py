@@ -12,27 +12,26 @@ The agent demonstrates key context engineering concepts:
 - Personalized recommendations
 
 Main Components:
-- agent: LangGraph-based agent implementation
 - models: Data models for courses and students
 - memory_client: Interface to Redis Agent Memory Server
 - course_manager: Course storage and recommendation engine
 - redis_config: Redis configuration and connections
-- cli: Command-line interface
+- tools: Tool definitions for building agents
 
 Installation:
     pip install redis-context-course agent-memory-server
 
 Usage:
-    from redis_context_course import ClassAgent, MemoryClient
+    from redis_context_course import CourseManager, MemoryClient, create_agent_tools
 
-    # Initialize agent (uses Agent Memory Server)
-    agent = ClassAgent("student_id")
+    # Initialize components
+    course_manager = CourseManager()
+    memory_client = MemoryClient(config=MemoryClientConfig(...))
 
-    # Chat with agent
-    response = await agent.chat("I'm interested in machine learning courses")
+    # Create tools for your agent
+    tools = create_agent_tools(course_manager, memory_client, "student_id")
 
 Command Line Tools:
-    redis-class-agent --student-id your_name
     generate-courses --courses-per-major 15
     ingest-courses --catalog course_catalog.json
 """
@@ -42,9 +41,7 @@ Command Line Tools:
 from agent_memory_client import MemoryAPIClient as MemoryClient
 from agent_memory_client import MemoryClientConfig
 
-# Import agent components
-from .agent import AgentState, ClassAgent
-from .augmented_agent import AugmentedClassAgent
+# Import course manager
 from .course_manager import CourseManager
 from .models import (
     AgentResponse,
@@ -74,8 +71,13 @@ from .optimization_helpers import (
 )
 from .redis_config import RedisConfig, redis_config
 
-# Import tools (used in notebooks)
-from .tools import create_course_tools, create_memory_tools, select_tools_by_keywords
+# Import tools (used in notebooks and for building agents)
+from .tools import (
+    create_agent_tools,
+    create_course_tools,
+    create_memory_tools,
+    select_tools_by_keywords,
+)
 
 __version__ = "1.0.0"
 __author__ = "Redis AI Resources Team"
@@ -87,9 +89,6 @@ __description__ = (
 
 __all__ = [
     # Core classes
-    "ClassAgent",
-    "AugmentedClassAgent",
-    "AgentState",
     "MemoryClient",
     "MemoryClientConfig",
     "CourseManager",
@@ -108,7 +107,8 @@ __all__ = [
     "CourseFormat",
     "Semester",
     "DayOfWeek",
-    # Tools (for notebooks)
+    # Tools (for notebooks and building agents)
+    "create_agent_tools",
     "create_course_tools",
     "create_memory_tools",
     "select_tools_by_keywords",
