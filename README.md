@@ -222,7 +222,6 @@ Open: `section-1-context-engineering-foundations/01_what_is_context_engineering.
 | Document | Description |
 |----------|-------------|
 | [SETUP.md](SETUP.md) | Detailed setup and troubleshooting |
-| [COURSE_SUMMARY.md](COURSE_SUMMARY.md) | Complete course syllabus |
 | [progressive_agents/README.md](progressive_agents/README.md) | Agent stages documentation |
 | [notebooks/README.md](notebooks/README.md) | Notebook guides |
 
