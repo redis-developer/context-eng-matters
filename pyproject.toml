@@ -1,0 +1,126 @@
+[project]
+name = "context-engineering-reinvent"
+version = "1.0.0"
+description = "Context Engineering Course - A comprehensive, hands-on course teaching practical context engineering patterns for AI agents using Redis, Agent Memory Server, LangChain, and LangGraph"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    {name = "Redis AI Resources Team", email = "redis-ai@redis.com"},
+]
+license = {text = "MIT"}
+keywords = [
+    "redis",
+    "ai",
+    "context-engineering",
+    "langgraph",
+    "langchain",
+    "openai",
+    "vector-database",
+    "semantic-search",
+    "memory-management",
+    "rag",
+    "agents",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    # LangChain ecosystem
+    "langchain>=0.2.0",
+    "langchain-openai>=0.1.0",
+    "langchain-core>=0.2.0",
+    "langchain-community>=0.2.0",
+    "langchain-experimental>=0.3.0",
+    "langchain-text-splitters>=0.3.0",
+
+    # LangGraph for agent workflows
+    "langgraph>=0.2.0",
+    "langgraph-checkpoint>=1.0.0",
+    "langgraph-checkpoint-redis>=0.1.0",
+
+    # Redis and vector search
+    "redis>=6.0.0",
+    "redisvl>=0.8.0",
+
+    # OpenAI
+    "openai>=1.0.0",
+
+    # Agent Memory Server client
+    "agent-memory-client>=0.12.3",
+
+    # Data validation and models
+    "pydantic>=2.0.0",
+
+    # Utilities
+    "python-dotenv>=1.0.0",
+    "click>=8.0.0",
+    "rich>=13.0.0",
+    "tiktoken>=0.5.0",
+    "python-ulid>=3.0.0",
+
+    # Data generation
+    "faker>=20.0.0",
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+
+    # Jupyter notebooks
+    "jupyter>=1.0.0",
+    "ipykernel>=6.0.0",
+
+    # Embeddings (for notebooks)
+    "sentence-transformers>=2.0.0",
+    "langchain-huggingface>=0.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "mypy>=1.5.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+redis-class-agent = "redis_context_course.cli:main"
+generate-courses = "redis_context_course.scripts.generate_courses:main"
+ingest-courses = "redis_context_course.scripts.ingest_courses:main"
+
+[project.urls]
+Homepage = "https://github.com/redis-developer/redis-ai-resources"
+Documentation = "https://github.com/redis-developer/redis-ai-resources/blob/main/python-recipes/context-engineering/README.md"
+Repository = "https://github.com/redis-developer/redis-ai-resources.git"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/redis_context_course"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+asyncio_mode = "auto"
