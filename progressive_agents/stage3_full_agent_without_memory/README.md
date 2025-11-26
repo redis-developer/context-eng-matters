@@ -1,8 +1,66 @@
-# Stage 3: Hierarchical Retrieval Agent (Progressive Disclosure)
+# Stage 3: Full Agent with Hierarchical Retrieval
+
+## 📍 Position in Learning Path
+
+| Previous | Current | Next |
+|----------|---------|------|
+| [Stage 2: Context-Engineered](../stage2_context_engineered/) | **Stage 3: Full Agent** | [Stage 4: Hybrid Search](../stage4_hybrid_search_with_ner/) |
+
+This stage introduces **LangGraph workflows**, **intent classification**, and **progressive disclosure** - transforming the simple RAG pipeline into a full agent architecture.
+
+---
+
+## 🎯 Purpose
 
 A LangGraph-based intelligent agent demonstrating **hierarchical retrieval** and **progressive disclosure** patterns. This agent shows the best approach to context engineering: summaries for all results, full details (including syllabi) for top matches.
 
-**Stage 3** in the progressive learning path: Advanced context engineering with two-tier retrieval, query decomposition, and quality evaluation.
+**Key Learning**: "Agents need structure. LangGraph provides observable, stateful workflows with intent-based routing."
+
+---
+
+## 📚 Related Notebooks
+
+This stage introduces agent architecture concepts from Section 4:
+
+| Notebook | Concepts Applied | Implementation in This Stage |
+|----------|-----------------|------------------------------|
+| [Section 4: Tools and LangGraph Fundamentals](../../notebooks/section-4-tools-and-agents/01_tools_and_langgraph_fundamentals.ipynb) | LangGraph nodes, edges, state | `agent/workflow.py` - graph definition |
+| [Section 4: Building Course Advisor Agent](../../notebooks/section-4-tools-and-agents/02_building_course_advisor_agent.ipynb) | Complete agent architecture | `agent/nodes.py` - node implementations |
+| [Section 2: Crafting and Optimizing Context](../../notebooks/section-2-retrieved-context-engineering/02_crafting_and_optimizing_context.ipynb) | Progressive disclosure, hierarchical context | `HierarchicalContextAssembler` usage |
+
+### Key Notebook Concepts Demonstrated
+
+**From Section 4, Notebook 1 - "Tools and LangGraph Fundamentals":**
+- **LangGraph State**: `AgentState` TypedDict for tracking workflow state
+- **Nodes**: Functions that process and transform state
+- **Edges**: Routing logic between nodes
+- **Conditional Routing**: Intent-based path selection
+
+**From Section 4, Notebook 2 - "Building Course Advisor Agent":**
+- **Intent Classification**: Detect greeting vs. course queries
+- **Query Decomposition**: Break complex questions into sub-questions
+- **Quality Evaluation**: Iterative improvement loop
+
+**From Section 2, Notebook 2 - "Crafting and Optimizing Context":**
+- **Progressive Disclosure**: Summaries for all, details for top matches
+- **Hierarchical Context Assembly**: Two-tier retrieval strategy
+
+**Study Path**: Read Section 4, Notebook 1 to understand LangGraph basics, then examine this stage's `workflow.py` and `nodes.py` to see the practical implementation.
+
+---
+
+## 🔄 What Changed from Stage 2
+
+| Feature | Stage 2 | Stage 3 |
+|---------|---------|---------|
+| **Architecture** | Simple 2-node pipeline | **LangGraph workflow** with 6+ nodes |
+| **Intent Handling** | None | **Intent classification** (greeting, overview, details) |
+| **Query Processing** | Direct search | **Query decomposition** into sub-questions |
+| **Quality Control** | None | **Quality evaluation** with iterative improvement |
+| **Context Assembly** | Flat | **Hierarchical** (summaries + details) |
+| **Syllabi** | None (removed for tokens) | **Included** for top 2-3 matches |
+
+---
 
 ## 🚀 Features
 
@@ -563,30 +621,28 @@ Or test interactively:
 python cli.py
 ```
 
-## 📚 Related Resources
+## 🔗 Related Resources
+
+### Learning Path Navigation
+- **Previous**: [Stage 2: Context-Engineered](../stage2_context_engineered/) - Context engineering without agent architecture
+- **Next**: [Stage 4: Hybrid Search](../stage4_hybrid_search_with_ner/) - Add NER and exact-match search
+
+### Notebooks to Study
+- **[Section 4: Tools and LangGraph Fundamentals](../../notebooks/section-4-tools-and-agents/01_tools_and_langgraph_fundamentals.ipynb)**: LangGraph basics used in this stage
+- **[Section 4: Building Course Advisor Agent](../../notebooks/section-4-tools-and-agents/02_building_course_advisor_agent.ipynb)**: Complete agent architecture patterns
+- **[Section 2: Crafting and Optimizing Context](../../notebooks/section-2-retrieved-context-engineering/02_crafting_and_optimizing_context.ipynb)**: Progressive disclosure concepts
 
 ### Stage Comparison
-- **Comparison Document**: `../HIERARCHICAL_RETRIEVAL_COMPARISON.md` - Detailed side-by-side comparison of all 3 stages
-- **Implementation Guide**: `../../HIERARCHICAL_RETRIEVAL_IMPLEMENTATION.md` - Complete implementation details
+- **Comparison Document**: `../HIERARCHICAL_RETRIEVAL_COMPARISON.md` - Detailed side-by-side comparison
 - **Stage 1**: Information overload baseline (~6,133 tokens)
 - **Stage 2**: Context-engineered flat retrieval (~539 tokens)
 - **Stage 3**: Hierarchical retrieval with progressive disclosure (~700 tokens) ← **You are here**
 
 ### Technical Resources
-- **Section 2 Notebooks**: Context engineering techniques
 - **Hierarchical Models**: `redis_context_course/hierarchical_models.py`
 - **Context Assemblers**: `redis_context_course/hierarchical_context.py`
 - **CourseManager**: Redis-based course search (`redis_context_course.course_manager`)
 - **LangGraph Docs**: https://langchain-ai.github.io/langgraph/
-
-### Course Data
-- **Hierarchical Courses**: `redis_context_course/data/hierarchical/hierarchical_courses.json`
-- **Course Catalog**: `redis_context_course/data/hierarchical/COURSE_CATALOG.md`
-- **Course Generator**: `redis_context_course/scripts/generate_hierarchical_courses.py`
-
-## 🤝 Contributing
-
-This is part of the Redis University context engineering course. Improvements and extensions are welcome!
 
 ## 📄 License
 

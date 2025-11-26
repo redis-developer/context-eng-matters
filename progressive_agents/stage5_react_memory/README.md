@@ -1,6 +1,57 @@
 # Stage 5 ReAct: Working Memory with Visible Reasoning
 
+## 📍 Position in Learning Path
+
+| Previous | Current | Next |
+|----------|---------|------|
+| [Stage 5: Memory](../stage5_memory_augmented/) or [Stage 4 ReAct](../stage4_react_hybrid_search/) | **Stage 5 ReAct** | [Stage 6: Long-term Memory](../stage6_longterm_memory/) or [Stage 7: Full ReAct](../stage7_react_loop/) |
+
 This stage combines **working memory** with the **ReAct** (Reasoning + Acting) loop for transparent multi-turn conversations.
+
+---
+
+## 🎯 Purpose
+
+This stage merges two powerful patterns:
+- **Working Memory** (from Stage 5): Multi-turn conversation continuity
+- **ReAct Pattern** (from Stage 4 ReAct): Visible reasoning traces
+
+**Key Learning**: "Combining memory with visible reasoning creates debuggable, context-aware agents."
+
+---
+
+## 📚 Related Notebooks
+
+| Notebook | Concepts Applied | Implementation in This Stage |
+|----------|-----------------|------------------------------|
+| [Section 4: Tools and LangGraph Fundamentals](../../notebooks/section-4-tools-and-agents/01_tools_and_langgraph_fundamentals.ipynb) | ReAct pattern | `react_agent.py: ReActAgent` |
+| [Section 3: Working and Long-term Memory](../../notebooks/section-3-memory-systems/01_working_and_longterm_memory.ipynb) | Working memory | `nodes.py: load/save_working_memory_node()` |
+| [Section 3: Combining Memory with Retrieved Context](../../notebooks/section-3-memory-systems/02_combining_memory_with_retrieved_context.ipynb) | Memory + RAG | Agent combines history + search |
+
+### Key Notebook Concepts Demonstrated
+
+**From Section 4, Notebook 1 - "Tools and LangGraph Fundamentals":**
+- **ReAct Pattern**: Thought → Action → Observation loop
+- **Visible Reasoning**: Debug-friendly decision traces
+
+**From Section 3, Notebook 1 - "Working and Long-term Memory":**
+- **Working Memory**: Session-scoped conversation storage
+- **Grounding**: Resolving "it", "that course" references
+
+**Study Path**: Review both Stage 4 ReAct and Stage 5 Memory to understand the components, then see how they combine here.
+
+---
+
+## 🔄 What Changed from Stage 5 Memory
+
+| Feature | Stage 5 (Tool-Calling) | Stage 5 ReAct |
+|---------|------------------------|---------------|
+| **Memory** | Working memory | Working memory |
+| **Multi-turn** | Conversation continuity | Conversation continuity |
+| **Reasoning** | Hidden (tool-calling) | **Visible** (Thought → Action → Observation) |
+| **Debugging** | Harder | **Easier** with `--show-reasoning` |
+
+---
 
 ## 🏗️ Architecture
 
@@ -29,23 +80,6 @@ graph TD
         SM -.->|Write| AMS
     end
 ```
-
-## 🆕 What's New (vs Stage 5 Memory-Augmented)
-
-| Feature | Stage 5 (Tool-Calling) | Stage 5 ReAct |
-|---------|------------------------|---------------|
-| **Memory** | ✅ Working memory | ✅ Working memory |
-| **Multi-turn** | ✅ Conversation continuity | ✅ Conversation continuity |
-| **Reasoning** | Hidden (tool-calling) | **Visible** (Thought → Action → Observation) |
-| **Debugging** | Harder | **Easier** with `--show-reasoning` |
-
-## 📖 Notebook Concepts Demonstrated
-
-| Concept | Notebook | Implementation |
-|---------|----------|----------------|
-| ReAct pattern | Section 4: `01_tools_and_langgraph_fundamentals.ipynb` | `react_agent.py: ReActAgent` |
-| Working memory | Section 3: `01_working_and_longterm_memory.ipynb` | `nodes.py: load/save_working_memory_node()` |
-| Memory + RAG | Section 3: `02_combining_memory_with_retrieved_context.ipynb` | Agent combines history + search |
 
 ## 🚀 Usage
 
@@ -221,18 +255,20 @@ Stage 5 focuses on:
 - No checkpointing (not needed for this demo)
 - Educational clarity over production features
 
-## 📚 Related Resources
+## 🔗 Related Resources
 
-- **Section 3 Notebooks**: Memory fundamentals and patterns
+### Learning Path Navigation
+- **Previous**: [Stage 5: Memory](../stage5_memory_augmented/) (same features, hidden reasoning) or [Stage 4 ReAct](../stage4_react_hybrid_search/) (visible reasoning, no memory)
+- **Next Options**:
+  - [Stage 6: Long-term Memory](../stage6_longterm_memory/) - Add explicit memory tools
+  - [Stage 7: Full ReAct](../stage7_react_loop/) - Complete implementation with all features
+
+### Notebooks to Study
+- **[Section 3: Working and Long-term Memory](../../notebooks/section-3-memory-systems/01_working_and_longterm_memory.ipynb)**: Memory fundamentals
+- **[Section 3: Managing Long Conversations](../../notebooks/section-3-memory-systems/03_manage_long_conversations_with_compression_strategies.ipynb)**: Compression strategies
+- **[Section 4: Tools and LangGraph Fundamentals](../../notebooks/section-4-tools-and-agents/01_tools_and_langgraph_fundamentals.ipynb)**: ReAct pattern
+
+### Technical Resources
 - **Reference Agent**: Production-ready implementation with full memory architecture
 - **Agent Memory Server**: https://github.com/redis/agent-memory-server
-- **Stage 4**: Hybrid search + NER (foundation for this stage)
-
-## 🎯 Next Steps
-
-After mastering Stage 5, explore:
-- Adding long-term memory tools (like reference agent)
-- LangGraph checkpointing for graph state persistence
-- Memory compression strategies
-- Production deployment patterns
 

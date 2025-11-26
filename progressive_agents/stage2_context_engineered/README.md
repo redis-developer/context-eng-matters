@@ -1,10 +1,58 @@
 # Stage 2: Context-Engineered Agent (Flat Retrieval)
 
+## 📍 Position in Learning Path
+
+| Previous | Current | Next |
+|----------|---------|------|
+| [Stage 1: Baseline RAG](../stage1_baseline_rag/) | **Stage 2: Context-Engineered** | [Stage 3: Full Agent](../stage3_full_agent_without_memory/) |
+
+This stage applies the **context engineering techniques** from Section 2 notebooks to dramatically reduce token usage while maintaining answer quality.
+
+---
+
 ## 🎯 Purpose
 
 This agent demonstrates the **power of context engineering** by applying Section 2 techniques to dramatically reduce tokens compared to Stage 1.
 
 **Key Learning**: "Context engineering dramatically improves RAG efficiency through cleaning, transformation, and optimization."
+
+---
+
+## 📚 Related Notebooks
+
+This stage directly implements concepts from these notebooks:
+
+| Notebook | Concepts Applied | Implementation in This Stage |
+|----------|-----------------|------------------------------|
+| [Section 2: RAG Fundamentals](../../notebooks/section-2-retrieved-context-engineering/01_rag_fundamentals_and_implementation.ipynb) | Vector search, RAG pipeline | `agent/tools.py` - semantic search implementation |
+| [Section 2: Crafting and Optimizing Context](../../notebooks/section-2-retrieved-context-engineering/02_crafting_and_optimizing_context.ipynb) | Context cleaning, transformation, optimization | `agent/context_engineering.py` - all three techniques applied |
+
+### Key Notebook Concepts Demonstrated
+
+**From Section 2, Notebook 2 - "Crafting and Optimizing Context":**
+
+1. **Context Cleaning** (Notebook Section: "Data Engineering for Context")
+   - Remove noise fields (id, timestamps, enrollment)
+   - Keep only query-relevant information
+   - See: `transform_course_to_text()` function
+
+2. **Context Transformation** (Notebook Section: "The Transformation Workflow")
+   - Convert JSON → natural text format
+   - Make context LLM-friendly
+   - See: `format_courses_for_llm()` function
+
+3. **Context Optimization** (Notebook Section: "Context Preparation Pipelines")
+   - Efficient token usage
+   - Structured, consistent formatting
+   - See: `optimize_course_text()` function
+
+**Study Path**: Read Section 2, Notebook 2 first to understand the theory, then examine this stage's `context_engineering.py` to see the practical implementation.
+
+---
+
+## 🔄 What Changed from Stage 1
+
+### Improvements Made
 
 ## ✨ What's Different from Stage 1?
 
@@ -417,13 +465,21 @@ A: Use full format (transform_course_to_text) for quality, optimized format (opt
 **Q: "Can I apply this to other data types?"**
 A: Absolutely! These techniques work for any structured data: products, documents, users, etc.
 
-## 🔗 Related
+## 🔗 Related Resources
 
-- **Stage 1**: Baseline RAG Agent (shows the problem)
-- **Section 2 Notebooks**: Context engineering techniques
+### Learning Path Navigation
+- **Previous**: [Stage 1: Baseline RAG](../stage1_baseline_rag/) - See the problem this stage solves
+- **Next**: [Stage 3: Full Agent](../stage3_full_agent_without_memory/) - Add LangGraph and progressive disclosure
+
+### Notebooks to Study
+- **[Section 2: Crafting and Optimizing Context](../../notebooks/section-2-retrieved-context-engineering/02_crafting_and_optimizing_context.ipynb)**: The theory behind this stage's implementation
+- **[Section 1: Context Assembly Strategies](../../notebooks/section-1-context-engineering-foundations/02_context_assembly_strategies.ipynb)**: Understanding token budgets and trade-offs
+
+### Technical Resources
 - **Comparison Tools**: Side-by-side stage comparison
+- **Context Engineering Code**: `agent/context_engineering.py`
 
 ---
 
-**Remember**: Same architecture as Stage 1, but with context engineering - that's the only difference, and it makes a huge impact!
+**Remember**: Same architecture as Stage 1, but with context engineering from Section 2 notebooks - that's the only difference, and it achieves 91% token reduction!
 

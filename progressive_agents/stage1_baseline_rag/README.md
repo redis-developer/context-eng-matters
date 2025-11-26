@@ -1,10 +1,37 @@
 # Stage 1: Baseline RAG Agent (Information Overload)
 
+## 📍 Position in Learning Path
+
+| Previous | Current | Next |
+|----------|---------|------|
+| — | **Stage 1: Baseline RAG** | [Stage 2: Context-Engineered](../stage2_context_engineered/) |
+
+This is the **starting point** of the progressive agents learning path. It intentionally demonstrates the problems that arise without context engineering, setting the stage for the improvements you'll learn in subsequent stages.
+
+---
+
 ## 🎯 Purpose
 
 This is the **baseline** RAG agent that demonstrates **INFORMATION OVERLOAD** - what happens when you return EVERYTHING for EVERYONE without any context engineering or hierarchical retrieval.
 
 **Key Learning**: "More information ≠ better answers. Progressive disclosure and context engineering are essential."
+
+---
+
+## 📚 Related Notebooks
+
+This stage demonstrates the **problems** that the following notebooks teach you to solve:
+
+| Notebook | Concepts Demonstrated | How This Stage Relates |
+|----------|----------------------|------------------------|
+| [Section 1: What is Context Engineering?](../../notebooks/section-1-context-engineering-foundations/01_what_is_context_engineering.ipynb) | The four context types, why context matters | Stage 1 shows what happens **without** proper context engineering |
+| [Section 1: Context Assembly Strategies](../../notebooks/section-1-context-engineering-foundations/02_context_assembly_strategies.ipynb) | Token limits, context window constraints | Stage 1 wastes tokens by ignoring these constraints |
+| [Section 2: RAG Fundamentals](../../notebooks/section-2-retrieved-context-engineering/01_rag_fundamentals_and_implementation.ipynb) | Basic RAG implementation | Stage 1 uses basic RAG but without optimization |
+| [Section 2: Crafting and Optimizing Context](../../notebooks/section-2-retrieved-context-engineering/02_crafting_and_optimizing_context.ipynb) | Context cleaning, transformation, optimization | Stage 1 shows the **before** state; Stage 2 applies these techniques |
+
+**Study Path**: Run this stage first to see the problems, then read the Section 2 notebooks to understand the solutions, then move to Stage 2 to see them applied.
+
+---
 
 ## ⚠️ What's Wrong with This Agent?
 
@@ -354,15 +381,21 @@ A: Syllabi are valuable for decision-making, but only for courses the user actua
 **Q: "Isn't Stage 2 better since it uses fewer tokens?"**
 A: Stage 2 is more efficient than Stage 1, but it sacrifices information quality (no syllabi). Stage 3 achieves the best balance: ~700 tokens with syllabi for top matches.
 
-## 🔗 Related
+## 🔗 Related Resources
 
-- **Stage 2**: Context-Engineered Agent (applies Section 2 techniques, 64% token reduction)
-- **Stage 3**: Hierarchical Retrieval Agent (progressive disclosure, best balance)
+### Next Steps in Learning Path
+- **[Stage 2: Context-Engineered](../stage2_context_engineered/)**: Applies Section 2 techniques for 91% token reduction
+- **[Stage 3: Full Agent](../stage3_full_agent_without_memory/)**: Adds LangGraph, intent classification, and progressive disclosure
+
+### Notebooks to Study
+- **[Section 1: What is Context Engineering?](../../notebooks/section-1-context-engineering-foundations/01_what_is_context_engineering.ipynb)**: Understand why context matters
+- **[Section 2: Crafting and Optimizing Context](../../notebooks/section-2-retrieved-context-engineering/02_crafting_and_optimizing_context.ipynb)**: Learn the techniques to fix Stage 1's problems
+
+### Technical Resources
 - **Comparison Document**: `../HIERARCHICAL_RETRIEVAL_COMPARISON.md`
-- **Section 2 Notebooks**: Context engineering techniques
 - **Hierarchical Models**: `redis_context_course/hierarchical_models.py`
 
 ---
 
-**Remember**: This agent demonstrates INFORMATION OVERLOAD. Stage 2 shows context engineering, Stage 3 shows hierarchical retrieval!
+**Remember**: This agent demonstrates INFORMATION OVERLOAD. Study the Section 2 notebooks to understand the solutions, then see them applied in Stage 2!
 
