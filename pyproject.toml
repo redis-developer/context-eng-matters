@@ -1,0 +1,7 @@
+[project]
+name = "context-engineering-reinvent"
+version = "0.1.0"
+description = "Redis context engineering course for AWS re:Invent"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
