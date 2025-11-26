@@ -1,62 +1,46 @@
-# Stage 5: Memory-Augmented Agent
+# Stage 5: Memory-Augmented Agent (Tool-Calling)
 
-**Goal**: Add working memory using Redis Agent Memory Server for multi-turn conversations and session continuity.
-
-## 🎯 What This Stage Demonstrates
-
-This stage builds on Stage 4 by adding **working memory** to enable:
-
-- ✅ **Multi-turn conversations** - Reference previous questions and answers
-- ✅ **Session continuity** - Resume conversations later with the same context
-- ✅ **Conversation history** - Full context from previous turns
-- ✅ **Automatic memory extraction** - Agent Memory Server extracts important facts to long-term storage
+This stage adds **working memory** using Redis Agent Memory Server for multi-turn conversations.
 
 ## 🏗️ Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                    Stage 5: Memory-Augmented Agent                          │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐                 │
-│  │ Load Working │ -> │   Classify   │ -> │   Extract    │                 │
-│  │   Memory     │    │    Intent    │    │   Entities   │                 │
-│  └──────────────┘    └──────────────┘    └──────────────┘                 │
-│         │                    │                    │                         │
-│         v                    v                    v                         │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐                 │
-│  │  Decompose   │ -> │    Cache     │ -> │   Research   │                 │
-│  │    Query     │    │    Check     │    │   (Hybrid)   │                 │
-│  └──────────────┘    └──────────────┘    └──────────────┘                 │
-│         │                    │                    │                         │
-│         v                    v                    v                         │
-│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐                 │
-│  │   Quality    │ -> │  Synthesize  │ -> │Save Working  │                 │
-│  │  Evaluation  │    │   Response   │    │   Memory     │                 │
-│  └──────────────┘    └──────────────┘    └──────────────┘                 │
-│                                                   │                         │
-│                                                   v                         │
-│                                                 [END]                       │
-│                                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    Q[Query] --> LM[Load Working Memory]
+    LM --> IC[Classify Intent]
+    IC -->|GREETING| HG[Handle Greeting]
+    IC -->|Other| A[Agent + Tools]
 
-Memory Architecture:
-┌─────────────────────────────────────────────────────────────────────────────┐
-│ Working Memory (Agent Memory Server)                                        │
-│ ─────────────────────────────────────────────────────────────────────────── │
-│ • Session-scoped conversation history                                       │
-│ • Loaded at start of each turn                                             │
-│ • Saved at end of each turn                                                │
-│ • Auto-extracts important facts to long-term memory                        │
-│                                                                             │
-│ Long-term Memory (Agent Memory Server)                                      │
-│ ─────────────────────────────────────────────────────────────────────────── │
-│ • Cross-session persistent knowledge                                        │
-│ • User preferences, course history, goals                                   │
-│ • Searchable via semantic vector search                                     │
-│ • Automatically populated by working memory extraction                      │
-└─────────────────────────────────────────────────────────────────────────────┘
+    A -->|search_courses| SC[Course Search]
+    SC --> A
+
+    A --> SM[Save Working Memory]
+    HG --> SM
+    SM --> END[Response]
+
+    subgraph Memory Layer
+        LM -.->|Read| AMS[(Agent Memory Server)]
+        SM -.->|Write| AMS
+    end
 ```
+
+## 🆕 What's New (vs Stage 4)
+
+| Feature | Stage 4 | Stage 5 |
+|---------|---------|---------|
+| **Memory** | None | **Working memory** (session-scoped) |
+| **Multi-turn** | ❌ Each query independent | ✅ **Conversation continuity** |
+| **Session** | None | ✅ **Resume by session_id** |
+| **Follow-ups** | ❌ "What about that?" fails | ✅ **Pronoun resolution** |
+| **Reasoning** | Hidden (tool-calling) | Hidden (tool-calling) |
+
+## 📖 Notebook Concepts Demonstrated
+
+| Concept | Notebook | Implementation |
+|---------|----------|----------------|
+| Working memory | Section 3: `01_working_and_longterm_memory.ipynb` | `nodes.py: load/save_working_memory_node()` |
+| Memory + RAG | Section 3: `02_combining_memory_with_retrieved_context.ipynb` | Agent combines history + search |
+| Tool calling | Section 4: `01_tools_and_langgraph_fundamentals.ipynb` | `agent_node()` with `bind_tools()` |
 
 ## 🆕 New Features vs Stage 4
 

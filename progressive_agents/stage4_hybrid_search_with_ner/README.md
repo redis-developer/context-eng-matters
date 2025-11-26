@@ -1,62 +1,143 @@
 # Stage 4: Hybrid Search with Named Entity Recognition (NER)
 
-A LangGraph-based intelligent agent demonstrating **hybrid search**, **Named Entity Recognition (NER)**, and **context-aware extraction** patterns. This agent combines exact matching, semantic search, and metadata filtering for precise, efficient retrieval.
+This stage adds **Named Entity Recognition (NER)** and **hybrid search** to combine exact course code matching with semantic search.
 
-**Stage 4** in the progressive learning path: Advanced retrieval with NER, hybrid search strategies, and targeted information extraction.
+## 🏗️ Architecture
 
-## 🚀 Features
+```mermaid
+graph TD
+    Q[Query] --> IC[Classify Intent]
+    IC -->|GREETING| HG[Handle Greeting]
+    IC -->|Other| EE[Extract Entities]
 
-### **NEW: Hybrid Search with NER!**
-- **Named Entity Recognition**: Extracts structured information from natural language queries
-  - **Course Codes**: CS101, MATH202, etc. → Exact match lookup
-  - **Course Names**: "Introduction to Python" → Text + semantic search
-  - **Departments**: Computer Science, Mathematics → Metadata filtering
-  - **Topics**: machine learning, databases → Enhanced semantic search
-  - **Information Types**: assignments, syllabus, grading → Targeted extraction
-- **Hybrid Search Strategies**:
-  - **Exact Match**: Direct lookup for course codes (highest precision)
-  - **Hybrid**: Combines exact + semantic + metadata filters
-  - **Semantic Only**: Traditional vector search (fallback)
-- **Context-Aware Extraction**: Uses conversation history to determine what to retrieve
-- **Targeted Information Retrieval**: Returns only requested sections (assignments, syllabus, etc.)
+    EE --> DS{Determine Strategy}
+    DS -->|Course codes found| EM[Exact Match<br/>FilterQuery]
+    DS -->|Topics only| SS[Semantic Search]
+    DS -->|Both| HY[Hybrid Search]
 
-### **Intent Classification & Adaptive Retrieval**
-- **Query Intent Classification**: Automatically detects greeting, overview, or detail requests
-- **Adaptive Detail Levels**: Matches retrieval depth to query intent
-  - **Greetings**: No course search (~50 tokens)
-  - **Overview queries**: Summaries only (~400 tokens)
-  - **Detail requests**: Full syllabi (~700 tokens)
-- **Smart Routing**: Skips unnecessary processing for simple queries
-- **Token Efficiency**: 85-99% reduction for non-detail queries
+    EM --> MR[Merge Results]
+    SS --> MR
+    HY --> MR
 
-### **Hierarchical Retrieval**
-- **Two-Tier Retrieval**: Summaries for ALL courses, full details for top 2-3
-- **Progressive Disclosure**: Overview first, details on-demand
-- **Context Budget Management**: Strategic token allocation based on query intent
-- **Includes Syllabi**: Full 14-week syllabi for top matches (when requested)
-- **Summary-Only Mode**: Course overviews without syllabi for overview queries
+    MR --> PD[Progressive Disclosure]
+    PD --> EQ[Evaluate Quality]
+    EQ -->|Poor| MR
+    EQ -->|Good| SY[Synthesize Response]
 
-### Advanced RAG Patterns
-- **Intelligent Query Decomposition**: Breaks down complex questions into focused sub-questions
-- **Semantic Course Search**: Redis vector search with hierarchical course data
-- **Quality Assurance**: Evaluates and improves research quality through iterative loops
-- **LangGraph Workflow**: Clean, observable agent architecture with explicit state management
-- **Auto-loading Course Data**: Automatically loads 50 hierarchical courses with full syllabi
-- **Persistent Storage**: Courses persist in Redis between runs (optional cleanup on exit)
+    HG --> END[Response]
+    SY --> END
+```
 
-## 🎯 How It Works
+## 🆕 What's New (vs Stage 3)
 
-The agent follows an intelligent workflow with **NER**, **hybrid search**, and **adaptive retrieval**:
+| Feature | Stage 3 | Stage 4 |
+|---------|---------|---------|
+| **Search** | Semantic only | **Hybrid** (exact + semantic) |
+| **Course Codes** | Fuzzy match | **Exact match** via FilterQuery |
+| **NER** | None | **Extracts** codes, topics, depts |
+| **Context** | Flat | **Hierarchical** with progressive disclosure |
+| **Token Usage** | ~2000 | ~1000 (50% reduction) |
 
-1. **Intent Classification**: LLM classifies query intent and determines detail level needed
-   - **GREETING**: Social interactions → No course search
-   - **COURSE_OVERVIEW**: "What courses exist?" → Summaries only
-   - **COURSE_DETAILS**: "Show me syllabus" → Full details with syllabi
-   - **GENERAL_QUESTION**: Other queries → Adaptive retrieval
+## 📖 Notebook Concepts Demonstrated
 
-2. **Smart Routing**: Based on intent classification
-   - **Greetings** → Direct response, skip all course retrieval
-   - **Course queries** → Continue to NER extraction
+| Concept | Notebook | Implementation |
+|---------|----------|----------------|
+| Hybrid search | Section 2: `02_crafting_and_optimizing_context.ipynb` | `tools.py: search_courses_sync()` |
+| Progressive disclosure | Section 2: `02_crafting_and_optimizing_context.ipynb` | `HierarchicalContextAssembler` |
+| Intent classification | Section 4: `02_building_course_advisor_agent.ipynb` | `nodes.py: classify_intent_node()` |
+
+## 🚀 Usage
+
+```bash
+cd progressive_agents/stage4_hybrid_search_with_ner
+
+# Exact match for course codes
+python cli.py "What are the prerequisites for CS002?"
+
+# Topic-based semantic search
+python cli.py "Show me machine learning courses"
+
+# Syllabus query (detailed response)
+python cli.py "What's the syllabus for CS006?"
+
+# Interactive mode
+python cli.py
+```
+
+## 🔑 Key Components
+
+### Named Entity Recognition (NER)
+Extracts structured entities from natural language:
+
+```python
+# Input: "What are the prerequisites for CS002?"
+# Extracted:
+{
+    "course_codes": ["CS002"],
+    "information_type": ["prerequisites"],
+    "search_strategy": "exact_match"
+}
+```
+
+### Hybrid Search Strategy
+```python
+# If course codes found → use FilterQuery for exact match
+filter_query = FilterQuery(
+    filter_expression=Tag("course_code") == "CS002",
+    return_fields=[...]
+)
+
+# If topics only → semantic search
+results = await course_manager.search_courses(query="machine learning")
+
+# If both → hybrid (exact + semantic, deduplicated)
+```
+
+### Progressive Disclosure
+```python
+# Summary for ALL courses
+summaries = [c.summary for c in matched_courses]
+
+# Full details for TOP 2-3 only
+details = [c.details for c in matched_courses[:3]]
+
+# Assemble with token budget
+context = context_assembler.assemble_hierarchical_context(
+    summaries=summaries,
+    details=details,
+    query=query
+)
+```
+
+## 📊 Test Results
+
+| Query | Strategy | Tokens | Time |
+|-------|----------|--------|------|
+| "Prerequisites for CS002" | exact_match | ~1000 | 3.2s |
+| "Machine learning courses" | hybrid | ~1500 | 4.1s |
+| "What is CS006?" | exact_match | ~950 | 2.9s |
+
+## 📁 File Structure
+
+```
+stage4_hybrid_search_with_ner/
+├── cli.py                    # Interactive CLI
+├── README.md                 # This file
+└── agent/
+    ├── __init__.py
+    ├── nodes.py              # classify_intent, extract_entities, research
+    ├── edges.py              # Routing logic
+    ├── tools.py              # search_courses with FilterQuery
+    ├── state.py              # WorkflowState with NER fields
+    ├── setup.py              # CourseManager initialization
+    └── workflow.py           # LangGraph graph definition
+```
+
+## ⏭️ Next Stage
+
+**Stage 4 ReAct** (`stage4_react_hybrid_search/`): Same hybrid search but with visible reasoning via ReAct pattern.
+
+**Stage 5** (`stage5_memory_augmented/`): Add working memory for multi-turn conversations.
 
 3. **Named Entity Recognition (NEW in Stage 4)**: LLM extracts structured information
    - **Course codes**: CS101, MATH202 → Exact match strategy
