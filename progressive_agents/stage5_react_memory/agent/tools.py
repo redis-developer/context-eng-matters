@@ -21,6 +21,7 @@ from redis_context_course.hierarchical_context import HierarchicalContextAssembl
 from redis_context_course.hierarchical_models import (
     CourseDetails,
     CourseSummary,
+    CourseSyllabus,
     HierarchicalCourse,
 )
 from redis_context_course.models import Course
@@ -378,7 +379,7 @@ def search_courses_sync(
                     all_details.append(h_course.details)
                     break
             else:
-                # Fallback: create summary from basic course
+                # Fallback: create summary AND details from basic course
                 logger.warning(
                     f"No hierarchical data for {basic_course.course_code}, using basic data"
                 )
@@ -399,6 +400,31 @@ def search_courses_sync(
                     tags=[],
                 )
                 summaries.append(summary)
+
+                # Also create details from basic course data
+                details = CourseDetails(
+                    course_code=basic_course.course_code,
+                    title=basic_course.title,
+                    department=basic_course.department,
+                    credits=basic_course.credits,
+                    difficulty_level=basic_course.difficulty_level,
+                    format=basic_course.format,
+                    instructor=basic_course.instructor,
+                    semester=basic_course.semester,
+                    year=basic_course.year,
+                    max_enrollment=basic_course.max_enrollment,
+                    full_description=basic_course.description,
+                    prerequisites=[
+                        p.course_code for p in basic_course.prerequisites
+                    ]
+                    if basic_course.prerequisites
+                    else [],
+                    learning_objectives=basic_course.learning_objectives or [],
+                    syllabus=CourseSyllabus(weeks=[], total_weeks=0),  # Empty syllabus
+                    assignments=[],  # Not available in basic data
+                    tags=[],
+                )
+                all_details.append(details)
 
         # NEW in Stage 4: Filter details based on requested information type
         if extracted_entities and extracted_entities.get("information_type"):
@@ -490,7 +516,7 @@ async def search_courses(
                     all_details.append(h_course.details)
                     break
             else:
-                # Fallback: create summary from basic course
+                # Fallback: create summary AND details from basic course
                 logger.warning(f"No hierarchical data for {basic_course.course_code}")
                 summary = CourseSummary(
                     course_code=basic_course.course_code,
@@ -509,6 +535,31 @@ async def search_courses(
                     tags=[],
                 )
                 summaries.append(summary)
+
+                # Also create details from basic course data
+                details = CourseDetails(
+                    course_code=basic_course.course_code,
+                    title=basic_course.title,
+                    department=basic_course.department,
+                    credits=basic_course.credits,
+                    difficulty_level=basic_course.difficulty_level,
+                    format=basic_course.format,
+                    instructor=basic_course.instructor,
+                    semester=basic_course.semester,
+                    year=basic_course.year,
+                    max_enrollment=basic_course.max_enrollment,
+                    full_description=basic_course.description,
+                    prerequisites=[
+                        p.course_code for p in basic_course.prerequisites
+                    ]
+                    if basic_course.prerequisites
+                    else [],
+                    learning_objectives=basic_course.learning_objectives or [],
+                    syllabus=CourseSyllabus(weeks=[], total_weeks=0),  # Empty syllabus
+                    assignments=[],  # Not available in basic data
+                    tags=[],
+                )
+                all_details.append(details)
 
         # PROGRESSIVE DISCLOSURE: Summaries for ALL, details for top 2-3
         detail_limit = min(3, len(all_details))

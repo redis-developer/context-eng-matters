@@ -32,9 +32,10 @@ def parse_react_output(text: str) -> Dict[str, Optional[str]]:
     # Extract Action (word after "Action:")
     action_match = re.search(r"Action:\s*(\w+)", text, re.IGNORECASE)
 
-    # Extract Action Input (JSON after "Action Input:")
+    # Extract Action Input - everything after "Action Input:" until end or next section
+    # For FINISH actions, this can be multi-line plain text
     action_input_match = re.search(
-        r"Action Input:\s*({.+?}|\[.+?\]|.+?)(?=\n\n|\nThought:|\nObservation:|\Z)",
+        r"Action Input:\s*(.+?)(?=\nThought:|\nObservation:|\nAction:|\Z)",
         text,
         re.DOTALL | re.IGNORECASE,
     )
