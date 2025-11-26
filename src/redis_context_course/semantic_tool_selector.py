@@ -43,12 +43,17 @@ class ToolIntent:
     confidence_threshold: float = 0.6
 
 
+# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
+# Note: Notebooks implement their own inline version for educational clarity
 class SemanticToolSelector:
     """
     Advanced tool selection using semantic similarity.
 
     This replaces keyword-based tool selection with embedding-based matching,
     providing more accurate tool selection for complex queries.
+
+    Note: This class is experimental API surface. Notebooks implement their own
+    inline version for educational purposes.
     """
 
     def __init__(
@@ -343,6 +348,7 @@ class SemanticToolSelector:
         }
 
 
+# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
 # Utility function for easy integration
 async def create_semantic_selector(tools: List[BaseTool]) -> SemanticToolSelector:
     """
@@ -357,6 +363,7 @@ async def create_semantic_selector(tools: List[BaseTool]) -> SemanticToolSelecto
     return SemanticToolSelector(tools)
 
 
+# EXPERIMENTAL: Test function for demonstration purposes only
 # Example usage and testing
 async def test_semantic_selection():
     """Test function to demonstrate semantic tool selection."""

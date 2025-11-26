@@ -184,11 +184,13 @@ class HierarchicalContextAssembler:
 
         return "\n".join(sections) + "\n"
 
+    # EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
     def estimate_tokens(self, text: str) -> int:
         """Estimate token count (rough approximation)."""
         # Rough estimate: 1 token ≈ 4 characters
         return len(text) // 4
 
+    # EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
     def assemble_with_budget(
         self,
         summaries: List[CourseSummary],
@@ -224,12 +226,15 @@ class HierarchicalContextAssembler:
         return context, estimated
 
 
+# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
 class FlatContextAssembler:
     """
     Traditional flat context assembly (for comparison).
 
     This is the Stage 2 approach: returns ALL courses with full details.
     No progressive disclosure, no hierarchy.
+
+    Note: This class is experimental API surface for educational purposes.
     """
 
     def assemble_flat_context(
