@@ -1,0 +1,2338 @@
+{
+  "courses": [
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW1ZT",
+      "course_code": "MATH001",
+      "title": "Linear Algebra for Machine Learning",
+      "description": "Matrix operations, eigenvalues, and applications to machine learning. This course provides the mathematical foundation for understanding machine learning algorithms. Topics include vector spaces, matrix decompositions, eigenvalues, and optimization. Students will see how these concepts apply to PCA, SVD, and neural networks.",
+      "credits": 4,
+      "difficulty_level": "intermediate",
+      "format": "in_person",
+      "department": "Mathematics",
+      "major": "Mathematics",
+      "prerequisites": [],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "winter",
+      "year": 2025,
+      "instructor": "Rachel Yates",
+      "max_enrollment": 30,
+      "current_enrollment": 0,
+      "tags": [
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics",
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in linear algebra for machine learning",
+        "Implement linear algebra for machine learning algorithms and techniques",
+        "Apply linear algebra for machine learning to real-world problems",
+        "Analyze and evaluate linear algebra for machine learning solutions",
+        "Design and build complete mathematics systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948578",
+      "updated_at": "2025-11-26T18:09:50.948585"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW1ZV",
+      "course_code": "CS002",
+      "title": "Machine Learning Fundamentals",
+      "description": "Introduction to machine learning algorithms and applications. This course covers supervised and unsupervised learning, neural networks, and deep learning. Students will learn to implement ML algorithms from scratch and use popular frameworks like scikit-learn and TensorFlow. The course emphasizes both theoretical foundations and practical applications.",
+      "credits": 4,
+      "difficulty_level": "advanced",
+      "format": "hybrid",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "winter",
+      "year": 2025,
+      "instructor": "Elizabeth Cline",
+      "max_enrollment": 76,
+      "current_enrollment": 0,
+      "tags": [
+        "machine learning",
+        "ai",
+        "python",
+        "neural networks",
+        "machine learning",
+        "ai",
+        "python",
+        "neural networks"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in machine learning fundamentals",
+        "Implement machine learning fundamentals algorithms and techniques",
+        "Apply machine learning fundamentals to real-world problems",
+        "Analyze and evaluate machine learning fundamentals solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948598",
+      "updated_at": "2025-11-26T18:09:50.948599"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW1ZW",
+      "course_code": "MATH003",
+      "title": "Linear Algebra for Machine Learning",
+      "description": "Matrix operations, eigenvalues, and applications to machine learning. This course provides the mathematical foundation for understanding machine learning algorithms. Topics include vector spaces, matrix decompositions, eigenvalues, and optimization. Students will see how these concepts apply to PCA, SVD, and neural networks.",
+      "credits": 4,
+      "difficulty_level": "intermediate",
+      "format": "online",
+      "department": "Mathematics",
+      "major": "Mathematics",
+      "prerequisites": [],
+      "schedule": null,
+      "semester": "winter",
+      "year": 2025,
+      "instructor": "Chelsea Bailey PhD",
+      "max_enrollment": 66,
+      "current_enrollment": 0,
+      "tags": [
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics",
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in linear algebra for machine learning",
+        "Implement linear algebra for machine learning algorithms and techniques",
+        "Apply linear algebra for machine learning to real-world problems",
+        "Analyze and evaluate linear algebra for machine learning solutions",
+        "Design and build complete mathematics systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948606",
+      "updated_at": "2025-11-26T18:09:50.948607"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW1ZX",
+      "course_code": "CS004",
+      "title": "Computer Vision",
+      "description": "Image processing, object detection, and visual recognition systems. This course teaches students how to build systems that can see and understand visual data. Topics include image processing, feature extraction, object detection, and semantic segmentation. Students will use OpenCV, PyTorch, and TensorFlow.",
+      "credits": 4,
+      "difficulty_level": "advanced",
+      "format": "online",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [],
+      "schedule": null,
+      "semester": "winter",
+      "year": 2025,
+      "instructor": "Kimberly Moon",
+      "max_enrollment": 44,
+      "current_enrollment": 0,
+      "tags": [
+        "computer vision",
+        "image processing",
+        "object detection",
+        "cnn",
+        "computer vision",
+        "image processing",
+        "object detection",
+        "cnn"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in computer vision",
+        "Implement computer vision algorithms and techniques",
+        "Apply computer vision to real-world problems",
+        "Analyze and evaluate computer vision solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948612",
+      "updated_at": "2025-11-26T18:09:50.948612"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW1ZY",
+      "course_code": "CS005",
+      "title": "Machine Learning Fundamentals",
+      "description": "Introduction to machine learning algorithms and applications. This course covers supervised and unsupervised learning, neural networks, and deep learning. Students will learn to implement ML algorithms from scratch and use popular frameworks like scikit-learn and TensorFlow. The course emphasizes both theoretical foundations and practical applications.",
+      "credits": 4,
+      "difficulty_level": "advanced",
+      "format": "online",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [],
+      "schedule": null,
+      "semester": "winter",
+      "year": 2025,
+      "instructor": "Amber Schmidt",
+      "max_enrollment": 31,
+      "current_enrollment": 0,
+      "tags": [
+        "machine learning",
+        "ai",
+        "python",
+        "neural networks",
+        "machine learning",
+        "ai",
+        "python",
+        "neural networks"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in machine learning fundamentals",
+        "Implement machine learning fundamentals algorithms and techniques",
+        "Apply machine learning fundamentals to real-world problems",
+        "Analyze and evaluate machine learning fundamentals solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948617",
+      "updated_at": "2025-11-26T18:09:50.948618"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW1ZZ",
+      "course_code": "CS006",
+      "title": "Deep Learning and Neural Networks",
+      "description": "Advanced neural network architectures and deep learning techniques. This course dives deep into modern deep learning, covering CNNs, RNNs, transformers, and GANs. Students will implement state-of-the-art models and work on real-world projects. Prerequisites include linear algebra, calculus, and programming experience.",
+      "credits": 4,
+      "difficulty_level": "graduate",
+      "format": "online",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS002",
+          "course_title": "Prerequisite Course 2",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": null,
+      "semester": "winter",
+      "year": 2025,
+      "instructor": "Ricardo Hart",
+      "max_enrollment": 76,
+      "current_enrollment": 0,
+      "tags": [
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision",
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in deep learning and neural networks",
+        "Implement deep learning and neural networks algorithms and techniques",
+        "Apply deep learning and neural networks to real-world problems",
+        "Analyze and evaluate deep learning and neural networks solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948622",
+      "updated_at": "2025-11-26T18:09:50.948623"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW200",
+      "course_code": "CS007",
+      "title": "Deep Learning and Neural Networks",
+      "description": "Advanced neural network architectures and deep learning techniques. This course dives deep into modern deep learning, covering CNNs, RNNs, transformers, and GANs. Students will implement state-of-the-art models and work on real-world projects. Prerequisites include linear algebra, calculus, and programming experience.",
+      "credits": 4,
+      "difficulty_level": "graduate",
+      "format": "online",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS004",
+          "course_title": "Prerequisite Course 4",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": null,
+      "semester": "winter",
+      "year": 2025,
+      "instructor": "Pamela Cooper",
+      "max_enrollment": 43,
+      "current_enrollment": 0,
+      "tags": [
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision",
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in deep learning and neural networks",
+        "Implement deep learning and neural networks algorithms and techniques",
+        "Apply deep learning and neural networks to real-world problems",
+        "Analyze and evaluate deep learning and neural networks solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948626",
+      "updated_at": "2025-11-26T18:09:50.948627"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW201",
+      "course_code": "CS008",
+      "title": "Natural Language Processing",
+      "description": "Processing and understanding human language with machine learning. This course covers text processing, language models, sentiment analysis, and modern NLP techniques. Students will work with transformers, BERT, and GPT models. Projects include building chatbots, text classifiers, and language generation systems.",
+      "credits": 3,
+      "difficulty_level": "advanced",
+      "format": "hybrid",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS001",
+          "course_title": "Prerequisite Course 1",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "fall",
+      "year": 2025,
+      "instructor": "Cindy Sandoval",
+      "max_enrollment": 54,
+      "current_enrollment": 0,
+      "tags": [
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models",
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in natural language processing",
+        "Implement natural language processing algorithms and techniques",
+        "Apply natural language processing to real-world problems",
+        "Analyze and evaluate natural language processing solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948630",
+      "updated_at": "2025-11-26T18:09:50.948631"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW202",
+      "course_code": "CS009",
+      "title": "Computer Vision",
+      "description": "Image processing, object detection, and visual recognition systems. This course teaches students how to build systems that can see and understand visual data. Topics include image processing, feature extraction, object detection, and semantic segmentation. Students will use OpenCV, PyTorch, and TensorFlow.",
+      "credits": 4,
+      "difficulty_level": "advanced",
+      "format": "hybrid",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS002",
+          "course_title": "Prerequisite Course 2",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "winter",
+      "year": 2025,
+      "instructor": "Kayla Perez",
+      "max_enrollment": 51,
+      "current_enrollment": 0,
+      "tags": [
+        "computer vision",
+        "image processing",
+        "object detection",
+        "cnn",
+        "computer vision",
+        "image processing",
+        "object detection",
+        "cnn"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in computer vision",
+        "Implement computer vision algorithms and techniques",
+        "Apply computer vision to real-world problems",
+        "Analyze and evaluate computer vision solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948634",
+      "updated_at": "2025-11-26T18:09:50.948635"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW203",
+      "course_code": "CS010",
+      "title": "Natural Language Processing",
+      "description": "Processing and understanding human language with machine learning. This course covers text processing, language models, sentiment analysis, and modern NLP techniques. Students will work with transformers, BERT, and GPT models. Projects include building chatbots, text classifiers, and language generation systems.",
+      "credits": 3,
+      "difficulty_level": "advanced",
+      "format": "hybrid",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS005",
+          "course_title": "Prerequisite Course 5",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "spring",
+      "year": 2025,
+      "instructor": "Frank Walker",
+      "max_enrollment": 60,
+      "current_enrollment": 0,
+      "tags": [
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models",
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in natural language processing",
+        "Implement natural language processing algorithms and techniques",
+        "Apply natural language processing to real-world problems",
+        "Analyze and evaluate natural language processing solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948638",
+      "updated_at": "2025-11-26T18:09:50.948639"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW204",
+      "course_code": "CS011",
+      "title": "Deep Learning and Neural Networks",
+      "description": "Advanced neural network architectures and deep learning techniques. This course dives deep into modern deep learning, covering CNNs, RNNs, transformers, and GANs. Students will implement state-of-the-art models and work on real-world projects. Prerequisites include linear algebra, calculus, and programming experience.",
+      "credits": 4,
+      "difficulty_level": "graduate",
+      "format": "in_person",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS005",
+          "course_title": "Prerequisite Course 5",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "summer",
+      "year": 2025,
+      "instructor": "Melissa Gilmore",
+      "max_enrollment": 79,
+      "current_enrollment": 0,
+      "tags": [
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision",
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in deep learning and neural networks",
+        "Implement deep learning and neural networks algorithms and techniques",
+        "Apply deep learning and neural networks to real-world problems",
+        "Analyze and evaluate deep learning and neural networks solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948642",
+      "updated_at": "2025-11-26T18:09:50.948642"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW205",
+      "course_code": "MATH012",
+      "title": "Linear Algebra for Machine Learning",
+      "description": "Matrix operations, eigenvalues, and applications to machine learning. This course provides the mathematical foundation for understanding machine learning algorithms. Topics include vector spaces, matrix decompositions, eigenvalues, and optimization. Students will see how these concepts apply to PCA, SVD, and neural networks.",
+      "credits": 4,
+      "difficulty_level": "intermediate",
+      "format": "in_person",
+      "department": "Mathematics",
+      "major": "Mathematics",
+      "prerequisites": [],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "winter",
+      "year": 2025,
+      "instructor": "Darren Mccarthy",
+      "max_enrollment": 56,
+      "current_enrollment": 0,
+      "tags": [
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics",
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in linear algebra for machine learning",
+        "Implement linear algebra for machine learning algorithms and techniques",
+        "Apply linear algebra for machine learning to real-world problems",
+        "Analyze and evaluate linear algebra for machine learning solutions",
+        "Design and build complete mathematics systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948646",
+      "updated_at": "2025-11-26T18:09:50.948646"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW206",
+      "course_code": "CS013",
+      "title": "Machine Learning Fundamentals",
+      "description": "Introduction to machine learning algorithms and applications. This course covers supervised and unsupervised learning, neural networks, and deep learning. Students will learn to implement ML algorithms from scratch and use popular frameworks like scikit-learn and TensorFlow. The course emphasizes both theoretical foundations and practical applications.",
+      "credits": 4,
+      "difficulty_level": "advanced",
+      "format": "online",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS005",
+          "course_title": "Prerequisite Course 5",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": null,
+      "semester": "summer",
+      "year": 2025,
+      "instructor": "Daniel Allen",
+      "max_enrollment": 62,
+      "current_enrollment": 0,
+      "tags": [
+        "machine learning",
+        "ai",
+        "python",
+        "neural networks",
+        "machine learning",
+        "ai",
+        "python",
+        "neural networks"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in machine learning fundamentals",
+        "Implement machine learning fundamentals algorithms and techniques",
+        "Apply machine learning fundamentals to real-world problems",
+        "Analyze and evaluate machine learning fundamentals solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948650",
+      "updated_at": "2025-11-26T18:09:50.948650"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW207",
+      "course_code": "CS014",
+      "title": "Deep Learning and Neural Networks",
+      "description": "Advanced neural network architectures and deep learning techniques. This course dives deep into modern deep learning, covering CNNs, RNNs, transformers, and GANs. Students will implement state-of-the-art models and work on real-world projects. Prerequisites include linear algebra, calculus, and programming experience.",
+      "credits": 4,
+      "difficulty_level": "graduate",
+      "format": "in_person",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS006",
+          "course_title": "Prerequisite Course 6",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "fall",
+      "year": 2025,
+      "instructor": "Matthew Gutierrez",
+      "max_enrollment": 33,
+      "current_enrollment": 0,
+      "tags": [
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision",
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in deep learning and neural networks",
+        "Implement deep learning and neural networks algorithms and techniques",
+        "Apply deep learning and neural networks to real-world problems",
+        "Analyze and evaluate deep learning and neural networks solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948653",
+      "updated_at": "2025-11-26T18:09:50.948654"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW208",
+      "course_code": "CS015",
+      "title": "Deep Learning and Neural Networks",
+      "description": "Advanced neural network architectures and deep learning techniques. This course dives deep into modern deep learning, covering CNNs, RNNs, transformers, and GANs. Students will implement state-of-the-art models and work on real-world projects. Prerequisites include linear algebra, calculus, and programming experience.",
+      "credits": 4,
+      "difficulty_level": "graduate",
+      "format": "hybrid",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS002",
+          "course_title": "Prerequisite Course 2",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "summer",
+      "year": 2025,
+      "instructor": "Carlos Gray",
+      "max_enrollment": 57,
+      "current_enrollment": 0,
+      "tags": [
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision",
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in deep learning and neural networks",
+        "Implement deep learning and neural networks algorithms and techniques",
+        "Apply deep learning and neural networks to real-world problems",
+        "Analyze and evaluate deep learning and neural networks solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948657",
+      "updated_at": "2025-11-26T18:09:50.948658"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW209",
+      "course_code": "CS016",
+      "title": "Computer Vision",
+      "description": "Image processing, object detection, and visual recognition systems. This course teaches students how to build systems that can see and understand visual data. Topics include image processing, feature extraction, object detection, and semantic segmentation. Students will use OpenCV, PyTorch, and TensorFlow.",
+      "credits": 4,
+      "difficulty_level": "advanced",
+      "format": "online",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS005",
+          "course_title": "Prerequisite Course 5",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": null,
+      "semester": "spring",
+      "year": 2025,
+      "instructor": "Erica Campbell",
+      "max_enrollment": 74,
+      "current_enrollment": 0,
+      "tags": [
+        "computer vision",
+        "image processing",
+        "object detection",
+        "cnn",
+        "computer vision",
+        "image processing",
+        "object detection",
+        "cnn"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in computer vision",
+        "Implement computer vision algorithms and techniques",
+        "Apply computer vision to real-world problems",
+        "Analyze and evaluate computer vision solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948661",
+      "updated_at": "2025-11-26T18:09:50.948661"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20A",
+      "course_code": "MATH017",
+      "title": "Linear Algebra for Machine Learning",
+      "description": "Matrix operations, eigenvalues, and applications to machine learning. This course provides the mathematical foundation for understanding machine learning algorithms. Topics include vector spaces, matrix decompositions, eigenvalues, and optimization. Students will see how these concepts apply to PCA, SVD, and neural networks.",
+      "credits": 4,
+      "difficulty_level": "intermediate",
+      "format": "in_person",
+      "department": "Mathematics",
+      "major": "Mathematics",
+      "prerequisites": [],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "summer",
+      "year": 2025,
+      "instructor": "Julie Warren",
+      "max_enrollment": 55,
+      "current_enrollment": 0,
+      "tags": [
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics",
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in linear algebra for machine learning",
+        "Implement linear algebra for machine learning algorithms and techniques",
+        "Apply linear algebra for machine learning to real-world problems",
+        "Analyze and evaluate linear algebra for machine learning solutions",
+        "Design and build complete mathematics systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948664",
+      "updated_at": "2025-11-26T18:09:50.948665"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20B",
+      "course_code": "CS018",
+      "title": "Natural Language Processing",
+      "description": "Processing and understanding human language with machine learning. This course covers text processing, language models, sentiment analysis, and modern NLP techniques. Students will work with transformers, BERT, and GPT models. Projects include building chatbots, text classifiers, and language generation systems.",
+      "credits": 3,
+      "difficulty_level": "advanced",
+      "format": "online",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS009",
+          "course_title": "Prerequisite Course 9",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": null,
+      "semester": "winter",
+      "year": 2025,
+      "instructor": "Nichole Moss",
+      "max_enrollment": 30,
+      "current_enrollment": 0,
+      "tags": [
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models",
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in natural language processing",
+        "Implement natural language processing algorithms and techniques",
+        "Apply natural language processing to real-world problems",
+        "Analyze and evaluate natural language processing solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948668",
+      "updated_at": "2025-11-26T18:09:50.948668"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20C",
+      "course_code": "CS019",
+      "title": "Machine Learning Fundamentals",
+      "description": "Introduction to machine learning algorithms and applications. This course covers supervised and unsupervised learning, neural networks, and deep learning. Students will learn to implement ML algorithms from scratch and use popular frameworks like scikit-learn and TensorFlow. The course emphasizes both theoretical foundations and practical applications.",
+      "credits": 4,
+      "difficulty_level": "advanced",
+      "format": "hybrid",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS011",
+          "course_title": "Prerequisite Course 11",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "winter",
+      "year": 2025,
+      "instructor": "Mary Patterson",
+      "max_enrollment": 65,
+      "current_enrollment": 0,
+      "tags": [
+        "machine learning",
+        "ai",
+        "python",
+        "neural networks",
+        "machine learning",
+        "ai",
+        "python",
+        "neural networks"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in machine learning fundamentals",
+        "Implement machine learning fundamentals algorithms and techniques",
+        "Apply machine learning fundamentals to real-world problems",
+        "Analyze and evaluate machine learning fundamentals solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948672",
+      "updated_at": "2025-11-26T18:09:50.948672"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20D",
+      "course_code": "CS020",
+      "title": "Natural Language Processing",
+      "description": "Processing and understanding human language with machine learning. This course covers text processing, language models, sentiment analysis, and modern NLP techniques. Students will work with transformers, BERT, and GPT models. Projects include building chatbots, text classifiers, and language generation systems.",
+      "credits": 3,
+      "difficulty_level": "advanced",
+      "format": "in_person",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS017",
+          "course_title": "Prerequisite Course 17",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "spring",
+      "year": 2025,
+      "instructor": "Carla Evans",
+      "max_enrollment": 37,
+      "current_enrollment": 0,
+      "tags": [
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models",
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in natural language processing",
+        "Implement natural language processing algorithms and techniques",
+        "Apply natural language processing to real-world problems",
+        "Analyze and evaluate natural language processing solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948677",
+      "updated_at": "2025-11-26T18:09:50.948678"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20E",
+      "course_code": "CS021",
+      "title": "Computer Vision",
+      "description": "Image processing, object detection, and visual recognition systems. This course teaches students how to build systems that can see and understand visual data. Topics include image processing, feature extraction, object detection, and semantic segmentation. Students will use OpenCV, PyTorch, and TensorFlow.",
+      "credits": 4,
+      "difficulty_level": "advanced",
+      "format": "online",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS010",
+          "course_title": "Prerequisite Course 10",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": null,
+      "semester": "summer",
+      "year": 2025,
+      "instructor": "Mr. Ryan Morales",
+      "max_enrollment": 69,
+      "current_enrollment": 0,
+      "tags": [
+        "computer vision",
+        "image processing",
+        "object detection",
+        "cnn",
+        "computer vision",
+        "image processing",
+        "object detection",
+        "cnn"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in computer vision",
+        "Implement computer vision algorithms and techniques",
+        "Apply computer vision to real-world problems",
+        "Analyze and evaluate computer vision solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948681",
+      "updated_at": "2025-11-26T18:09:50.948681"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20F",
+      "course_code": "CS022",
+      "title": "Machine Learning Fundamentals",
+      "description": "Introduction to machine learning algorithms and applications. This course covers supervised and unsupervised learning, neural networks, and deep learning. Students will learn to implement ML algorithms from scratch and use popular frameworks like scikit-learn and TensorFlow. The course emphasizes both theoretical foundations and practical applications.",
+      "credits": 4,
+      "difficulty_level": "advanced",
+      "format": "online",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS014",
+          "course_title": "Prerequisite Course 14",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": null,
+      "semester": "summer",
+      "year": 2025,
+      "instructor": "Mr. Dustin Hubbard",
+      "max_enrollment": 36,
+      "current_enrollment": 0,
+      "tags": [
+        "machine learning",
+        "ai",
+        "python",
+        "neural networks",
+        "machine learning",
+        "ai",
+        "python",
+        "neural networks"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in machine learning fundamentals",
+        "Implement machine learning fundamentals algorithms and techniques",
+        "Apply machine learning fundamentals to real-world problems",
+        "Analyze and evaluate machine learning fundamentals solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948684",
+      "updated_at": "2025-11-26T18:09:50.948685"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20G",
+      "course_code": "CS023",
+      "title": "Computer Vision",
+      "description": "Image processing, object detection, and visual recognition systems. This course teaches students how to build systems that can see and understand visual data. Topics include image processing, feature extraction, object detection, and semantic segmentation. Students will use OpenCV, PyTorch, and TensorFlow.",
+      "credits": 4,
+      "difficulty_level": "advanced",
+      "format": "in_person",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS017",
+          "course_title": "Prerequisite Course 17",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "summer",
+      "year": 2025,
+      "instructor": "Tammy Rhodes",
+      "max_enrollment": 34,
+      "current_enrollment": 0,
+      "tags": [
+        "computer vision",
+        "image processing",
+        "object detection",
+        "cnn",
+        "computer vision",
+        "image processing",
+        "object detection",
+        "cnn"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in computer vision",
+        "Implement computer vision algorithms and techniques",
+        "Apply computer vision to real-world problems",
+        "Analyze and evaluate computer vision solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948688",
+      "updated_at": "2025-11-26T18:09:50.948688"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20H",
+      "course_code": "CS024",
+      "title": "Computer Vision",
+      "description": "Image processing, object detection, and visual recognition systems. This course teaches students how to build systems that can see and understand visual data. Topics include image processing, feature extraction, object detection, and semantic segmentation. Students will use OpenCV, PyTorch, and TensorFlow.",
+      "credits": 4,
+      "difficulty_level": "advanced",
+      "format": "hybrid",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS017",
+          "course_title": "Prerequisite Course 17",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "spring",
+      "year": 2025,
+      "instructor": "Daniel Cox",
+      "max_enrollment": 42,
+      "current_enrollment": 0,
+      "tags": [
+        "computer vision",
+        "image processing",
+        "object detection",
+        "cnn",
+        "computer vision",
+        "image processing",
+        "object detection",
+        "cnn"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in computer vision",
+        "Implement computer vision algorithms and techniques",
+        "Apply computer vision to real-world problems",
+        "Analyze and evaluate computer vision solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948692",
+      "updated_at": "2025-11-26T18:09:50.948692"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20J",
+      "course_code": "CS025",
+      "title": "Deep Learning and Neural Networks",
+      "description": "Advanced neural network architectures and deep learning techniques. This course dives deep into modern deep learning, covering CNNs, RNNs, transformers, and GANs. Students will implement state-of-the-art models and work on real-world projects. Prerequisites include linear algebra, calculus, and programming experience.",
+      "credits": 4,
+      "difficulty_level": "graduate",
+      "format": "online",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS003",
+          "course_title": "Prerequisite Course 3",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": null,
+      "semester": "summer",
+      "year": 2025,
+      "instructor": "Ryan Thomas",
+      "max_enrollment": 66,
+      "current_enrollment": 0,
+      "tags": [
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision",
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in deep learning and neural networks",
+        "Implement deep learning and neural networks algorithms and techniques",
+        "Apply deep learning and neural networks to real-world problems",
+        "Analyze and evaluate deep learning and neural networks solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948695",
+      "updated_at": "2025-11-26T18:09:50.948696"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20K",
+      "course_code": "MATH026",
+      "title": "Linear Algebra for Machine Learning",
+      "description": "Matrix operations, eigenvalues, and applications to machine learning. This course provides the mathematical foundation for understanding machine learning algorithms. Topics include vector spaces, matrix decompositions, eigenvalues, and optimization. Students will see how these concepts apply to PCA, SVD, and neural networks.",
+      "credits": 4,
+      "difficulty_level": "intermediate",
+      "format": "online",
+      "department": "Mathematics",
+      "major": "Mathematics",
+      "prerequisites": [],
+      "schedule": null,
+      "semester": "spring",
+      "year": 2025,
+      "instructor": "Crystal Mccoy",
+      "max_enrollment": 40,
+      "current_enrollment": 0,
+      "tags": [
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics",
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in linear algebra for machine learning",
+        "Implement linear algebra for machine learning algorithms and techniques",
+        "Apply linear algebra for machine learning to real-world problems",
+        "Analyze and evaluate linear algebra for machine learning solutions",
+        "Design and build complete mathematics systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948699",
+      "updated_at": "2025-11-26T18:09:50.948699"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20M",
+      "course_code": "CS027",
+      "title": "Natural Language Processing",
+      "description": "Processing and understanding human language with machine learning. This course covers text processing, language models, sentiment analysis, and modern NLP techniques. Students will work with transformers, BERT, and GPT models. Projects include building chatbots, text classifiers, and language generation systems.",
+      "credits": 3,
+      "difficulty_level": "advanced",
+      "format": "in_person",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS021",
+          "course_title": "Prerequisite Course 21",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "winter",
+      "year": 2025,
+      "instructor": "Meghan Rhodes",
+      "max_enrollment": 76,
+      "current_enrollment": 0,
+      "tags": [
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models",
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in natural language processing",
+        "Implement natural language processing algorithms and techniques",
+        "Apply natural language processing to real-world problems",
+        "Analyze and evaluate natural language processing solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948703",
+      "updated_at": "2025-11-26T18:09:50.948704"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20N",
+      "course_code": "MATH028",
+      "title": "Linear Algebra for Machine Learning",
+      "description": "Matrix operations, eigenvalues, and applications to machine learning. This course provides the mathematical foundation for understanding machine learning algorithms. Topics include vector spaces, matrix decompositions, eigenvalues, and optimization. Students will see how these concepts apply to PCA, SVD, and neural networks.",
+      "credits": 4,
+      "difficulty_level": "intermediate",
+      "format": "online",
+      "department": "Mathematics",
+      "major": "Mathematics",
+      "prerequisites": [],
+      "schedule": null,
+      "semester": "summer",
+      "year": 2025,
+      "instructor": "Jose Robertson",
+      "max_enrollment": 64,
+      "current_enrollment": 0,
+      "tags": [
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics",
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in linear algebra for machine learning",
+        "Implement linear algebra for machine learning algorithms and techniques",
+        "Apply linear algebra for machine learning to real-world problems",
+        "Analyze and evaluate linear algebra for machine learning solutions",
+        "Design and build complete mathematics systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948707",
+      "updated_at": "2025-11-26T18:09:50.948707"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20P",
+      "course_code": "CS029",
+      "title": "Computer Vision",
+      "description": "Image processing, object detection, and visual recognition systems. This course teaches students how to build systems that can see and understand visual data. Topics include image processing, feature extraction, object detection, and semantic segmentation. Students will use OpenCV, PyTorch, and TensorFlow.",
+      "credits": 4,
+      "difficulty_level": "advanced",
+      "format": "online",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS005",
+          "course_title": "Prerequisite Course 5",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": null,
+      "semester": "winter",
+      "year": 2025,
+      "instructor": "Pamela Lewis",
+      "max_enrollment": 67,
+      "current_enrollment": 0,
+      "tags": [
+        "computer vision",
+        "image processing",
+        "object detection",
+        "cnn",
+        "computer vision",
+        "image processing",
+        "object detection",
+        "cnn"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in computer vision",
+        "Implement computer vision algorithms and techniques",
+        "Apply computer vision to real-world problems",
+        "Analyze and evaluate computer vision solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948710",
+      "updated_at": "2025-11-26T18:09:50.948711"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20Q",
+      "course_code": "CS030",
+      "title": "Machine Learning Fundamentals",
+      "description": "Introduction to machine learning algorithms and applications. This course covers supervised and unsupervised learning, neural networks, and deep learning. Students will learn to implement ML algorithms from scratch and use popular frameworks like scikit-learn and TensorFlow. The course emphasizes both theoretical foundations and practical applications.",
+      "credits": 4,
+      "difficulty_level": "advanced",
+      "format": "online",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS016",
+          "course_title": "Prerequisite Course 16",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": null,
+      "semester": "fall",
+      "year": 2025,
+      "instructor": "Seth Hall",
+      "max_enrollment": 44,
+      "current_enrollment": 0,
+      "tags": [
+        "machine learning",
+        "ai",
+        "python",
+        "neural networks",
+        "machine learning",
+        "ai",
+        "python",
+        "neural networks"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in machine learning fundamentals",
+        "Implement machine learning fundamentals algorithms and techniques",
+        "Apply machine learning fundamentals to real-world problems",
+        "Analyze and evaluate machine learning fundamentals solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948715",
+      "updated_at": "2025-11-26T18:09:50.948715"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20R",
+      "course_code": "CS031",
+      "title": "Deep Learning and Neural Networks",
+      "description": "Advanced neural network architectures and deep learning techniques. This course dives deep into modern deep learning, covering CNNs, RNNs, transformers, and GANs. Students will implement state-of-the-art models and work on real-world projects. Prerequisites include linear algebra, calculus, and programming experience.",
+      "credits": 4,
+      "difficulty_level": "graduate",
+      "format": "hybrid",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS027",
+          "course_title": "Prerequisite Course 27",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "spring",
+      "year": 2025,
+      "instructor": "Kathryn Baker",
+      "max_enrollment": 45,
+      "current_enrollment": 0,
+      "tags": [
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision",
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in deep learning and neural networks",
+        "Implement deep learning and neural networks algorithms and techniques",
+        "Apply deep learning and neural networks to real-world problems",
+        "Analyze and evaluate deep learning and neural networks solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948718",
+      "updated_at": "2025-11-26T18:09:50.948719"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20S",
+      "course_code": "CS032",
+      "title": "Deep Learning and Neural Networks",
+      "description": "Advanced neural network architectures and deep learning techniques. This course dives deep into modern deep learning, covering CNNs, RNNs, transformers, and GANs. Students will implement state-of-the-art models and work on real-world projects. Prerequisites include linear algebra, calculus, and programming experience.",
+      "credits": 4,
+      "difficulty_level": "graduate",
+      "format": "hybrid",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS017",
+          "course_title": "Prerequisite Course 17",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "spring",
+      "year": 2025,
+      "instructor": "Emily Byrd",
+      "max_enrollment": 34,
+      "current_enrollment": 0,
+      "tags": [
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision",
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in deep learning and neural networks",
+        "Implement deep learning and neural networks algorithms and techniques",
+        "Apply deep learning and neural networks to real-world problems",
+        "Analyze and evaluate deep learning and neural networks solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948722",
+      "updated_at": "2025-11-26T18:09:50.948722"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20T",
+      "course_code": "CS033",
+      "title": "Deep Learning and Neural Networks",
+      "description": "Advanced neural network architectures and deep learning techniques. This course dives deep into modern deep learning, covering CNNs, RNNs, transformers, and GANs. Students will implement state-of-the-art models and work on real-world projects. Prerequisites include linear algebra, calculus, and programming experience.",
+      "credits": 4,
+      "difficulty_level": "graduate",
+      "format": "hybrid",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS013",
+          "course_title": "Prerequisite Course 13",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "winter",
+      "year": 2025,
+      "instructor": "Robert Barrett",
+      "max_enrollment": 57,
+      "current_enrollment": 0,
+      "tags": [
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision",
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in deep learning and neural networks",
+        "Implement deep learning and neural networks algorithms and techniques",
+        "Apply deep learning and neural networks to real-world problems",
+        "Analyze and evaluate deep learning and neural networks solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948726",
+      "updated_at": "2025-11-26T18:09:50.948726"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20V",
+      "course_code": "CS034",
+      "title": "Natural Language Processing",
+      "description": "Processing and understanding human language with machine learning. This course covers text processing, language models, sentiment analysis, and modern NLP techniques. Students will work with transformers, BERT, and GPT models. Projects include building chatbots, text classifiers, and language generation systems.",
+      "credits": 3,
+      "difficulty_level": "advanced",
+      "format": "in_person",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS007",
+          "course_title": "Prerequisite Course 7",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "spring",
+      "year": 2025,
+      "instructor": "Darren Horton",
+      "max_enrollment": 52,
+      "current_enrollment": 0,
+      "tags": [
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models",
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in natural language processing",
+        "Implement natural language processing algorithms and techniques",
+        "Apply natural language processing to real-world problems",
+        "Analyze and evaluate natural language processing solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948729",
+      "updated_at": "2025-11-26T18:09:50.948730"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20W",
+      "course_code": "CS035",
+      "title": "Deep Learning and Neural Networks",
+      "description": "Advanced neural network architectures and deep learning techniques. This course dives deep into modern deep learning, covering CNNs, RNNs, transformers, and GANs. Students will implement state-of-the-art models and work on real-world projects. Prerequisites include linear algebra, calculus, and programming experience.",
+      "credits": 4,
+      "difficulty_level": "graduate",
+      "format": "in_person",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS015",
+          "course_title": "Prerequisite Course 15",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "summer",
+      "year": 2025,
+      "instructor": "Susan Rojas",
+      "max_enrollment": 38,
+      "current_enrollment": 0,
+      "tags": [
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision",
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in deep learning and neural networks",
+        "Implement deep learning and neural networks algorithms and techniques",
+        "Apply deep learning and neural networks to real-world problems",
+        "Analyze and evaluate deep learning and neural networks solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948733",
+      "updated_at": "2025-11-26T18:09:50.948733"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20X",
+      "course_code": "MATH036",
+      "title": "Linear Algebra for Machine Learning",
+      "description": "Matrix operations, eigenvalues, and applications to machine learning. This course provides the mathematical foundation for understanding machine learning algorithms. Topics include vector spaces, matrix decompositions, eigenvalues, and optimization. Students will see how these concepts apply to PCA, SVD, and neural networks.",
+      "credits": 4,
+      "difficulty_level": "intermediate",
+      "format": "in_person",
+      "department": "Mathematics",
+      "major": "Mathematics",
+      "prerequisites": [],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "fall",
+      "year": 2025,
+      "instructor": "John Barrett",
+      "max_enrollment": 79,
+      "current_enrollment": 0,
+      "tags": [
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics",
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in linear algebra for machine learning",
+        "Implement linear algebra for machine learning algorithms and techniques",
+        "Apply linear algebra for machine learning to real-world problems",
+        "Analyze and evaluate linear algebra for machine learning solutions",
+        "Design and build complete mathematics systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948736",
+      "updated_at": "2025-11-26T18:09:50.948737"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20Y",
+      "course_code": "CS037",
+      "title": "Natural Language Processing",
+      "description": "Processing and understanding human language with machine learning. This course covers text processing, language models, sentiment analysis, and modern NLP techniques. Students will work with transformers, BERT, and GPT models. Projects include building chatbots, text classifiers, and language generation systems.",
+      "credits": 3,
+      "difficulty_level": "advanced",
+      "format": "hybrid",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS003",
+          "course_title": "Prerequisite Course 3",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "spring",
+      "year": 2025,
+      "instructor": "Joshua Smith",
+      "max_enrollment": 45,
+      "current_enrollment": 0,
+      "tags": [
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models",
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in natural language processing",
+        "Implement natural language processing algorithms and techniques",
+        "Apply natural language processing to real-world problems",
+        "Analyze and evaluate natural language processing solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948740",
+      "updated_at": "2025-11-26T18:09:50.948740"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW20Z",
+      "course_code": "MATH038",
+      "title": "Linear Algebra for Machine Learning",
+      "description": "Matrix operations, eigenvalues, and applications to machine learning. This course provides the mathematical foundation for understanding machine learning algorithms. Topics include vector spaces, matrix decompositions, eigenvalues, and optimization. Students will see how these concepts apply to PCA, SVD, and neural networks.",
+      "credits": 4,
+      "difficulty_level": "intermediate",
+      "format": "online",
+      "department": "Mathematics",
+      "major": "Mathematics",
+      "prerequisites": [],
+      "schedule": null,
+      "semester": "summer",
+      "year": 2025,
+      "instructor": "Kara Frazier",
+      "max_enrollment": 69,
+      "current_enrollment": 0,
+      "tags": [
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics",
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in linear algebra for machine learning",
+        "Implement linear algebra for machine learning algorithms and techniques",
+        "Apply linear algebra for machine learning to real-world problems",
+        "Analyze and evaluate linear algebra for machine learning solutions",
+        "Design and build complete mathematics systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948743",
+      "updated_at": "2025-11-26T18:09:50.948744"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW210",
+      "course_code": "CS039",
+      "title": "Computer Vision",
+      "description": "Image processing, object detection, and visual recognition systems. This course teaches students how to build systems that can see and understand visual data. Topics include image processing, feature extraction, object detection, and semantic segmentation. Students will use OpenCV, PyTorch, and TensorFlow.",
+      "credits": 4,
+      "difficulty_level": "advanced",
+      "format": "online",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS008",
+          "course_title": "Prerequisite Course 8",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": null,
+      "semester": "summer",
+      "year": 2025,
+      "instructor": "April Harris",
+      "max_enrollment": 45,
+      "current_enrollment": 0,
+      "tags": [
+        "computer vision",
+        "image processing",
+        "object detection",
+        "cnn",
+        "computer vision",
+        "image processing",
+        "object detection",
+        "cnn"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in computer vision",
+        "Implement computer vision algorithms and techniques",
+        "Apply computer vision to real-world problems",
+        "Analyze and evaluate computer vision solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948747",
+      "updated_at": "2025-11-26T18:09:50.948748"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW211",
+      "course_code": "MATH040",
+      "title": "Linear Algebra for Machine Learning",
+      "description": "Matrix operations, eigenvalues, and applications to machine learning. This course provides the mathematical foundation for understanding machine learning algorithms. Topics include vector spaces, matrix decompositions, eigenvalues, and optimization. Students will see how these concepts apply to PCA, SVD, and neural networks.",
+      "credits": 4,
+      "difficulty_level": "intermediate",
+      "format": "hybrid",
+      "department": "Mathematics",
+      "major": "Mathematics",
+      "prerequisites": [],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "fall",
+      "year": 2025,
+      "instructor": "Alexis Reyes",
+      "max_enrollment": 32,
+      "current_enrollment": 0,
+      "tags": [
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics",
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in linear algebra for machine learning",
+        "Implement linear algebra for machine learning algorithms and techniques",
+        "Apply linear algebra for machine learning to real-world problems",
+        "Analyze and evaluate linear algebra for machine learning solutions",
+        "Design and build complete mathematics systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948751",
+      "updated_at": "2025-11-26T18:09:50.948751"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW212",
+      "course_code": "CS041",
+      "title": "Deep Learning and Neural Networks",
+      "description": "Advanced neural network architectures and deep learning techniques. This course dives deep into modern deep learning, covering CNNs, RNNs, transformers, and GANs. Students will implement state-of-the-art models and work on real-world projects. Prerequisites include linear algebra, calculus, and programming experience.",
+      "credits": 4,
+      "difficulty_level": "graduate",
+      "format": "in_person",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS031",
+          "course_title": "Prerequisite Course 31",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "spring",
+      "year": 2025,
+      "instructor": "Donna Randolph",
+      "max_enrollment": 33,
+      "current_enrollment": 0,
+      "tags": [
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision",
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in deep learning and neural networks",
+        "Implement deep learning and neural networks algorithms and techniques",
+        "Apply deep learning and neural networks to real-world problems",
+        "Analyze and evaluate deep learning and neural networks solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948755",
+      "updated_at": "2025-11-26T18:09:50.948755"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW213",
+      "course_code": "CS042",
+      "title": "Natural Language Processing",
+      "description": "Processing and understanding human language with machine learning. This course covers text processing, language models, sentiment analysis, and modern NLP techniques. Students will work with transformers, BERT, and GPT models. Projects include building chatbots, text classifiers, and language generation systems.",
+      "credits": 3,
+      "difficulty_level": "advanced",
+      "format": "hybrid",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS018",
+          "course_title": "Prerequisite Course 18",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "fall",
+      "year": 2025,
+      "instructor": "Julie Bell",
+      "max_enrollment": 39,
+      "current_enrollment": 0,
+      "tags": [
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models",
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in natural language processing",
+        "Implement natural language processing algorithms and techniques",
+        "Apply natural language processing to real-world problems",
+        "Analyze and evaluate natural language processing solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948758",
+      "updated_at": "2025-11-26T18:09:50.948758"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW214",
+      "course_code": "CS043",
+      "title": "Deep Learning and Neural Networks",
+      "description": "Advanced neural network architectures and deep learning techniques. This course dives deep into modern deep learning, covering CNNs, RNNs, transformers, and GANs. Students will implement state-of-the-art models and work on real-world projects. Prerequisites include linear algebra, calculus, and programming experience.",
+      "credits": 4,
+      "difficulty_level": "graduate",
+      "format": "hybrid",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS031",
+          "course_title": "Prerequisite Course 31",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "fall",
+      "year": 2025,
+      "instructor": "Billy Hawkins",
+      "max_enrollment": 43,
+      "current_enrollment": 0,
+      "tags": [
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision",
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in deep learning and neural networks",
+        "Implement deep learning and neural networks algorithms and techniques",
+        "Apply deep learning and neural networks to real-world problems",
+        "Analyze and evaluate deep learning and neural networks solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948761",
+      "updated_at": "2025-11-26T18:09:50.948762"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW215",
+      "course_code": "CS044",
+      "title": "Machine Learning Fundamentals",
+      "description": "Introduction to machine learning algorithms and applications. This course covers supervised and unsupervised learning, neural networks, and deep learning. Students will learn to implement ML algorithms from scratch and use popular frameworks like scikit-learn and TensorFlow. The course emphasizes both theoretical foundations and practical applications.",
+      "credits": 4,
+      "difficulty_level": "advanced",
+      "format": "in_person",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS009",
+          "course_title": "Prerequisite Course 9",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "summer",
+      "year": 2025,
+      "instructor": "Randy Carroll",
+      "max_enrollment": 67,
+      "current_enrollment": 0,
+      "tags": [
+        "machine learning",
+        "ai",
+        "python",
+        "neural networks",
+        "machine learning",
+        "ai",
+        "python",
+        "neural networks"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in machine learning fundamentals",
+        "Implement machine learning fundamentals algorithms and techniques",
+        "Apply machine learning fundamentals to real-world problems",
+        "Analyze and evaluate machine learning fundamentals solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948765",
+      "updated_at": "2025-11-26T18:09:50.948765"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW216",
+      "course_code": "MATH045",
+      "title": "Linear Algebra for Machine Learning",
+      "description": "Matrix operations, eigenvalues, and applications to machine learning. This course provides the mathematical foundation for understanding machine learning algorithms. Topics include vector spaces, matrix decompositions, eigenvalues, and optimization. Students will see how these concepts apply to PCA, SVD, and neural networks.",
+      "credits": 4,
+      "difficulty_level": "intermediate",
+      "format": "hybrid",
+      "department": "Mathematics",
+      "major": "Mathematics",
+      "prerequisites": [],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "spring",
+      "year": 2025,
+      "instructor": "Alexandra Robles",
+      "max_enrollment": 45,
+      "current_enrollment": 0,
+      "tags": [
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics",
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in linear algebra for machine learning",
+        "Implement linear algebra for machine learning algorithms and techniques",
+        "Apply linear algebra for machine learning to real-world problems",
+        "Analyze and evaluate linear algebra for machine learning solutions",
+        "Design and build complete mathematics systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948769",
+      "updated_at": "2025-11-26T18:09:50.948769"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW217",
+      "course_code": "CS046",
+      "title": "Machine Learning Fundamentals",
+      "description": "Introduction to machine learning algorithms and applications. This course covers supervised and unsupervised learning, neural networks, and deep learning. Students will learn to implement ML algorithms from scratch and use popular frameworks like scikit-learn and TensorFlow. The course emphasizes both theoretical foundations and practical applications.",
+      "credits": 4,
+      "difficulty_level": "advanced",
+      "format": "online",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS007",
+          "course_title": "Prerequisite Course 7",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": null,
+      "semester": "spring",
+      "year": 2025,
+      "instructor": "Kimberly Baldwin",
+      "max_enrollment": 67,
+      "current_enrollment": 0,
+      "tags": [
+        "machine learning",
+        "ai",
+        "python",
+        "neural networks",
+        "machine learning",
+        "ai",
+        "python",
+        "neural networks"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in machine learning fundamentals",
+        "Implement machine learning fundamentals algorithms and techniques",
+        "Apply machine learning fundamentals to real-world problems",
+        "Analyze and evaluate machine learning fundamentals solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948772",
+      "updated_at": "2025-11-26T18:09:50.948773"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW218",
+      "course_code": "CS047",
+      "title": "Deep Learning and Neural Networks",
+      "description": "Advanced neural network architectures and deep learning techniques. This course dives deep into modern deep learning, covering CNNs, RNNs, transformers, and GANs. Students will implement state-of-the-art models and work on real-world projects. Prerequisites include linear algebra, calculus, and programming experience.",
+      "credits": 4,
+      "difficulty_level": "graduate",
+      "format": "online",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS001",
+          "course_title": "Prerequisite Course 1",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": null,
+      "semester": "summer",
+      "year": 2025,
+      "instructor": "Erica Smith",
+      "max_enrollment": 58,
+      "current_enrollment": 0,
+      "tags": [
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision",
+        "deep learning",
+        "neural networks",
+        "transformers",
+        "computer vision"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in deep learning and neural networks",
+        "Implement deep learning and neural networks algorithms and techniques",
+        "Apply deep learning and neural networks to real-world problems",
+        "Analyze and evaluate deep learning and neural networks solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948776",
+      "updated_at": "2025-11-26T18:09:50.948776"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW219",
+      "course_code": "CS048",
+      "title": "Natural Language Processing",
+      "description": "Processing and understanding human language with machine learning. This course covers text processing, language models, sentiment analysis, and modern NLP techniques. Students will work with transformers, BERT, and GPT models. Projects include building chatbots, text classifiers, and language generation systems.",
+      "credits": 3,
+      "difficulty_level": "advanced",
+      "format": "online",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS035",
+          "course_title": "Prerequisite Course 35",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": null,
+      "semester": "summer",
+      "year": 2025,
+      "instructor": "Phillip Perez",
+      "max_enrollment": 60,
+      "current_enrollment": 0,
+      "tags": [
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models",
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in natural language processing",
+        "Implement natural language processing algorithms and techniques",
+        "Apply natural language processing to real-world problems",
+        "Analyze and evaluate natural language processing solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948779",
+      "updated_at": "2025-11-26T18:09:50.948780"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW21A",
+      "course_code": "MATH049",
+      "title": "Linear Algebra for Machine Learning",
+      "description": "Matrix operations, eigenvalues, and applications to machine learning. This course provides the mathematical foundation for understanding machine learning algorithms. Topics include vector spaces, matrix decompositions, eigenvalues, and optimization. Students will see how these concepts apply to PCA, SVD, and neural networks.",
+      "credits": 4,
+      "difficulty_level": "intermediate",
+      "format": "in_person",
+      "department": "Mathematics",
+      "major": "Mathematics",
+      "prerequisites": [],
+      "schedule": {
+        "days": [
+          "tuesday",
+          "thursday"
+        ],
+        "start_time": "10:00",
+        "end_time": "11:30",
+        "location": "Room 101"
+      },
+      "semester": "spring",
+      "year": 2025,
+      "instructor": "Kathryn Gibson",
+      "max_enrollment": 33,
+      "current_enrollment": 0,
+      "tags": [
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics",
+        "linear algebra",
+        "matrices",
+        "machine learning",
+        "mathematics"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in linear algebra for machine learning",
+        "Implement linear algebra for machine learning algorithms and techniques",
+        "Apply linear algebra for machine learning to real-world problems",
+        "Analyze and evaluate linear algebra for machine learning solutions",
+        "Design and build complete mathematics systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948783",
+      "updated_at": "2025-11-26T18:09:50.948784"
+    },
+    {
+      "id": "01KB16WAF4TQ2W7EBDBRNPW21B",
+      "course_code": "CS050",
+      "title": "Natural Language Processing",
+      "description": "Processing and understanding human language with machine learning. This course covers text processing, language models, sentiment analysis, and modern NLP techniques. Students will work with transformers, BERT, and GPT models. Projects include building chatbots, text classifiers, and language generation systems.",
+      "credits": 3,
+      "difficulty_level": "advanced",
+      "format": "online",
+      "department": "Computer Science",
+      "major": "Computer Science",
+      "prerequisites": [
+        {
+          "course_code": "CS014",
+          "course_title": "Prerequisite Course 14",
+          "minimum_grade": "C",
+          "can_be_concurrent": false
+        }
+      ],
+      "schedule": null,
+      "semester": "fall",
+      "year": 2025,
+      "instructor": "Shannon Reed",
+      "max_enrollment": 64,
+      "current_enrollment": 0,
+      "tags": [
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models",
+        "nlp",
+        "transformers",
+        "text processing",
+        "language models"
+      ],
+      "learning_objectives": [
+        "Understand core concepts in natural language processing",
+        "Implement natural language processing algorithms and techniques",
+        "Apply natural language processing to real-world problems",
+        "Analyze and evaluate natural language processing solutions",
+        "Design and build complete computer science systems"
+      ],
+      "created_at": "2025-11-26T18:09:50.948787",
+      "updated_at": "2025-11-26T18:09:50.948787"
+    }
+  ]
+}
