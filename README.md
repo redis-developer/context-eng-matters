@@ -1,77 +1,201 @@
-# Context Engineering Course
+# Context Engineering for LLMs with Redis
 
-**A comprehensive, hands-on course teaching practical context engineering patterns for AI agents using Redis, Agent Memory Server, LangChain, and LangGraph.**
+Learn to build production-ready AI agents with optimized context management, memory systems, and intelligent retrieval using Redis, LangGraph, and LangChain.
 
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Redis](https://img.shields.io/badge/Redis-8.0+-DC382D?logo=redis&logoColor=white)](https://redis.io/)
-[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![LangChain](https://img.shields.io/badge/LangChain-0.2+-1C3C3C?logo=chainlink&logoColor=white)](https://python.langchain.com/)
-[![UV](https://img.shields.io/badge/UV-Package%20Manager-blueviolet)](https://docs.astral.sh/uv/)
+[![LangChain](https://img.shields.io/badge/LangChain-0.3+-1C3C3C?logo=chainlink&logoColor=white)](https://python.langchain.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
-## What is Context Engineering?
+## What You'll Learn
 
-**Context Engineering** is the practice of designing, implementing, and optimizing context management systems for AI agents. It's the difference between a chatbot that forgets everything and an intelligent assistant that understands your needs.
+This hands-on course teaches practical context engineering patterns through building a **Course Advisor Agent**:
 
-### The Four Context Types
-
-1. **System Context** - What the AI should know about its role, capabilities, and environment
-2. **User Context** - Information about the user, their preferences, and history
-3. **Retrieved Context** - Dynamically fetched information from databases, APIs, or vector stores
-4. **Conversation Context** - The ongoing dialogue and task-focused working memory
-
----
-
-## Course Overview
-
-| | |
-|---|---|
-| **Format** | Self-paced, hands-on notebooks |
-| **Level** | Intermediate to Advanced |
-| **Duration** | 14-20 hours |
-| **Prerequisites** | Python, basic AI/ML understanding, familiarity with LLMs |
-
-### What You'll Build
-
-A complete **Redis University Course Advisor Agent** that:
-- Helps students find courses using semantic search
-- Remembers student preferences and goals across sessions
-- Provides personalized recommendations
-- Uses intelligent tool selection with LangGraph
-- Demonstrates practical context optimization patterns
+- **RAG Fundamentals** — Build retrieval-augmented generation systems with Redis vector search
+- **Context Engineering** — Optimize token efficiency using progressive disclosure and hierarchical context
+- **LangGraph Agents** — Create observable, stateful workflows with tool calling
+- **Hybrid Search** — Combine semantic search with exact-match retrieval using NER
+- **Memory Systems** — Implement working memory and long-term memory for personalization
+- **ReAct Pattern** — Build agents with explicit reasoning (Thought → Action → Observation)
 
 ---
 
-## Quick Start (5 Minutes)
+## Prerequisites
 
-### 1. Clone and Setup
+| Requirement | Details |
+|-------------|---------|
+| **Python** | 3.11 or higher |
+| **Redis Stack** | Local Docker or [Redis Cloud](https://redis.io/cloud/) |
+| **OpenAI API Key** | For GPT-4o access |
+| **Agent Memory Server** | For memory stages (5+) |
+| **Docker** | For running Redis and Agent Memory Server |
+
+---
+
+## Installation
+
+### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/redis-developer/context-engineering-reinvent.git
 cd context-engineering-reinvent
+```
 
-# Install UV if you don't have it
+### 2. Create Virtual Environment
+
+```bash
+# Using UV (recommended)
 curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Create virtual environment and install dependencies
 uv sync
+
+# Or using pip
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+pip install -e .
 ```
 
-### 2. Set Environment Variables
+### 3. Set Environment Variables
 
 ```bash
+# Create .env file
 cp .env.example .env
-# Edit .env and add your OpenAI API key
+
+# Edit .env with your values:
+OPENAI_API_KEY=sk-your-key-here
+REDIS_URL=redis://localhost:6379
+AGENT_MEMORY_URL=http://localhost:8088
 ```
 
-### 3. Start Services
+### 4. Start Services
 
 ```bash
+# Start Redis and Agent Memory Server
 docker-compose up -d
+
+# Verify services are running
+docker ps
 ```
 
-### 4. Start Learning
+### 5. Verify Installation
 
+```bash
+# Run tests
+uv run pytest tests/ -v
+
+# Or with pip
+pytest tests/ -v
+```
+
+---
+
+## Quick Start
+
+Try the ReAct agent with visible reasoning in under 2 minutes:
+
+```bash
+cd progressive_agents/stage4_react_hybrid_search
+
+# Ask about a course with visible reasoning
+python cli.py --show-reasoning "What are the prerequisites for CS002?"
+```
+
+**Example output:**
+```
+🧠 Reasoning Trace:
+================================================================================
+💭 Thought: The user is asking about prerequisites. I'll use exact match.
+
+🔧 Action: search_courses
+   Input: {"query": "CS002", "intent": "PREREQUISITES", "search_strategy": "exact_match"}
+👁️  Observation: Found CS002 - Machine Learning Fundamentals...
+
+💭 Thought: I found the course. Prerequisites field is empty - no prerequisites required.
+
+✅ FINISH
+================================================================================
+
+📝 Answer:
+CS002 (Machine Learning Fundamentals) has no formal prerequisites listed.
+```
+
+---
+
+## Project Structure
+
+```
+context-engineering-reinvent/
+├── src/redis_context_course/     # Core library
+│   ├── course_manager.py         # Redis vector search for courses
+│   ├── hierarchical_context.py   # Progressive disclosure
+│   ├── models.py                 # Pydantic data models
+│   └── scripts/                  # Data generation utilities
+│
+├── progressive_agents/           # 9 agent implementations (learning path)
+│   ├── stage1_baseline_rag/
+│   ├── stage2_context_engineered/
+│   ├── stage3_full_agent_without_memory/
+│   ├── stage4_hybrid_search_with_ner/
+│   ├── stage4_react_hybrid_search/      # ReAct variant
+│   ├── stage5_memory_augmented/
+│   ├── stage5_react_memory/             # ReAct variant
+│   ├── stage6_longterm_memory/
+│   └── stage7_react_loop/               # Full ReAct + memory
+│
+├── notebooks/                    # 11 Jupyter notebooks
+│   ├── section-1-context-engineering-foundations/
+│   ├── section-2-retrieved-context-engineering/
+│   ├── section-3-memory-systems/
+│   └── section-4-tools-and-agents/
+│
+├── tests/                        # Test suite
+├── examples/                     # Usage examples
+└── docker-compose.yml            # Redis + Agent Memory Server
+```
+
+---
+
+## Progressive Agents
+
+The `progressive_agents/` directory contains a learning path from basic RAG to production-ready agents:
+
+```mermaid
+graph LR
+    S1[Stage 1<br/>Baseline RAG] --> S2[Stage 2<br/>Context Engineering]
+    S2 --> S3[Stage 3<br/>Full Agent]
+    S3 --> S4[Stage 4<br/>Hybrid Search]
+    S4 --> S5[Stage 5<br/>Working Memory]
+    S5 --> S6[Stage 6<br/>Long-term Memory]
+    S6 --> S7[Stage 7<br/>ReAct Loop]
+```
+
+| Stage | Key Feature | What's New |
+|-------|-------------|------------|
+| **1** | Baseline RAG | Raw JSON context, ~5000 tokens |
+| **2** | Context Engineering | Progressive disclosure, ~1000 tokens |
+| **3** | Full Agent | LangGraph, intent classification, quality eval |
+| **4** | Hybrid Search | NER + FilterQuery for exact course codes |
+| **4R** | + ReAct | Visible reasoning trace |
+| **5** | Working Memory | Session-based conversation history |
+| **5R** | + ReAct | Visible reasoning + memory |
+| **6** | Long-term Memory | Cross-session preferences with tools |
+| **7** | Full ReAct | Complete: memory + reasoning + tools |
+
+👉 **[See full documentation →](progressive_agents/README.md)**
+
+---
+
+## Notebooks
+
+| Section | Topics | Duration |
+|---------|--------|----------|
+| **1. Context Engineering Foundations** | What is context engineering, assembly strategies | 2-3 hrs |
+| **2. Retrieved Context Engineering** | RAG fundamentals, crafting & optimizing context | 2.5-3 hrs |
+| **3. Memory Systems** | Working/long-term memory, compression strategies | 4-5 hrs |
+| **4. Tools and Agents** | LangGraph, tool calling, semantic tool selection | 3.5-4.5 hrs |
+
+**Start learning:**
 ```bash
 uv run jupyter notebook notebooks/
 ```
@@ -80,104 +204,36 @@ Open: `section-1-context-engineering-foundations/01_what_is_context_engineering.
 
 ---
 
-## Project Structure
+## Key Technologies
 
-```
-context-engineering-reinvent/
-├── pyproject.toml              # UV project configuration
-├── README.md                   # This file
-├── SETUP.md                    # Detailed setup guide
-├── COURSE_SUMMARY.md           # Complete syllabus
-├── docker-compose.yml          # Redis + Agent Memory Server
-│
-├── notebooks/                  # Course notebooks (11 total)
-│   ├── section-1-context-engineering-foundations/  (2 notebooks)
-│   ├── section-2-retrieved-context-engineering/    (2 notebooks)
-│   ├── section-3-memory-systems/                   (3 notebooks)
-│   └── section-4-tools-and-agents/                 (4 notebooks)
-│
-├── src/redis_context_course/   # Reference agent package
-│   ├── agent.py               # LangGraph agent implementation
-│   ├── course_manager.py      # Course storage and search
-│   ├── models.py              # Data models
-│   └── scripts/               # Data generation utilities
-│
-├── progressive_agents/         # 7 progressive agent implementations
-│   ├── stage1_baseline_rag/
-│   ├── stage2_context_engineered/
-│   ├── stage3_full_agent_without_memory/
-│   ├── stage4_hybrid_search_with_ner/
-│   ├── stage5_memory_augmented/
-│   ├── stage6_longterm_memory/
-│   └── stage7_react_loop/
-│
-├── tests/                      # Test suite
-├── examples/                   # Usage examples
-└── docs/                       # Additional documentation
-```
-
----
-
-## Course Sections
-
-### Section 1: Context Engineering Foundations (2-3 hours)
-- What is Context Engineering?
-- Context Assembly Strategies
-
-### Section 2: Retrieved Context Engineering (2.5-3 hours)
-- RAG Fundamentals and Implementation
-- Crafting and Optimizing Context
-
-### Section 3: Memory Systems (4-5 hours)
-- Working and Long-term Memory
-- Combining Memory with Retrieved Context
-- Managing Long Conversations with Compression
-
-### Section 4: Tools and Agents (3.5-4.5 hours)
-- Tools and LangGraph Fundamentals
-- Building Course Advisor Agent
-- Agent with Memory Compression
-- Semantic Tool Selection
-
----
-
-## Progressive Agents
-
-The `progressive_agents/` directory contains 7 stages of agent implementations that progressively add features:
-
-| Stage | Features Added |
-|-------|---------------|
-| Stage 1 | Baseline RAG with raw JSON context |
-| Stage 2 | Context engineering optimizations |
-| Stage 3 | Intent classification, quality evaluation |
-| Stage 4 | Named Entity Recognition, hybrid search |
-| Stage 5 | Working memory, conversation history |
-| Stage 6 | Long-term memory integration |
-| Stage 7 | Full ReAct loop pattern |
-
----
-
-## Technologies
-
-- **Python 3.10+** - Primary language
-- **UV** - Fast Python package manager
-- **Redis 8.0+** - Vector storage and caching
-- **LangChain/LangGraph** - LLM application framework
-- **Agent Memory Server** - Memory management
-- **OpenAI GPT-4** - Language model
-- **RedisVL** - Vector search library
+| Technology | Purpose |
+|------------|---------|
+| **Redis Stack** | Vector storage, semantic search, caching |
+| **RedisVL** | Vector search library with FilterQuery |
+| **LangGraph** | Stateful agent workflows |
+| **LangChain** | LLM application framework |
+| **Agent Memory Server** | Working and long-term memory management |
+| **OpenAI GPT-4o** | Language model for reasoning |
 
 ---
 
 ## Documentation
 
-- **[SETUP.md](SETUP.md)** - Detailed setup instructions
-- **[COURSE_SUMMARY.md](COURSE_SUMMARY.md)** - Complete syllabus
-- **[notebooks/README.md](notebooks/README.md)** - Notebook documentation
-- **[progressive_agents/README.md](progressive_agents/README.md)** - Progressive agents guide
+| Document | Description |
+|----------|-------------|
+| [SETUP.md](SETUP.md) | Detailed setup and troubleshooting |
+| [COURSE_SUMMARY.md](COURSE_SUMMARY.md) | Complete course syllabus |
+| [progressive_agents/README.md](progressive_agents/README.md) | Agent stages documentation |
+| [notebooks/README.md](notebooks/README.md) | Notebook guides |
+
+---
+
+## Contributing
+
+Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ---
 
 ## License
 
-MIT License - See LICENSE file for details
+MIT License — See [LICENSE](LICENSE) for details.
