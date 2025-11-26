@@ -78,7 +78,15 @@ docker-compose up -d
 docker ps
 ```
 
-### 5. Verify Installation
+### 5. Load Course Data
+
+```bash
+# Ingest courses into Redis (required for progressive agents)
+uv run python -m redis_context_course.scripts.ingest_courses \
+  --catalog src/redis_context_course/data/courses.json --clear
+```
+
+### 6. Verify Installation
 
 ```bash
 # Run tests
