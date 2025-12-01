@@ -1,5 +1,5 @@
 [project]
-name = "context-engineering-reinvent"
+name = "context-eng-matters"
 version = "1.0.0"
 description = "Context Engineering Course - A comprehensive, hands-on course teaching practical context engineering patterns for AI agents using Redis, Agent Memory Server, LangChain, and LangGraph"
 readme = "README.md"
