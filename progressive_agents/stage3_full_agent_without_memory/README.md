@@ -621,6 +621,70 @@ Or test interactively:
 python cli.py
 ```
 
+## 🔍 Code References & Automatic Behaviors
+
+This section provides exact code references for key concepts and documents automatic behaviors from underlying infrastructure.
+
+### Progressive Disclosure Implementation
+
+The `HierarchicalContextAssembler` class implements progressive disclosure - a pattern that addresses the **"Lost in the Middle"** research finding (where LLMs perform worse on information in the middle of long contexts).
+
+**Code References:**
+
+| Concept | File | Lines | Description |
+|---------|------|-------|-------------|
+| Class Definition | `src/redis_context_course/hierarchical_context.py` | 16-28 | `HierarchicalContextAssembler` class with progressive disclosure strategy |
+| Hierarchical Assembly | `src/redis_context_course/hierarchical_context.py` | 61-100 | `assemble_hierarchical_context()` - summaries for all, details for top N |
+| Summary-Only Mode | `src/redis_context_course/hierarchical_context.py` | 30-59 | `assemble_summary_only_context()` - lightweight overview mode |
+| Tool Integration | `progressive_agents/stage3_full_agent_without_memory/agent/tools.py` | 21, 34 | Import and instantiation of `HierarchicalContextAssembler` |
+| Usage in Search | `progressive_agents/stage3_full_agent_without_memory/agent/tools.py` | 244-246, 333-335 | Calls to `assemble_hierarchical_context()` |
+
+**How Progressive Disclosure Addresses "Lost in the Middle":**
+
+```python
+# From src/redis_context_course/hierarchical_context.py (lines 78-99)
+# Structure: Header → Summaries (beginning) → Details (end)
+# This places overview information at the START where LLMs perform best,
+# and detailed information at the END (second-best position)
+
+sections.append(f"# Course Search Results for: {query}\n")  # Header
+sections.append("## Overview of All Matches\n")              # Summaries first
+for i, summary in enumerate(summaries, 1):
+    sections.append(self._format_summary(summary, i))
+if details:
+    sections.append(f"\n## Detailed Information (Top {len(details)} Courses)\n")  # Details last
+```
+
+### Automatic Behaviors (Handled by Infrastructure)
+
+The following behaviors are **automatically handled** by the underlying infrastructure, even though they're not explicitly coded in this stage:
+
+| Behavior | Handled By | How It Works |
+|----------|------------|--------------|
+| **Token Budget Awareness** | `HierarchicalContextAssembler` | Summaries (~60 tokens each) + Details (~200 tokens each) = predictable budget |
+| **"Lost in the Middle" Mitigation** | Context structure | Header → Summaries → Details places key info at start/end |
+| **Hybrid Storage Pattern** | `assemble_hierarchical_context()` | Combines lightweight summaries with detailed views automatically |
+
+### Experimental Features (Available but Not Used)
+
+The `HierarchicalContextAssembler` includes experimental methods that are available for external use:
+
+```python
+# From src/redis_context_course/hierarchical_context.py (lines 194-226)
+def assemble_with_budget(
+    self,
+    summaries: List[CourseSummary],
+    details: List[CourseDetails],
+    query: str,
+    max_tokens: int = 2000,
+) -> Tuple[str, int]:
+    """Assemble context with explicit token budget management."""
+```
+
+These are marked as "EXPERIMENTAL" and not used in the progressive agents to maintain educational clarity.
+
+---
+
 ## 🔗 Related Resources
 
 ### Learning Path Navigation

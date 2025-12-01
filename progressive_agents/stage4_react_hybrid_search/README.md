@@ -144,6 +144,31 @@ stage4_react_hybrid_search/
 ================================================================================
 ```
 
+## 🔍 Code References & Automatic Behaviors
+
+This section provides exact code references for the ReAct pattern implementation.
+
+### ReAct Loop Implementation
+
+**Code References:**
+
+| Concept | File | Lines | Description |
+|---------|------|-------|-------------|
+| ReAct Agent | `progressive_agents/stage4_react_hybrid_search/agent/react_agent.py` | All | ReAct loop implementation |
+| ReAct Prompts | `progressive_agents/stage4_react_hybrid_search/agent/react_prompts.py` | All | System prompt with Thought/Action/Observation format |
+| Output Parser | `progressive_agents/stage4_react_hybrid_search/agent/react_parser.py` | All | Parses LLM output into structured format |
+| State with Trace | `progressive_agents/stage4_react_hybrid_search/agent/state.py` | All | `WorkflowState` with `reasoning_trace` field |
+
+### Automatic Behaviors (Inherited from Stage 4)
+
+| Behavior | Handled By | How It Works |
+|----------|------------|--------------|
+| **Progressive Disclosure** | `HierarchicalContextAssembler` | Summaries for all, details for top N |
+| **Hybrid Search Fallback** | `search_courses_sync()` | Falls back to semantic if exact match fails |
+| **Observation Truncation** | `react_parser.py` | Limits observation to 8000 chars to prevent syllabus truncation |
+
+---
+
 ## 🔗 Related Resources
 
 ### Learning Path Navigation

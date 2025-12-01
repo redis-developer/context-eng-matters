@@ -352,21 +352,122 @@ curl http://localhost:8088/health
 
 ---
 
+## 🔍 Code References & Automatic Behaviors
+
+This section provides a comprehensive summary of all code references and automatic behaviors across the entire progressive agents learning path.
+
+### ReAct Loop Implementation
+
+**Code References:**
+
+| Concept | File | Lines | Description |
+|---------|------|-------|-------------|
+| ReAct Agent Node | `progressive_agents/stage7_react_loop/agent/react_agent.py` | 91-265 | `react_agent_node()` - main ReAct loop |
+| Thought → Action → Observation | `progressive_agents/stage7_react_loop/agent/react_agent.py` | 153-226 | Loop iteration with parsing and execution |
+| Tool Execution | `progressive_agents/stage7_react_loop/agent/react_agent.py` | 41-88 | `execute_react_tool()` - dispatches to tools |
+| ReAct Prompts | `progressive_agents/stage7_react_loop/agent/react_prompts.py` | All | System prompt with ReAct format |
+| Output Parser | `progressive_agents/stage7_react_loop/agent/react_parser.py` | All | Parses Thought/Action/Observation |
+| Node Integration | `progressive_agents/stage7_react_loop/agent/nodes.py` | 1087-1090 | Imports and aliases `react_agent_node` |
+
+**ReAct Loop Pattern:**
+
+```python
+# From progressive_agents/stage7_react_loop/agent/react_agent.py (lines 91-230)
+async def react_agent_node(state: WorkflowState) -> WorkflowState:
+    """ReAct agent node with explicit Thought → Action → Observation loop."""
+
+    for iteration in range(max_iterations):
+        # 1. Get LLM response with Thought + Action
+        response = await llm.ainvoke(messages)
+        parsed = parse_react_output(response.content)
+
+        # 2. Log Thought
+        if parsed["thought"]:
+            reasoning_trace.append({"type": "thought", "content": parsed["thought"]})
+
+        # 3. Check for FINISH action
+        if parsed["action"].upper() == "FINISH":
+            final_answer = extract_final_answer(parsed["action_input"])
+            break
+
+        # 4. Execute tool and get Observation
+        tool_result = await execute_react_tool(action, action_input, student_id)
+        observation = format_observation(tool_result, max_length=8000)
+
+        # 5. Add to messages for next iteration
+        messages.append(AIMessage(content=response.content))
+        messages.append(HumanMessage(content=f"\n{observation}\n"))
+```
+
+### Complete Automatic Behaviors Summary
+
+Stage 7 inherits all automatic behaviors from previous stages:
+
+| Behavior | Source | How It Works |
+|----------|--------|--------------|
+| **Progressive Disclosure** | Stage 3 (`HierarchicalContextAssembler`) | Summaries for all, details for top N |
+| **"Lost in the Middle" Mitigation** | Stage 3 (context structure) | Header → Summaries → Details |
+| **Hybrid Search Fallback** | Stage 4 (`search_courses_sync`) | Falls back to semantic if exact match fails |
+| **Automatic Compression** | Stage 5 (Agent Memory Server) | Truncation, sliding window, summarization |
+| **Automatic Extraction** | Stage 5 (Agent Memory Server) | Extracts facts from working to long-term memory |
+| **Memory Deduplication** | Stage 6 (Agent Memory Server) | Prevents duplicate memories |
+| **Semantic Indexing** | Stage 6 (Agent Memory Server) | Creates embeddings for memory search |
+
+### All Code References by Stage
+
+**Stage 3 - Progressive Disclosure:**
+- `src/redis_context_course/hierarchical_context.py` (lines 16-100): `HierarchicalContextAssembler`
+
+**Stage 4 - Hybrid Search:**
+- `progressive_agents/stage4_hybrid_search_with_ner/agent/tools.py` (lines 200-323): Search strategies
+
+**Stage 5 - Working Memory:**
+- `progressive_agents/stage5_memory_augmented/agent/nodes.py` (lines 86-200): Load/save memory nodes
+
+**Stage 6 - Long-term Memory:**
+- `progressive_agents/stage6_longterm_memory/agent/tools.py` (lines 684-827): Memory tools
+
+**Stage 7 - ReAct Loop:**
+- `progressive_agents/stage7_react_loop/agent/react_agent.py` (lines 91-265): ReAct implementation
+
+### Agent Memory Server Configuration
+
+The Agent Memory Server supports these configuration options (using defaults in progressive agents):
+
+```python
+# Available but using defaults in progressive agents
+MemoryStrategyConfig(
+    strategy="summary",           # Compression strategy
+    max_summary_length=500,       # Max tokens for summary
+    message_threshold=20,         # Summarize after N messages
+    token_threshold=4000,         # Summarize after N tokens
+    keep_recent=4,                # Keep N recent messages
+)
+
+# Environment variable for window size
+WINDOW_SIZE=100  # Max messages in working memory
+```
+
+See **[Section 3, Notebook 3](../../notebooks/section-3-memory-systems/03_manage_long_conversations_with_compression_strategies.ipynb)** for detailed configuration examples.
+
+---
+
 ## 🔗 Related Resources
 
 ### Learning Path Summary
 This is the **final stage**. You've learned:
 - **Stages 1-2**: Context engineering fundamentals
-- **Stage 3**: LangGraph agent architecture
+- **Stage 3**: LangGraph agent architecture + progressive disclosure
 - **Stage 4**: Hybrid search with NER
 - **Stage 4 ReAct**: Visible reasoning pattern
-- **Stage 5**: Working memory for sessions
-- **Stage 6**: Long-term memory for personalization
-- **Stage 7**: All features combined
+- **Stage 5**: Working memory + automatic compression
+- **Stage 6**: Long-term memory + automatic extraction
+- **Stage 7**: All features combined with ReAct
 
 ### Notebooks to Review
 - **[Section 1: What is Context Engineering?](../../notebooks/section-1-context-engineering-foundations/01_what_is_context_engineering.ipynb)**: Foundation concepts
 - **[Section 3: Working and Long-term Memory](../../notebooks/section-3-memory-systems/01_working_and_longterm_memory.ipynb)**: Memory fundamentals
+- **[Section 3: Managing Long Conversations](../../notebooks/section-3-memory-systems/03_manage_long_conversations_with_compression_strategies.ipynb)**: Automatic compression behaviors
 - **[Section 4: Tools and LangGraph Fundamentals](../../notebooks/section-4-tools-and-agents/01_tools_and_langgraph_fundamentals.ipynb)**: ReAct pattern
 - **[Section 4: Building Course Advisor Agent](../../notebooks/section-4-tools-and-agents/02_building_course_advisor_agent.ipynb)**: Complete agent architecture
 
@@ -376,7 +477,7 @@ This is the **final stage**. You've learned:
 
 ### What's Next?
 After completing Stage 7, explore:
-- **[Section 4: Semantic Tool Selection](../../notebooks/section-4-tools-and-agents/04_semantic_tool_selection.ipynb)**: Scaling to more tools
-- **[Section 3: Managing Long Conversations](../../notebooks/section-3-memory-systems/03_manage_long_conversations_with_compression_strategies.ipynb)**: Memory compression
+- **[Section 4: Semantic Tool Selection](../../notebooks/section-4-tools-and-agents/04_semantic_tool_selection.ipynb)**: Scaling to more tools (RedisVL SemanticRouter)
+- **[Section 3: Managing Long Conversations](../../notebooks/section-3-memory-systems/03_manage_long_conversations_with_compression_strategies.ipynb)**: Explicit compression configuration
 - **Reference Agent**: Production-ready implementation in `reference-agent/`
 

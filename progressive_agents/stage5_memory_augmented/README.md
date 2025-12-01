@@ -228,6 +228,81 @@ Stage 5 focuses on:
 - No checkpointing (not needed for this demo)
 - Educational clarity over production features
 
+## 🔍 Code References & Automatic Behaviors
+
+This section provides exact code references for key concepts and documents **automatic behaviors** from the Agent Memory Server that are not explicitly coded but happen behind the scenes.
+
+### Working Memory Implementation
+
+**Code References:**
+
+| Concept | File | Lines | Description |
+|---------|------|-------|-------------|
+| Load Memory Node | `progressive_agents/stage5_memory_augmented/agent/nodes.py` | 86-141 | `load_working_memory_node()` - retrieves conversation history |
+| Save Memory Node | `progressive_agents/stage5_memory_augmented/agent/nodes.py` | 144-200 | `save_working_memory_node()` - persists conversation |
+| Memory Client | `progressive_agents/stage5_memory_augmented/agent/nodes.py` | 106, 165 | `get_memory_client()` - Agent Memory Server connection |
+| Workflow Integration | `progressive_agents/stage5_memory_augmented/agent/workflow.py` | Entry/Exit | Memory nodes at start and end of workflow |
+
+**Load → Process → Save Pattern:**
+
+```python
+# From progressive_agents/stage5_memory_augmented/agent/nodes.py (lines 86-141)
+async def load_working_memory_node(state: WorkflowState) -> WorkflowState:
+    """Load working memory from Agent Memory Server."""
+    _, working_memory = await memory_client.get_or_create_working_memory(
+        session_id=session_id,
+        user_id=student_id,
+        model_name="gpt-4o-mini",
+    )
+    # Convert to conversation history for LLM context
+    for msg in working_memory.messages:
+        conversation_history.append({"role": msg.role, "content": msg.content})
+```
+
+### Automatic Behaviors (Agent Memory Server)
+
+The Agent Memory Server provides **automatic compression and memory management** that is NOT explicitly coded in the progressive agents but happens behind the scenes:
+
+| Automatic Behavior | How It Works | Configuration |
+|-------------------|--------------|---------------|
+| **Truncation Strategy** | Limits conversation to `WINDOW_SIZE` messages | `WINDOW_SIZE` environment variable |
+| **Sliding Window** | Keeps most recent N messages when threshold exceeded | Automatic when `message_threshold` reached |
+| **LLM-Based Summarization** | Summarizes older messages to reduce tokens | `MemoryStrategyConfig(strategy="summary")` |
+| **Automatic Extraction** | Extracts important facts to long-term memory | Runs automatically on `put_working_memory()` |
+| **Memory Deduplication** | Prevents duplicate memories | Built into Agent Memory Server |
+
+**Configuration Options (from Section 3, Notebook 3):**
+
+```python
+# These options are available but use defaults in progressive agents
+MemoryStrategyConfig(
+    strategy="summary",           # or "recent_plus_summary", "sliding_window", "full_summary"
+    max_summary_length=500,       # Max tokens for summary
+    message_threshold=20,         # Summarize after N messages
+    token_threshold=4000,         # Summarize after N tokens
+    keep_recent=4,                # Keep N recent messages unsummarized
+)
+```
+
+**What This Means for Learners:**
+
+The progressive agents use **default settings**, which means:
+- Compression happens automatically when conversations get long
+- You don't need to implement compression yourself
+- The Agent Memory Server handles memory lifecycle management
+
+To see compression in action, refer to **[Section 3, Notebook 3: Managing Long Conversations](../../notebooks/section-3-memory-systems/03_manage_long_conversations_with_compression_strategies.ipynb)** which demonstrates explicit configuration.
+
+### Inherited Behaviors (From Previous Stages)
+
+| Behavior | Inherited From | How It Works |
+|----------|---------------|--------------|
+| **Progressive Disclosure** | Stage 3 | `HierarchicalContextAssembler` for context assembly |
+| **Hybrid Search** | Stage 4 | Exact + semantic search strategies |
+| **"Lost in the Middle" Mitigation** | Stage 3 | Header → Summaries → Details structure |
+
+---
+
 ## 🔗 Related Resources
 
 ### Learning Path Navigation
@@ -239,7 +314,7 @@ Stage 5 focuses on:
 ### Notebooks to Study
 - **[Section 3: Working and Long-term Memory](../../notebooks/section-3-memory-systems/01_working_and_longterm_memory.ipynb)**: Memory fundamentals
 - **[Section 3: Combining Memory with Retrieved Context](../../notebooks/section-3-memory-systems/02_combining_memory_with_retrieved_context.ipynb)**: Memory + RAG integration
-- **[Section 3: Managing Long Conversations](../../notebooks/section-3-memory-systems/03_manage_long_conversations_with_compression_strategies.ipynb)**: Compression strategies for long sessions
+- **[Section 3: Managing Long Conversations](../../notebooks/section-3-memory-systems/03_manage_long_conversations_with_compression_strategies.ipynb)**: Compression strategies (shows automatic behaviors in detail)
 
 ### Technical Resources
 - **Reference Agent**: Production-ready implementation with full memory architecture

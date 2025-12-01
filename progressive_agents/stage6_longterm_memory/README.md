@@ -297,6 +297,93 @@ curl http://localhost:8088/health
 
 ---
 
+## 🔍 Code References & Automatic Behaviors
+
+This section provides exact code references for key concepts and documents automatic behaviors from the Agent Memory Server.
+
+### Long-term Memory Tools Implementation
+
+**Code References:**
+
+| Concept | File | Lines | Description |
+|---------|------|-------|-------------|
+| Memory Tools Section | `progressive_agents/stage6_longterm_memory/agent/tools.py` | 684-686 | Long-term memory tools header |
+| Search Memories Schema | `progressive_agents/stage6_longterm_memory/agent/tools.py` | 692-701 | `SearchMemoriesInput` with query and limit |
+| Search Memories Tool | `progressive_agents/stage6_longterm_memory/agent/tools.py` | 704-754 | `search_memories_tool()` - semantic search over memories |
+| Store Memory Schema | `progressive_agents/stage6_longterm_memory/agent/tools.py` | 757-774 | `StoreMemoryInput` with text, type, topics |
+| Store Memory Tool | `progressive_agents/stage6_longterm_memory/agent/tools.py` | 777-827 | `store_memory_tool()` - persist to long-term memory |
+
+**Long-term Memory Tool Pattern:**
+
+```python
+# From progressive_agents/stage6_longterm_memory/agent/tools.py (lines 704-754)
+@tool("search_memories", args_schema=SearchMemoriesInput)
+async def search_memories_tool(query: str, limit: int = 5) -> str:
+    """Search the student's long-term memory for relevant facts, preferences."""
+    results = await memory_client.search_long_term_memory(
+        text=query,
+        user_id=UserId(eq=_current_student_id),
+        limit=limit
+    )
+    # Format and return results
+
+# From progressive_agents/stage6_longterm_memory/agent/tools.py (lines 777-827)
+@tool("store_memory", args_schema=StoreMemoryInput)
+async def store_memory_tool(text: str, memory_type: str = "semantic", topics: List[str] = []) -> str:
+    """Store important information to the student's long-term memory."""
+    memory = ClientMemoryRecord(
+        text=text,
+        user_id=_current_student_id,
+        memory_type=memory_type,  # "semantic" (facts) or "episodic" (events)
+        topics=topics or [],
+    )
+    await memory_client.create_long_term_memory([memory])
+```
+
+### Automatic Behaviors (Agent Memory Server)
+
+The Agent Memory Server provides **automatic memory management** that happens behind the scenes:
+
+| Automatic Behavior | How It Works | When It Happens |
+|-------------------|--------------|-----------------|
+| **Automatic Extraction** | Extracts important facts from working memory to long-term | On every `put_working_memory()` call |
+| **Memory Deduplication** | Prevents storing duplicate memories | On `create_long_term_memory()` |
+| **Semantic Indexing** | Creates embeddings for semantic search | On memory creation |
+| **Memory Compaction** | Consolidates related memories | Background process |
+
+**What This Means:**
+
+Even without calling `store_memory_tool()`, the Agent Memory Server **automatically extracts** important information from working memory conversations. The explicit `store_memory` tool gives the LLM **direct control** over what to store, which is useful for:
+- Immediate preference storage
+- Explicit user requests ("Remember that I...")
+- High-priority information
+
+### Inherited Behaviors (From Previous Stages)
+
+| Behavior | Inherited From | How It Works |
+|----------|---------------|--------------|
+| **Working Memory** | Stage 5 | Load → Process → Save pattern |
+| **Automatic Compression** | Stage 5 (Agent Memory Server) | Truncation, sliding window, summarization |
+| **Progressive Disclosure** | Stage 3 | `HierarchicalContextAssembler` |
+| **Hybrid Search** | Stage 4 | Exact + semantic search strategies |
+
+### Memory Types Explained
+
+```python
+# From progressive_agents/stage6_longterm_memory/agent/tools.py (lines 765-769)
+memory_type: str = Field(
+    default="semantic",
+    description="Type of memory: 'semantic' (facts/preferences), 'episodic' (events/interactions)"
+)
+```
+
+| Type | Use For | Examples |
+|------|---------|----------|
+| **semantic** | Facts, preferences, knowledge | "User prefers online courses", "User's goal is AI research" |
+| **episodic** | Events, interactions, experiences | "User asked about CS004 on 2024-01-15", "User completed ML course" |
+
+---
+
 ## 🔗 Related Resources
 
 ### Learning Path Navigation
@@ -305,6 +392,7 @@ curl http://localhost:8088/health
 
 ### Notebooks to Study
 - **[Section 3: Working and Long-term Memory](../../notebooks/section-3-memory-systems/01_working_and_longterm_memory.ipynb)**: Long-term memory fundamentals
+- **[Section 3: Managing Long Conversations](../../notebooks/section-3-memory-systems/03_manage_long_conversations_with_compression_strategies.ipynb)**: Automatic compression behaviors
 - **[Section 4: Building Course Advisor Agent](../../notebooks/section-4-tools-and-agents/02_building_course_advisor_agent.ipynb)**: Multi-tool agent patterns
 - **[Section 4: Semantic Tool Selection](../../notebooks/section-4-tools-and-agents/04_semantic_tool_selection.ipynb)**: Scaling to more tools
 
