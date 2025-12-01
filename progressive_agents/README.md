@@ -20,8 +20,8 @@ graph LR
     S1[Stage 1<br/>Baseline RAG] --> S2[Stage 2<br/>Context Engineering]
     S2 --> S3[Stage 3<br/>Full Agent]
     S3 --> S4[Stage 4<br/>Hybrid Search + ReAct]
-    S4 --> S5[Stage 5<br/>Working Memory + ReAct]
-    S5 --> S6[Stage 6<br/>Full Agent + ReAct]
+    S4 --> S5[Stage 5<br/>Working Memory]
+    S5 --> S6[Stage 6<br/>Full Memory]
 ```
 
 | Stage | Directory | Key Feature | Reasoning |
@@ -30,8 +30,8 @@ graph LR
 | 2 | `stage2_context_engineered/` | Progressive disclosure | Hidden |
 | 3 | `stage3_full_agent_without_memory/` | LangGraph + quality eval | Hidden |
 | 4 | `stage4_hybrid_search/` | Hybrid search + NER | **Visible (ReAct)** |
-| 5 | `stage5_memory/` | Working memory | **Visible (ReAct)** |
-| 6 | `stage6_full_agent/` | Full memory + ReAct | **Visible (ReAct)** |
+| 5 | `stage5_working_memory/` | Working memory (session-based) | **Visible (ReAct)** |
+| 6 | `stage6_full_memory/` | Working + Long-term memory | **Visible (ReAct)** |
 
 ## 🔬 Stage Details
 
@@ -104,25 +104,27 @@ graph TD
 - Visible reasoning trace with `--show-reasoning` CLI flag
 
 ### Stage 5: Working Memory with ReAct
-**Enhancement**: Add working memory for multi-turn conversations with visible reasoning
+**Enhancement**: Add session-based working memory for multi-turn conversations
 
 ```mermaid
 graph TD
-    Q[Query] --> LM[Load Memory]
+    Q[Query] --> LM[Load Working Memory]
     LM --> IC[Classify Intent]
     IC --> RA[ReAct Agent]
-    RA --> SM[Save Memory]
+    RA --> SM[Save Working Memory]
     SM --> END
 ```
 
 **What's New**:
-- Agent Memory Server integration
-- Session-based conversation history
+- Agent Memory Server integration for session storage
+- Session-based conversation history (within a session)
 - Pronoun resolution ("Tell me more about it")
-- ReAct loop with working memory context
+- Auto-extraction to long-term memory (but no explicit tools to query it)
 
-### Stage 6: Full Agent with ReAct
-**Final Stage**: Complete implementation with all features
+**Tools**: `search_courses` (1 tool)
+
+### Stage 6: Full Memory with ReAct
+**Final Stage**: Complete implementation with working + long-term memory
 
 ```
 User Query
@@ -146,10 +148,12 @@ Final Response + Reasoning Trace
 ```
 
 **What's New**:
-- `remember_user_info` tool for storing preferences
-- `recall_user_info` tool for retrieving preferences
-- Personalized recommendations
+- `search_memories` tool for querying long-term memory
+- `store_memory` tool for saving preferences/facts
+- Cross-session personalization
 - All previous features + visible reasoning
+
+**Tools**: `search_courses`, `search_memories`, `store_memory` (3 tools)
 
 ## 🚀 Quick Start
 
@@ -176,14 +180,15 @@ python cli.py "What courses teach machine learning?"
 cd progressive_agents/stage4_hybrid_search
 python cli.py --show-reasoning "What are the prerequisites for CS002?"
 
-# Stage 5: Working memory with ReAct (start Agent Memory Server first)
-cd progressive_agents/stage5_memory
+# Stage 5: Working memory (session-based) - start Agent Memory Server first
+cd progressive_agents/stage5_working_memory
 python cli.py --student-id alice --session-id s1 "What is CS004?"
 python cli.py --student-id alice --session-id s1 "Tell me more about it"
 
-# Stage 6: Full agent with ReAct
-cd progressive_agents/stage6_full_agent
-python cli.py --student-id alice --show-reasoning "What CS courses are good for beginners?"
+# Stage 6: Full memory (working + long-term)
+cd progressive_agents/stage6_full_memory
+python cli.py --student-id alice --show-reasoning "I prefer online courses"
+python cli.py --student-id alice --show-reasoning "What courses do you recommend?"
 ```
 
 ## 📖 Notebook Concepts Demonstrated
@@ -237,7 +242,7 @@ python cli.py --student-id alice --show-reasoning "What CS courses are good for 
 | `CourseManager` | Redis vector search for courses | All stages |
 | `HierarchicalContextAssembler` | Progressive disclosure | Stages 4+ |
 | `FilterQuery` | Exact course code matching | Stages 4+ |
-| `Agent Memory Server` | Working/long-term memory | Stages 5-6 |
+| `Agent Memory Server` | Working memory (Stage 5), Full memory (Stage 6) | Stages 5-6 |
 | `ReActAgent` | Visible reasoning loop | Stages 4-6 |
 
 ### Architecture Patterns

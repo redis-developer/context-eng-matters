@@ -14,7 +14,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 from redis_context_course import CourseManager
 
-from progressive_agents.stage5_memory.agent.workflow import (
+from progressive_agents.stage6_full_memory.agent.workflow import (
     create_workflow,
     run_agent_async,
 )

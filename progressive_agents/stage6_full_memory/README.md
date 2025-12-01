@@ -1,23 +1,25 @@
-# Stage 6: Full Agent with ReAct Loop
+# Stage 6: Full Memory (Working + Long-term)
 
 ## 📍 Position in Learning Path
 
 | Previous | Current | Next |
 |----------|---------|------|
-| [Stage 5: Memory](../stage5_memory/) | **Stage 6: Full Agent** | — (Final Stage) |
+| [Stage 5: Working Memory](../stage5_working_memory/) | **Stage 6: Full Memory** | — (Final Stage) |
 
-The **final stage** combining all features: working memory, long-term memory, and **visible ReAct reasoning**.
+The **final stage** combining all features: **working memory**, **long-term memory tools**, and **visible ReAct reasoning**.
 
 ---
 
 ## 🎯 Purpose
 
 This is the culmination of the progressive agents learning path. It combines:
-- **Working Memory** (from Stage 5): Session continuity
-- **Long-term Memory**: Cross-session personalization
+- **Working Memory** (from Stage 5): Session-based conversation history
+- **Long-term Memory Tools**: Explicit tools to store and query cross-session facts
 - **ReAct Pattern** (from Stage 4): Visible reasoning
 
-**Key Learning**: "A production-ready agent combines memory, tools, and transparent reasoning."
+**Key Learning**: "A production-ready agent combines working memory, long-term memory tools, and transparent reasoning."
+
+**Tools**: `search_courses`, `search_memories`, `store_memory` (3 tools)
 
 ---
 
@@ -54,13 +56,13 @@ This stage demonstrates concepts from all notebook sections:
 
 ## 🔄 What Changed from Stage 5
 
-| Feature | Stage 5 | Stage 6 |
-|---------|---------|---------|
-| **Working Memory** | Yes | Yes |
-| **Long-term Memory** | No | **Yes** |
-| **Tools** | 1 | **3** |
+| Feature | Stage 5 (Working Memory) | Stage 6 (Full Memory) |
+|---------|--------------------------|----------------------|
+| **Working Memory** | Yes (session-based) | Yes (session-based) |
+| **Long-term Memory Tools** | No (auto-extraction only) | **Yes (`search_memories`, `store_memory`)** |
+| **Tools** | 1 (`search_courses`) | **3** (`search_courses`, `search_memories`, `store_memory`) |
 | **Reasoning** | Visible (ReAct) | Visible (ReAct) |
-| **Personalization** | No | **Cross-session** |
+| **Personalization** | Within session only | **Cross-session** |
 
 ---
 
@@ -111,13 +113,13 @@ graph TD
 ## 🚀 Usage
 
 ```bash
-cd progressive_agents/stage6_full_agent
+cd progressive_agents/stage6_full_memory
 
-# Show reasoning trace
-python cli.py --student-id alice --show-reasoning "What ML courses are good for beginners?"
-
-# Store preference with visible reasoning
+# Store a preference (uses store_memory tool)
 python cli.py --student-id alice --show-reasoning "I prefer online courses"
+
+# Query using stored preference (uses search_memories + search_courses)
+python cli.py --student-id alice --show-reasoning "What courses do you recommend?"
 
 # Interactive mode
 python cli.py --student-id alice
@@ -157,7 +159,7 @@ Answer: I've noted your preference for online courses! Here are some ML courses 
 ## 📁 File Structure
 
 ```
-stage6_full_agent/
+stage6_full_memory/
 ├── cli.py                    # CLI with --show-reasoning
 ├── README.md                 # This file
 └── agent/
@@ -174,7 +176,7 @@ stage6_full_agent/
 
 ## ⬅️ Previous Stages
 
-- **Stage 5** (`stage5_memory/`): ReAct + working memory (no long-term)
+- **Stage 5** (`stage5_working_memory/`): ReAct + working memory (no long-term tools)
 - **Stage 4** (`stage4_hybrid_search/`): ReAct + hybrid search (no memory)
 - **Stage 3** (`stage3_full_agent_without_memory/`): Basic agent with tool calling
 
@@ -362,17 +364,17 @@ This section provides a comprehensive summary of all code references and automat
 
 | Concept | File | Lines | Description |
 |---------|------|-------|-------------|
-| ReAct Agent Node | `progressive_agents/stage6_full_agent/agent/react_agent.py` | 91-265 | `react_agent_node()` - main ReAct loop |
-| Thought → Action → Observation | `progressive_agents/stage6_full_agent/agent/react_agent.py` | 153-226 | Loop iteration with parsing and execution |
-| Tool Execution | `progressive_agents/stage6_full_agent/agent/react_agent.py` | 41-88 | `execute_react_tool()` - dispatches to tools |
-| ReAct Prompts | `progressive_agents/stage6_full_agent/agent/react_prompts.py` | All | System prompt with ReAct format |
-| Output Parser | `progressive_agents/stage6_full_agent/agent/react_parser.py` | All | Parses Thought/Action/Observation |
-| Node Integration | `progressive_agents/stage6_full_agent/agent/nodes.py` | 1087-1090 | Imports and aliases `react_agent_node` |
+| ReAct Agent Node | `progressive_agents/stage6_full_memory/agent/react_agent.py` | 91-265 | `react_agent_node()` - main ReAct loop |
+| Thought → Action → Observation | `progressive_agents/stage6_full_memory/agent/react_agent.py` | 153-226 | Loop iteration with parsing and execution |
+| Tool Execution | `progressive_agents/stage6_full_memory/agent/react_agent.py` | 41-88 | `execute_react_tool()` - dispatches to tools |
+| ReAct Prompts | `progressive_agents/stage6_full_memory/agent/react_prompts.py` | All | System prompt with ReAct format |
+| Output Parser | `progressive_agents/stage6_full_memory/agent/react_parser.py` | All | Parses Thought/Action/Observation |
+| Node Integration | `progressive_agents/stage6_full_memory/agent/nodes.py` | 1087-1090 | Imports and aliases `react_agent_node` |
 
 **ReAct Loop Pattern:**
 
 ```python
-# From progressive_agents/stage6_full_agent/agent/react_agent.py (lines 91-230)
+# From progressive_agents/stage6_full_memory/agent/react_agent.py (lines 91-230)
 async def react_agent_node(state: WorkflowState) -> WorkflowState:
     """ReAct agent node with explicit Thought → Action → Observation loop."""
 
@@ -422,11 +424,11 @@ Stage 6 inherits all automatic behaviors from previous stages:
 - `progressive_agents/stage4_hybrid_search/agent/tools.py`: Search strategies
 
 **Stage 5 - Working Memory:**
-- `progressive_agents/stage5_memory/agent/nodes.py`: Load/save memory nodes
+- `progressive_agents/stage5_working_memory/agent/nodes.py`: Load/save memory nodes
 
-**Stage 6 - Long-term Memory + ReAct:**
-- `progressive_agents/stage6_full_agent/agent/tools.py`: Memory tools
-- `progressive_agents/stage6_full_agent/agent/react_agent.py`: ReAct implementation
+**Stage 6 - Full Memory (Working + Long-term) + ReAct:**
+- `progressive_agents/stage6_full_memory/agent/tools.py`: Memory tools (`search_memories`, `store_memory`)
+- `progressive_agents/stage6_full_memory/agent/react_agent.py`: ReAct implementation
 
 ### Agent Memory Server Configuration
 

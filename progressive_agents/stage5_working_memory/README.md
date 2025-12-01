@@ -1,22 +1,25 @@
-# Stage 5: Working Memory with Visible Reasoning
+# Stage 5: Working Memory (Session-Based)
 
 ## 📍 Position in Learning Path
 
 | Previous | Current | Next |
 |----------|---------|------|
-| [Stage 4: Hybrid Search](../stage4_hybrid_search/) | **Stage 5** | [Stage 6: Full Agent](../stage6_full_agent/) |
+| [Stage 4: Hybrid Search](../stage4_hybrid_search/) | **Stage 5: Working Memory** | [Stage 6: Full Memory](../stage6_full_memory/) |
 
-This stage combines **working memory** with the **ReAct** (Reasoning + Acting) loop for transparent multi-turn conversations.
+This stage adds **session-based working memory** with the **ReAct** pattern for multi-turn conversations within a session.
 
 ---
 
 ## 🎯 Purpose
 
-This stage merges two powerful patterns:
-- **Working Memory** (from Stage 5): Multi-turn conversation continuity
-- **ReAct Pattern** (from Stage 4 ReAct): Visible reasoning traces
+This stage adds **session-based working memory**:
+- **Working Memory**: Conversation history stored per session
+- **ReAct Pattern**: Visible reasoning traces
+- **Auto-extraction**: Facts automatically promoted to long-term storage (but no explicit tools to query it)
 
-**Key Learning**: "Combining memory with visible reasoning creates debuggable, context-aware agents."
+**Key Learning**: "Working memory enables multi-turn conversations with context continuity."
+
+**Tools**: `search_courses` (1 tool) — Long-term memory tools are added in Stage 6.
 
 ---
 
@@ -84,7 +87,7 @@ graph TD
 ## 🚀 Usage
 
 ```bash
-cd progressive_agents/stage5_memory
+cd progressive_agents/stage5_working_memory
 
 # Multi-turn with visible reasoning
 python cli.py --student-id alice --session-id s1 --show-reasoning "What is CS004?"
@@ -195,7 +198,7 @@ export AGENT_MEMORY_URL=http://localhost:8088  # Optional, defaults to this
 
 **Single query**:
 ```bash
-python -m progressive_agents.stage5_memory.cli \
+python -m progressive_agents.stage5_working_memory.cli \
   --student-id alice \
   --session-id session_001 \
   "What is CS004?"
@@ -203,7 +206,7 @@ python -m progressive_agents.stage5_memory.cli \
 
 **Interactive multi-turn conversation**:
 ```bash
-python -m progressive_agents.stage5_memory.cli \
+python -m progressive_agents.stage5_working_memory.cli \
   --student-id alice \
   --session-id session_001 \
   --interactive
@@ -212,7 +215,7 @@ python -m progressive_agents.stage5_memory.cli \
 **Resume previous session**:
 ```bash
 # Same session_id loads previous conversation
-python -m progressive_agents.stage5_memory.cli \
+python -m progressive_agents.stage5_working_memory.cli \
   --student-id alice \
   --session-id session_001 \
   --interactive
@@ -265,15 +268,15 @@ This section provides exact code references for the combined ReAct + Memory impl
 
 | Concept | File | Lines | Description |
 |---------|------|-------|-------------|
-| ReAct Agent | `progressive_agents/stage5_memory/agent/react_agent.py` | All | ReAct loop with memory context |
-| ReAct Prompts | `progressive_agents/stage5_memory/agent/react_prompts.py` | All | System prompt with memory awareness |
+| ReAct Agent | `progressive_agents/stage5_working_memory/agent/react_agent.py` | All | ReAct loop with memory context |
+| ReAct Prompts | `progressive_agents/stage5_working_memory/agent/react_prompts.py` | All | System prompt with memory awareness |
 
 **Working Memory:**
 
 | Concept | File | Lines | Description |
 |---------|------|-------|-------------|
-| Load Memory Node | `progressive_agents/stage5_memory/agent/nodes.py` | `load_working_memory_node()` | Retrieves conversation history |
-| Save Memory Node | `progressive_agents/stage5_memory/agent/nodes.py` | `save_working_memory_node()` | Persists conversation |
+| Load Memory Node | `progressive_agents/stage5_working_memory/agent/nodes.py` | `load_working_memory_node()` | Retrieves conversation history |
+| Save Memory Node | `progressive_agents/stage5_working_memory/agent/nodes.py` | `save_working_memory_node()` | Persists conversation |
 
 ### Automatic Behaviors (Agent Memory Server)
 
@@ -291,7 +294,7 @@ See **[Section 3, Notebook 3](../../notebooks/section-3-memory-systems/03_manage
 
 ### Learning Path Navigation
 - **Previous**: [Stage 4: Hybrid Search](../stage4_hybrid_search/) - Hybrid search with ReAct (no memory)
-- **Next**: [Stage 6: Full Agent](../stage6_full_agent/) - Complete implementation with long-term memory
+- **Next**: [Stage 6: Full Memory](../stage6_full_memory/) - Adds long-term memory tools for cross-session personalization
 
 ### Notebooks to Study
 - **[Section 3: Working and Long-term Memory](../../notebooks/section-3-memory-systems/01_working_and_longterm_memory.ipynb)**: Memory fundamentals

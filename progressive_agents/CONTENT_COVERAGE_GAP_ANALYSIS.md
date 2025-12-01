@@ -38,7 +38,7 @@ LONG_TERM_MEMORY=true            # Enable long-term memory extraction
 
 **Evidence from codebase:**
 ```python
-# From progressive_agents/stage6_full_agent/agent/nodes.py (lines 148-156)
+# From progressive_agents/stage6_full_memory/agent/nodes.py (lines 148-156)
 async def save_working_memory_node(state: WorkflowState) -> WorkflowState:
     """
     Save working memory to Agent Memory Server.
