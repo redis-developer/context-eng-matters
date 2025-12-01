@@ -12,8 +12,8 @@ from pathlib import Path
 from langchain_openai import ChatOpenAI
 from redis_context_course import CourseManager
 
-from progressive_agents.stage5_memory.agent.react_agent import run_react_agent
-from progressive_agents.stage5_memory.agent.tools import initialize_tools
+from progressive_agents.stage5_working_memory.agent.react_agent import run_react_agent
+from progressive_agents.stage5_working_memory.agent.tools import initialize_tools
 
 # Configure logging
 logging.basicConfig(

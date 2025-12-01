@@ -1,13 +1,11 @@
 """
-Comprehensive intent testing for Stage 7 ReAct Loop Agent.
+Test script to validate that the agent correctly handles different intents.
 
-Tests multiple questions for each intent category with follow-up questions:
+Tests multiple questions for each intent category:
 - GENERAL: Course overviews/summaries
 - PREREQUISITES: Prerequisite information
 - SYLLABUS_OBJECTIVES: Syllabus and learning objectives
 - ASSIGNMENTS: Assignment details
-
-Also tests multi-turn conversations with memory.
 """
 
 import asyncio
@@ -20,7 +18,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 from redis_context_course import CourseManager
 
-from progressive_agents.stage6_full_agent.agent.workflow import (
+from progressive_agents.stage6_full_memory.agent.workflow import (
     create_workflow,
     run_agent_async,
 )
@@ -79,19 +77,15 @@ async def test_intent(agent, intent_name, questions):
                 agent=agent,
                 query=question,
                 session_id=f"test_{intent_name.lower()}_{i}",
-                student_id="test_user_intents",
+                student_id="test_user",
                 enable_caching=False,
             )
 
             response = result.get("final_response", "No response")
             execution_path = " → ".join(result.get("execution_path", []))
-            react_iterations = result.get("react_iterations", 0)
-            reasoning_steps = len(result.get("reasoning_trace", []))
 
             print(f"\nResponse: {response[:200]}...")
             print(f"Execution Path: {execution_path}")
-            print(f"ReAct Iterations: {react_iterations}")
-            print(f"Reasoning Steps: {reasoning_steps}")
 
             # Analyze response content
             response_lower = response.lower()
@@ -133,24 +127,17 @@ async def test_intent(agent, intent_name, questions):
                     "response": response,
                     "intent_match": intent_match,
                     "execution_path": execution_path,
-                    "react_iterations": react_iterations,
-                    "reasoning_steps": reasoning_steps,
                 }
             )
 
         except Exception as e:
             print(f"❌ Error: {e}")
-            import traceback
-
-            traceback.print_exc()
             results.append(
                 {
                     "question": question,
                     "response": f"Error: {e}",
                     "intent_match": False,
                     "execution_path": "error",
-                    "react_iterations": 0,
-                    "reasoning_steps": 0,
                 }
             )
 
@@ -171,7 +158,7 @@ async def main():
     agent = create_workflow(course_manager)
 
     print("\n" + "=" * 80)
-    print("STAGE 7 REACT AGENT INTENT TESTING")
+    print("STAGE 5 AGENT INTENT TESTING")
     print("=" * 80)
 
     all_results = {}
@@ -188,36 +175,18 @@ async def main():
 
     total_passed = 0
     total_tests = 0
-    total_iterations = 0
-    total_reasoning_steps = 0
 
     for intent_name, results in all_results.items():
         passed = sum(1 for r in results if r["intent_match"])
         total = len(results)
-        avg_iterations = (
-            sum(r["react_iterations"] for r in results) / total if total > 0 else 0
-        )
-        avg_steps = (
-            sum(r["reasoning_steps"] for r in results) / total if total > 0 else 0
-        )
-
         total_passed += passed
         total_tests += total
-        total_iterations += sum(r["react_iterations"] for r in results)
-        total_reasoning_steps += sum(r["reasoning_steps"] for r in results)
 
         percentage = (passed / total * 100) if total > 0 else 0
-        print(
-            f"{intent_name:20s}: {passed:2d}/{total:2d} ({percentage:5.1f}%) | Avg Iterations: {avg_iterations:.1f} | Avg Steps: {avg_steps:.1f}"
-        )
+        print(f"{intent_name:20s}: {passed:2d}/{total:2d} ({percentage:5.1f}%)")
 
     overall_percentage = (total_passed / total_tests * 100) if total_tests > 0 else 0
-    avg_iterations_overall = total_iterations / total_tests if total_tests > 0 else 0
-    avg_steps_overall = total_reasoning_steps / total_tests if total_tests > 0 else 0
-
     print(f"{'TOTAL':20s}: {total_passed:2d}/{total_tests:2d} ({overall_percentage:5.1f}%)")
-    print(f"\nAverage ReAct Iterations: {avg_iterations_overall:.1f}")
-    print(f"Average Reasoning Steps: {avg_steps_overall:.1f}")
 
     return all_results
 

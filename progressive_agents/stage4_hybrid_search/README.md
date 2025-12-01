@@ -4,7 +4,7 @@
 
 | Previous | Current | Next |
 |----------|---------|------|
-| [Stage 3: Full Agent](../stage3_full_agent_without_memory/) | **Stage 4** | [Stage 5: Memory](../stage5_memory/) |
+| [Stage 3: Full Agent](../stage3_full_agent_without_memory/) | **Stage 4** | [Stage 5: Working Memory](../stage5_working_memory/) |
 
 This stage adds hybrid search capabilities with Named Entity Recognition and an explicit **ReAct** (Reasoning + Acting) loop for transparent reasoning.
 
@@ -124,8 +124,8 @@ stage4_hybrid_search/
 |---------|---------|---------|---------|---------|
 | Search | Semantic | Hybrid | Hybrid | Hybrid |
 | Reasoning | Hidden | **Visible** | Visible | Visible |
-| Memory | None | None | Working | Full |
-| Iterations | 1 | 2-3 | 2-3 | 2-3 |
+| Memory | None | None | Working (session) | Full (working + long-term) |
+| Tools | N/A | 1 | 1 | 3 |
 
 ## Example Reasoning Trace
 
@@ -173,7 +173,7 @@ This section provides exact code references for the ReAct pattern implementation
 
 ### Learning Path Navigation
 - **Previous**: [Stage 3: Full Agent](../stage3_full_agent_without_memory/) - Basic agent with tool calling
-- **Next**: [Stage 5: Memory](../stage5_memory/) - Add working memory with visible reasoning
+- **Next**: [Stage 5: Working Memory](../stage5_working_memory/) - Add session-based memory
 
 ### Notebooks to Study
 - **[Section 4: Tools and LangGraph Fundamentals](../../notebooks/section-4-tools-and-agents/01_tools_and_langgraph_fundamentals.ipynb)**: ReAct pattern fundamentals
