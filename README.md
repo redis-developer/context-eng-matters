@@ -112,7 +112,7 @@ pytest tests/ -v
 Try the ReAct agent with visible reasoning in under 2 minutes:
 
 ```bash
-cd progressive_agents/stage4_react_hybrid_search
+cd progressive_agents/stage4_hybrid_search
 
 # Ask about a course with visible reasoning
 python cli.py --show-reasoning "What are the prerequisites for CS002?"
@@ -149,16 +149,13 @@ context-engineering-reinvent/
 │   ├── models.py                 # Pydantic data models
 │   └── scripts/                  # Data generation utilities
 │
-├── progressive_agents/           # 9 agent implementations (learning path)
+├── progressive_agents/           # 6 agent implementations (learning path)
 │   ├── stage1_baseline_rag/
 │   ├── stage2_context_engineered/
 │   ├── stage3_full_agent_without_memory/
-│   ├── stage4_hybrid_search_with_ner/
-│   ├── stage4_react_hybrid_search/      # ReAct variant
-│   ├── stage5_memory_augmented/
-│   ├── stage5_react_memory/             # ReAct variant
-│   ├── stage6_longterm_memory/
-│   └── stage7_react_loop/               # Full ReAct + memory
+│   ├── stage4_hybrid_search/            # Hybrid search + ReAct
+│   ├── stage5_memory/                   # Working memory + ReAct
+│   └── stage6_full_agent/               # Full ReAct + memory
 │
 ├── notebooks/                    # 11 Jupyter notebooks
 │   ├── section-1-context-engineering-foundations/
@@ -181,10 +178,9 @@ The `progressive_agents/` directory contains a learning path from basic RAG to p
 graph LR
     S1[Stage 1<br/>Baseline RAG] --> S2[Stage 2<br/>Context Engineering]
     S2 --> S3[Stage 3<br/>Full Agent]
-    S3 --> S4[Stage 4<br/>Hybrid Search]
-    S4 --> S5[Stage 5<br/>Working Memory]
-    S5 --> S6[Stage 6<br/>Long-term Memory]
-    S6 --> S7[Stage 7<br/>ReAct Loop]
+    S3 --> S4[Stage 4<br/>Hybrid Search + ReAct]
+    S4 --> S5[Stage 5<br/>Working Memory + ReAct]
+    S5 --> S6[Stage 6<br/>Full Agent + ReAct]
 ```
 
 | Stage | Key Feature | What's New |
@@ -192,12 +188,9 @@ graph LR
 | **1** | Baseline RAG | Raw JSON context, ~5000 tokens |
 | **2** | Context Engineering | Progressive disclosure, ~1000 tokens |
 | **3** | Full Agent | LangGraph, intent classification, quality eval |
-| **4** | Hybrid Search | NER + FilterQuery for exact course codes |
-| **4R** | + ReAct | Visible reasoning trace |
-| **5** | Working Memory | Session-based conversation history |
-| **5R** | + ReAct | Visible reasoning + memory |
-| **6** | Long-term Memory | Cross-session preferences with tools |
-| **7** | Full ReAct | Complete: memory + reasoning + tools |
+| **4** | Hybrid Search + ReAct | NER + FilterQuery, visible reasoning |
+| **5** | Working Memory + ReAct | Session-based history, visible reasoning |
+| **6** | Full Agent + ReAct | Complete: memory + reasoning + tools |
 
 👉 **[See full documentation →](progressive_agents/README.md)**
 

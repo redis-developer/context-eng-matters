@@ -64,3 +64,6 @@ test_output/
 *.log
 
 test_outputs/
+
+# Archived progressive agent stages
+progressive_agents/archive/

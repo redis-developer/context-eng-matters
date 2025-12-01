@@ -38,7 +38,7 @@ LONG_TERM_MEMORY=true            # Enable long-term memory extraction
 
 **Evidence from codebase:**
 ```python
-# From progressive_agents/stage6_longterm_memory/agent/nodes.py (lines 148-156)
+# From progressive_agents/stage6_full_agent/agent/nodes.py (lines 148-156)
 async def save_working_memory_node(state: WorkflowState) -> WorkflowState:
     """
     Save working memory to Agent Memory Server.
@@ -91,7 +91,7 @@ The `HierarchicalContextAssembler` (used in Stages 3+) implements:
 | **Original Classification** | Actual Gap |
 | **Revised Classification** | **Implicitly Handled** by Agent Memory Server |
 | **How It's Handled** | Agent Memory Server's `WINDOW_SIZE` configuration implements sliding window with truncation behavior. When messages exceed the threshold, older messages are automatically compressed/removed. |
-| **Recommendation** | Update Stage 5-7 READMEs to document this automatic behavior |
+| **Recommendation** | Update Stage 5-6 READMEs to document this automatic behavior |
 
 #### ~~Gap 2: Sliding Window Strategy~~ → **IMPLICITLY HANDLED**
 | Attribute | Details |
@@ -100,7 +100,7 @@ The `HierarchicalContextAssembler` (used in Stages 3+) implements:
 | **Revised Classification** | **Implicitly Handled** by Agent Memory Server |
 | **How It's Handled** | The `WINDOW_SIZE` environment variable configures automatic sliding window compression. Default is 20 messages. |
 | **Evidence** | Notebook Section 3, Notebook 3 (lines 1692-1706) shows this configuration |
-| **Recommendation** | Document `WINDOW_SIZE` configuration in Stage 5-7 READMEs |
+| **Recommendation** | Document `WINDOW_SIZE` configuration in Stage 5-6 READMEs |
 
 #### Gap 3: Priority-Based Compression Strategy → **ACTUAL GAP**
 | Attribute | Details |
@@ -119,7 +119,7 @@ The `HierarchicalContextAssembler` (used in Stages 3+) implements:
 | **Revised Classification** | **Implicitly Handled** by Agent Memory Server |
 | **How It's Handled** | Agent Memory Server automatically uses LLM-based summarization when thresholds are exceeded. Configuration via `MemoryStrategyConfig(strategy="summary")`. |
 | **Evidence** | Notebook Section 4, Notebook 3 (lines 669-683) shows `long_term_memory_strategy=summary_strategy` |
-| **Recommendation** | Document automatic summarization behavior in Stage 5-7 READMEs |
+| **Recommendation** | Document automatic summarization behavior in Stage 5-6 READMEs |
 
 ---
 
@@ -133,7 +133,7 @@ The `HierarchicalContextAssembler` (used in Stages 3+) implements:
 | **Why Important** | Critical for scaling beyond 5-7 tools; reduces token costs by 35%+ |
 | **Why Not Implicitly Handled** | While `SemanticToolSelector` exists in `redis_context_course`, progressive agents don't use it. They use static tool binding via `bind_tools()`. |
 | **Classification** | **Actual Gap** - Production-critical technique not demonstrated |
-| **Recommendation** | Add as Stage 8 or enhance Stage 7 to demonstrate semantic routing |
+| **Recommendation** | Add as Stage 7 or enhance Stage 6 to demonstrate semantic routing |
 
 #### ~~Gap 6: Pre-filtered/Rule-based Tool Selection~~ → **IMPLICITLY HANDLED**
 | Attribute | Details |
@@ -231,7 +231,7 @@ The following notebook concepts are **intentionally not demonstrated** in progre
 | **Four Context Types** | Section 1, Notebook 1 | All stages use system, user, conversation, and retrieved context |
 | **Context Cleaning** | Section 2, Notebook 2 | Stage 2+ removes noise fields from course data |
 | **Context Transformation** | Section 2, Notebook 2 | Stage 2+ converts JSON to natural text |
-| **Working Memory Lifecycle** | Section 3, Notebook 1 | Stage 5+ uses Agent Memory Server for this |
+| **Working Memory Lifecycle** | Section 3, Notebook 1 | Stages 5-6 use Agent Memory Server for this |
 | **LangGraph State Management** | Section 4, Notebook 1 | Stage 3+ uses LangGraph for workflow |
 | **Progressive Disclosure** | Section 2, Notebook 2 | Stage 3+ uses HierarchicalContextAssembler |
 | **Hybrid Context Assembly** | Section 2, Notebook 2 | Stage 3+ combines summaries + details |
@@ -258,7 +258,7 @@ The following notebook concepts are **intentionally not demonstrated** in progre
 
 ### Priority 2: Add New Agent Stage (Medium Effort, High Value)
 
-1. **New Stage 8: Semantic Tool Selection**
+1. **New Stage 7: Semantic Tool Selection**
    - Demonstrate RedisVL SemanticRouter
    - Show scaling from 5 to 10+ tools
    - Reference Section 4, Notebook 4

@@ -19,12 +19,9 @@ Students will learn:
 graph LR
     S1[Stage 1<br/>Baseline RAG] --> S2[Stage 2<br/>Context Engineering]
     S2 --> S3[Stage 3<br/>Full Agent]
-    S3 --> S4[Stage 4<br/>Hybrid Search + NER]
-    S4 --> S4R[Stage 4 ReAct<br/>+Visible Reasoning]
-    S4 --> S5M[Stage 5<br/>Working Memory]
-    S5M --> S5R[Stage 5 ReAct<br/>+Visible Reasoning]
-    S5M --> S6[Stage 6<br/>Long-term Memory]
-    S6 --> S7[Stage 7 ReAct<br/>Full Memory + ReAct]
+    S3 --> S4[Stage 4<br/>Hybrid Search + ReAct]
+    S4 --> S5[Stage 5<br/>Working Memory + ReAct]
+    S5 --> S6[Stage 6<br/>Full Agent + ReAct]
 ```
 
 | Stage | Directory | Key Feature | Reasoning |
@@ -32,12 +29,9 @@ graph LR
 | 1 | `stage1_baseline_rag/` | Basic RAG | Hidden |
 | 2 | `stage2_context_engineered/` | Progressive disclosure | Hidden |
 | 3 | `stage3_full_agent_without_memory/` | LangGraph + quality eval | Hidden |
-| 4 | `stage4_hybrid_search_with_ner/` | Exact match + semantic search | Hidden |
-| 4R | `stage4_react_hybrid_search/` | Hybrid search | **Visible (ReAct)** |
-| 5M | `stage5_memory_augmented/` | Working memory | Hidden |
-| 5R | `stage5_react_memory/` | Working memory | **Visible (ReAct)** |
-| 6 | `stage6_longterm_memory/` | Long-term memory tools | Hidden |
-| 7 | `stage7_react_loop/` | Full memory + ReAct | **Visible (ReAct)** |
+| 4 | `stage4_hybrid_search/` | Hybrid search + NER | **Visible (ReAct)** |
+| 5 | `stage5_memory/` | Working memory | **Visible (ReAct)** |
+| 6 | `stage6_full_agent/` | Full memory + ReAct | **Visible (ReAct)** |
 
 ## 🔬 Stage Details
 
@@ -84,49 +78,40 @@ graph TD
 
 **What's New**: Intent routing, query decomposition, iterative quality improvement
 
-### Stage 4: Hybrid Search with NER
-**Enhancement**: Named Entity Recognition for precise course code matching
+### Stage 4: Hybrid Search with ReAct
+**Enhancement**: Named Entity Recognition for precise course code matching + visible reasoning
 
 ```mermaid
 graph TD
-    Q[Query] --> IC[Classify Intent]
-    IC --> EE[Extract Entities]
-    EE -->|Course codes| EM[Exact Match]
-    EE -->|Topics| SS[Semantic Search]
-    EM --> M[Merge Results]
-    SS --> M
-    M --> PD[Progressive Disclosure]
-    PD --> S[Synthesize]
+    Q[Query] --> RA[ReAct Agent]
+
+    subgraph ReAct Loop
+        RA --> T1[💭 Thought: Analyze query]
+        T1 --> A1[🔧 Action: search_courses]
+        A1 --> O1[👁️ Observation: Results]
+        O1 --> T2[💭 Thought: Evaluate]
+        T2 --> |Need more| A1
+        T2 --> |Done| F[✅ FINISH]
+    end
+
+    F --> R[Response + Reasoning Trace]
 ```
 
 **What's New**:
 - FilterQuery for exact course code matching
 - Hierarchical context assembly
 - Progressive disclosure based on intent
+- Visible reasoning trace with `--show-reasoning` CLI flag
 
-### Stage 4 ReAct: Hybrid Search with Visible Reasoning
-**Enhancement**: Same as Stage 4, but with explicit ReAct loop
-
-```
-┌────────────┐     ┌──────────────┐     ┌──────────────┐
-│   Query    │ ──▶ │ ReAct Agent  │ ──▶ │   Response   │
-└────────────┘     │  Thought→    │     └──────────────┘
-                   │  Action→     │
-                   │  Observation │
-                   └──────────────┘
-```
-
-**What's New**: Visible reasoning trace, `--show-reasoning` CLI flag
-
-### Stage 5: Working Memory (Tool-Calling)
-**Enhancement**: Add working memory for multi-turn conversations
+### Stage 5: Working Memory with ReAct
+**Enhancement**: Add working memory for multi-turn conversations with visible reasoning
 
 ```mermaid
 graph TD
     Q[Query] --> LM[Load Memory]
     LM --> IC[Classify Intent]
-    IC --> A[Agent + Tools]
-    A --> SM[Save Memory]
+    IC --> RA[ReAct Agent]
+    RA --> SM[Save Memory]
     SM --> END
 ```
 
@@ -134,33 +119,9 @@ graph TD
 - Agent Memory Server integration
 - Session-based conversation history
 - Pronoun resolution ("Tell me more about it")
+- ReAct loop with working memory context
 
-### Stage 5 ReAct: Working Memory with Visible Reasoning
-**Enhancement**: Stage 5 with ReAct pattern
-
-**What's New**: ReAct loop + working memory, reasoning trace visible
-
-### Stage 6: Long-term Memory (Tool-Calling)
-**Enhancement**: Add long-term memory tools for personalization
-
-```mermaid
-graph TD
-    Q[Query] --> LM[Load Working Memory]
-    LM --> IC[Classify Intent]
-    IC --> A[Agent]
-    A -->|search_courses| SC[Course Search]
-    A -->|remember_user_info| RM[Remember Info]
-    A -->|recall_user_info| RC[Recall Info]
-    A --> SM[Save Working Memory]
-    SM --> END
-```
-
-**What's New**:
-- `remember_user_info` tool for storing preferences
-- `recall_user_info` tool for retrieving preferences
-- Personalized recommendations
-
-### Stage 7: Full Memory with ReAct
+### Stage 6: Full Agent with ReAct
 **Final Stage**: Complete implementation with all features
 
 ```
@@ -184,7 +145,11 @@ User Query
 Final Response + Reasoning Trace
 ```
 
-**Features**: All previous + visible reasoning, `--show-reasoning` flag
+**What's New**:
+- `remember_user_info` tool for storing preferences
+- `recall_user_info` tool for retrieving preferences
+- Personalized recommendations
+- All previous features + visible reasoning
 
 ## 🚀 Quick Start
 
@@ -207,21 +172,17 @@ export AGENT_MEMORY_URL="http://localhost:8088"  # For stages 5+
 cd progressive_agents/stage3_full_agent_without_memory
 python cli.py "What courses teach machine learning?"
 
-# Stage 4: Hybrid search
-cd progressive_agents/stage4_hybrid_search_with_ner
-python cli.py "What are the prerequisites for CS002?"
+# Stage 4: Hybrid search with ReAct
+cd progressive_agents/stage4_hybrid_search
+python cli.py --show-reasoning "What are the prerequisites for CS002?"
 
-# Stage 4 ReAct: With visible reasoning
-cd progressive_agents/stage4_react_hybrid_search
-python cli.py --show-reasoning "What's the syllabus for CS006?"
-
-# Stage 5: Working memory (start Agent Memory Server first)
-cd progressive_agents/stage5_react_memory
+# Stage 5: Working memory with ReAct (start Agent Memory Server first)
+cd progressive_agents/stage5_memory
 python cli.py --student-id alice --session-id s1 "What is CS004?"
 python cli.py --student-id alice --session-id s1 "Tell me more about it"
 
-# Stage 7 ReAct: Full features
-cd progressive_agents/stage7_react_loop
+# Stage 6: Full agent with ReAct
+cd progressive_agents/stage6_full_agent
 python cli.py --student-id alice --show-reasoning "What CS courses are good for beginners?"
 ```
 
@@ -231,9 +192,9 @@ python cli.py --student-id alice --show-reasoning "What CS courses are good for 
 |-------|-------------------|
 | 1-2 | **Section 2**: RAG fundamentals, context crafting |
 | 3 | **Section 4**: LangGraph, tool calling, agent architecture |
-| 4 | **Section 2**: Progressive disclosure, hierarchical context |
-| 5 | **Section 3**: Working memory, conversation history |
-| 6-7 | **Section 3**: Long-term memory, memory extraction |
+| 4 | **Section 2**: Progressive disclosure, hierarchical context + **Section 4**: ReAct pattern |
+| 5 | **Section 3**: Working memory, conversation history + ReAct |
+| 6 | **Section 3**: Long-term memory, memory extraction + Full ReAct |
 
 ### Notebook References
 
@@ -246,8 +207,8 @@ python cli.py --student-id alice --show-reasoning "What CS courses are good for 
   - `02_crafting_and_optimizing_context.ipynb` → Stages 2-4
 
 - **Section 3**: Memory Systems
-  - `01_working_and_longterm_memory.ipynb` → Stages 5-7
-  - `02_combining_memory_with_retrieved_context.ipynb` → Stages 5-7
+  - `01_working_and_longterm_memory.ipynb` → Stages 5-6
+  - `02_combining_memory_with_retrieved_context.ipynb` → Stages 5-6
 
 - **Section 4**: Tools and Agents
   - `01_tools_and_langgraph_fundamentals.ipynb` → All stages
@@ -255,17 +216,17 @@ python cli.py --student-id alice --show-reasoning "What CS courses are good for 
 
 ## 📊 Feature Comparison
 
-| Feature | S1 | S2 | S3 | S4 | S4R | S5 | S5R | S6 | S7 |
-|---------|----|----|----|----|-----|----|----|----|----|
-| **Context Engineering** | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Intent Classification** | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Hybrid Search (NER)** | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| **Working Memory** | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ |
-| **Long-term Memory** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ |
-| **ReAct (Visible Reasoning)** | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ |
-| **Progressive Disclosure** | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Feature | S1 | S2 | S3 | S4 | S5 | S6 |
+|---------|----|----|----|----|----|----|
+| **Context Engineering** | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Intent Classification** | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ |
+| **Hybrid Search (NER)** | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ |
+| **Working Memory** | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ |
+| **Long-term Memory** | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ |
+| **ReAct (Visible Reasoning)** | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ |
+| **Progressive Disclosure** | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-*S1=Stage 1, S2=Stage 2, etc. S4R=Stage 4 ReAct, S5R=Stage 5 ReAct*
+*S1=Stage 1, S2=Stage 2, etc.*
 
 ## 🔧 Technical Details
 
@@ -276,13 +237,13 @@ python cli.py --student-id alice --show-reasoning "What CS courses are good for 
 | `CourseManager` | Redis vector search for courses | All stages |
 | `HierarchicalContextAssembler` | Progressive disclosure | Stages 4+ |
 | `FilterQuery` | Exact course code matching | Stages 4+ |
-| `Agent Memory Server` | Working/long-term memory | Stages 5+ |
-| `ReActAgent` | Visible reasoning loop | ReAct stages |
+| `Agent Memory Server` | Working/long-term memory | Stages 5-6 |
+| `ReActAgent` | Visible reasoning loop | Stages 4-6 |
 
 ### Architecture Patterns
 
-1. **Tool-Calling Pattern** (Stages 3-6): LLM decides when to call tools via `bind_tools()`
-2. **ReAct Pattern** (Stages 4R, 5R, 7): Explicit Thought → Action → Observation loop
+1. **Tool-Calling Pattern** (Stage 3): LLM decides when to call tools via `bind_tools()`
+2. **ReAct Pattern** (Stages 4-6): Explicit Thought → Action → Observation loop
 
 ## 🎓 Learning Outcomes
 
