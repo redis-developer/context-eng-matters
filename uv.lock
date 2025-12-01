@@ -611,7 +611,7 @@ wheels = [
 ]
 
 [[package]]
-name = "context-engineering-course"
+name = "context-eng-matters"
 version = "1.0.0"
 source = { editable = "." }
 dependencies = [
