@@ -748,6 +748,73 @@ Or test interactively:
 python cli.py
 ```
 
+## 🔍 Code References & Automatic Behaviors
+
+This section provides exact code references for key concepts and documents automatic behaviors from underlying infrastructure.
+
+### Hybrid Search Implementation
+
+Stage 4 introduces **hybrid search** - combining exact matching with semantic search for better precision.
+
+**Code References:**
+
+| Concept | File | Lines | Description |
+|---------|------|-------|-------------|
+| Hybrid Search Function | `progressive_agents/stage4_hybrid_search_with_ner/agent/tools.py` | 200-323 | `search_courses_sync()` with 3 search strategies |
+| Exact Match Strategy | `progressive_agents/stage4_hybrid_search_with_ner/agent/tools.py` | 255-279 | Course code lookup with high similarity threshold (0.9) |
+| Hybrid Strategy | `progressive_agents/stage4_hybrid_search_with_ner/agent/tools.py` | 281-323 | Combines exact + semantic + filters |
+| Search Tool Schema | `progressive_agents/stage4_hybrid_search_with_ner/agent/tools.py` | 514-528 | `SearchCoursesInput` with strategy options |
+| Tool Definition | `progressive_agents/stage4_hybrid_search_with_ner/agent/tools.py` | 543-572 | `search_courses_tool()` with LLM-controlled parameters |
+
+**Search Strategy Selection:**
+
+```python
+# From progressive_agents/stage4_hybrid_search_with_ner/agent/tools.py (lines 249-279)
+# Strategy 1: Exact match for course codes
+if search_strategy == "exact_match" and extracted_entities.get("course_codes"):
+    for course_code in extracted_entities["course_codes"]:
+        results = await course_manager.search_courses(
+            query=course_code,
+            similarity_threshold=0.9,  # High threshold for exact match
+        )
+
+# Strategy 2: Hybrid (exact + semantic + filters)
+if search_strategy == "hybrid":
+    # First exact matches, then semantic search for remaining slots
+
+# Strategy 3: Semantic-only (fallback)
+if search_strategy == "semantic_only":
+    # Traditional vector search
+```
+
+### Automatic Behaviors (Handled by Infrastructure)
+
+The following behaviors are **automatically handled** by the underlying infrastructure:
+
+| Behavior | Handled By | How It Works |
+|----------|------------|--------------|
+| **Progressive Disclosure** | `HierarchicalContextAssembler` | Inherited from Stage 3 - summaries for all, details for top N |
+| **"Lost in the Middle" Mitigation** | Context structure | Header → Summaries → Details structure (from Stage 3) |
+| **Fallback Strategy** | `search_courses_sync()` | Automatically falls back to semantic search if exact match fails |
+
+### Pre-Filtered Tool Selection (Available in Package)
+
+The `redis_context_course` package includes pre-filtered tool selection utilities that are available but not used in this stage:
+
+```python
+# From src/redis_context_course/optimization_helpers.py (lines 234-266)
+def filter_tools_by_intent(
+    tools: List[Any],
+    intent: str,
+    intent_tool_mapping: Dict[str, List[str]]
+) -> List[Any]:
+    """Filter tools based on detected intent (keyword-based)."""
+```
+
+This is marked as "EXPERIMENTAL" and available for external use when scaling to more tools.
+
+---
+
 ## 🔗 Related Resources
 
 ### Learning Path Navigation

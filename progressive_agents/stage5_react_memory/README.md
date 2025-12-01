@@ -255,6 +255,38 @@ Stage 5 focuses on:
 - No checkpointing (not needed for this demo)
 - Educational clarity over production features
 
+## 🔍 Code References & Automatic Behaviors
+
+This section provides exact code references for the combined ReAct + Memory implementation.
+
+### Code References
+
+**ReAct Pattern (from Stage 4 ReAct):**
+
+| Concept | File | Lines | Description |
+|---------|------|-------|-------------|
+| ReAct Agent | `progressive_agents/stage5_react_memory/agent/react_agent.py` | All | ReAct loop with memory context |
+| ReAct Prompts | `progressive_agents/stage5_react_memory/agent/react_prompts.py` | All | System prompt with memory awareness |
+
+**Working Memory (from Stage 5):**
+
+| Concept | File | Lines | Description |
+|---------|------|-------|-------------|
+| Load Memory Node | `progressive_agents/stage5_react_memory/agent/nodes.py` | `load_working_memory_node()` | Retrieves conversation history |
+| Save Memory Node | `progressive_agents/stage5_react_memory/agent/nodes.py` | `save_working_memory_node()` | Persists conversation |
+
+### Automatic Behaviors (Agent Memory Server)
+
+| Behavior | How It Works | Configuration |
+|----------|--------------|---------------|
+| **Automatic Compression** | Truncation, sliding window, summarization | `WINDOW_SIZE`, `MemoryStrategyConfig` |
+| **Automatic Extraction** | Extracts facts from working to long-term memory | Runs on `put_working_memory()` |
+| **Memory Deduplication** | Prevents duplicate memories | Built into Agent Memory Server |
+
+See **[Section 3, Notebook 3](../../notebooks/section-3-memory-systems/03_manage_long_conversations_with_compression_strategies.ipynb)** for detailed configuration.
+
+---
+
 ## 🔗 Related Resources
 
 ### Learning Path Navigation
@@ -265,7 +297,7 @@ Stage 5 focuses on:
 
 ### Notebooks to Study
 - **[Section 3: Working and Long-term Memory](../../notebooks/section-3-memory-systems/01_working_and_longterm_memory.ipynb)**: Memory fundamentals
-- **[Section 3: Managing Long Conversations](../../notebooks/section-3-memory-systems/03_manage_long_conversations_with_compression_strategies.ipynb)**: Compression strategies
+- **[Section 3: Managing Long Conversations](../../notebooks/section-3-memory-systems/03_manage_long_conversations_with_compression_strategies.ipynb)**: Compression strategies (automatic behaviors)
 - **[Section 4: Tools and LangGraph Fundamentals](../../notebooks/section-4-tools-and-agents/01_tools_and_langgraph_fundamentals.ipynb)**: ReAct pattern
 
 ### Technical Resources
