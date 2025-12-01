@@ -611,7 +611,7 @@ wheels = [
 ]
 
 [[package]]
-name = "context-engineering-reinvent"
+name = "context-engineering-course"
 version = "1.0.0"
 source = { editable = "." }
 dependencies = [
