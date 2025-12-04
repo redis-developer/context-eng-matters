@@ -191,6 +191,23 @@ python cli.py --student-id alice --show-reasoning "I prefer online courses"
 python cli.py --student-id alice --show-reasoning "What courses do you recommend?"
 ```
 
+### CLI Flags
+
+All stages support these common flags:
+
+| Flag | Description |
+|------|-------------|
+| `--quiet` / `-q` | Suppress intermediate logging, show only final response |
+| `--show-reasoning` | Show agent reasoning trace (stages 4-6) |
+| `--student-id <id>` | Student identifier for memory (stages 5-6) |
+| `--session-id <id>` | Session identifier for working memory (stages 5-6) |
+
+```bash
+# Quiet mode - only shows final response (useful for scripting)
+python cli.py --quiet "What is CS004?"
+python cli.py -q --student-id alice "What courses are available?"
+```
+
 ## 📖 Notebook Concepts Demonstrated
 
 | Stage | Notebook Concepts |
