@@ -59,14 +59,21 @@ pip install -e .
 ### 3. Set Environment Variables
 
 ```bash
-# Create .env file
+# Create .env file from example
 cp .env.example .env
 
-# Edit .env with your values:
-OPENAI_API_KEY=sk-your-key-here
-REDIS_URL=redis://localhost:6379
-AGENT_MEMORY_URL=http://localhost:8088
+# Edit .env and add your OpenAI API key
 ```
+
+**Environment Variables:**
+
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `OPENAI_API_KEY` | ✅ Yes | - | Your OpenAI API key for embeddings and LLM |
+| `REDIS_URL` | No | `redis://localhost:6379` | Redis connection URL |
+| `AGENT_MEMORY_SERVER_URL` | No | `http://localhost:8088` | Agent Memory Server URL |
+| `REDIS_INDEX_NAME` | No | `course_catalog` | Redis index name for course data |
+| `OPENAI_MODEL` | No | `gpt-4o` | OpenAI model to use |
 
 ### 4. Start Services
 
@@ -232,8 +239,9 @@ Open: `section-1-context-engineering-foundations/01_what_is_context_engineering.
 | Document | Description |
 |----------|-------------|
 | [SETUP.md](SETUP.md) | Detailed setup and troubleshooting |
+| [workshop/README.md](workshop/README.md) | 4-hour intensive workshop guide |
 | [progressive_agents/README.md](progressive_agents/README.md) | Agent stages documentation |
-| [notebooks/README.md](notebooks/README.md) | Notebook guides |
+| [notebooks/README.md](notebooks/README.md) | Full course notebook guides |
 
 ---
 
