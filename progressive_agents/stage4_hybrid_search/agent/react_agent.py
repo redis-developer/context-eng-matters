@@ -27,6 +27,15 @@ logger = logging.getLogger("course-qa-workflow")
 # Global LLM for ReAct
 _react_llm = None
 
+# Verbose flag for controlling logging output
+_verbose = True
+
+
+def set_verbose(verbose: bool):
+    """Set the verbose flag for controlling logging output."""
+    global _verbose
+    _verbose = verbose
+
 
 def get_react_llm() -> ChatOpenAI:
     """Get the configured ReAct LLM instance (NO tool binding for ReAct)."""
