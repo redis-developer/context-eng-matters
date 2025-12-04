@@ -1,10 +1,10 @@
-# Context Engineering Workshop (4-Hour Intensive)
+# Context Engineering Workshop
 
 ![Redis](https://redis.io/wp-content/uploads/2024/04/Logotype.svg?auto=webp&quality=85,75&width=120)
 
 ## 🎯 Workshop Overview
 
-This condensed workshop covers the essential concepts of context engineering for AI agents. In 4 hours, you'll learn how to build intelligent agents that remember, retrieve, and reason with context.
+This condensed workshop covers the essential concepts of context engineering for AI agents. You'll learn how to build intelligent agents that remember, retrieve, and reason with context.
 
 **What You'll Build:** A course advisor agent that can:
 - Search courses using semantic RAG
@@ -22,7 +22,7 @@ This workshop follows a deliberate learning progression:
 4. **Progressive Disclosure** — The key pattern: summaries for all, details for top matches
 5. **Build Up to Agents** — Each module adds capabilities until you have a full agent
 
-## ⏱️ Schedule (4 Hours)
+## ⏱️ Schedule
 
 | Module | Time | Notebook | Key Concepts |
 |--------|------|----------|--------------|
