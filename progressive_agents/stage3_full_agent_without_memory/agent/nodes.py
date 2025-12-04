@@ -28,6 +28,15 @@ _analysis_llm = None
 _research_llm = None
 _agent_llm = None  # NEW: LLM for agent node
 
+# Verbose flag for controlling logging output
+_verbose = True
+
+
+def set_verbose(verbose: bool):
+    """Set the verbose flag for controlling logging output."""
+    global _verbose
+    _verbose = verbose
+
 
 def initialize_nodes():
     """Initialize the nodes with required dependencies."""
