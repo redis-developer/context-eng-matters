@@ -32,11 +32,14 @@ from agent.setup import cleanup_courses
 class CourseQACLI:
     """Interactive CLI for Course Q&A Agent."""
 
-    def __init__(self, cleanup_on_exit: bool = False, debug: bool = False):
+    def __init__(
+        self, cleanup_on_exit: bool = False, debug: bool = False, verbose: bool = True
+    ):
         self.agent = None
         self.course_manager = None
         self.cleanup_on_exit = cleanup_on_exit
         self.debug = debug
+        self.verbose = verbose
 
         # Register cleanup handler if requested
         if cleanup_on_exit:
@@ -45,19 +48,22 @@ class CourseQACLI:
     def _cleanup(self):
         """Cleanup handler called on exit."""
         if self.course_manager and self.cleanup_on_exit:
-            print("\n🧹 Cleaning up courses from Redis...")
+            if self.verbose:
+                print("\n🧹 Cleaning up courses from Redis...")
             try:
                 asyncio.run(cleanup_courses(self.course_manager))
-                print("✅ Cleanup complete")
+                if self.verbose:
+                    print("✅ Cleanup complete")
             except Exception as e:
                 print(f"⚠️  Cleanup failed: {e}")
 
     async def initialize(self):
         """Initialize the agent and load course data."""
-        print("=" * 80)
-        print("Course Q&A Agent - Stage 3 (Full Agent without Memory)")
-        print("=" * 80)
-        print()
+        if self.verbose:
+            print("=" * 80)
+            print("Course Q&A Agent - Stage 3 (Full Agent without Memory)")
+            print("=" * 80)
+            print()
 
         # Check for required environment variables
         if not os.getenv("OPENAI_API_KEY"):
@@ -67,23 +73,28 @@ class CourseQACLI:
 
         try:
             # Initialize the agent (will auto-load courses if needed)
-            print("🔧 Initializing Course Q&A Agent...")
-            print("📦 Loading courses into Redis (if not already loaded)...")
+            if self.verbose:
+                print("🔧 Initializing Course Q&A Agent...")
+                print("📦 Loading courses into Redis (if not already loaded)...")
             self.course_manager, _ = await setup_agent(auto_load_courses=True)
-            print()
+            if self.verbose:
+                print()
 
-            # Create the workflow
-            print("🔧 Creating LangGraph workflow...")
-            self.agent = create_workflow(self.course_manager)
-            print("✅ Workflow created successfully")
-            print()
+            # Create the workflow with verbose setting
+            if self.verbose:
+                print("🔧 Creating LangGraph workflow...")
+            self.agent = create_workflow(self.course_manager, verbose=self.verbose)
+            if self.verbose:
+                print("✅ Workflow created successfully")
+                print()
 
             # Show cleanup status
-            if self.cleanup_on_exit:
-                print("🧹 Courses will be cleaned up on exit")
-            else:
-                print("💾 Courses will persist in Redis after exit")
-            print()
+            if self.verbose:
+                if self.cleanup_on_exit:
+                    print("🧹 Courses will be cleaned up on exit")
+                else:
+                    print("💾 Courses will persist in Redis after exit")
+                print()
 
         except Exception as e:
             print(f"\n❌ Initialization failed: {e}")
@@ -95,22 +106,25 @@ class CourseQACLI:
 
     def ask_question(self, query: str, show_details: bool = True):
         """Ask a question and get a response."""
-        print("=" * 80)
-        print(f"❓ Question: {query}")
-        print("=" * 80)
-        print()
+        if self.verbose:
+            print("=" * 80)
+            print(f"❓ Question: {query}")
+            print("=" * 80)
+            print()
 
         # Run the agent
         result = run_agent(self.agent, query, enable_caching=False)
 
-        # Print the response
-        print("📝 Answer:")
-        print("-" * 80)
+        # Always print the response
+        if self.verbose:
+            print("📝 Answer:")
+            print("-" * 80)
         print(result["final_response"])
-        print("-" * 80)
+        if self.verbose:
+            print("-" * 80)
         print()
 
-        if show_details:
+        if show_details and self.verbose:
             # Print metrics
             metrics = result["metrics"]
             print("📊 Performance:")
@@ -131,11 +145,12 @@ class CourseQACLI:
 
     async def interactive_mode(self):
         """Run in interactive mode."""
-        print("=" * 80)
-        print("Interactive Mode - Ask questions about courses")
-        print("Commands: 'quit' or 'exit' to stop, 'help' for help")
-        print("=" * 80)
-        print()
+        if self.verbose:
+            print("=" * 80)
+            print("Interactive Mode - Ask questions about courses")
+            print("Commands: 'quit' or 'exit' to stop, 'help' for help")
+            print("=" * 80)
+            print()
 
         while True:
             try:
@@ -147,7 +162,8 @@ class CourseQACLI:
 
                 # Handle commands
                 if query.lower() in ["quit", "exit", "q"]:
-                    print("\n👋 Goodbye!")
+                    if self.verbose:
+                        print("\n👋 Goodbye!")
                     break
 
                 if query.lower() == "help":
@@ -159,7 +175,8 @@ class CourseQACLI:
                 self.ask_question(query, show_details=True)
 
             except KeyboardInterrupt:
-                print("\n\n👋 Goodbye!")
+                if self.verbose:
+                    print("\n\n👋 Goodbye!")
                 break
             except Exception as e:
                 print(f"\n❌ Error: {e}")
@@ -171,10 +188,11 @@ class CourseQACLI:
 
     async def simulate_mode(self):
         """Run simulation with example queries."""
-        print("=" * 80)
-        print("Simulation Mode - Running example queries")
-        print("=" * 80)
-        print()
+        if self.verbose:
+            print("=" * 80)
+            print("Simulation Mode - Running example queries")
+            print("=" * 80)
+            print()
 
         example_queries = [
             "What machine learning courses are available for beginners?",
@@ -185,20 +203,22 @@ class CourseQACLI:
         ]
 
         for i, query in enumerate(example_queries, 1):
-            print(f"\n{'=' * 80}")
-            print(f"Example {i}/{len(example_queries)}")
-            print(f"{'=' * 80}\n")
+            if self.verbose:
+                print(f"\n{'=' * 80}")
+                print(f"Example {i}/{len(example_queries)}")
+                print(f"{'=' * 80}\n")
 
             self.ask_question(query, show_details=True)
 
             # Pause between queries
-            if i < len(example_queries):
+            if i < len(example_queries) and self.verbose:
                 print("Press Enter to continue to next example...")
                 input()
 
-        print("=" * 80)
-        print("✅ Simulation complete!")
-        print("=" * 80)
+        if self.verbose:
+            print("=" * 80)
+            print("✅ Simulation complete!")
+            print("=" * 80)
 
     def show_help(self):
         """Show help information."""
@@ -254,25 +274,40 @@ async def main():
         action="store_true",
         help="Show detailed error messages and tracebacks",
     )
+    parser.add_argument(
+        "--quiet",
+        "-q",
+        action="store_true",
+        help="Suppress intermediate logging, only show final response",
+    )
 
     args = parser.parse_args()
 
     # Determine cleanup behavior
     cleanup_on_exit = args.cleanup and not args.no_cleanup
 
+    # Determine verbose mode (opposite of quiet)
+    verbose = not args.quiet
+
     if args.simulate:
         # Simulation mode
-        cli = CourseQACLI(cleanup_on_exit=cleanup_on_exit, debug=args.debug)
+        cli = CourseQACLI(
+            cleanup_on_exit=cleanup_on_exit, debug=args.debug, verbose=verbose
+        )
         await cli.initialize()
         await cli.simulate_mode()
     elif args.query:
         # Single query mode
-        cli = CourseQACLI(cleanup_on_exit=cleanup_on_exit, debug=args.debug)
+        cli = CourseQACLI(
+            cleanup_on_exit=cleanup_on_exit, debug=args.debug, verbose=verbose
+        )
         await cli.initialize()
         cli.ask_question(args.query, show_details=True)
     else:
         # Interactive mode
-        cli = CourseQACLI(cleanup_on_exit=cleanup_on_exit, debug=args.debug)
+        cli = CourseQACLI(
+            cleanup_on_exit=cleanup_on_exit, debug=args.debug, verbose=verbose
+        )
         await cli.initialize()
         await cli.interactive_mode()
 
