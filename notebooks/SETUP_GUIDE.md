@@ -7,35 +7,32 @@ This guide helps you set up all required services for the Context Engineering co
 Before running any notebooks, you need:
 
 1. **Docker Desktop** - For Redis and Agent Memory Server
-2. **Python 3.8+** - For running notebooks
+2. **Python 3.11+** - For running notebooks
 3. **OpenAI API Key** - For LLM functionality
 
 ## ⚡ Quick Setup (Recommended)
 
-### Option 1: Automated Setup Script (Bash)
+From the repository root:
 
 ```bash
-# Navigate to notebooks directory
-cd python-recipes/context-engineering/notebooks_v2
+# 1. Copy environment file and add your OpenAI API key
+cp .env.example .env
+# Edit .env and add your OPENAI_API_KEY
 
-# Run the setup script
-./setup_memory_server.sh
-```
+# 2. Start services
+docker-compose up -d
 
-This script will:
-- ✅ Check Docker is running
-- ✅ Start Redis if needed
-- ✅ Start Agent Memory Server
-- ✅ Verify all connections work
+# 3. Install dependencies
+uv sync
 
-### Option 2: Python Setup Script
+# 4. Load course data
+uv run python -m redis_context_course.scripts.ingest_courses \
+  --catalog src/redis_context_course/data/courses.json \
+  --index-name hierarchical_courses \
+  --clear
 
-```bash
-# Navigate to notebooks directory
-cd python-recipes/context-engineering/notebooks_v2
-
-# Run Python setup
-python setup_memory_server.py
+# 5. Run notebooks
+uv run jupyter notebook notebooks/
 ```
 
 ## 🔧 Manual Setup
@@ -44,17 +41,14 @@ If you prefer to set up services manually:
 
 ### 1. Environment Variables
 
-Create a `.env` file in the `reference-agent/` directory:
+Create a `.env` file in the repository root:
 
 ```bash
-# Navigate to reference-agent directory
-cd python-recipes/context-engineering/reference-agent
-
 # Create .env file
 cat > .env << EOF
 OPENAI_API_KEY=your_openai_api_key_here
 REDIS_URL=redis://localhost:6379
-AGENT_MEMORY_URL=http://localhost:8088
+AGENT_MEMORY_SERVER_URL=http://localhost:8088
 OPENAI_MODEL=gpt-4o
 EOF
 ```
@@ -77,34 +71,18 @@ docker run -d --name agent-memory-server \
 
 ## ✅ Verify Setup
 
-### Quick Check (Recommended)
-
-```bash
-# Navigate to notebooks_v2 directory
-cd python-recipes/context-engineering/notebooks_v2
-
-# Run setup checker
-./check_setup.sh
-```
-
-This will check all services and show you exactly what's working and what needs attention.
-
-### Manual Verification
-
-If you prefer to check manually:
-
 ```bash
 # Check Redis
-redis-cli ping
+docker exec redis redis-cli ping
 # Should return: PONG
 
 # Check Agent Memory Server
 curl http://localhost:8088/v1/health
-# Should return: {"status":"ok"}
+# Should return: {"now":<timestamp>}
 
 # Check Docker containers
 docker ps
-# Should show both redis-stack-server and agent-memory-server
+# Should show both redis and agent-memory-server
 ```
 
 ## 🚨 Troubleshooting

@@ -39,8 +39,8 @@ This hands-on course teaches practical context engineering patterns through buil
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/redis-developer/context-engineering-reinvent.git
-cd context-engineering-reinvent
+git clone https://github.com/redis-developer/context-eng-matters.git
+cd context-eng-matters
 ```
 
 ### 2. Create Virtual Environment
@@ -149,12 +149,20 @@ CS002 (Machine Learning Fundamentals) has no formal prerequisites listed.
 ## Project Structure
 
 ```
-context-engineering-reinvent/
+context-eng-matters/
 ├── src/redis_context_course/     # Core library
 │   ├── course_manager.py         # Redis vector search for courses
 │   ├── hierarchical_context.py   # Progressive disclosure
 │   ├── models.py                 # Pydantic data models
 │   └── scripts/                  # Data generation utilities
+│
+├── workshop/                     # Condensed workshop (6 notebooks)
+│   ├── 01_introduction_to_context_engineering.ipynb
+│   ├── 02_data_engineering.ipynb
+│   ├── 03_rag_essentials.ipynb
+│   ├── 04_memory_systems.ipynb
+│   ├── 05_building_agents.ipynb
+│   └── 06_capstone_comparison.ipynb
 │
 ├── progressive_agents/           # 6 agent implementations (learning path)
 │   ├── stage1_baseline_rag/
@@ -164,7 +172,7 @@ context-engineering-reinvent/
 │   ├── stage5_working_memory/           # Session-based memory + ReAct
 │   └── stage6_full_memory/              # Working + Long-term memory + ReAct
 │
-├── notebooks/                    # 11 Jupyter notebooks
+├── notebooks/                    # Full course (11 Jupyter notebooks)
 │   ├── section-1-context-engineering-foundations/
 │   ├── section-2-retrieved-context-engineering/
 │   ├── section-3-memory-systems/

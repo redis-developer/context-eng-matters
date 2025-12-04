@@ -28,14 +28,14 @@ This document provides detailed architecture diagrams and specifications for all
 | **v1** | 02_building_course_advisor_agent.ipynb | 3 | Base agent with dual-memory | ✅ Complete |
 | **v2** | 03_agent_with_memory_compression.ipynb | 3 | + Memory compression | ✅ Complete |
 | **v3** | 04_semantic_tool_selection.ipynb | 5 | + Semantic routing | ✅ Complete |
-| **ClassAgent** | reference-agent/agent.py | 2 | Production reference | ✅ Complete |
-| **AugmentedClassAgent** | reference-agent/augmented_agent.py | 4 | Extension pattern | ✅ Complete |
+| **ClassAgent** | src/redis_context_course/agent.py | 2 | Production reference | ✅ Complete |
+| **AugmentedClassAgent** | src/redis_context_course/augmented_agent.py | 4 | Extension pattern | ✅ Complete |
 
 ---
 
 ## Course Advisor Agent v1
 
-**Location**: `notebooks/section-4-integrating-tools-and-agents/02_building_course_advisor_agent.ipynb`
+**Location**: `notebooks/section-4-tools-and-agents/02_building_course_advisor_agent.ipynb`
 
 **Purpose**: First complete production agent demonstrating LangGraph orchestration, dual-memory architecture, and tool calling.
 
@@ -136,7 +136,7 @@ Tool Call? → Yes → Execute Tool → Back to Agent
 
 ## Course Advisor Agent v2
 
-**Location**: `notebooks/section-4-integrating-tools-and-agents/03_agent_with_memory_compression.ipynb`
+**Location**: `notebooks/section-4-tools-and-agents/03_agent_with_memory_compression.ipynb`
 
 **Purpose**: Enhanced version of v1 that adds working memory compression for long conversations.
 
@@ -257,7 +257,7 @@ See rendered Mermaid diagram: **Course Advisor Agent v2 - Architecture with Memo
 
 ## Course Advisor Agent v3
 
-**Location**: `notebooks/section-4-integrating-tools-and-agents/04_semantic_tool_selection.ipynb`
+**Location**: `notebooks/section-4-tools-and-agents/04_semantic_tool_selection.ipynb`
 
 **Purpose**: Scales agent from 3 to 5 tools using semantic tool selection to reduce token costs.
 

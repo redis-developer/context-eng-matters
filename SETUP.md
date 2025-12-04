@@ -1,10 +1,10 @@
 # Setup Guide for Context Engineering Course
 
-This guide will help you set up everything you need to run the Context Engineering notebooks and reference agent.
+This guide will help you set up everything you need to run the Context Engineering notebooks and progressive agents.
 
 ## Prerequisites
 
-- **Python 3.10+** installed
+- **Python 3.11+** installed
 - **Docker and Docker Compose** installed
 - **OpenAI API key** (get one at https://platform.openai.com/api-keys)
 
@@ -15,21 +15,21 @@ This guide will help you set up everything you need to run the Context Engineeri
 The OpenAI API key is needed by both the Jupyter notebooks AND the Agent Memory Server. The easiest way to set it up is to use a `.env` file.
 
 ```bash
-# Navigate to the context-engineering directory
-cd python-recipes/context-engineering
-
-# Copy the example environment file
+# From the repository root
 cp .env.example .env
 
 # Edit .env and add your OpenAI API key
-# Replace 'your-openai-api-key-here' with your actual key
 ```
 
 Your `.env` file should look like this:
 ```bash
-OPENAI_API_KEY=sk-proj-xxxxxxxxxxxxxxxxxxxxx
+# Required
+OPENAI_API_KEY=sk-your-key-here
+
+# Optional (defaults provided)
 REDIS_URL=redis://localhost:6379
-AGENT_MEMORY_URL=http://localhost:8088
+AGENT_MEMORY_SERVER_URL=http://localhost:8088
+REDIS_INDEX_NAME=course_catalog
 ```
 
 **Important:** The `.env` file is already in `.gitignore` so your API key won't be committed to git.
@@ -56,26 +56,33 @@ You should see:
 ### Step 3: Install Python Dependencies
 
 ```bash
-# Create a virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# Using UV (recommended)
+uv sync
 
-# Install notebook dependencies (Jupyter, python-dotenv, etc.)
-pip install -r requirements.txt
-
-# Install the reference agent package
-cd reference-agent
+# Or using pip with virtual environment
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install -e .
-cd ..
 ```
 
-### Step 4: Run the Notebooks
+### Step 4: Load Course Data
 
 ```bash
-# Start Jupyter from the context-engineering directory
-jupyter notebook notebooks/
+# Ingest courses into Redis (required for progressive agents)
+uv run python -m redis_context_course.scripts.ingest_courses \
+  --catalog src/redis_context_course/data/courses.json \
+  --index-name hierarchical_courses \
+  --clear
+```
 
-# Open any notebook and run the cells
+### Step 5: Run the Notebooks
+
+```bash
+# Start Jupyter
+uv run jupyter notebook notebooks/
+
+# Or for the workshop
+uv run jupyter notebook workshop/
 ```
 
 The notebooks will automatically load your `.env` file using `python-dotenv`, so your `OPENAI_API_KEY` will be available.
@@ -85,7 +92,7 @@ The notebooks will automatically load your `.env` file using `python-dotenv`, so
 ### Check Redis
 ```bash
 # Test Redis connection
-docker exec redis-context-engineering redis-cli ping
+docker exec redis redis-cli ping
 # Should return: PONG
 ```
 
@@ -94,19 +101,15 @@ docker exec redis-context-engineering redis-cli ping
 # Test health endpoint
 curl http://localhost:8088/v1/health
 # Should return: {"now":<timestamp>}
-
-# Test that it can connect to Redis and has your API key
-curl http://localhost:8088/api/v1/namespaces
-# Should return a list of namespaces (may be empty initially)
 ```
 
 ### Check Python Environment
 ```bash
-# Verify the reference agent package is installed
-python -c "import redis_context_course; print('✅ Package installed')"
+# Verify the package is installed
+uv run python -c "import redis_context_course; print('✅ Package installed')"
 
 # Verify OpenAI key is set
-python -c "import os; print('✅ OpenAI key set' if os.getenv('OPENAI_API_KEY') else '❌ OpenAI key not set')"
+uv run python -c "import os; from dotenv import load_dotenv; load_dotenv(); print('✅ OpenAI key set' if os.getenv('OPENAI_API_KEY') else '❌ OpenAI key not set')"
 ```
 
 ## Troubleshooting
@@ -146,7 +149,7 @@ docker-compose ps redis
 
 Test the connection:
 ```bash
-docker exec redis-context-engineering redis-cli ping
+docker exec redis redis-cli ping
 ```
 
 ### Port Already in Use
@@ -200,6 +203,6 @@ Once setup is complete:
 ## Getting Help
 
 - Check the main [README.md](README.md) for course structure and learning path
-- Review [COURSE_SUMMARY.md](COURSE_SUMMARY.md) for an overview of all topics
+- Review [workshop/README.md](workshop/README.md) for the condensed workshop
 - Open an issue if you encounter problems with the setup
 

@@ -83,27 +83,20 @@ REDIS_INDEX_NAME=course_catalog
 ### 3. Start Services
 
 ```bash
-# Start Redis
-docker run -d --name redis-workshop -p 6379:6379 redis/redis-stack:latest
-
-# Start Agent Memory Server (for Modules 3-5)
-docker run -d --name agent-memory-server \
-  -p 8088:8000 \
-  -e REDIS_URL=redis://host.docker.internal:6379 \
-  -e OPENAI_API_KEY=$OPENAI_API_KEY \
-  ghcr.io/redis/agent-memory-server:0.12.3
+# From the repository root, start all services
+docker-compose up -d
 ```
 
 ### 4. Verify Setup
 
 ```bash
 # Check Redis
-redis-cli ping
+docker exec redis redis-cli ping
 # Expected: PONG
 
 # Check Agent Memory Server
 curl http://localhost:8088/v1/health
-# Expected: {"status":"ok"}
+# Expected: {"now":<timestamp>}
 ```
 
 ## 📚 Notebooks Overview

@@ -4,19 +4,18 @@
 
 > 📚 **Main Course Documentation**: See **[../README.md](../README.md)** for complete course overview, setup instructions, and syllabus.
 >
-> 📖 **Course Syllabus**: See **[../COURSE_SUMMARY.md](../COURSE_SUMMARY.md)** for detailed learning outcomes and course structure.
+> 🎯 **Workshop**: For a condensed version, see **[../workshop/README.md](../workshop/README.md)**.
 
 ---
 
 ## 📖 About These Notebooks
 
-This directory contains the hands-on Jupyter notebooks for the Context Engineering course. The notebooks are organized into 5 sections that progressively build your skills from fundamentals to production deployment.
+This directory contains the hands-on Jupyter notebooks for the Context Engineering course. The notebooks are organized into 4 sections that progressively build your skills from fundamentals to production deployment.
 
 ### Quick Links
 - **[Course Overview & Setup](../README.md)** - Start here for setup and course introduction
-- **[Course Syllabus](../COURSE_SUMMARY.md)** - Complete syllabus with learning outcomes
+- **[Workshop](../workshop/README.md)** - Condensed workshop version
 - **[Setup Guide](SETUP_GUIDE.md)** - Detailed setup instructions and troubleshooting
-- **[Reference Agent Usage](REFERENCE_AGENT_USAGE_ANALYSIS.md)** - Component usage analysis
 
 ---
 
@@ -25,14 +24,13 @@ This directory contains the hands-on Jupyter notebooks for the Context Engineeri
 **Already set up?** Jump right in:
 
 ```bash
-# Start Jupyter from the context-engineering directory
-cd python-recipes/context-engineering
-jupyter notebook notebooks_v2/
+# From the repository root
+uv run jupyter notebook notebooks/
 
 # Open: section-1-context-engineering-foundations/01_what_is_context_engineering.ipynb
 ```
 
-**Need to set up?** Follow the [5-minute quick start](../README.md#-quick-start-5-minutes) in the main README.
+**Need to set up?** Follow the [Quick Start](../README.md#-quick-start-5-minutes) in the main README.
 
 **Having issues?** Check the [Setup Guide](SETUP_GUIDE.md) for detailed instructions and troubleshooting.
 
@@ -43,15 +41,12 @@ jupyter notebook notebooks_v2/
 ### Learning Journey
 
 ```
-Section 1: Foundations → Section 2: RAG → Section 3: Memory → Section 4: Tools → Section 5: Production
-     ↓                        ↓                 ↓                  ↓                  ↓
-Basic Concepts        → RAG Agent      → Memory Agent    → Multi-Tool Agent → Production Agent
-(2-3 hrs)              (3-4 hrs)        (4-5 hrs)         (5-6 hrs)          (4-5 hrs)
+Section 1: Foundations → Section 2: RAG → Section 3: Memory → Section 4: Tools & Agents
+     ↓                        ↓                 ↓                  ↓
+Basic Concepts        → RAG Patterns   → Memory Systems  → Production Agents
 ```
 
-**🏆 End Result**: A complete, production-ready AI agent that can handle thousands of users with sophisticated memory, intelligent tool routing, and optimized performance.
-
-> 💡 **For detailed learning outcomes and syllabus**, see [../COURSE_SUMMARY.md](../COURSE_SUMMARY.md)
+**🏆 End Result**: A complete, production-ready AI agent with sophisticated memory, intelligent tool routing, and optimized performance.
 
 ## ✨ What Makes This Approach Unique
 
@@ -208,40 +203,23 @@ Basic Concepts        → RAG Agent      → Memory Agent    → Multi-Tool Agen
 - Quality assurance and testing strategies
 - Cost management and token optimization
 
-**Notebooks**:
-1. `01_measuring_optimizing_performance.ipynb` - Performance measurement and optimization
-2. `02_scaling_semantic_tool_selection.ipynb` - Advanced tool selection strategies
-3. `03_production_readiness_quality_assurance.ipynb` - Production deployment guide
-
-**Reference Agent Components Used**:
-- Optimization helpers (to be demonstrated)
-- Production patterns from reference agent
-
-**Status**: ⏳ Section 5 notebooks are in development
-
 ---
 
-## 📦 Reference Agent Package
+## 📦 Core Package
 
-The course uses the `redis-context-course` reference agent package, which provides production-ready components for building context-aware AI agents.
+The course uses the `redis_context_course` package, which provides production-ready components for building context-aware AI agents.
 
-### What's in the Reference Agent?
+### What's in the Package?
 
 **Core Components** (used in notebooks):
 - `CourseManager` - Course search, recommendations, and catalog management
-- `redis_config` - Redis configuration and connection management
+- `HierarchicalContextManager` - Progressive disclosure for context
 - Data models: `Course`, `StudentProfile`, `DifficultyLevel`, `CourseFormat`, `Semester`
 - Scripts: `CourseGenerator`, `CourseIngestionPipeline`
 
-**Advanced Components** (for production use):
-- `ClassAgent` - Complete LangGraph-based agent implementation
-- `AugmentedClassAgent` - Enhanced agent with additional features
-- Tool creators: `create_course_tools`, `create_memory_tools`
-- Optimization helpers: `count_tokens`, `estimate_token_budget`, `hybrid_retrieval`, etc.
+### How the Course Uses the Package
 
-### How the Course Uses the Reference Agent
-
-**Educational Approach**: The notebooks demonstrate **building agents from scratch** using reference agent components as building blocks, rather than using the pre-built `ClassAgent` directly.
+**Educational Approach**: The notebooks demonstrate **building agents from scratch** using package components as building blocks.
 
 **Why?** This approach helps you:
 - ✅ Understand how agents work internally
@@ -251,14 +229,9 @@ The course uses the `redis-context-course` reference agent package, which provid
 
 **Component Usage by Section**:
 - **Section 1**: None (conceptual foundation)
-- **Section 2**: CourseManager, redis_config, data generation scripts
-- **Section 3**: CourseManager, redis_config, data models
-- **Section 4**: CourseManager, data models
-- **Section 5**: Optimization helpers (in development)
-
-For a detailed analysis of reference agent usage, see [REFERENCE_AGENT_USAGE_ANALYSIS.md](REFERENCE_AGENT_USAGE_ANALYSIS.md).
-
-For reference agent documentation, see [../reference-agent/README.md](../reference-agent/README.md).
+- **Section 2**: CourseManager, HierarchicalContextManager, data generation scripts
+- **Section 3**: CourseManager, data models
+- **Section 4**: CourseManager, data models, LangGraph integration
 
 ---
 
@@ -355,10 +328,10 @@ Students will have:
 ## 📋 System Requirements
 
 ### Required
-- **Python 3.10+** (Python 3.8+ may work but 3.10+ recommended)
+- **Python 3.11+** (recommended)
 - **Docker Desktop** (for Redis and Agent Memory Server)
 - **OpenAI API Key** ([get one here](https://platform.openai.com/api-keys))
-- **8GB RAM minimum** (16GB recommended for Section 5)
+- **8GB RAM minimum** (16GB recommended)
 - **5GB disk space** for dependencies and data
 
 ### Optional
@@ -376,9 +349,9 @@ For complete setup instructions including troubleshooting, see [SETUP_GUIDE.md](
 
 1. **Set environment variables** (`.env` file with OpenAI API key)
 2. **Start services** (`docker-compose up -d`)
-3. **Install dependencies** (`pip install -r requirements.txt`)
-4. **Install reference agent** (`cd reference-agent && pip install -e .`)
-5. **Start Jupyter** (`jupyter notebook notebooks_v2/`)
+3. **Install dependencies** (`uv sync`)
+4. **Load course data** (`uv run python -m redis_context_course.scripts.ingest_courses ...`)
+5. **Start Jupyter** (`uv run jupyter notebook notebooks/`)
 
 ### Verification
 
@@ -386,13 +359,13 @@ After setup, verify everything works:
 
 ```bash
 # Check Redis
-docker exec redis-context-engineering redis-cli ping  # Should return: PONG
+docker exec redis redis-cli ping  # Should return: PONG
 
 # Check Agent Memory Server
 curl http://localhost:8088/v1/health  # Should return: {"now":<timestamp>}
 
 # Check Python packages
-python -c "import redis_context_course; print('✅ Reference agent installed')"
+uv run python -c "import redis_context_course; print('✅ Package installed')"
 ```
 
 ---
@@ -404,7 +377,6 @@ python -c "import redis_context_course; print('✅ Reference agent installed')"
 2. **Complete Section 2** - Get hands-on with RAG
 3. **Work through Section 3** - Master memory systems
 4. **Build in Section 4** - Create production agents
-5. **Optimize in Section 5** - Deploy to production
 
 ### For Experienced Developers
 - **Skip to Section 2** if familiar with context engineering basics
@@ -515,34 +487,28 @@ The patterns and techniques learned apply directly to:
 ## 📁 Project Structure
 
 ```
-enhanced-integration/
-├── README.md                           # This comprehensive guide
-├── PROGRESSIVE_PROJECT_PLAN.md         # Detailed project planning
-├── PROGRESSIVE_PROJECT_COMPLETE.md     # Project completion summary
-├── setup.py                            # One-command environment setup
-├── setup.sh                            # Alternative shell setup script
-├── .env.example                        # Environment configuration template
+notebooks/
+├── README.md                           # This guide
+├── SETUP_GUIDE.md                      # Detailed setup instructions
 │
 ├── section-1-context-engineering-foundations/  # Foundation concepts
 │   ├── 01_what_is_context_engineering.ipynb
-│   ├── 02_context_assembly_strategies.ipynb
-│   └── README.md
+│   └── 02_context_assembly_strategies.ipynb
 │
-├── section-2-retrieved-context-engineering/  # Complete RAG system
-│   ├── 01_building_your_rag_agent.ipynb
-│   └── README.md
+├── section-2-retrieved-context-engineering/    # RAG patterns
+│   ├── 01_rag_fundamentals_and_implementation.ipynb
+│   └── 02_crafting_and_optimizing_context.ipynb
 │
-├── section-4-tool-selection/           # Multi-tool intelligence
-│   ├── 01_building_multi_tool_intelligence.ipynb
-│   └── README.md
+├── section-3-memory-systems/                   # Memory architecture
+│   ├── 01_working_and_longterm_memory.ipynb
+│   ├── 02_combining_memory_with_retrieved_context.ipynb
+│   └── 03_manage_long_conversations_with_compression_strategies.ipynb
 │
-├── section-5-context-optimization/     # Production optimization
-│   ├── 01_optimizing_for_production.ipynb
-│   └── README.md
-│
-└── old/                               # Archived previous versions
-    ├── README.md                      # Archive explanation
-    └── [previous notebook versions]   # Reference materials
+└── section-4-tools-and-agents/                 # Production agents
+    ├── 01_tools_and_langgraph_fundamentals.ipynb
+    ├── 02_building_course_advisor_agent.ipynb
+    ├── 03_agent_with_memory_compression.ipynb
+    └── 04_semantic_tool_selection.ipynb
 ```
 
 ## 🎯 Why This Progressive Approach Works
@@ -576,7 +542,7 @@ enhanced-integration/
 By completing this progressive learning path, you will have:
 
 ### **Technical Achievements**
-- ✅ Built 5 increasingly sophisticated AI agents
+- ✅ Built production-ready AI agents with memory
 - ✅ Implemented production-ready architecture patterns
 - ✅ Mastered context engineering best practices
 - ✅ Created scalable, cost-effective AI systems
@@ -601,9 +567,9 @@ By completing this progressive learning path, you will have:
 
 ### Documentation
 - **[SETUP_GUIDE.md](SETUP_GUIDE.md)** - Detailed setup instructions and troubleshooting
-- **[REFERENCE_AGENT_USAGE_ANALYSIS.md](REFERENCE_AGENT_USAGE_ANALYSIS.md)** - Analysis of reference agent usage across notebooks
-- **[Reference Agent README](../reference-agent/README.md)** - Complete reference agent documentation
-- **[Main Course README](../README.md)** - Top-level context engineering documentation
+- **[Workshop](../workshop/README.md)** - Condensed workshop version
+- **[Progressive Agents](../progressive_agents/README.md)** - 6-stage agent learning path
+- **[Main Course README](../README.md)** - Top-level course documentation
 
 ### External Resources
 - **[Redis Documentation](https://redis.io/docs/)** - Redis official documentation
@@ -622,14 +588,14 @@ By completing this progressive learning path, you will have:
 ## 📝 Course Metadata
 
 **Version**: 2.0
-**Last Updated**: November 2025
+**Last Updated**: December 2024
 **Maintainer**: Redis AI Resources Team
 **License**: MIT
 
 **Technologies**:
-- Python 3.10+
+- Python 3.11+
 - Redis 8.0+
-- LangChain 0.2+
+- LangChain 0.3+
 - LangGraph 0.2+
 - Agent Memory Server 0.12.3+
 - OpenAI GPT-4

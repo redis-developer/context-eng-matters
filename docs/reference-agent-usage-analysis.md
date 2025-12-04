@@ -1,8 +1,8 @@
-# Reference-Agent Usage Analysis
+# Package Usage Analysis
 
 ## Executive Summary
 
-This analysis examines how the `reference-agent` package (`redis_context_course`) is utilized across the Context Engineering course notebooks. Out of 37 defined components in the reference-agent package, **only 9 (24.3%) are actively used** in the notebooks, indicating significant unused functionality.
+This analysis examines how the `redis_context_course` package is utilized across the Context Engineering course notebooks. Out of 37 defined components in the package, **only 9 (24.3%) are actively used** in the notebooks, indicating significant unused functionality.
 
 ## 1. Catalog of Reference-Agent Contents
 
