@@ -28,6 +28,7 @@ from .nodes import (
     load_working_memory_node,
     research_node,
     save_working_memory_node,
+    set_verbose,
     synthesize_response_node,
 )
 from .state import WorkflowState, initialize_state
@@ -37,16 +38,26 @@ from .tools import initialize_tools
 logger = logging.getLogger("course-qa-workflow")
 
 
-def create_workflow(course_manager):
+def create_workflow(course_manager, verbose: bool = True):
     """
     Create and compile the complete Memory-Augmented Course Q&A agent workflow.
 
     Args:
         course_manager: CourseManager instance for course search
+        verbose: If True, show detailed logging. If False, suppress intermediate logs.
 
     Returns:
         Compiled LangGraph workflow
     """
+    # Set verbose mode for nodes
+    set_verbose(verbose)
+
+    # Control logger level based on verbose flag
+    if not verbose:
+        logger.setLevel(logging.CRITICAL)
+    else:
+        logger.setLevel(logging.INFO)
+
     # Initialize all components
     initialize_nodes()
     initialize_edges()

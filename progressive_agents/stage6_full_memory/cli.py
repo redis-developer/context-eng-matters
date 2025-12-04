@@ -8,14 +8,26 @@ Usage:
     python cli.py --student-id alice --session-id sess_001     # Resume session
     python cli.py --student-id alice --simulate                # Simulate with example queries
     python cli.py --student-id alice --show-reasoning          # Show reasoning traces
+    python cli.py --student-id alice --quiet "your question"   # Suppress intermediate logging
 """
 
 import asyncio
 import atexit
+import logging
 import os
 import sys
 import uuid
 from pathlib import Path
+
+# Check for quiet mode early, before any logging or imports happen
+_quiet_mode = "--quiet" in sys.argv or "-q" in sys.argv
+
+# Configure logging level very early, before any imports that might configure logging
+if _quiet_mode:
+    logging.basicConfig(level=logging.CRITICAL)
+    # Also suppress httpx and other common loggers
+    logging.getLogger("httpx").setLevel(logging.CRITICAL)
+    logging.getLogger("redisvl.index.index").setLevel(logging.CRITICAL)
 
 # Load environment variables from .env file
 from dotenv import load_dotenv
@@ -30,6 +42,12 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 from agent import create_workflow, run_agent_async, setup_agent
 from agent.setup import cleanup_courses
 
+# If quiet mode, ensure all loggers are suppressed after imports
+if _quiet_mode:
+    logging.getLogger("course-qa-setup").setLevel(logging.CRITICAL)
+    logging.getLogger("course-qa-workflow").setLevel(logging.CRITICAL)
+    logging.getLogger("react-agent").setLevel(logging.CRITICAL)
+
 
 class ReActCLI:
     """Interactive CLI for ReAct Loop Course Q&A Agent (Stage 7)."""
@@ -41,6 +59,7 @@ class ReActCLI:
         cleanup_on_exit: bool = False,
         debug: bool = False,
         show_reasoning: bool = False,
+        verbose: bool = True,
     ):
         self.agent = None
         self.course_manager = None
@@ -50,6 +69,7 @@ class ReActCLI:
         self.cleanup_on_exit = cleanup_on_exit
         self.debug = debug
         self.show_reasoning = show_reasoning
+        self.verbose = verbose
 
         # Register cleanup handler if requested
         if cleanup_on_exit:
@@ -58,19 +78,22 @@ class ReActCLI:
     def _cleanup(self):
         """Cleanup handler called on exit."""
         if self.course_manager and self.cleanup_on_exit:
-            print("\n🧹 Cleaning up courses from Redis...")
+            if self.verbose:
+                print("\n🧹 Cleaning up courses from Redis...")
             try:
                 asyncio.run(cleanup_courses(self.course_manager))
-                print("✅ Cleanup complete")
+                if self.verbose:
+                    print("✅ Cleanup complete")
             except Exception as e:
                 print(f"⚠️  Cleanup failed: {e}")
 
     async def initialize(self):
         """Initialize the agent and load course data."""
-        print("=" * 80)
-        print("ReAct Loop Course Q&A Agent - Stage 7")
-        print("=" * 80)
-        print()
+        if self.verbose:
+            print("=" * 80)
+            print("ReAct Loop Course Q&A Agent - Stage 7")
+            print("=" * 80)
+            print()
 
         # Check for required environment variables
         if not os.getenv("OPENAI_API_KEY"):
@@ -80,34 +103,41 @@ class ReActCLI:
 
         # Check for Agent Memory Server
         memory_url = os.getenv("AGENT_MEMORY_URL", "http://localhost:8088")
-        print(f"🔗 Agent Memory Server: {memory_url}")
+        if self.verbose:
+            print(f"🔗 Agent Memory Server: {memory_url}")
 
         try:
             # Initialize the agent (will auto-load courses if needed)
-            print("🔧 Initializing Long-term Memory Course Q&A Agent (Stage 6)...")
-            print("📦 Loading courses into Redis (if not already loaded)...")
+            if self.verbose:
+                print("🔧 Initializing Long-term Memory Course Q&A Agent (Stage 6)...")
+                print("📦 Loading courses into Redis (if not already loaded)...")
             self.course_manager, self.memory_client = await setup_agent(
                 auto_load_courses=True
             )
-            print()
+            if self.verbose:
+                print()
 
-            # Create the workflow
-            print("🔧 Creating LangGraph workflow with memory nodes...")
-            self.agent = create_workflow(self.course_manager)
-            print("✅ Workflow created successfully")
-            print()
+            # Create the workflow with verbose setting
+            if self.verbose:
+                print("🔧 Creating LangGraph workflow with memory nodes...")
+            self.agent = create_workflow(self.course_manager, verbose=self.verbose)
+            if self.verbose:
+                print("✅ Workflow created successfully")
+                print()
 
             # Show session info
-            print(f"👤 Student ID: {self.student_id}")
-            print(f"🔗 Session ID: {self.session_id}")
-            print()
+            if self.verbose:
+                print(f"👤 Student ID: {self.student_id}")
+                print(f"🔗 Session ID: {self.session_id}")
+                print()
 
             # Show cleanup status
-            if self.cleanup_on_exit:
-                print("🧹 Courses will be cleaned up on exit")
-            else:
-                print("💾 Courses will persist in Redis after exit")
-            print()
+            if self.verbose:
+                if self.cleanup_on_exit:
+                    print("🧹 Courses will be cleaned up on exit")
+                else:
+                    print("💾 Courses will persist in Redis after exit")
+                print()
 
         except Exception as e:
             print(f"\n❌ Initialization failed: {e}")
@@ -119,10 +149,11 @@ class ReActCLI:
 
     async def ask_question(self, query: str, show_details: bool = True):
         """Ask a question and get a response."""
-        print("=" * 80)
-        print(f"❓ Question: {query}")
-        print("=" * 80)
-        print()
+        if self.verbose:
+            print("=" * 80)
+            print(f"❓ Question: {query}")
+            print("=" * 80)
+            print()
 
         # Run the agent with session and student IDs (async)
         result = await run_agent_async(
@@ -133,8 +164,8 @@ class ReActCLI:
             enable_caching=False,
         )
 
-        # Show reasoning trace if enabled
-        if self.show_reasoning and result.get("reasoning_trace"):
+        # Show reasoning trace if enabled and verbose
+        if self.show_reasoning and self.verbose and result.get("reasoning_trace"):
             print("🧠 Reasoning Trace:")
             print("=" * 80)
             for step in result["reasoning_trace"]:
@@ -150,14 +181,16 @@ class ReActCLI:
             print("=" * 80)
             print()
 
-        # Print the response
-        print("📝 Answer:")
-        print("-" * 80)
+        # Always print the response
+        if self.verbose:
+            print("📝 Answer:")
+            print("-" * 80)
         print(result["final_response"])
-        print("-" * 80)
+        if self.verbose:
+            print("-" * 80)
         print()
 
-        if show_details:
+        if show_details and self.verbose:
             # Print metrics
             metrics = result["metrics"]
             print("📊 Performance:")
@@ -181,11 +214,12 @@ class ReActCLI:
 
     async def interactive_mode(self):
         """Run in interactive mode with multi-turn conversations."""
-        print("=" * 80)
-        print("Interactive Mode - Multi-turn Conversations")
-        print("Commands: 'quit' or 'exit' to stop, 'help' for help")
-        print("=" * 80)
-        print()
+        if self.verbose:
+            print("=" * 80)
+            print("Interactive Mode - Multi-turn Conversations")
+            print("Commands: 'quit' or 'exit' to stop, 'help' for help")
+            print("=" * 80)
+            print()
 
         while True:
             try:
@@ -197,7 +231,8 @@ class ReActCLI:
 
                 # Handle commands
                 if query.lower() in ["quit", "exit", "q"]:
-                    print("\n👋 Goodbye!")
+                    if self.verbose:
+                        print("\n👋 Goodbye!")
                     break
 
                 if query.lower() == "help":
@@ -209,7 +244,8 @@ class ReActCLI:
                 await self.ask_question(query, show_details=True)
 
             except KeyboardInterrupt:
-                print("\n\n👋 Goodbye!")
+                if self.verbose:
+                    print("\n\n👋 Goodbye!")
                 break
             except Exception as e:
                 print(f"\n❌ Error: {e}")
@@ -221,10 +257,11 @@ class ReActCLI:
 
     async def simulate_mode(self):
         """Run simulation with multi-turn conversation examples."""
-        print("=" * 80)
-        print("Simulation Mode - Multi-turn Conversation Examples")
-        print("=" * 80)
-        print()
+        if self.verbose:
+            print("=" * 80)
+            print("Simulation Mode - Multi-turn Conversation Examples")
+            print("=" * 80)
+            print()
 
         # Multi-turn conversation examples
         conversations = [
@@ -241,28 +278,31 @@ class ReActCLI:
         ]
 
         for conv_num, queries in enumerate(conversations, 1):
-            print(f"\n{'=' * 80}")
-            print(f"Conversation {conv_num}/{len(conversations)}")
-            print(f"{'=' * 80}\n")
+            if self.verbose:
+                print(f"\n{'=' * 80}")
+                print(f"Conversation {conv_num}/{len(conversations)}")
+                print(f"{'=' * 80}\n")
 
             for turn_num, query in enumerate(queries, 1):
-                print(f"\n--- Turn {turn_num}/{len(queries)} ---\n")
+                if self.verbose:
+                    print(f"\n--- Turn {turn_num}/{len(queries)} ---\n")
                 await self.ask_question(query, show_details=True)
 
                 # Pause between turns
-                if turn_num < len(queries):
+                if turn_num < len(queries) and self.verbose:
                     print("Press Enter to continue to next turn...")
                     input()
 
             # Pause between conversations
-            if conv_num < len(conversations):
+            if conv_num < len(conversations) and self.verbose:
                 print("\n" + "=" * 80)
                 print("Press Enter to start next conversation...")
                 input()
 
-        print("=" * 80)
-        print("✅ Simulation complete!")
-        print("=" * 80)
+        if self.verbose:
+            print("=" * 80)
+            print("✅ Simulation complete!")
+            print("=" * 80)
 
     def show_help(self):
         """Show help information."""
@@ -326,11 +366,20 @@ async def main():
         action="store_true",
         help="Display explicit reasoning traces (Thought → Action → Observation)",
     )
+    parser.add_argument(
+        "--quiet",
+        "-q",
+        action="store_true",
+        help="Suppress intermediate logging, only show final response",
+    )
 
     args = parser.parse_args()
 
     # Determine cleanup behavior
     cleanup_on_exit = args.cleanup
+
+    # Determine verbose mode (opposite of quiet)
+    verbose = not args.quiet
 
     if args.simulate:
         # Simulation mode
@@ -340,6 +389,7 @@ async def main():
             cleanup_on_exit=cleanup_on_exit,
             debug=args.debug,
             show_reasoning=args.show_reasoning,
+            verbose=verbose,
         )
         await cli.initialize()
         await cli.simulate_mode()
@@ -351,6 +401,7 @@ async def main():
             cleanup_on_exit=cleanup_on_exit,
             debug=args.debug,
             show_reasoning=args.show_reasoning,
+            verbose=verbose,
         )
         await cli.initialize()
         await cli.ask_question(args.query, show_details=True)
@@ -362,6 +413,7 @@ async def main():
             cleanup_on_exit=cleanup_on_exit,
             debug=args.debug,
             show_reasoning=args.show_reasoning,
+            verbose=verbose,
         )
         await cli.initialize()
         await cli.interactive_mode()

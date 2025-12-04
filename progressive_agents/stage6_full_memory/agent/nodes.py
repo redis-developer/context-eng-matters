@@ -34,6 +34,15 @@ _agent_llm = None  # NEW: LLM for agent node
 # Global memory client
 _memory_client = None
 
+# Verbose flag for controlling logging output
+_verbose = True
+
+
+def set_verbose(verbose: bool):
+    """Set the verbose flag for controlling logging output."""
+    global _verbose
+    _verbose = verbose
+
 
 def initialize_nodes():
     """Initialize the nodes with required dependencies."""
