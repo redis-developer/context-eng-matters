@@ -67,3 +67,6 @@ test_outputs/
 
 # Archived progressive agent stages
 progressive_agents/archive/
+
+# Local analysis files (not for version control)
+local_analysis/
