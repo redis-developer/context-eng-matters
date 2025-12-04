@@ -86,7 +86,9 @@ async def cleanup_courses(course_manager: CourseManager):
 
 
 def setup_agent(
-    course_manager: Optional[CourseManager] = None, auto_load_courses: bool = True
+    course_manager: Optional[CourseManager] = None,
+    auto_load_courses: bool = True,
+    verbose: bool = True,
 ) -> tuple:
     """
     Initialize the Stage 1 Baseline RAG agent.
@@ -94,12 +96,19 @@ def setup_agent(
     Args:
         course_manager: Optional CourseManager instance (creates new if None)
         auto_load_courses: If True, automatically load courses if Redis is empty
+        verbose: If True, show detailed logging. If False, suppress intermediate logs.
 
     Returns:
         Tuple of (workflow, course_manager)
     """
     from .nodes import initialize_nodes
     from .workflow import create_workflow
+
+    # Control logger level based on verbose flag
+    if not verbose:
+        logger.setLevel(logging.CRITICAL)
+    else:
+        logger.setLevel(logging.INFO)
 
     logger.info("🚀 Initializing Stage 1 Baseline RAG Agent...")
 
@@ -123,8 +132,8 @@ def setup_agent(
     # Initialize nodes with course manager
     initialize_nodes(course_manager)
 
-    # Create workflow
-    workflow = create_workflow()
+    # Create workflow with verbose setting
+    workflow = create_workflow(verbose=verbose)
 
     logger.info("✅ Stage 1 Baseline RAG Agent initialized")
     logger.warning("⚠️  This agent uses RAW context - no optimization!")

@@ -13,15 +13,18 @@ import logging
 
 from langgraph.graph import END, START, StateGraph
 
-from .nodes import research_node, synthesize_node
+from .nodes import research_node, synthesize_node, set_verbose
 from .state import AgentState
 
 logger = logging.getLogger("stage1-baseline")
 
 
-def create_workflow() -> StateGraph:
+def create_workflow(verbose: bool = True) -> StateGraph:
     """
     Create a simple 2-node RAG workflow.
+
+    Args:
+        verbose: If True, show detailed logging. If False, suppress intermediate logs.
 
     Workflow:
     START → research → synthesize → END
@@ -33,6 +36,15 @@ def create_workflow() -> StateGraph:
     Returns:
         Compiled LangGraph workflow
     """
+    # Set verbose mode for nodes
+    set_verbose(verbose)
+
+    # Control logger level based on verbose flag
+    if not verbose:
+        logging.getLogger("stage1-baseline").setLevel(logging.CRITICAL)
+    else:
+        logging.getLogger("stage1-baseline").setLevel(logging.INFO)
+
     logger.info("🏗️  Building Stage 1 Baseline RAG workflow...")
 
     # Create state graph
