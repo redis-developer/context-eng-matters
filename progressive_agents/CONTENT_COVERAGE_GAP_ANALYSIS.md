@@ -217,7 +217,7 @@ The following notebook concepts are **intentionally not demonstrated** in progre
 
 | Concept | Notebook | Reason for Exclusion                                                             |
 |---------|----------|----------------------------------------------------------------------------------|
-| **Chunking Strategies** | Section 2, Notebook 2 | Course data is already structured; content isnt large enough to warrant chunking |
+| **Chunking Strategies** | Section 2, Notebook 2 | Course catalog uses whole-record embedding — each course is a natural retrieval unit (demonstrates "don't chunk" strategy) |
 | **Event-Driven Processing** | Section 2, Notebook 2 | Would require external event sources; adds complexity without pedagogical value  |
 | **Passive vs Active Memory** | Section 4, Notebook 1 | Implicitly demonstrated through tool-calling vs hardcoded memory operations      |
 | **Token Counting Utilities** | All notebooks | Used internally but not a feature to demonstrate                                 |

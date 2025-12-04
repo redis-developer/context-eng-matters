@@ -132,25 +132,39 @@ User Query → Semantic Search → Retrieved Context → LLM Generation → Resp
    - Pros: Completeness + efficiency, best quality
    - Cons: More complex, higher cost
 
-### Chunking Strategies
+### Chunking Strategy: A Design Choice
 
-**Critical First Question:** Does your data need chunking?
+**Critical First Question:** What is your natural retrieval unit?
 
-**When NOT to chunk:**
-- Documents are already small (<1000 tokens)
-- Each document is a complete, self-contained unit
-- Documents have clear structure (courses, products, articles)
+Chunking is **not a default step** — it's an engineering decision based on your data characteristics.
 
-**When TO chunk:**
-- Long documents (>2000 tokens)
-- Books, research papers, documentation
-- Need to retrieve specific sections
+**When NOT to chunk (whole-record embedding):**
+- Structured records with natural boundaries (courses, products, FAQs)
+- Self-contained documents where splitting would break context
+- Data where each item represents a complete concept
 
-**Four Strategies:**
-1. **Document-Based** - Structure-aware splitting
+**When chunking may help:**
+- Long-form content with multiple distinct topics (research papers, books)
+- Documents where users need to retrieve specific sections
+- Content where retrieval precision is more important than context completeness
+
+**Research Background:**
+- **"Lost in the Middle"** (Stanford, 2023): LLMs have poor recall for information in the middle of long context ([arXiv:2307.03172](https://arxiv.org/abs/2307.03172))
+- **"Context Rot"** (Chroma, 2025): Irrelevant content actively degrades model performance ([research.trychroma.com/context-rot](https://research.trychroma.com/context-rot))
+- These findings provide mental models for trade-offs, not binary rules—experiment with your data
+
+**Traditional Strategies:**
+1. **Document-Based** - Structure-aware splitting (follows headers/sections)
 2. **Fixed-Size** - LangChain RecursiveCharacterTextSplitter
 3. **Semantic** - LangChain SemanticChunker with embeddings
 4. **Hierarchical** - Multi-level chunking
+
+**Emerging Strategies (2024):**
+- **Late Chunking** (Jina AI) - Embed document first, chunk embeddings after
+- **Contextual Retrieval** (Anthropic) - Add LLM context to chunks before embedding
+- **Hybrid Search** - Combine embeddings with BM25 keyword search
+
+> 💡 For our course catalog, we use **whole-record embedding** — each course is already an optimal retrieval unit.
 
 ### Production Pipeline Architectures
 

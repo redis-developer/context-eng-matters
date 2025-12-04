@@ -18,7 +18,7 @@ This workshop follows a deliberate learning progression:
 
 1. **Foundations First** — Understand the "why" (context types, constraints) before the "how"
 2. **Data Engineering Before RAG** — Learn to prepare data properly before implementing retrieval
-3. **Chunking is Situational** — Not all data needs chunking (our course catalog doesn't!)
+3. **Chunking is a Design Choice** — For structured data like course catalogs, "don't chunk" is often best
 4. **Progressive Disclosure** — The key pattern: summaries for all, details for top matches
 5. **Build Up to Agents** — Each module adds capabilities until you have a full agent
 
@@ -120,9 +120,11 @@ curl http://localhost:8088/v1/health
 **Preparing Data for LLM Consumption**
 
 - **Data Pipeline**: Extract → Clean → Transform → Optimize → Store
-- **Chunking Decisions**: When to chunk vs. not chunk
-  - ❌ Don't chunk: Course catalogs, product listings, FAQs (already small, self-contained)
-  - ✅ Do chunk: Research papers, legal contracts, books (long, multi-topic)
+- **Chunking as a Design Choice**: Depends on data type and retrieval needs
+  - ❌ Don't chunk: Structured records with natural boundaries (courses, products, FAQs)
+  - ✅ Consider chunking: Long-form content with multiple distinct topics
+  - 📚 Research context: "Lost in the Middle" (Stanford) and "Context Rot" (Chroma) explain why this matters
+  - 💡 For our course catalog: whole-record embedding works best
 - **Live Demo**: Stage 1 (6,133 tokens) → Stage 2 (539 tokens) = **91% reduction**
 
 ### Module 3: RAG Essentials (55 min)
