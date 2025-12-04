@@ -41,6 +41,15 @@ logger = logging.getLogger("stage2-engineered")
 course_manager: Optional[CourseManager] = None
 hierarchical_courses = []
 
+# Verbose mode flag
+_verbose = True
+
+
+def set_verbose(verbose: bool):
+    """Set the verbose mode for logging."""
+    global _verbose
+    _verbose = verbose
+
 
 def initialize_nodes(manager: CourseManager):
     """
