@@ -12,6 +12,7 @@ import json
 import logging
 from typing import List, Optional, Tuple
 
+from openai import OpenAI
 from redis import Redis
 from redisvl.index import SearchIndex
 from redisvl.query import VectorQuery
@@ -56,7 +57,7 @@ class HierarchicalCourseManager:
             summary_index_name: Name for summary vector index
             details_prefix: Prefix for details hash keys
         """
-        self.redis = redis_client or redis_config.get_redis_client()
+        self.redis = redis_client or redis_config.redis_client
         self.summary_index_name = summary_index_name
         self.details_prefix = details_prefix
 
@@ -149,13 +150,13 @@ class HierarchicalCourseManager:
 
     async def _store_summary(self, summary: CourseSummary, course_id: str):
         """Store course summary in vector index."""
+        import numpy as np
+
         # Generate embedding text if not present
         if not summary.embedding_text:
             summary.generate_embedding_text()
 
         # Get embedding from OpenAI
-        from openai import OpenAI
-
         client = OpenAI()
 
         response = client.embeddings.create(
@@ -163,13 +164,16 @@ class HierarchicalCourseManager:
         )
         embedding = response.data[0].embedding
 
+        # Convert embedding to binary float32 for Redis vector search
+        embedding_bytes = np.array(embedding, dtype=np.float32).tobytes()
+
         # Prepare data for storage
         data = {
             "id": course_id,
             "course_code": summary.course_code,
             "title": summary.title,
             "department": summary.department,
-            "credits": summary.credits,
+            "credits": str(summary.credits),
             "difficulty_level": summary.difficulty_level.value,
             "format": summary.format.value,
             "instructor": summary.instructor,
@@ -177,18 +181,12 @@ class HierarchicalCourseManager:
             "prerequisite_codes": "|".join(summary.prerequisite_codes),
             "tags": "|".join(summary.tags),
             "embedding_text": summary.embedding_text,
-            "embedding": embedding,
+            "embedding": embedding_bytes,  # Binary float32 data
         }
 
         # Store in Redis
         key = f"{self.summary_index_name}:{course_id}"
-        self.redis.hset(
-            key,
-            mapping={
-                k: json.dumps(v) if isinstance(v, list) else str(v)
-                for k, v in data.items()
-            },
-        )
+        self.redis.hset(key, mapping=data)
 
         logger.debug(f"Stored summary for {summary.course_code}")
 
@@ -225,8 +223,6 @@ class HierarchicalCourseManager:
             List of course summaries
         """
         # Get embedding for query
-        from openai import OpenAI
-
         client = OpenAI()
 
         response = client.embeddings.create(model="text-embedding-ada-002", input=query)
@@ -322,11 +318,20 @@ class HierarchicalCourseManager:
     async def _get_course_id(self, course_code: str) -> Optional[str]:
         """Get course ID from course code."""
         # Search summary index for course code
+        # Use hget for specific fields to avoid decoding binary embedding data
         keys = self.redis.keys(f"{self.summary_index_name}:*")
         for key in keys:
-            data = self.redis.hgetall(key)
-            if data.get(b"course_code", b"").decode() == course_code:
-                return data.get(b"id", b"").decode()
+            # Get only the fields we need (not the binary embedding)
+            stored_code = self.redis.hget(key, "course_code")
+            if stored_code:
+                # Handle both bytes and string responses
+                if isinstance(stored_code, bytes):
+                    stored_code = stored_code.decode()
+                if stored_code == course_code:
+                    course_id = self.redis.hget(key, "id")
+                    if isinstance(course_id, bytes):
+                        course_id = course_id.decode()
+                    return course_id
         return None
 
     async def hierarchical_search(
@@ -335,9 +340,9 @@ class HierarchicalCourseManager:
         """
         Two-stage hierarchical retrieval.
 
-        This demonstrates progressive disclosure:
-        1. Search summaries (all matches)
-        2. Fetch details (top N matches)
+        High-level workflow:
+        1. Search summaries (lightweight, fast)
+        2. Fetch details for top matches (comprehensive, on-demand)
 
         Args:
             query: Search query
