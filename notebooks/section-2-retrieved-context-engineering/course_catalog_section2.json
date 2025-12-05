@@ -1,7 +1,7 @@
 {
   "majors": [
     {
-      "id": "01K8W8H0TMBNPV81NPDH6PWYKZ",
+      "id": "01KBQSB5VYQ55YPXGFV2CM0S9H",
       "name": "Computer Science",
       "code": "CS",
       "department": "Computer Science",
@@ -15,10 +15,10 @@
         "Systems Architect",
         "AI Researcher"
       ],
-      "created_at": "2025-10-31 00:31:01.972222"
+      "created_at": "2025-12-05 12:35:49.630320"
     },
     {
-      "id": "01K8W8H0TMBNPV81NPDH6PWYM0",
+      "id": "01KBQSB5VYQ55YPXGFV2CM0S9J",
       "name": "Data Science",
       "code": "DS",
       "department": "Data Science",
@@ -31,10 +31,10 @@
         "Machine Learning Engineer",
         "Business Intelligence Analyst"
       ],
-      "created_at": "2025-10-31 00:31:01.972240"
+      "created_at": "2025-12-05 12:35:49.630334"
     },
     {
-      "id": "01K8W8H0TMBNPV81NPDH6PWYM1",
+      "id": "01KBQSB5VYQ55YPXGFV2CM0S9K",
       "name": "Mathematics",
       "code": "MATH",
       "department": "Mathematics",
@@ -48,10 +48,10 @@
         "Actuary",
         "Research Scientist"
       ],
-      "created_at": "2025-10-31 00:31:01.972248"
+      "created_at": "2025-12-05 12:35:49.630341"
     },
     {
-      "id": "01K8W8H0TMBNPV81NPDH6PWYM2",
+      "id": "01KBQSB5VYQ55YPXGFV2CM0S9M",
       "name": "Business Administration",
       "code": "BUS",
       "department": "Business",
@@ -65,10 +65,10 @@
         "Consultant",
         "Entrepreneur"
       ],
-      "created_at": "2025-10-31 00:31:01.972255"
+      "created_at": "2025-12-05 12:35:49.630346"
     },
     {
-      "id": "01K8W8H0TMBNPV81NPDH6PWYM3",
+      "id": "01KBQSB5VYQ55YPXGFV2CM0S9N",
       "name": "Psychology",
       "code": "PSY",
       "department": "Psychology",
@@ -82,12 +82,12 @@
         "Research Psychologist",
         "HR Specialist"
       ],
-      "created_at": "2025-10-31 00:31:01.972261"
+      "created_at": "2025-12-05 12:35:49.630350"
     }
   ],
   "courses": [
     {
-      "id": "01K8W8H0TMBNPV81NPDH6PWYM4",
+      "id": "01KBQSB5VYQ55YPXGFV2CM0S9P",
       "course_code": "CS001",
       "title": "Introduction to Programming",
       "description": "Fundamental programming concepts using Python. Variables, control structures, functions, and basic data structures.",
@@ -109,7 +109,7 @@
       },
       "semester": "fall",
       "year": 2024,
-      "instructor": "Andrew Reynolds",
+      "instructor": "Ian Gilbert",
       "max_enrollment": 89,
       "current_enrollment": 11,
       "tags": [
@@ -123,11 +123,11 @@
         "Use control structures effectively",
         "Create and use functions"
       ],
-      "created_at": "2025-10-31 00:31:01.972487",
-      "updated_at": "2025-10-31 00:31:01.972487"
+      "created_at": "2025-12-05 12:35:49.630537",
+      "updated_at": "2025-12-05 12:35:49.630538"
     },
     {
-      "id": "01K8W8H0TMBNPV81NPDH6PWYM5",
+      "id": "01KBQSB5VYQ55YPXGFV2CM0S9Q",
       "course_code": "CS002",
       "title": "Web Development",
       "description": "Full-stack web development using modern frameworks. HTML, CSS, JavaScript, React, and backend APIs.",
@@ -147,7 +147,7 @@
       },
       "semester": "fall",
       "year": 2024,
-      "instructor": "Timothy Evans",
+      "instructor": "Sabrina Smith",
       "max_enrollment": 91,
       "current_enrollment": 25,
       "tags": [
@@ -162,11 +162,11 @@
         "Use modern JavaScript frameworks",
         "Deploy web applications"
       ],
-      "created_at": "2025-10-31 00:31:01.972561",
-      "updated_at": "2025-10-31 00:31:01.972561"
+      "created_at": "2025-12-05 12:35:49.630602",
+      "updated_at": "2025-12-05 12:35:49.630602"
     },
     {
-      "id": "01K8W8H0TMBNPV81NPDH6PWYM6",
+      "id": "01KBQSB5VYQ55YPXGFV2CM0S9R",
       "course_code": "CS003",
       "title": "Web Development",
       "description": "Full-stack web development using modern frameworks. HTML, CSS, JavaScript, React, and backend APIs.",
@@ -186,7 +186,7 @@
       },
       "semester": "spring",
       "year": 2024,
-      "instructor": "Michelle Flores",
+      "instructor": "Mark Schmidt",
       "max_enrollment": 74,
       "current_enrollment": 43,
       "tags": [
@@ -201,11 +201,11 @@
         "Use modern JavaScript frameworks",
         "Deploy web applications"
       ],
-      "created_at": "2025-10-31 00:31:01.972628",
-      "updated_at": "2025-10-31 00:31:01.972628"
+      "created_at": "2025-12-05 12:35:49.630655",
+      "updated_at": "2025-12-05 12:35:49.630655"
     },
     {
-      "id": "01K8W8H0TMBNPV81NPDH6PWYM7",
+      "id": "01KBQSB5VYQ55YPXGFV2CM0S9S",
       "course_code": "CS004",
       "title": "Database Systems",
       "description": "Design and implementation of database systems. SQL, normalization, transactions, and database administration.",
@@ -226,7 +226,7 @@
       },
       "semester": "summer",
       "year": 2024,
-      "instructor": "James Phillips",
+      "instructor": "Christopher Adams",
       "max_enrollment": 97,
       "current_enrollment": 33,
       "tags": [
@@ -240,11 +240,11 @@
         "Understand database normalization",
         "Implement database transactions"
       ],
-      "created_at": "2025-10-31 00:31:01.972688",
-      "updated_at": "2025-10-31 00:31:01.972688"
+      "created_at": "2025-12-05 12:35:49.630709",
+      "updated_at": "2025-12-05 12:35:49.630710"
     },
     {
-      "id": "01K8W8H0TMBNPV81NPDH6PWYM8",
+      "id": "01KBQSB5VYQ55YPXGFV2CM0S9T",
       "course_code": "CS005",
       "title": "Introduction to Programming",
       "description": "Fundamental programming concepts using Python. Variables, control structures, functions, and basic data structures.",
@@ -264,7 +264,7 @@
       },
       "semester": "summer",
       "year": 2024,
-      "instructor": "Sarah Moore",
+      "instructor": "Scott Lane",
       "max_enrollment": 93,
       "current_enrollment": 24,
       "tags": [
@@ -278,11 +278,11 @@
         "Use control structures effectively",
         "Create and use functions"
       ],
-      "created_at": "2025-10-31 00:31:01.972746",
-      "updated_at": "2025-10-31 00:31:01.972746"
+      "created_at": "2025-12-05 12:35:49.630757",
+      "updated_at": "2025-12-05 12:35:49.630758"
     },
     {
-      "id": "01K8W8H0TMBNPV81NPDH6PWYM9",
+      "id": "01KBQSB5VYQ55YPXGFV2CM0S9V",
       "course_code": "CS006",
       "title": "Introduction to Programming",
       "description": "Fundamental programming concepts using Python. Variables, control structures, functions, and basic data structures.",
@@ -304,7 +304,7 @@
       },
       "semester": "fall",
       "year": 2024,
-      "instructor": "Alex Thompson",
+      "instructor": "Jennifer Contreras",
       "max_enrollment": 68,
       "current_enrollment": 35,
       "tags": [
@@ -318,11 +318,11 @@
         "Use control structures effectively",
         "Create and use functions"
       ],
-      "created_at": "2025-10-31 00:31:01.972804",
-      "updated_at": "2025-10-31 00:31:01.972804"
+      "created_at": "2025-12-05 12:35:49.630805",
+      "updated_at": "2025-12-05 12:35:49.630805"
     },
     {
-      "id": "01K8W8H0TMBNPV81NPDH6PWYMA",
+      "id": "01KBQSB5VYQ55YPXGFV2CM0S9W",
       "course_code": "CS007",
       "title": "Machine Learning",
       "description": "Introduction to machine learning algorithms and applications. Supervised and unsupervised learning, neural networks.",
@@ -343,7 +343,7 @@
       },
       "semester": "fall",
       "year": 2024,
-      "instructor": "Eric Smith",
+      "instructor": "Kim Vazquez",
       "max_enrollment": 97,
       "current_enrollment": 21,
       "tags": [
@@ -357,11 +357,11 @@
         "Evaluate model performance",
         "Apply ML to real-world problems"
       ],
-      "created_at": "2025-10-31 00:31:01.972861",
-      "updated_at": "2025-10-31 00:31:01.972862"
+      "created_at": "2025-12-05 12:35:49.630851",
+      "updated_at": "2025-12-05 12:35:49.630851"
     },
     {
-      "id": "01K8W8H0TMBNPV81NPDH6PWYMB",
+      "id": "01KBQSB5VYQ55YPXGFV2CM0S9X",
       "course_code": "CS008",
       "title": "Web Development",
       "description": "Full-stack web development using modern frameworks. HTML, CSS, JavaScript, React, and backend APIs.",
@@ -382,7 +382,7 @@
       },
       "semester": "spring",
       "year": 2024,
-      "instructor": "Tracie Mueller",
+      "instructor": "Christopher Thomas",
       "max_enrollment": 61,
       "current_enrollment": 7,
       "tags": [
@@ -397,11 +397,11 @@
         "Use modern JavaScript frameworks",
         "Deploy web applications"
       ],
-      "created_at": "2025-10-31 00:31:01.972918",
-      "updated_at": "2025-10-31 00:31:01.972918"
+      "created_at": "2025-12-05 12:35:49.630896",
+      "updated_at": "2025-12-05 12:35:49.630896"
     },
     {
-      "id": "01K8W8H0TMBNPV81NPDH6PWYMC",
+      "id": "01KBQSB5VYQ55YPXGFV2CM0S9Y",
       "course_code": "CS009",
       "title": "Data Structures and Algorithms",
       "description": "Study of fundamental data structures and algorithms. Arrays, linked lists, trees, graphs, sorting, and searching.",
@@ -436,7 +436,7 @@
       },
       "semester": "summer",
       "year": 2024,
-      "instructor": "Catherine Jones",
+      "instructor": "Pamela Costa",
       "max_enrollment": 94,
       "current_enrollment": 54,
       "tags": [
@@ -450,11 +450,11 @@
         "Solve problems using appropriate data structures",
         "Understand time and space complexity"
       ],
-      "created_at": "2025-10-31 00:31:01.972981",
-      "updated_at": "2025-10-31 00:31:01.972982"
+      "created_at": "2025-12-05 12:35:49.630951",
+      "updated_at": "2025-12-05 12:35:49.630952"
     },
     {
-      "id": "01K8W8H0TN30HVW7N0G2SZ59WX",
+      "id": "01KBQSB5VYQ55YPXGFV2CM0S9Z",
       "course_code": "CS010",
       "title": "Web Development",
       "description": "Full-stack web development using modern frameworks. HTML, CSS, JavaScript, React, and backend APIs.",
@@ -474,7 +474,7 @@
       },
       "semester": "fall",
       "year": 2024,
-      "instructor": "Kevin Wilson",
+      "instructor": "Shannon Johns",
       "max_enrollment": 39,
       "current_enrollment": 80,
       "tags": [
@@ -489,11 +489,11 @@
         "Use modern JavaScript frameworks",
         "Deploy web applications"
       ],
-      "created_at": "2025-10-31 00:31:01.973043",
-      "updated_at": "2025-10-31 00:31:01.973044"
+      "created_at": "2025-12-05 12:35:49.630999",
+      "updated_at": "2025-12-05 12:35:49.631000"
     },
     {
-      "id": "01K8W8H0TN30HVW7N0G2SZ59WY",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KA",
       "course_code": "DS011",
       "title": "Statistics for Data Science",
       "description": "Statistical methods and probability theory for data analysis. Hypothesis testing, regression, and statistical inference.",
@@ -513,7 +513,7 @@
       },
       "semester": "winter",
       "year": 2024,
-      "instructor": "Heidi Bailey",
+      "instructor": "Emily Keller",
       "max_enrollment": 87,
       "current_enrollment": 32,
       "tags": [
@@ -527,11 +527,11 @@
         "Understand probability distributions",
         "Conduct statistical inference"
       ],
-      "created_at": "2025-10-31 00:31:01.973102",
-      "updated_at": "2025-10-31 00:31:01.973103"
+      "created_at": "2025-12-05 12:35:49.631053",
+      "updated_at": "2025-12-05 12:35:49.631054"
     },
     {
-      "id": "01K8W8H0TN30HVW7N0G2SZ59WZ",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KB",
       "course_code": "DS012",
       "title": "Statistics for Data Science",
       "description": "Statistical methods and probability theory for data analysis. Hypothesis testing, regression, and statistical inference.",
@@ -553,7 +553,7 @@
       },
       "semester": "summer",
       "year": 2024,
-      "instructor": "Emily Jimenez",
+      "instructor": "Debra Torres",
       "max_enrollment": 75,
       "current_enrollment": 20,
       "tags": [
@@ -567,11 +567,11 @@
         "Understand probability distributions",
         "Conduct statistical inference"
       ],
-      "created_at": "2025-10-31 00:31:01.973162",
-      "updated_at": "2025-10-31 00:31:01.973162"
+      "created_at": "2025-12-05 12:35:49.631103",
+      "updated_at": "2025-12-05 12:35:49.631104"
     },
     {
-      "id": "01K8W8H0TN30HVW7N0G2SZ59X0",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KC",
       "course_code": "DS013",
       "title": "Data Visualization",
       "description": "Creating effective visualizations for data communication. Tools include Python matplotlib, seaborn, and Tableau.",
@@ -593,7 +593,7 @@
       },
       "semester": "summer",
       "year": 2024,
-      "instructor": "Christian Russell",
+      "instructor": "Jeremy Walter",
       "max_enrollment": 84,
       "current_enrollment": 77,
       "tags": [
@@ -608,11 +608,11 @@
         "Use visualization tools",
         "Communicate insights through visuals"
       ],
-      "created_at": "2025-10-31 00:31:01.973217",
-      "updated_at": "2025-10-31 00:31:01.973218"
+      "created_at": "2025-12-05 12:35:49.631150",
+      "updated_at": "2025-12-05 12:35:49.631150"
     },
     {
-      "id": "01K8W8H0TN30HVW7N0G2SZ59X1",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KD",
       "course_code": "DS014",
       "title": "Statistics for Data Science",
       "description": "Statistical methods and probability theory for data analysis. Hypothesis testing, regression, and statistical inference.",
@@ -633,7 +633,7 @@
       },
       "semester": "summer",
       "year": 2024,
-      "instructor": "Joseph Nielsen",
+      "instructor": "Taylor Lucero",
       "max_enrollment": 82,
       "current_enrollment": 2,
       "tags": [
@@ -647,11 +647,11 @@
         "Understand probability distributions",
         "Conduct statistical inference"
       ],
-      "created_at": "2025-10-31 00:31:01.973274",
-      "updated_at": "2025-10-31 00:31:01.973274"
+      "created_at": "2025-12-05 12:35:49.631197",
+      "updated_at": "2025-12-05 12:35:49.631197"
     },
     {
-      "id": "01K8W8H0TN30HVW7N0G2SZ59X2",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KE",
       "course_code": "DS015",
       "title": "Statistics for Data Science",
       "description": "Statistical methods and probability theory for data analysis. Hypothesis testing, regression, and statistical inference.",
@@ -672,7 +672,7 @@
       },
       "semester": "fall",
       "year": 2024,
-      "instructor": "Tina Rojas",
+      "instructor": "Hannah Daugherty",
       "max_enrollment": 82,
       "current_enrollment": 8,
       "tags": [
@@ -686,11 +686,11 @@
         "Understand probability distributions",
         "Conduct statistical inference"
       ],
-      "created_at": "2025-10-31 00:31:01.973330",
-      "updated_at": "2025-10-31 00:31:01.973331"
+      "created_at": "2025-12-05 12:35:49.631243",
+      "updated_at": "2025-12-05 12:35:49.631243"
     },
     {
-      "id": "01K8W8H0TN30HVW7N0G2SZ59X3",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KF",
       "course_code": "DS016",
       "title": "Statistics for Data Science",
       "description": "Statistical methods and probability theory for data analysis. Hypothesis testing, regression, and statistical inference.",
@@ -724,7 +724,7 @@
       },
       "semester": "summer",
       "year": 2024,
-      "instructor": "Lynn Wade",
+      "instructor": "Leslie Johnson",
       "max_enrollment": 76,
       "current_enrollment": 66,
       "tags": [
@@ -738,11 +738,11 @@
         "Understand probability distributions",
         "Conduct statistical inference"
       ],
-      "created_at": "2025-10-31 00:31:01.973396",
-      "updated_at": "2025-10-31 00:31:01.973397"
+      "created_at": "2025-12-05 12:35:49.631293",
+      "updated_at": "2025-12-05 12:35:49.631294"
     },
     {
-      "id": "01K8W8H0TN30HVW7N0G2SZ59X4",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KG",
       "course_code": "DS017",
       "title": "Data Visualization",
       "description": "Creating effective visualizations for data communication. Tools include Python matplotlib, seaborn, and Tableau.",
@@ -771,7 +771,7 @@
       },
       "semester": "fall",
       "year": 2024,
-      "instructor": "Sue Ray",
+      "instructor": "Samantha Boyer",
       "max_enrollment": 49,
       "current_enrollment": 8,
       "tags": [
@@ -786,11 +786,11 @@
         "Use visualization tools",
         "Communicate insights through visuals"
       ],
-      "created_at": "2025-10-31 00:31:01.973455",
-      "updated_at": "2025-10-31 00:31:01.973456"
+      "created_at": "2025-12-05 12:35:49.631341",
+      "updated_at": "2025-12-05 12:35:49.631341"
     },
     {
-      "id": "01K8W8H0TN30HVW7N0G2SZ59X5",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KH",
       "course_code": "DS018",
       "title": "Statistics for Data Science",
       "description": "Statistical methods and probability theory for data analysis. Hypothesis testing, regression, and statistical inference.",
@@ -818,7 +818,7 @@
       },
       "semester": "spring",
       "year": 2024,
-      "instructor": "Emily Reyes",
+      "instructor": "Shelia Reyes",
       "max_enrollment": 32,
       "current_enrollment": 12,
       "tags": [
@@ -832,11 +832,11 @@
         "Understand probability distributions",
         "Conduct statistical inference"
       ],
-      "created_at": "2025-10-31 00:31:01.973514",
-      "updated_at": "2025-10-31 00:31:01.973514"
+      "created_at": "2025-12-05 12:35:49.631394",
+      "updated_at": "2025-12-05 12:35:49.631395"
     },
     {
-      "id": "01K8W8H0TN30HVW7N0G2SZ59X6",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KJ",
       "course_code": "DS019",
       "title": "Data Visualization",
       "description": "Creating effective visualizations for data communication. Tools include Python matplotlib, seaborn, and Tableau.",
@@ -857,7 +857,7 @@
       },
       "semester": "fall",
       "year": 2024,
-      "instructor": "Mary Singleton",
+      "instructor": "Danielle Petersen",
       "max_enrollment": 27,
       "current_enrollment": 51,
       "tags": [
@@ -872,11 +872,11 @@
         "Use visualization tools",
         "Communicate insights through visuals"
       ],
-      "created_at": "2025-10-31 00:31:01.973569",
-      "updated_at": "2025-10-31 00:31:01.973569"
+      "created_at": "2025-12-05 12:35:49.631440",
+      "updated_at": "2025-12-05 12:35:49.631440"
     },
     {
-      "id": "01K8W8H0TN30HVW7N0G2SZ59X7",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KK",
       "course_code": "DS020",
       "title": "Data Visualization",
       "description": "Creating effective visualizations for data communication. Tools include Python matplotlib, seaborn, and Tableau.",
@@ -898,7 +898,7 @@
       },
       "semester": "spring",
       "year": 2024,
-      "instructor": "Devin Bell",
+      "instructor": "Christopher Gomez",
       "max_enrollment": 55,
       "current_enrollment": 59,
       "tags": [
@@ -913,11 +913,11 @@
         "Use visualization tools",
         "Communicate insights through visuals"
       ],
-      "created_at": "2025-10-31 00:31:01.973623",
-      "updated_at": "2025-10-31 00:31:01.973623"
+      "created_at": "2025-12-05 12:35:49.631484",
+      "updated_at": "2025-12-05 12:35:49.631484"
     },
     {
-      "id": "01K8W8H0TN30HVW7N0G2SZ59X8",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KM",
       "course_code": "MATH021",
       "title": "Calculus I",
       "description": "Differential calculus including limits, derivatives, and applications. Foundation for advanced mathematics.",
@@ -939,7 +939,7 @@
       },
       "semester": "fall",
       "year": 2024,
-      "instructor": "Monica Simpson",
+      "instructor": "Tiffany Turner MD",
       "max_enrollment": 50,
       "current_enrollment": 21,
       "tags": [
@@ -953,11 +953,11 @@
         "Apply calculus to real problems",
         "Understand fundamental theorem"
       ],
-      "created_at": "2025-10-31 00:31:01.973680",
-      "updated_at": "2025-10-31 00:31:01.973681"
+      "created_at": "2025-12-05 12:35:49.631532",
+      "updated_at": "2025-12-05 12:35:49.631533"
     },
     {
-      "id": "01K8W8H0TN30HVW7N0G2SZ59X9",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KN",
       "course_code": "MATH022",
       "title": "Linear Algebra",
       "description": "Vector spaces, matrices, eigenvalues, and linear transformations. Essential for data science and engineering.",
@@ -977,7 +977,7 @@
       },
       "semester": "spring",
       "year": 2024,
-      "instructor": "Eric Thompson",
+      "instructor": "Jeanette Jarvis",
       "max_enrollment": 68,
       "current_enrollment": 0,
       "tags": [
@@ -991,11 +991,11 @@
         "Calculate eigenvalues and eigenvectors",
         "Apply linear algebra to problems"
       ],
-      "created_at": "2025-10-31 00:31:01.973735",
-      "updated_at": "2025-10-31 00:31:01.973735"
+      "created_at": "2025-12-05 12:35:49.631578",
+      "updated_at": "2025-12-05 12:35:49.631578"
     },
     {
-      "id": "01K8W8H0TN30HVW7N0G2SZ59XA",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KP",
       "course_code": "MATH023",
       "title": "Linear Algebra",
       "description": "Vector spaces, matrices, eigenvalues, and linear transformations. Essential for data science and engineering.",
@@ -1016,7 +1016,7 @@
       },
       "semester": "winter",
       "year": 2024,
-      "instructor": "Megan Lewis",
+      "instructor": "Ryan Boyd",
       "max_enrollment": 39,
       "current_enrollment": 24,
       "tags": [
@@ -1030,11 +1030,11 @@
         "Calculate eigenvalues and eigenvectors",
         "Apply linear algebra to problems"
       ],
-      "created_at": "2025-10-31 00:31:01.973790",
-      "updated_at": "2025-10-31 00:31:01.973790"
+      "created_at": "2025-12-05 12:35:49.631622",
+      "updated_at": "2025-12-05 12:35:49.631622"
     },
     {
-      "id": "01K8W8H0TN30HVW7N0G2SZ59XB",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KQ",
       "course_code": "MATH024",
       "title": "Linear Algebra",
       "description": "Vector spaces, matrices, eigenvalues, and linear transformations. Essential for data science and engineering.",
@@ -1068,7 +1068,7 @@
       },
       "semester": "fall",
       "year": 2024,
-      "instructor": "Lindsey Hogan",
+      "instructor": "Barbara King",
       "max_enrollment": 50,
       "current_enrollment": 51,
       "tags": [
@@ -1082,11 +1082,11 @@
         "Calculate eigenvalues and eigenvectors",
         "Apply linear algebra to problems"
       ],
-      "created_at": "2025-10-31 00:31:01.973848",
-      "updated_at": "2025-10-31 00:31:01.973849"
+      "created_at": "2025-12-05 12:35:49.631670",
+      "updated_at": "2025-12-05 12:35:49.631670"
     },
     {
-      "id": "01K8W8H0TN30HVW7N0G2SZ59XC",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KR",
       "course_code": "MATH025",
       "title": "Calculus I",
       "description": "Differential calculus including limits, derivatives, and applications. Foundation for advanced mathematics.",
@@ -1106,7 +1106,7 @@
       },
       "semester": "summer",
       "year": 2024,
-      "instructor": "Richard Webster",
+      "instructor": "Jennifer Dixon PhD",
       "max_enrollment": 53,
       "current_enrollment": 26,
       "tags": [
@@ -1120,11 +1120,11 @@
         "Apply calculus to real problems",
         "Understand fundamental theorem"
       ],
-      "created_at": "2025-10-31 00:31:01.973902",
-      "updated_at": "2025-10-31 00:31:01.973903"
+      "created_at": "2025-12-05 12:35:49.631716",
+      "updated_at": "2025-12-05 12:35:49.631716"
     },
     {
-      "id": "01K8W8H0TN30HVW7N0G2SZ59XD",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KS",
       "course_code": "MATH026",
       "title": "Linear Algebra",
       "description": "Vector spaces, matrices, eigenvalues, and linear transformations. Essential for data science and engineering.",
@@ -1145,7 +1145,7 @@
       },
       "semester": "fall",
       "year": 2024,
-      "instructor": "Margaret Dunn",
+      "instructor": "Ethan Bridges",
       "max_enrollment": 78,
       "current_enrollment": 79,
       "tags": [
@@ -1159,11 +1159,11 @@
         "Calculate eigenvalues and eigenvectors",
         "Apply linear algebra to problems"
       ],
-      "created_at": "2025-10-31 00:31:01.973957",
-      "updated_at": "2025-10-31 00:31:01.973957"
+      "created_at": "2025-12-05 12:35:49.631760",
+      "updated_at": "2025-12-05 12:35:49.631761"
     },
     {
-      "id": "01K8W8H0TP3PHGJ9Y8QCCJFYSZ",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KT",
       "course_code": "MATH027",
       "title": "Calculus I",
       "description": "Differential calculus including limits, derivatives, and applications. Foundation for advanced mathematics.",
@@ -1198,7 +1198,7 @@
       },
       "semester": "summer",
       "year": 2024,
-      "instructor": "Mrs. Sarah Davis",
+      "instructor": "William Edwards",
       "max_enrollment": 98,
       "current_enrollment": 67,
       "tags": [
@@ -1212,11 +1212,11 @@
         "Apply calculus to real problems",
         "Understand fundamental theorem"
       ],
-      "created_at": "2025-10-31 00:31:01.974025",
-      "updated_at": "2025-10-31 00:31:01.974026"
+      "created_at": "2025-12-05 12:35:49.631807",
+      "updated_at": "2025-12-05 12:35:49.631807"
     },
     {
-      "id": "01K8W8H0TP3PHGJ9Y8QCCJFYT0",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KV",
       "course_code": "MATH028",
       "title": "Calculus I",
       "description": "Differential calculus including limits, derivatives, and applications. Foundation for advanced mathematics.",
@@ -1243,7 +1243,7 @@
       },
       "semester": "spring",
       "year": 2024,
-      "instructor": "Brandon Roman",
+      "instructor": "Nicholas Simpson",
       "max_enrollment": 63,
       "current_enrollment": 26,
       "tags": [
@@ -1257,11 +1257,11 @@
         "Apply calculus to real problems",
         "Understand fundamental theorem"
       ],
-      "created_at": "2025-10-31 00:31:01.974086",
-      "updated_at": "2025-10-31 00:31:01.974086"
+      "created_at": "2025-12-05 12:35:49.631853",
+      "updated_at": "2025-12-05 12:35:49.631853"
     },
     {
-      "id": "01K8W8H0TP3PHGJ9Y8QCCJFYT1",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KW",
       "course_code": "MATH029",
       "title": "Linear Algebra",
       "description": "Vector spaces, matrices, eigenvalues, and linear transformations. Essential for data science and engineering.",
@@ -1294,7 +1294,7 @@
       },
       "semester": "winter",
       "year": 2024,
-      "instructor": "Robin Black",
+      "instructor": "Mr. Christopher Anderson",
       "max_enrollment": 90,
       "current_enrollment": 54,
       "tags": [
@@ -1308,11 +1308,11 @@
         "Calculate eigenvalues and eigenvectors",
         "Apply linear algebra to problems"
       ],
-      "created_at": "2025-10-31 00:31:01.974145",
-      "updated_at": "2025-10-31 00:31:01.974145"
+      "created_at": "2025-12-05 12:35:49.631902",
+      "updated_at": "2025-12-05 12:35:49.631902"
     },
     {
-      "id": "01K8W8H0TP3PHGJ9Y8QCCJFYT2",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KX",
       "course_code": "MATH030",
       "title": "Calculus I",
       "description": "Differential calculus including limits, derivatives, and applications. Foundation for advanced mathematics.",
@@ -1334,7 +1334,7 @@
       },
       "semester": "spring",
       "year": 2024,
-      "instructor": "Stephanie Norris",
+      "instructor": "Jasmine Knight",
       "max_enrollment": 75,
       "current_enrollment": 16,
       "tags": [
@@ -1348,11 +1348,11 @@
         "Apply calculus to real problems",
         "Understand fundamental theorem"
       ],
-      "created_at": "2025-10-31 00:31:01.974201",
-      "updated_at": "2025-10-31 00:31:01.974201"
+      "created_at": "2025-12-05 12:35:49.631947",
+      "updated_at": "2025-12-05 12:35:49.631947"
     },
     {
-      "id": "01K8W8H0TP3PHGJ9Y8QCCJFYT3",
+      "id": "01KBQSB5VZ3490FT449SH6Y3KY",
       "course_code": "BUS031",
       "title": "Principles of Management",
       "description": "Fundamental management concepts including planning, organizing, leading, and controlling organizational resources.",
@@ -1373,7 +1373,7 @@
       },
       "semester": "spring",
       "year": 2024,
-      "instructor": "Earl Turner",
+      "instructor": "Mark Chang",
       "max_enrollment": 33,
       "current_enrollment": 45,
       "tags": [
@@ -1387,11 +1387,11 @@
         "Organize teams effectively",
         "Control organizational resources"
       ],
-      "created_at": "2025-10-31 00:31:01.974257",
-      "updated_at": "2025-10-31 00:31:01.974257"
+      "created_at": "2025-12-05 12:35:49.631991",
+      "updated_at": "2025-12-05 12:35:49.631991"
     },
     {
-      "id": "01K8W8H0TP3PHGJ9Y8QCCJFYT4",
+      "id": "01KBQSB5W0V47C74FHBMXE8PE6",
       "course_code": "BUS032",
       "title": "Marketing Strategy",
       "description": "Strategic marketing planning, market analysis, consumer behavior, and digital marketing techniques.",
@@ -1411,7 +1411,7 @@
       },
       "semester": "winter",
       "year": 2024,
-      "instructor": "Mark Brooks",
+      "instructor": "Daniel Williams",
       "max_enrollment": 23,
       "current_enrollment": 22,
       "tags": [
@@ -1425,11 +1425,11 @@
         "Understand consumer behavior",
         "Implement digital marketing"
       ],
-      "created_at": "2025-10-31 00:31:01.974314",
-      "updated_at": "2025-10-31 00:31:01.974314"
+      "created_at": "2025-12-05 12:35:49.632041",
+      "updated_at": "2025-12-05 12:35:49.632041"
     },
     {
-      "id": "01K8W8H0TP3PHGJ9Y8QCCJFYT5",
+      "id": "01KBQSB5W0V47C74FHBMXE8PE7",
       "course_code": "BUS033",
       "title": "Marketing Strategy",
       "description": "Strategic marketing planning, market analysis, consumer behavior, and digital marketing techniques.",
@@ -1449,7 +1449,7 @@
       },
       "semester": "fall",
       "year": 2024,
-      "instructor": "Tara Glenn MD",
+      "instructor": "Amanda Jefferson",
       "max_enrollment": 68,
       "current_enrollment": 4,
       "tags": [
@@ -1463,11 +1463,11 @@
         "Understand consumer behavior",
         "Implement digital marketing"
       ],
-      "created_at": "2025-10-31 00:31:01.974437",
-      "updated_at": "2025-10-31 00:31:01.974438"
+      "created_at": "2025-12-05 12:35:49.632091",
+      "updated_at": "2025-12-05 12:35:49.632091"
     },
     {
-      "id": "01K8W8H0TP3PHGJ9Y8QCCJFYT6",
+      "id": "01KBQSB5W0V47C74FHBMXE8PE8",
       "course_code": "BUS034",
       "title": "Marketing Strategy",
       "description": "Strategic marketing planning, market analysis, consumer behavior, and digital marketing techniques.",
@@ -1488,7 +1488,7 @@
       },
       "semester": "spring",
       "year": 2024,
-      "instructor": "Marcus James",
+      "instructor": "Roger Alexander",
       "max_enrollment": 23,
       "current_enrollment": 24,
       "tags": [
@@ -1502,11 +1502,11 @@
         "Understand consumer behavior",
         "Implement digital marketing"
       ],
-      "created_at": "2025-10-31 00:31:01.974492",
-      "updated_at": "2025-10-31 00:31:01.974492"
+      "created_at": "2025-12-05 12:35:49.632136",
+      "updated_at": "2025-12-05 12:35:49.632136"
     },
     {
-      "id": "01K8W8H0TP3PHGJ9Y8QCCJFYT7",
+      "id": "01KBQSB5W0V47C74FHBMXE8PE9",
       "course_code": "BUS035",
       "title": "Marketing Strategy",
       "description": "Strategic marketing planning, market analysis, consumer behavior, and digital marketing techniques.",
@@ -1527,7 +1527,7 @@
       },
       "semester": "winter",
       "year": 2024,
-      "instructor": "Daniel Tate",
+      "instructor": "Robert Edwards",
       "max_enrollment": 88,
       "current_enrollment": 42,
       "tags": [
@@ -1541,11 +1541,11 @@
         "Understand consumer behavior",
         "Implement digital marketing"
       ],
-      "created_at": "2025-10-31 00:31:01.974545",
-      "updated_at": "2025-10-31 00:31:01.974546"
+      "created_at": "2025-12-05 12:35:49.632180",
+      "updated_at": "2025-12-05 12:35:49.632180"
     },
     {
-      "id": "01K8W8H0TP3PHGJ9Y8QCCJFYT8",
+      "id": "01KBQSB5W0V47C74FHBMXE8PEA",
       "course_code": "BUS036",
       "title": "Principles of Management",
       "description": "Fundamental management concepts including planning, organizing, leading, and controlling organizational resources.",
@@ -1580,7 +1580,7 @@
       },
       "semester": "winter",
       "year": 2024,
-      "instructor": "Robert Wright",
+      "instructor": "Monica Clark",
       "max_enrollment": 93,
       "current_enrollment": 24,
       "tags": [
@@ -1594,11 +1594,11 @@
         "Organize teams effectively",
         "Control organizational resources"
       ],
-      "created_at": "2025-10-31 00:31:01.974605",
-      "updated_at": "2025-10-31 00:31:01.974605"
+      "created_at": "2025-12-05 12:35:49.632230",
+      "updated_at": "2025-12-05 12:35:49.632230"
     },
     {
-      "id": "01K8W8H0TP3PHGJ9Y8QCCJFYT9",
+      "id": "01KBQSB5W0V47C74FHBMXE8PEB",
       "course_code": "BUS037",
       "title": "Marketing Strategy",
       "description": "Strategic marketing planning, market analysis, consumer behavior, and digital marketing techniques.",
@@ -1620,7 +1620,7 @@
       },
       "semester": "spring",
       "year": 2024,
-      "instructor": "Amy Blackwell",
+      "instructor": "Devin Williams",
       "max_enrollment": 66,
       "current_enrollment": 55,
       "tags": [
@@ -1634,11 +1634,11 @@
         "Understand consumer behavior",
         "Implement digital marketing"
       ],
-      "created_at": "2025-10-31 00:31:01.974659",
-      "updated_at": "2025-10-31 00:31:01.974660"
+      "created_at": "2025-12-05 12:35:49.632274",
+      "updated_at": "2025-12-05 12:35:49.632275"
     },
     {
-      "id": "01K8W8H0TP3PHGJ9Y8QCCJFYTA",
+      "id": "01KBQSB5W0V47C74FHBMXE8PEC",
       "course_code": "BUS038",
       "title": "Principles of Management",
       "description": "Fundamental management concepts including planning, organizing, leading, and controlling organizational resources.",
@@ -1659,7 +1659,7 @@
       },
       "semester": "summer",
       "year": 2024,
-      "instructor": "Andrea Thompson",
+      "instructor": "Rebecca Holmes",
       "max_enrollment": 72,
       "current_enrollment": 41,
       "tags": [
@@ -1673,11 +1673,11 @@
         "Organize teams effectively",
         "Control organizational resources"
       ],
-      "created_at": "2025-10-31 00:31:01.974714",
-      "updated_at": "2025-10-31 00:31:01.974714"
+      "created_at": "2025-12-05 12:35:49.632320",
+      "updated_at": "2025-12-05 12:35:49.632320"
     },
     {
-      "id": "01K8W8H0TP3PHGJ9Y8QCCJFYTB",
+      "id": "01KBQSB5W0V47C74FHBMXE8PED",
       "course_code": "BUS039",
       "title": "Marketing Strategy",
       "description": "Strategic marketing planning, market analysis, consumer behavior, and digital marketing techniques.",
@@ -1698,7 +1698,7 @@
       },
       "semester": "spring",
       "year": 2024,
-      "instructor": "Kevin Johnson",
+      "instructor": "Richard York",
       "max_enrollment": 98,
       "current_enrollment": 72,
       "tags": [
@@ -1712,11 +1712,11 @@
         "Understand consumer behavior",
         "Implement digital marketing"
       ],
-      "created_at": "2025-10-31 00:31:01.974767",
-      "updated_at": "2025-10-31 00:31:01.974768"
+      "created_at": "2025-12-05 12:35:49.632364",
+      "updated_at": "2025-12-05 12:35:49.632365"
     },
     {
-      "id": "01K8W8H0TP3PHGJ9Y8QCCJFYTC",
+      "id": "01KBQSB5W0V47C74FHBMXE8PEE",
       "course_code": "BUS040",
       "title": "Marketing Strategy",
       "description": "Strategic marketing planning, market analysis, consumer behavior, and digital marketing techniques.",
@@ -1749,7 +1749,7 @@
       },
       "semester": "spring",
       "year": 2024,
-      "instructor": "Brandon Ramirez",
+      "instructor": "David Gonzalez",
       "max_enrollment": 30,
       "current_enrollment": 36,
       "tags": [
@@ -1763,11 +1763,11 @@
         "Understand consumer behavior",
         "Implement digital marketing"
       ],
-      "created_at": "2025-10-31 00:31:01.974825",
-      "updated_at": "2025-10-31 00:31:01.974825"
+      "created_at": "2025-12-05 12:35:49.632412",
+      "updated_at": "2025-12-05 12:35:49.632412"
     },
     {
-      "id": "01K8W8H0TP3PHGJ9Y8QCCJFYTD",
+      "id": "01KBQSB5W0V47C74FHBMXE8PEF",
       "course_code": "PSY041",
       "title": "Cognitive Psychology",
       "description": "Study of mental processes including perception, memory, thinking, and problem-solving.",
@@ -1789,7 +1789,7 @@
       },
       "semester": "fall",
       "year": 2024,
-      "instructor": "Tyrone Vasquez",
+      "instructor": "Heather Sanders DDS",
       "max_enrollment": 25,
       "current_enrollment": 31,
       "tags": [
@@ -1803,11 +1803,11 @@
         "Analyze problem-solving",
         "Explore perception mechanisms"
       ],
-      "created_at": "2025-10-31 00:31:01.974879",
-      "updated_at": "2025-10-31 00:31:01.974879"
+      "created_at": "2025-12-05 12:35:49.632459",
+      "updated_at": "2025-12-05 12:35:49.632459"
     },
     {
-      "id": "01K8W8H0TP3PHGJ9Y8QCCJFYTE",
+      "id": "01KBQSB5W0V47C74FHBMXE8PEG",
       "course_code": "PSY042",
       "title": "Cognitive Psychology",
       "description": "Study of mental processes including perception, memory, thinking, and problem-solving.",
@@ -1827,7 +1827,7 @@
       },
       "semester": "winter",
       "year": 2024,
-      "instructor": "Craig Jackson",
+      "instructor": "Kelly Rodgers",
       "max_enrollment": 83,
       "current_enrollment": 51,
       "tags": [
@@ -1841,11 +1841,11 @@
         "Analyze problem-solving",
         "Explore perception mechanisms"
       ],
-      "created_at": "2025-10-31 00:31:01.974933",
-      "updated_at": "2025-10-31 00:31:01.974933"
+      "created_at": "2025-12-05 12:35:49.632504",
+      "updated_at": "2025-12-05 12:35:49.632504"
     },
     {
-      "id": "01K8W8H0TP3PHGJ9Y8QCCJFYTF",
+      "id": "01KBQSB5W0V47C74FHBMXE8PEH",
       "course_code": "PSY043",
       "title": "Introduction to Psychology",
       "description": "Overview of psychological principles, research methods, and major areas of study in psychology.",
@@ -1866,7 +1866,7 @@
       },
       "semester": "spring",
       "year": 2024,
-      "instructor": "Kathy Velez",
+      "instructor": "Austin Combs",
       "max_enrollment": 42,
       "current_enrollment": 66,
       "tags": [
@@ -1880,11 +1880,11 @@
         "Explore areas of psychology",
         "Apply psychological concepts"
       ],
-      "created_at": "2025-10-31 00:31:01.974987",
-      "updated_at": "2025-10-31 00:31:01.974988"
+      "created_at": "2025-12-05 12:35:49.632547",
+      "updated_at": "2025-12-05 12:35:49.632548"
     },
     {
-      "id": "01K8W8H0TQFK75Z9NA0D77XBVZ",
+      "id": "01KBQSB5W0V47C74FHBMXE8PEJ",
       "course_code": "PSY044",
       "title": "Cognitive Psychology",
       "description": "Study of mental processes including perception, memory, thinking, and problem-solving.",
@@ -1906,7 +1906,7 @@
       },
       "semester": "summer",
       "year": 2024,
-      "instructor": "Megan Wilson",
+      "instructor": "Joel Mccoy",
       "max_enrollment": 76,
       "current_enrollment": 78,
       "tags": [
@@ -1920,11 +1920,11 @@
         "Analyze problem-solving",
         "Explore perception mechanisms"
       ],
-      "created_at": "2025-10-31 00:31:01.975044",
-      "updated_at": "2025-10-31 00:31:01.975045"
+      "created_at": "2025-12-05 12:35:49.632591",
+      "updated_at": "2025-12-05 12:35:49.632591"
     },
     {
-      "id": "01K8W8H0TQFK75Z9NA0D77XBW0",
+      "id": "01KBQSB5W0V47C74FHBMXE8PEK",
       "course_code": "PSY045",
       "title": "Cognitive Psychology",
       "description": "Study of mental processes including perception, memory, thinking, and problem-solving.",
@@ -1944,7 +1944,7 @@
       },
       "semester": "summer",
       "year": 2024,
-      "instructor": "Karen Nash",
+      "instructor": "Dylan Chavez",
       "max_enrollment": 86,
       "current_enrollment": 62,
       "tags": [
@@ -1958,11 +1958,11 @@
         "Analyze problem-solving",
         "Explore perception mechanisms"
       ],
-      "created_at": "2025-10-31 00:31:01.975104",
-      "updated_at": "2025-10-31 00:31:01.975105"
+      "created_at": "2025-12-05 12:35:49.632634",
+      "updated_at": "2025-12-05 12:35:49.632635"
     },
     {
-      "id": "01K8W8H0TQFK75Z9NA0D77XBW1",
+      "id": "01KBQSB5W0V47C74FHBMXE8PEM",
       "course_code": "PSY046",
       "title": "Introduction to Psychology",
       "description": "Overview of psychological principles, research methods, and major areas of study in psychology.",
@@ -1996,7 +1996,7 @@
       },
       "semester": "spring",
       "year": 2024,
-      "instructor": "Richard Perez",
+      "instructor": "Megan Waters",
       "max_enrollment": 28,
       "current_enrollment": 53,
       "tags": [
@@ -2010,11 +2010,11 @@
         "Explore areas of psychology",
         "Apply psychological concepts"
       ],
-      "created_at": "2025-10-31 00:31:01.975163",
-      "updated_at": "2025-10-31 00:31:01.975163"
+      "created_at": "2025-12-05 12:35:49.632681",
+      "updated_at": "2025-12-05 12:35:49.632681"
     },
     {
-      "id": "01K8W8H0TQFK75Z9NA0D77XBW2",
+      "id": "01KBQSB5W0V47C74FHBMXE8PEN",
       "course_code": "PSY047",
       "title": "Cognitive Psychology",
       "description": "Study of mental processes including perception, memory, thinking, and problem-solving.",
@@ -2048,7 +2048,7 @@
       },
       "semester": "summer",
       "year": 2024,
-      "instructor": "Samantha Sanders",
+      "instructor": "Ashley Mccarty",
       "max_enrollment": 58,
       "current_enrollment": 49,
       "tags": [
@@ -2062,11 +2062,11 @@
         "Analyze problem-solving",
         "Explore perception mechanisms"
       ],
-      "created_at": "2025-10-31 00:31:01.975222",
-      "updated_at": "2025-10-31 00:31:01.975223"
+      "created_at": "2025-12-05 12:35:49.632728",
+      "updated_at": "2025-12-05 12:35:49.632729"
     },
     {
-      "id": "01K8W8H0TQFK75Z9NA0D77XBW3",
+      "id": "01KBQSB5W0V47C74FHBMXE8PEP",
       "course_code": "PSY048",
       "title": "Cognitive Psychology",
       "description": "Study of mental processes including perception, memory, thinking, and problem-solving.",
@@ -2099,7 +2099,7 @@
       },
       "semester": "spring",
       "year": 2024,
-      "instructor": "Bradley Powers",
+      "instructor": "Joyce Gilbert",
       "max_enrollment": 99,
       "current_enrollment": 68,
       "tags": [
@@ -2113,11 +2113,11 @@
         "Analyze problem-solving",
         "Explore perception mechanisms"
       ],
-      "created_at": "2025-10-31 00:31:01.975283",
-      "updated_at": "2025-10-31 00:31:01.975283"
+      "created_at": "2025-12-05 12:35:49.632775",
+      "updated_at": "2025-12-05 12:35:49.632775"
     },
     {
-      "id": "01K8W8H0TQFK75Z9NA0D77XBW4",
+      "id": "01KBQSB5W0V47C74FHBMXE8PEQ",
       "course_code": "PSY049",
       "title": "Introduction to Psychology",
       "description": "Overview of psychological principles, research methods, and major areas of study in psychology.",
@@ -2150,7 +2150,7 @@
       },
       "semester": "winter",
       "year": 2024,
-      "instructor": "Stacey Herrera",
+      "instructor": "Kenneth Craig",
       "max_enrollment": 55,
       "current_enrollment": 53,
       "tags": [
@@ -2164,11 +2164,11 @@
         "Explore areas of psychology",
         "Apply psychological concepts"
       ],
-      "created_at": "2025-10-31 00:31:01.975346",
-      "updated_at": "2025-10-31 00:31:01.975346"
+      "created_at": "2025-12-05 12:35:49.632821",
+      "updated_at": "2025-12-05 12:35:49.632821"
     },
     {
-      "id": "01K8W8H0TQFK75Z9NA0D77XBW5",
+      "id": "01KBQSB5W0V47C74FHBMXE8PER",
       "course_code": "PSY050",
       "title": "Cognitive Psychology",
       "description": "Study of mental processes including perception, memory, thinking, and problem-solving.",
@@ -2203,7 +2203,7 @@
       },
       "semester": "fall",
       "year": 2024,
-      "instructor": "Michael Ramsey",
+      "instructor": "Jaime Huang",
       "max_enrollment": 99,
       "current_enrollment": 19,
       "tags": [
@@ -2217,8 +2217,8 @@
         "Analyze problem-solving",
         "Explore perception mechanisms"
       ],
-      "created_at": "2025-10-31 00:31:01.975408",
-      "updated_at": "2025-10-31 00:31:01.975409"
+      "created_at": "2025-12-05 12:35:49.632868",
+      "updated_at": "2025-12-05 12:35:49.632868"
     }
   ]
 }
