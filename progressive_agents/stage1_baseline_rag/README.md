@@ -108,27 +108,30 @@ graph LR
 
 Returns FULL details for ALL 5 courses including:
 
-**Course 1: CS001 - Machine Learning Fundamentals**
+**Course 1: CS010 - Machine Learning Fundamentals**
 - Full description
 - Complete 14-week syllabus with topics, subtopics, readings
 - All 10 assignments (homeworks, exams, projects)
 - Grading policy breakdown
-- Textbook list
-- Prerequisites
+- Prerequisites: CS002 (Data Structures), MATH020 (Linear Algebra)
 - Learning objectives
 - Schedule and location
 
-**Course 2: CS002 - Deep Learning**
-- [Same complete details with 15-week syllabus]
-
-**Course 3: CS003 - Computer Vision**
+**Course 2: CS011 - Deep Learning and Neural Networks**
 - [Same complete details with 14-week syllabus]
+- Prerequisites: CS010 (ML Fundamentals)
 
-**Course 4: CS004 - Natural Language Processing**
+**Course 3: CS013 - Computer Vision**
 - [Same complete details with 14-week syllabus]
+- Prerequisites: CS010 (ML Fundamentals)
 
-**Course 5: CS005 - Reinforcement Learning**
+**Course 4: CS012 - Natural Language Processing**
 - [Same complete details with 14-week syllabus]
+- Prerequisites: CS010 (ML Fundamentals)
+
+**Course 5: CS017 - Reinforcement Learning**
+- [Same complete details with 14-week syllabus]
+- Prerequisites: CS010 (ML Fundamentals)
 
 **Total**: ~6,000+ tokens of raw JSON data
 
@@ -206,17 +209,17 @@ python cli.py --help
 Based on the course information provided, there are 5 machine learning
 related courses available:
 
-1. CS001: Machine Learning Fundamentals
+1. CS010: Machine Learning Fundamentals
    - Instructor: Dr. Smith
    - Credits: 4, Level: Advanced
    - 14-week course covering ML algorithms, neural networks, etc.
-   - 10 assignments including midterm and final project
+   - Prerequisites: CS002 (Data Structures), MATH020 (Linear Algebra)
 
-2. CS002: Deep Learning and Neural Networks
+2. CS011: Deep Learning and Neural Networks
    - Instructor: Dr. Johnson
-   - Credits: 4, Level: Graduate
-   - 15-week course on advanced neural architectures
-   - Prerequisites: CS001
+   - Credits: 4, Level: Advanced
+   - 14-week course on advanced neural architectures
+   - Prerequisites: CS010 (ML Fundamentals)
 
 [... continues with courses 3, 4, 5 ...]
 

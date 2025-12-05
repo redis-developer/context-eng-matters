@@ -143,7 +143,7 @@ User: "I prefer online courses. What ML courses do you recommend?"
 
 🔧 Action: search_courses
    Input: {"query": "machine learning", "intent": "GENERAL", "search_strategy": "hybrid"}
-👁️  Observation: Found 5 courses: CS002 (ML Fundamentals, Online), ...
+👁️  Observation: Found 5 courses: CS010 (ML Fundamentals), CS011 (Deep Learning), ...
 
 💭 Thought: I have courses and stored the preference. I can provide recommendations.
 
@@ -151,8 +151,8 @@ User: "I prefer online courses. What ML courses do you recommend?"
 ================================================================================
 
 Answer: I've noted your preference for online courses! Here are some ML courses available online:
-        1. CS002 - Machine Learning Fundamentals (Online, Beginner)
-        2. CS006 - Deep Learning and Neural Networks (Online, Advanced)
+        1. CS010 - Machine Learning Fundamentals (Advanced, 4 credits)
+        2. CS011 - Deep Learning and Neural Networks (Advanced, 4 credits)
         ...
 ```
 

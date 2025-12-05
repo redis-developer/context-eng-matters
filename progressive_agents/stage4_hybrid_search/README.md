@@ -114,8 +114,8 @@ stage4_hybrid_search/
 
 | Query | Time | Iterations | Result |
 |-------|------|------------|--------|
-| CS002 prerequisites (empty) | 5.1s | 2 | ✅ "no formal prerequisites" |
-| CS009 prerequisites (has CS002) | 3.3s | 2 | ✅ "requires CS002" |
+| CS002 prerequisites (has CS001) | 5.1s | 2 | ✅ "requires CS001 (Intro to Programming)" |
+| CS010 prerequisites (has CS002, MATH020) | 3.3s | 2 | ✅ "requires CS002 and MATH020" |
 | CS006 syllabus | 7.3s | 2 | ✅ Full syllabus returned |
 
 ## Comparison with Other Stages
@@ -136,9 +136,9 @@ stage4_hybrid_search/
 
 🔧 Action: search_courses
    Input: {"query": "CS002", "intent": "PREREQUISITES", "search_strategy": "exact_match", ...}
-👁️  Observation: Found CS002 - Machine Learning Fundamentals...
+👁️  Observation: Found CS002 - Data Structures and Algorithms...
 
-💭 Thought: I found the course info. Prerequisites field is empty - this means no prerequisites required.
+💭 Thought: I found the course info. Prerequisites: CS001 (Introduction to Programming).
 
 ✅ FINISH
 ================================================================================

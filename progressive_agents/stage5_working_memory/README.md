@@ -109,20 +109,20 @@ User: "What is CS004?"
 
 🔧 Action: search_courses
    Input: {"query": "CS004", "intent": "GENERAL", "search_strategy": "exact_match"}
-👁️  Observation: Found CS004 - Computer Vision...
+👁️  Observation: Found CS004 - Web Development...
 
 💭 Thought: I have the course information. I can provide a complete answer.
 
 ✅ FINISH
 ================================================================================
 
-Answer: CS004 is Computer Vision, an advanced course covering image processing...
+Answer: CS004 is Web Development, an intermediate course covering frontend and backend...
        [Saves to working memory]
 
 Turn 2 (same session):
 User: "What are the prerequisites?"
 Agent: [Loads working memory, sees CS004 context]
-       "CS004 requires CS201 (Data Structures) and MATH301 (Linear Algebra)..."
+       "CS004 has no formal prerequisites listed..."
 
 Turn 3 (same session):
 User: "Show me the syllabus"
@@ -132,7 +132,7 @@ Agent: [Loads working memory, knows we're talking about CS004]
 Turn 4 (new session, same student):
 User: "What courses did I ask about before?"
 Agent: [Loads long-term memory, finds CS004 from auto-extraction]
-       "You previously asked about CS004 (Computer Vision)..."
+       "You previously asked about CS004 (Web Development)..."
 ```
 
 ## 🔧 Implementation Details
