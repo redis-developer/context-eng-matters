@@ -1,4 +1,4 @@
-# MATH023: Pre-Calculus
+# MATH021: Pre-Calculus
 
 ## Course Information
 
@@ -6,9 +6,9 @@
 - **Credits**: 3
 - **Difficulty Level**: beginner
 - **Format**: online
-- **Instructor**: Ethan Adams
+- **Instructor**: Margaret Hawkins DDS
 - **Semester**: summer 2025
-- **Max Enrollment**: 69
+- **Max Enrollment**: 46
 
 ## Description
 
@@ -126,8 +126,6 @@ Complete project with code, report, and presentation
 **Subtopics**:
 - Real Numbers and Algebraic Expressions - Part 1
 - Real Numbers and Algebraic Expressions - Part 2
-- Real Numbers and Algebraic Expressions - Part 3
-- Real Numbers and Algebraic Expressions - Part 4
 
 **Learning Objectives**:
 - Understand real numbers and algebraic expressions
@@ -144,6 +142,8 @@ Complete project with code, report, and presentation
 **Subtopics**:
 - Equations and Inequalities - Part 1
 - Equations and Inequalities - Part 2
+- Equations and Inequalities - Part 3
+- Equations and Inequalities - Part 4
 
 **Learning Objectives**:
 - Understand equations and inequalities
@@ -217,7 +217,6 @@ Complete project with code, report, and presentation
 - Exponential Functions - Part 1
 - Exponential Functions - Part 2
 - Exponential Functions - Part 3
-- Exponential Functions - Part 4
 
 **Learning Objectives**:
 - Understand exponential functions
@@ -237,7 +236,6 @@ Complete project with code, report, and presentation
 **Subtopics**:
 - Logarithmic Functions - Part 1
 - Logarithmic Functions - Part 2
-- Logarithmic Functions - Part 3
 
 **Learning Objectives**:
 - Understand logarithmic functions
@@ -257,6 +255,8 @@ Complete project with code, report, and presentation
 **Subtopics**:
 - Trigonometric Functions - Part 1
 - Trigonometric Functions - Part 2
+- Trigonometric Functions - Part 3
+- Trigonometric Functions - Part 4
 
 **Learning Objectives**:
 - Understand trigonometric functions
@@ -276,7 +276,6 @@ Complete project with code, report, and presentation
 **Subtopics**:
 - Unit Circle and Radians - Part 1
 - Unit Circle and Radians - Part 2
-- Unit Circle and Radians - Part 3
 
 **Learning Objectives**:
 - Understand unit circle and radians
@@ -293,6 +292,8 @@ Complete project with code, report, and presentation
 **Subtopics**:
 - Trigonometric Identities - Part 1
 - Trigonometric Identities - Part 2
+- Trigonometric Identities - Part 3
+- Trigonometric Identities - Part 4
 
 **Learning Objectives**:
 - Understand trigonometric identities
@@ -313,6 +314,8 @@ Complete project with code, report, and presentation
 **Subtopics**:
 - Inverse Trigonometric Functions - Part 1
 - Inverse Trigonometric Functions - Part 2
+- Inverse Trigonometric Functions - Part 3
+- Inverse Trigonometric Functions - Part 4
 
 **Learning Objectives**:
 - Understand inverse trigonometric functions
@@ -329,7 +332,6 @@ Complete project with code, report, and presentation
 **Subtopics**:
 - Sequences and Series - Part 1
 - Sequences and Series - Part 2
-- Sequences and Series - Part 3
 
 **Learning Objectives**:
 - Understand sequences and series
@@ -350,6 +352,7 @@ Complete project with code, report, and presentation
 - Conic Sections - Part 1
 - Conic Sections - Part 2
 - Conic Sections - Part 3
+- Conic Sections - Part 4
 
 **Learning Objectives**:
 - Understand conic sections

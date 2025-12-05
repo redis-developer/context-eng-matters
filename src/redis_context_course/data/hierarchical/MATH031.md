@@ -1,49 +1,30 @@
-# MATH031: Linear Algebra for Machine Learning
+# MATH031: Numerical Analysis
 
 ## Course Information
 
 - **Department**: Mathematics
-- **Credits**: 4
-- **Difficulty Level**: intermediate
-- **Format**: online
-- **Instructor**: Daniel Murphy
-- **Semester**: summer 2025
-- **Max Enrollment**: 50
-- **Office Hours**: Monday 5:00-3:00 PM
-- **Teaching Assistants**: Joshua Cooke, Matthew Harrington, Nicole Herring
-
-### Schedule
-
-- **Days**: Tuesday, Thursday
-- **Time**: 03:00 PM - 04:15 PM
-- **Location**: Math Building 145
+- **Credits**: 3
+- **Difficulty Level**: advanced
+- **Format**: in_person
+- **Instructor**: Rebecca Henderson
+- **Semester**: winter 2025
+- **Max Enrollment**: 30
 
 ## Description
 
-Matrix operations, eigenvalues, and applications to machine learning. This course provides the mathematical foundation for understanding machine learning algorithms. Topics include vector spaces, matrix decompositions, eigenvalues, and optimization. Students will see how these concepts apply to PCA, SVD, and neural networks.
+Numerical methods for solving mathematical problems. This course covers algorithms for root finding, interpolation, numerical integration, and solving differential equations. Students will implement methods in Python or MATLAB.
+
+## Prerequisites
+
+- **MATH022**: Prerequisite for Numerical Analysis (Minimum grade: C)
 
 ## Learning Objectives
 
-- Understand core concepts in linear algebra for machine learning
-- Implement linear algebra for machine learning algorithms and techniques
-- Apply linear algebra for machine learning to real-world problems
-- Analyze and evaluate linear algebra for machine learning solutions
+- Understand core concepts in numerical analysis
+- Implement numerical analysis algorithms and techniques
+- Apply numerical analysis to real-world problems
+- Analyze and evaluate numerical analysis solutions
 - Design and build complete mathematics systems
-
-## Textbooks
-
-### **Required**: Linear Algebra for Machine Learning: A Comprehensive Guide
-
-- **Authors**: Jamie Walton, Darlene Miller
-- **Edition**: 3rd Edition
-- **ISBN**: 978-5985704790
-
-
-## Grading Policy
-
-- **Homework**: 40%
-- **Projects**: 40%
-- **Participation**: 20%
 
 ## Assignments
 
@@ -144,35 +125,34 @@ Complete project with code, report, and presentation
 ## Course Syllabus (14 weeks)
 
 
-### Week 1: Vectors and Vector Spaces
+### Week 1: Error Analysis
 
 **Subtopics**:
-- Vectors and Vector Spaces - Part 1
-- Vectors and Vector Spaces - Part 2
-- Vectors and Vector Spaces - Part 3
-- Vectors and Vector Spaces - Part 4
+- Error Analysis - Part 1
+- Error Analysis - Part 2
 
 **Learning Objectives**:
-- Understand vectors and vector spaces
-- Apply vectors and vector spaces concepts
-- Implement vectors and vector spaces solutions
+- Understand error analysis
+- Apply error analysis concepts
+- Implement error analysis solutions
 
 **Readings**:
 - Chapter 1
 - Research Paper 1
 
 
-### Week 2: Matrix Operations
+### Week 2: Root Finding: Bisection Method
 
 **Subtopics**:
-- Matrix Operations - Part 1
-- Matrix Operations - Part 2
-- Matrix Operations - Part 3
+- Root Finding: Bisection Method - Part 1
+- Root Finding: Bisection Method - Part 2
+- Root Finding: Bisection Method - Part 3
+- Root Finding: Bisection Method - Part 4
 
 **Learning Objectives**:
-- Understand matrix operations
-- Apply matrix operations concepts
-- Implement matrix operations solutions
+- Understand root finding: bisection method
+- Apply root finding: bisection method concepts
+- Implement root finding: bisection method solutions
 
 **Readings**:
 - Chapter 2
@@ -182,33 +162,34 @@ Complete project with code, report, and presentation
 - Homework 1
 
 
-### Week 3: Linear Transformations
+### Week 3: Newton's Method
 
 **Subtopics**:
-- Linear Transformations - Part 1
-- Linear Transformations - Part 2
-- Linear Transformations - Part 3
+- Newton's Method - Part 1
+- Newton's Method - Part 2
+- Newton's Method - Part 3
 
 **Learning Objectives**:
-- Understand linear transformations
-- Apply linear transformations concepts
-- Implement linear transformations solutions
+- Understand newton's method
+- Apply newton's method concepts
+- Implement newton's method solutions
 
 **Readings**:
 - Chapter 3
 - Research Paper 3
 
 
-### Week 4: Matrix Decompositions
+### Week 4: Fixed-Point Iteration
 
 **Subtopics**:
-- Matrix Decompositions - Part 1
-- Matrix Decompositions - Part 2
+- Fixed-Point Iteration - Part 1
+- Fixed-Point Iteration - Part 2
+- Fixed-Point Iteration - Part 3
 
 **Learning Objectives**:
-- Understand matrix decompositions
-- Apply matrix decompositions concepts
-- Implement matrix decompositions solutions
+- Understand fixed-point iteration
+- Apply fixed-point iteration concepts
+- Implement fixed-point iteration solutions
 
 **Readings**:
 - Chapter 4
@@ -218,35 +199,35 @@ Complete project with code, report, and presentation
 - Homework 2
 
 
-### Week 5: Eigenvalues and Eigenvectors
+### Week 5: Interpolation
 
 **Subtopics**:
-- Eigenvalues and Eigenvectors - Part 1
-- Eigenvalues and Eigenvectors - Part 2
-- Eigenvalues and Eigenvectors - Part 3
-- Eigenvalues and Eigenvectors - Part 4
+- Interpolation - Part 1
+- Interpolation - Part 2
+- Interpolation - Part 3
+- Interpolation - Part 4
 
 **Learning Objectives**:
-- Understand eigenvalues and eigenvectors
-- Apply eigenvalues and eigenvectors concepts
-- Implement eigenvalues and eigenvectors solutions
+- Understand interpolation
+- Apply interpolation concepts
+- Implement interpolation solutions
 
 **Readings**:
 - Chapter 5
 - Research Paper 5
 
 
-### Week 6: Singular Value Decomposition
+### Week 6: Polynomial Approximation
 
 **Subtopics**:
-- Singular Value Decomposition - Part 1
-- Singular Value Decomposition - Part 2
-- Singular Value Decomposition - Part 3
+- Polynomial Approximation - Part 1
+- Polynomial Approximation - Part 2
+- Polynomial Approximation - Part 3
 
 **Learning Objectives**:
-- Understand singular value decomposition
-- Apply singular value decomposition concepts
-- Implement singular value decomposition solutions
+- Understand polynomial approximation
+- Apply polynomial approximation concepts
+- Implement polynomial approximation solutions
 
 **Readings**:
 - Chapter 6
@@ -256,18 +237,17 @@ Complete project with code, report, and presentation
 - Homework 3
 
 
-### Week 7: Principal Component Analysis
+### Week 7: Numerical Differentiation
 
 **Subtopics**:
-- Principal Component Analysis - Part 1
-- Principal Component Analysis - Part 2
-- Principal Component Analysis - Part 3
-- Principal Component Analysis - Part 4
+- Numerical Differentiation - Part 1
+- Numerical Differentiation - Part 2
+- Numerical Differentiation - Part 3
 
 **Learning Objectives**:
-- Understand principal component analysis
-- Apply principal component analysis concepts
-- Implement principal component analysis solutions
+- Understand numerical differentiation
+- Apply numerical differentiation concepts
+- Implement numerical differentiation solutions
 
 **Readings**:
 - Chapter 7
@@ -277,17 +257,18 @@ Complete project with code, report, and presentation
 - Midterm Exam
 
 
-### Week 8: Least Squares and Regression
+### Week 8: Numerical Integration
 
 **Subtopics**:
-- Least Squares and Regression - Part 1
-- Least Squares and Regression - Part 2
-- Least Squares and Regression - Part 3
+- Numerical Integration - Part 1
+- Numerical Integration - Part 2
+- Numerical Integration - Part 3
+- Numerical Integration - Part 4
 
 **Learning Objectives**:
-- Understand least squares and regression
-- Apply least squares and regression concepts
-- Implement least squares and regression solutions
+- Understand numerical integration
+- Apply numerical integration concepts
+- Implement numerical integration solutions
 
 **Readings**:
 - Chapter 8
@@ -297,33 +278,34 @@ Complete project with code, report, and presentation
 - Homework 4
 
 
-### Week 9: Optimization Basics
+### Week 9: Gaussian Quadrature
 
 **Subtopics**:
-- Optimization Basics - Part 1
-- Optimization Basics - Part 2
+- Gaussian Quadrature - Part 1
+- Gaussian Quadrature - Part 2
+- Gaussian Quadrature - Part 3
+- Gaussian Quadrature - Part 4
 
 **Learning Objectives**:
-- Understand optimization basics
-- Apply optimization basics concepts
-- Implement optimization basics solutions
+- Understand gaussian quadrature
+- Apply gaussian quadrature concepts
+- Implement gaussian quadrature solutions
 
 **Readings**:
 - Chapter 9
 - Research Paper 9
 
 
-### Week 10: Gradient Descent
+### Week 10: Solving Linear Systems
 
 **Subtopics**:
-- Gradient Descent - Part 1
-- Gradient Descent - Part 2
-- Gradient Descent - Part 3
+- Solving Linear Systems - Part 1
+- Solving Linear Systems - Part 2
 
 **Learning Objectives**:
-- Understand gradient descent
-- Apply gradient descent concepts
-- Implement gradient descent solutions
+- Understand solving linear systems
+- Apply solving linear systems concepts
+- Implement solving linear systems solutions
 
 **Readings**:
 - Chapter 10
@@ -334,34 +316,35 @@ Complete project with code, report, and presentation
 - Project Proposal
 
 
-### Week 11: Applications to Neural Networks
+### Week 11: LU Decomposition
 
 **Subtopics**:
-- Applications to Neural Networks - Part 1
-- Applications to Neural Networks - Part 2
-- Applications to Neural Networks - Part 3
+- LU Decomposition - Part 1
+- LU Decomposition - Part 2
+- LU Decomposition - Part 3
 
 **Learning Objectives**:
-- Understand applications to neural networks
-- Apply applications to neural networks concepts
-- Implement applications to neural networks solutions
+- Understand lu decomposition
+- Apply lu decomposition concepts
+- Implement lu decomposition solutions
 
 **Readings**:
 - Chapter 11
 - Research Paper 11
 
 
-### Week 12: Dimensionality Reduction
+### Week 12: Iterative Methods
 
 **Subtopics**:
-- Dimensionality Reduction - Part 1
-- Dimensionality Reduction - Part 2
-- Dimensionality Reduction - Part 3
+- Iterative Methods - Part 1
+- Iterative Methods - Part 2
+- Iterative Methods - Part 3
+- Iterative Methods - Part 4
 
 **Learning Objectives**:
-- Understand dimensionality reduction
-- Apply dimensionality reduction concepts
-- Implement dimensionality reduction solutions
+- Understand iterative methods
+- Apply iterative methods concepts
+- Implement iterative methods solutions
 
 **Readings**:
 - Chapter 12
@@ -371,34 +354,33 @@ Complete project with code, report, and presentation
 - Project Draft
 
 
-### Week 13: Spectral Methods
+### Week 13: Numerical ODEs
 
 **Subtopics**:
-- Spectral Methods - Part 1
-- Spectral Methods - Part 2
-- Spectral Methods - Part 3
+- Numerical ODEs - Part 1
+- Numerical ODEs - Part 2
 
 **Learning Objectives**:
-- Understand spectral methods
-- Apply spectral methods concepts
-- Implement spectral methods solutions
+- Understand numerical odes
+- Apply numerical odes concepts
+- Implement numerical odes solutions
 
 **Readings**:
 - Chapter 13
 - Research Paper 13
 
 
-### Week 14: Review and Applications
+### Week 14: Final Project
 
 **Subtopics**:
-- Review and Applications - Part 1
-- Review and Applications - Part 2
-- Review and Applications - Part 3
+- Final Project - Part 1
+- Final Project - Part 2
+- Final Project - Part 3
 
 **Learning Objectives**:
-- Understand review and applications
-- Apply review and applications concepts
-- Implement review and applications solutions
+- Understand final project
+- Apply final project concepts
+- Implement final project solutions
 
 **Readings**:
 - Chapter 14
@@ -410,4 +392,4 @@ Complete project with code, report, and presentation
 
 ## Tags
 
-`linear algebra`, `matrices`, `machine learning`, `mathematics`
+`numerical analysis`, `algorithms`, `computation`, `mathematics`

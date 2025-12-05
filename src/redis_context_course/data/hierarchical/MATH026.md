@@ -1,25 +1,29 @@
-# MATH026: Linear Algebra for Machine Learning
+# MATH026: Multivariable Calculus
 
 ## Course Information
 
 - **Department**: Mathematics
 - **Credits**: 4
-- **Difficulty Level**: intermediate
-- **Format**: online
-- **Instructor**: Crystal Mccoy
-- **Semester**: spring 2025
-- **Max Enrollment**: 40
+- **Difficulty Level**: advanced
+- **Format**: hybrid
+- **Instructor**: Judy Baker
+- **Semester**: fall 2025
+- **Max Enrollment**: 53
 
 ## Description
 
-Matrix operations, eigenvalues, and applications to machine learning. This course provides the mathematical foundation for understanding machine learning algorithms. Topics include vector spaces, matrix decompositions, eigenvalues, and optimization. Students will see how these concepts apply to PCA, SVD, and neural networks.
+Calculus of functions of several variables. This course extends calculus to multiple dimensions, covering partial derivatives, multiple integrals, vector calculus, and applications to physics and engineering.
+
+## Prerequisites
+
+- **MATH023**: Prerequisite for Multivariable Calculus (Minimum grade: C)
 
 ## Learning Objectives
 
-- Understand core concepts in linear algebra for machine learning
-- Implement linear algebra for machine learning algorithms and techniques
-- Apply linear algebra for machine learning to real-world problems
-- Analyze and evaluate linear algebra for machine learning solutions
+- Understand core concepts in multivariable calculus
+- Implement multivariable calculus algorithms and techniques
+- Apply multivariable calculus to real-world problems
+- Analyze and evaluate multivariable calculus solutions
 - Design and build complete mathematics systems
 
 ## Assignments
@@ -90,7 +94,7 @@ Problem set covering weeks 11-12
 
 ### Projects
 
-#### Project Proposal (Week 10)
+#### Project Proposal (Week 11)
 
 1-page proposal for final project
 
@@ -99,7 +103,7 @@ Problem set covering weeks 11-12
 - **Group Work**: Yes
 - **Submission Format**: PDF
 
-#### Project Draft (Week 12)
+#### Project Draft (Week 13)
 
 Working implementation and preliminary results
 
@@ -108,7 +112,7 @@ Working implementation and preliminary results
 - **Group Work**: Yes
 - **Submission Format**: GitHub Repository
 
-#### Final Project (Week 14)
+#### Final Project (Week 15)
 
 Complete project with code, report, and presentation
 
@@ -118,37 +122,37 @@ Complete project with code, report, and presentation
 - **Submission Format**: GitHub + Presentation
 
 
-## Course Syllabus (14 weeks)
+## Course Syllabus (15 weeks)
 
 
-### Week 1: Vectors and Vector Spaces
+### Week 1: Functions of Several Variables
 
 **Subtopics**:
-- Vectors and Vector Spaces - Part 1
-- Vectors and Vector Spaces - Part 2
-- Vectors and Vector Spaces - Part 3
-- Vectors and Vector Spaces - Part 4
+- Functions of Several Variables - Part 1
+- Functions of Several Variables - Part 2
 
 **Learning Objectives**:
-- Understand vectors and vector spaces
-- Apply vectors and vector spaces concepts
-- Implement vectors and vector spaces solutions
+- Understand functions of several variables
+- Apply functions of several variables concepts
+- Implement functions of several variables solutions
 
 **Readings**:
 - Chapter 1
 - Research Paper 1
 
 
-### Week 2: Matrix Operations
+### Week 2: Partial Derivatives
 
 **Subtopics**:
-- Matrix Operations - Part 1
-- Matrix Operations - Part 2
+- Partial Derivatives - Part 1
+- Partial Derivatives - Part 2
+- Partial Derivatives - Part 3
+- Partial Derivatives - Part 4
 
 **Learning Objectives**:
-- Understand matrix operations
-- Apply matrix operations concepts
-- Implement matrix operations solutions
+- Understand partial derivatives
+- Apply partial derivatives concepts
+- Implement partial derivatives solutions
 
 **Readings**:
 - Chapter 2
@@ -158,34 +162,33 @@ Complete project with code, report, and presentation
 - Homework 1
 
 
-### Week 3: Linear Transformations
+### Week 3: Chain Rule for Multiple Variables
 
 **Subtopics**:
-- Linear Transformations - Part 1
-- Linear Transformations - Part 2
+- Chain Rule for Multiple Variables - Part 1
+- Chain Rule for Multiple Variables - Part 2
+- Chain Rule for Multiple Variables - Part 3
 
 **Learning Objectives**:
-- Understand linear transformations
-- Apply linear transformations concepts
-- Implement linear transformations solutions
+- Understand chain rule for multiple variables
+- Apply chain rule for multiple variables concepts
+- Implement chain rule for multiple variables solutions
 
 **Readings**:
 - Chapter 3
 - Research Paper 3
 
 
-### Week 4: Matrix Decompositions
+### Week 4: Gradient and Directional Derivatives
 
 **Subtopics**:
-- Matrix Decompositions - Part 1
-- Matrix Decompositions - Part 2
-- Matrix Decompositions - Part 3
-- Matrix Decompositions - Part 4
+- Gradient and Directional Derivatives - Part 1
+- Gradient and Directional Derivatives - Part 2
 
 **Learning Objectives**:
-- Understand matrix decompositions
-- Apply matrix decompositions concepts
-- Implement matrix decompositions solutions
+- Understand gradient and directional derivatives
+- Apply gradient and directional derivatives concepts
+- Implement gradient and directional derivatives solutions
 
 **Readings**:
 - Chapter 4
@@ -195,32 +198,35 @@ Complete project with code, report, and presentation
 - Homework 2
 
 
-### Week 5: Eigenvalues and Eigenvectors
+### Week 5: Optimization in Multiple Dimensions
 
 **Subtopics**:
-- Eigenvalues and Eigenvectors - Part 1
-- Eigenvalues and Eigenvectors - Part 2
+- Optimization in Multiple Dimensions - Part 1
+- Optimization in Multiple Dimensions - Part 2
+- Optimization in Multiple Dimensions - Part 3
+- Optimization in Multiple Dimensions - Part 4
 
 **Learning Objectives**:
-- Understand eigenvalues and eigenvectors
-- Apply eigenvalues and eigenvectors concepts
-- Implement eigenvalues and eigenvectors solutions
+- Understand optimization in multiple dimensions
+- Apply optimization in multiple dimensions concepts
+- Implement optimization in multiple dimensions solutions
 
 **Readings**:
 - Chapter 5
 - Research Paper 5
 
 
-### Week 6: Singular Value Decomposition
+### Week 6: Lagrange Multipliers
 
 **Subtopics**:
-- Singular Value Decomposition - Part 1
-- Singular Value Decomposition - Part 2
+- Lagrange Multipliers - Part 1
+- Lagrange Multipliers - Part 2
+- Lagrange Multipliers - Part 3
 
 **Learning Objectives**:
-- Understand singular value decomposition
-- Apply singular value decomposition concepts
-- Implement singular value decomposition solutions
+- Understand lagrange multipliers
+- Apply lagrange multipliers concepts
+- Implement lagrange multipliers solutions
 
 **Readings**:
 - Chapter 6
@@ -230,16 +236,18 @@ Complete project with code, report, and presentation
 - Homework 3
 
 
-### Week 7: Principal Component Analysis
+### Week 7: Double Integrals
 
 **Subtopics**:
-- Principal Component Analysis - Part 1
-- Principal Component Analysis - Part 2
+- Double Integrals - Part 1
+- Double Integrals - Part 2
+- Double Integrals - Part 3
+- Double Integrals - Part 4
 
 **Learning Objectives**:
-- Understand principal component analysis
-- Apply principal component analysis concepts
-- Implement principal component analysis solutions
+- Understand double integrals
+- Apply double integrals concepts
+- Implement double integrals solutions
 
 **Readings**:
 - Chapter 7
@@ -249,17 +257,18 @@ Complete project with code, report, and presentation
 - Midterm Exam
 
 
-### Week 8: Least Squares and Regression
+### Week 8: Triple Integrals
 
 **Subtopics**:
-- Least Squares and Regression - Part 1
-- Least Squares and Regression - Part 2
-- Least Squares and Regression - Part 3
+- Triple Integrals - Part 1
+- Triple Integrals - Part 2
+- Triple Integrals - Part 3
+- Triple Integrals - Part 4
 
 **Learning Objectives**:
-- Understand least squares and regression
-- Apply least squares and regression concepts
-- Implement least squares and regression solutions
+- Understand triple integrals
+- Apply triple integrals concepts
+- Implement triple integrals solutions
 
 **Readings**:
 - Chapter 8
@@ -269,34 +278,35 @@ Complete project with code, report, and presentation
 - Homework 4
 
 
-### Week 9: Optimization Basics
+### Week 9: Change of Variables
 
 **Subtopics**:
-- Optimization Basics - Part 1
-- Optimization Basics - Part 2
-- Optimization Basics - Part 3
+- Change of Variables - Part 1
+- Change of Variables - Part 2
+- Change of Variables - Part 3
 
 **Learning Objectives**:
-- Understand optimization basics
-- Apply optimization basics concepts
-- Implement optimization basics solutions
+- Understand change of variables
+- Apply change of variables concepts
+- Implement change of variables solutions
 
 **Readings**:
 - Chapter 9
 - Research Paper 9
 
 
-### Week 10: Gradient Descent
+### Week 10: Vector Fields
 
 **Subtopics**:
-- Gradient Descent - Part 1
-- Gradient Descent - Part 2
-- Gradient Descent - Part 3
+- Vector Fields - Part 1
+- Vector Fields - Part 2
+- Vector Fields - Part 3
+- Vector Fields - Part 4
 
 **Learning Objectives**:
-- Understand gradient descent
-- Apply gradient descent concepts
-- Implement gradient descent solutions
+- Understand vector fields
+- Apply vector fields concepts
+- Implement vector fields solutions
 
 **Readings**:
 - Chapter 10
@@ -304,78 +314,97 @@ Complete project with code, report, and presentation
 
 **Assignments Due**:
 - Homework 5
-- Project Proposal
 
 
-### Week 11: Applications to Neural Networks
+### Week 11: Line Integrals
 
 **Subtopics**:
-- Applications to Neural Networks - Part 1
-- Applications to Neural Networks - Part 2
+- Line Integrals - Part 1
+- Line Integrals - Part 2
 
 **Learning Objectives**:
-- Understand applications to neural networks
-- Apply applications to neural networks concepts
-- Implement applications to neural networks solutions
+- Understand line integrals
+- Apply line integrals concepts
+- Implement line integrals solutions
 
 **Readings**:
 - Chapter 11
 - Research Paper 11
 
+**Assignments Due**:
+- Project Proposal
 
-### Week 12: Dimensionality Reduction
+
+### Week 12: Green's Theorem
 
 **Subtopics**:
-- Dimensionality Reduction - Part 1
-- Dimensionality Reduction - Part 2
+- Green's Theorem - Part 1
+- Green's Theorem - Part 2
 
 **Learning Objectives**:
-- Understand dimensionality reduction
-- Apply dimensionality reduction concepts
-- Implement dimensionality reduction solutions
+- Understand green's theorem
+- Apply green's theorem concepts
+- Implement green's theorem solutions
 
 **Readings**:
 - Chapter 12
 - Research Paper 12
 
 **Assignments Due**:
-- Project Draft
+- Homework 6
 
 
-### Week 13: Spectral Methods
+### Week 13: Surface Integrals
 
 **Subtopics**:
-- Spectral Methods - Part 1
-- Spectral Methods - Part 2
-- Spectral Methods - Part 3
-- Spectral Methods - Part 4
+- Surface Integrals - Part 1
+- Surface Integrals - Part 2
 
 **Learning Objectives**:
-- Understand spectral methods
-- Apply spectral methods concepts
-- Implement spectral methods solutions
+- Understand surface integrals
+- Apply surface integrals concepts
+- Implement surface integrals solutions
 
 **Readings**:
 - Chapter 13
 - Research Paper 13
 
+**Assignments Due**:
+- Project Draft
 
-### Week 14: Review and Applications
+
+### Week 14: Stokes' and Divergence Theorems
 
 **Subtopics**:
-- Review and Applications - Part 1
-- Review and Applications - Part 2
-- Review and Applications - Part 3
-- Review and Applications - Part 4
+- Stokes' and Divergence Theorems - Part 1
+- Stokes' and Divergence Theorems - Part 2
+- Stokes' and Divergence Theorems - Part 3
+- Stokes' and Divergence Theorems - Part 4
 
 **Learning Objectives**:
-- Understand review and applications
-- Apply review and applications concepts
-- Implement review and applications solutions
+- Understand stokes' and divergence theorems
+- Apply stokes' and divergence theorems concepts
+- Implement stokes' and divergence theorems solutions
 
 **Readings**:
 - Chapter 14
 - Research Paper 14
+
+
+### Week 15: Final Exam Review
+
+**Subtopics**:
+- Final Exam Review - Part 1
+- Final Exam Review - Part 2
+
+**Learning Objectives**:
+- Understand final exam review
+- Apply final exam review concepts
+- Implement final exam review solutions
+
+**Readings**:
+- Chapter 15
+- Research Paper 15
 
 **Assignments Due**:
 - Final Project
@@ -383,4 +412,4 @@ Complete project with code, report, and presentation
 
 ## Tags
 
-`linear algebra`, `matrices`, `machine learning`, `mathematics`
+`calculus`, `multivariable`, `vector calculus`, `mathematics`

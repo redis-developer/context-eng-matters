@@ -1,4 +1,4 @@
-# MATH028: Probability and Statistics
+# MATH029: Discrete Mathematics
 
 ## Course Information
 
@@ -6,20 +6,20 @@
 - **Credits**: 3
 - **Difficulty Level**: intermediate
 - **Format**: hybrid
-- **Instructor**: Stephanie Ross
+- **Instructor**: Zachary Hicks
 - **Semester**: spring 2025
-- **Max Enrollment**: 47
+- **Max Enrollment**: 55
 
 ## Description
 
-Probability theory, distributions, and statistical inference. This course covers probability axioms, random variables, common distributions, hypothesis testing, and regression. Students will apply statistical methods to real-world data.
+Logic, sets, combinatorics, and graph theory. This course provides the mathematical foundations for computer science, covering propositional logic, proof techniques, counting, and discrete structures.
 
 ## Learning Objectives
 
-- Understand core concepts in probability and statistics
-- Implement probability and statistics algorithms and techniques
-- Apply probability and statistics to real-world problems
-- Analyze and evaluate probability and statistics solutions
+- Understand core concepts in discrete mathematics
+- Implement discrete mathematics algorithms and techniques
+- Apply discrete mathematics to real-world problems
+- Analyze and evaluate discrete mathematics solutions
 - Design and build complete mathematics systems
 
 ## Assignments
@@ -121,35 +121,34 @@ Complete project with code, report, and presentation
 ## Course Syllabus (14 weeks)
 
 
-### Week 1: Probability Basics
+### Week 1: Propositional Logic
 
 **Subtopics**:
-- Probability Basics - Part 1
-- Probability Basics - Part 2
-- Probability Basics - Part 3
-- Probability Basics - Part 4
+- Propositional Logic - Part 1
+- Propositional Logic - Part 2
 
 **Learning Objectives**:
-- Understand probability basics
-- Apply probability basics concepts
-- Implement probability basics solutions
+- Understand propositional logic
+- Apply propositional logic concepts
+- Implement propositional logic solutions
 
 **Readings**:
 - Chapter 1
 - Research Paper 1
 
 
-### Week 2: Conditional Probability
+### Week 2: Predicate Logic
 
 **Subtopics**:
-- Conditional Probability - Part 1
-- Conditional Probability - Part 2
-- Conditional Probability - Part 3
+- Predicate Logic - Part 1
+- Predicate Logic - Part 2
+- Predicate Logic - Part 3
+- Predicate Logic - Part 4
 
 **Learning Objectives**:
-- Understand conditional probability
-- Apply conditional probability concepts
-- Implement conditional probability solutions
+- Understand predicate logic
+- Apply predicate logic concepts
+- Implement predicate logic solutions
 
 **Readings**:
 - Chapter 2
@@ -159,36 +158,33 @@ Complete project with code, report, and presentation
 - Homework 1
 
 
-### Week 3: Random Variables
+### Week 3: Proof Techniques
 
 **Subtopics**:
-- Random Variables - Part 1
-- Random Variables - Part 2
-- Random Variables - Part 3
-- Random Variables - Part 4
+- Proof Techniques - Part 1
+- Proof Techniques - Part 2
 
 **Learning Objectives**:
-- Understand random variables
-- Apply random variables concepts
-- Implement random variables solutions
+- Understand proof techniques
+- Apply proof techniques concepts
+- Implement proof techniques solutions
 
 **Readings**:
 - Chapter 3
 - Research Paper 3
 
 
-### Week 4: Discrete Distributions
+### Week 4: Mathematical Induction
 
 **Subtopics**:
-- Discrete Distributions - Part 1
-- Discrete Distributions - Part 2
-- Discrete Distributions - Part 3
-- Discrete Distributions - Part 4
+- Mathematical Induction - Part 1
+- Mathematical Induction - Part 2
+- Mathematical Induction - Part 3
 
 **Learning Objectives**:
-- Understand discrete distributions
-- Apply discrete distributions concepts
-- Implement discrete distributions solutions
+- Understand mathematical induction
+- Apply mathematical induction concepts
+- Implement mathematical induction solutions
 
 **Readings**:
 - Chapter 4
@@ -198,32 +194,33 @@ Complete project with code, report, and presentation
 - Homework 2
 
 
-### Week 5: Continuous Distributions
+### Week 5: Sets and Set Operations
 
 **Subtopics**:
-- Continuous Distributions - Part 1
-- Continuous Distributions - Part 2
+- Sets and Set Operations - Part 1
+- Sets and Set Operations - Part 2
 
 **Learning Objectives**:
-- Understand continuous distributions
-- Apply continuous distributions concepts
-- Implement continuous distributions solutions
+- Understand sets and set operations
+- Apply sets and set operations concepts
+- Implement sets and set operations solutions
 
 **Readings**:
 - Chapter 5
 - Research Paper 5
 
 
-### Week 6: Normal Distribution
+### Week 6: Functions and Relations
 
 **Subtopics**:
-- Normal Distribution - Part 1
-- Normal Distribution - Part 2
+- Functions and Relations - Part 1
+- Functions and Relations - Part 2
+- Functions and Relations - Part 3
 
 **Learning Objectives**:
-- Understand normal distribution
-- Apply normal distribution concepts
-- Implement normal distribution solutions
+- Understand functions and relations
+- Apply functions and relations concepts
+- Implement functions and relations solutions
 
 **Readings**:
 - Chapter 6
@@ -233,16 +230,16 @@ Complete project with code, report, and presentation
 - Homework 3
 
 
-### Week 7: Central Limit Theorem
+### Week 7: Counting Principles
 
 **Subtopics**:
-- Central Limit Theorem - Part 1
-- Central Limit Theorem - Part 2
+- Counting Principles - Part 1
+- Counting Principles - Part 2
 
 **Learning Objectives**:
-- Understand central limit theorem
-- Apply central limit theorem concepts
-- Implement central limit theorem solutions
+- Understand counting principles
+- Apply counting principles concepts
+- Implement counting principles solutions
 
 **Readings**:
 - Chapter 7
@@ -252,16 +249,16 @@ Complete project with code, report, and presentation
 - Midterm Exam
 
 
-### Week 8: Sampling Distributions
+### Week 8: Permutations and Combinations
 
 **Subtopics**:
-- Sampling Distributions - Part 1
-- Sampling Distributions - Part 2
+- Permutations and Combinations - Part 1
+- Permutations and Combinations - Part 2
 
 **Learning Objectives**:
-- Understand sampling distributions
-- Apply sampling distributions concepts
-- Implement sampling distributions solutions
+- Understand permutations and combinations
+- Apply permutations and combinations concepts
+- Implement permutations and combinations solutions
 
 **Readings**:
 - Chapter 8
@@ -271,33 +268,34 @@ Complete project with code, report, and presentation
 - Homework 4
 
 
-### Week 9: Point Estimation
+### Week 9: Binomial Theorem
 
 **Subtopics**:
-- Point Estimation - Part 1
-- Point Estimation - Part 2
-- Point Estimation - Part 3
+- Binomial Theorem - Part 1
+- Binomial Theorem - Part 2
+- Binomial Theorem - Part 3
 
 **Learning Objectives**:
-- Understand point estimation
-- Apply point estimation concepts
-- Implement point estimation solutions
+- Understand binomial theorem
+- Apply binomial theorem concepts
+- Implement binomial theorem solutions
 
 **Readings**:
 - Chapter 9
 - Research Paper 9
 
 
-### Week 10: Confidence Intervals
+### Week 10: Graph Theory Basics
 
 **Subtopics**:
-- Confidence Intervals - Part 1
-- Confidence Intervals - Part 2
+- Graph Theory Basics - Part 1
+- Graph Theory Basics - Part 2
+- Graph Theory Basics - Part 3
 
 **Learning Objectives**:
-- Understand confidence intervals
-- Apply confidence intervals concepts
-- Implement confidence intervals solutions
+- Understand graph theory basics
+- Apply graph theory basics concepts
+- Implement graph theory basics solutions
 
 **Readings**:
 - Chapter 10
@@ -308,34 +306,33 @@ Complete project with code, report, and presentation
 - Project Proposal
 
 
-### Week 11: Hypothesis Testing
+### Week 11: Trees and Spanning Trees
 
 **Subtopics**:
-- Hypothesis Testing - Part 1
-- Hypothesis Testing - Part 2
+- Trees and Spanning Trees - Part 1
+- Trees and Spanning Trees - Part 2
+- Trees and Spanning Trees - Part 3
 
 **Learning Objectives**:
-- Understand hypothesis testing
-- Apply hypothesis testing concepts
-- Implement hypothesis testing solutions
+- Understand trees and spanning trees
+- Apply trees and spanning trees concepts
+- Implement trees and spanning trees solutions
 
 **Readings**:
 - Chapter 11
 - Research Paper 11
 
 
-### Week 12: Chi-Square Tests
+### Week 12: Euler and Hamiltonian Paths
 
 **Subtopics**:
-- Chi-Square Tests - Part 1
-- Chi-Square Tests - Part 2
-- Chi-Square Tests - Part 3
-- Chi-Square Tests - Part 4
+- Euler and Hamiltonian Paths - Part 1
+- Euler and Hamiltonian Paths - Part 2
 
 **Learning Objectives**:
-- Understand chi-square tests
-- Apply chi-square tests concepts
-- Implement chi-square tests solutions
+- Understand euler and hamiltonian paths
+- Apply euler and hamiltonian paths concepts
+- Implement euler and hamiltonian paths solutions
 
 **Readings**:
 - Chapter 12
@@ -345,17 +342,16 @@ Complete project with code, report, and presentation
 - Project Draft
 
 
-### Week 13: Linear Regression
+### Week 13: Recurrence Relations
 
 **Subtopics**:
-- Linear Regression - Part 1
-- Linear Regression - Part 2
-- Linear Regression - Part 3
+- Recurrence Relations - Part 1
+- Recurrence Relations - Part 2
 
 **Learning Objectives**:
-- Understand linear regression
-- Apply linear regression concepts
-- Implement linear regression solutions
+- Understand recurrence relations
+- Apply recurrence relations concepts
+- Implement recurrence relations solutions
 
 **Readings**:
 - Chapter 13
@@ -367,7 +363,6 @@ Complete project with code, report, and presentation
 **Subtopics**:
 - Final Exam Review - Part 1
 - Final Exam Review - Part 2
-- Final Exam Review - Part 3
 
 **Learning Objectives**:
 - Understand final exam review
@@ -384,4 +379,4 @@ Complete project with code, report, and presentation
 
 ## Tags
 
-`probability`, `statistics`, `inference`, `data analysis`
+`discrete math`, `logic`, `combinatorics`, `graph theory`
