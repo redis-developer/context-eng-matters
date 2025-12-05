@@ -212,10 +212,13 @@ The course uses the `redis_context_course` package, which provides production-re
 ### What's in the Package?
 
 **Core Components** (used in notebooks):
-- `CourseManager` - Course search, recommendations, and catalog management
-- `HierarchicalContextManager` - Progressive disclosure for context
+- `CourseManager` - Basic course search with Redis vector store
+- `HierarchicalCourseManager` - Two-tier retrieval (summaries + details)
+- `HierarchicalContextAssembler` - Progressive disclosure for context assembly
 - Data models: `Course`, `StudentProfile`, `DifficultyLevel`, `CourseFormat`, `Semester`
 - Scripts: `CourseGenerator`, `CourseIngestionPipeline`
+
+**Note:** The workshop modules use `HierarchicalCourseManager` throughout for consistency, while the source notebooks use `CourseManager`.
 
 ### How the Course Uses the Package
 
@@ -229,9 +232,12 @@ The course uses the `redis_context_course` package, which provides production-re
 
 **Component Usage by Section**:
 - **Section 1**: None (conceptual foundation)
-- **Section 2**: CourseManager, HierarchicalContextManager, data generation scripts
+- **Section 2**: CourseManager, HierarchicalContextAssembler, data generation scripts
 - **Section 3**: CourseManager, data models
 - **Section 4**: CourseManager, data models, LangGraph integration
+
+**Workshop Modules** (use HierarchicalCourseManager):
+- **Module 2-4**: HierarchicalCourseManager, HierarchicalContextAssembler for progressive disclosure
 
 ---
 

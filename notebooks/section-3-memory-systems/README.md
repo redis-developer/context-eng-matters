@@ -91,6 +91,12 @@ User Query
 - **OpenAI** - GPT-4o for generation, text-embedding-3-small for vectors
 - **RedisVL** - Vector search (via reference-agent utilities)
 
+## Key Classes
+
+- **CourseManager** - Basic Redis vector search (used in source notebooks)
+- **HierarchicalCourseManager** - Two-tier retrieval (used in workshop Module 4)
+- **HierarchicalContextAssembler** - Progressive disclosure for context assembly
+
 ## Key Differences from Section 2
 
 | Feature | Section 2 (Retrieved Context) | Section 3 (Memory-Enhanced) |

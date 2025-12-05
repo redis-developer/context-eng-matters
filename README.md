@@ -151,18 +151,19 @@ CS002 (Machine Learning Fundamentals) has no formal prerequisites listed.
 ```
 context-eng-matters/
 ├── src/redis_context_course/     # Core library
-│   ├── course_manager.py         # Redis vector search for courses
-│   ├── hierarchical_context.py   # Progressive disclosure
+│   ├── course_manager.py         # CourseManager - basic Redis vector search
+│   ├── hierarchical_course_manager.py  # HierarchicalCourseManager - two-tier retrieval
+│   ├── hierarchical_context.py   # HierarchicalContextAssembler - progressive disclosure
 │   ├── models.py                 # Pydantic data models
 │   └── scripts/                  # Data generation utilities
 │
-├── workshop/                     # Condensed workshop (6 notebooks)
-│   ├── 01_introduction_to_context_engineering.ipynb
-│   ├── 02_data_engineering.ipynb
-│   ├── 03_rag_essentials.ipynb
-│   ├── 04_memory_systems.ipynb
-│   ├── 05_building_agents.ipynb
-│   └── 06_capstone_comparison.ipynb
+├── workshop/                     # Comprehensive workshop (6 notebooks, ~6,000 lines)
+│   ├── 01_introduction_to_context_engineering.ipynb  # Context types, token budgeting
+│   ├── 02_rag_essentials.ipynb                       # Vector embeddings, semantic search (~1,000 lines)
+│   ├── 03_data_engineering.ipynb                     # Data pipelines, chunking strategies (~1,700 lines)
+│   ├── 04_memory_systems.ipynb                       # Working + long-term memory (~2,000 lines)
+│   ├── 05_building_agents.ipynb                      # LangGraph, tool calling
+│   └── 06_capstone_comparison.ipynb                  # Stage 4 vs 6 comparison
 │
 ├── progressive_agents/           # 6 agent implementations (learning path)
 │   ├── stage1_baseline_rag/

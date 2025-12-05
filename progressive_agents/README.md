@@ -256,11 +256,14 @@ python cli.py -q --student-id alice "What courses are available?"
 
 | Component | Description | Used In |
 |-----------|-------------|---------|
-| `CourseManager` | Redis vector search for courses | All stages |
+| `CourseManager` | Basic Redis vector search for courses | Stages 1-3 |
+| `HierarchicalCourseManager` | Two-tier retrieval (summaries + details) | Stages 4+ |
 | `HierarchicalContextAssembler` | Progressive disclosure | Stages 4+ |
 | `FilterQuery` | Exact course code matching | Stages 4+ |
 | `Agent Memory Server` | Working memory (Stage 5), Full memory (Stage 6) | Stages 5-6 |
 | `ReActAgent` | Visible reasoning loop | Stages 4-6 |
+
+**Note:** The workshop modules use `HierarchicalCourseManager` throughout for consistency with the progressive agents.
 
 ### Architecture Patterns
 

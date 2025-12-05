@@ -24,24 +24,31 @@ This workshop follows a deliberate learning progression:
 
 ## ⏱️ Schedule
 
-| Module | Time | Notebook | Key Concepts |
-|--------|------|----------|--------------|
-| **1. Introduction** | 45 min | `01_introduction_to_context_engineering.ipynb` | Four context types, context failures, token budgeting |
-| **2. Data Engineering** | 20 min | `02_data_engineering.ipynb` | Data pipeline, chunking decisions, 91% token reduction demo |
-| **3. RAG Essentials** | 55 min | `03_rag_essentials.ipynb` | Vector embeddings, semantic search, progressive disclosure |
-| **4. Memory Systems** | 45 min | `04_memory_systems.ipynb` | Working memory, long-term memory, Agent Memory Server |
-| **5. Building Agents** | 60 min | `05_building_agents.ipynb` | LangGraph, tool calling, memory tools |
-| **6. Capstone** | 30 min | `06_capstone_comparison.ipynb` | Stage 4 vs 6 comparison, production patterns |
+| Module | Time | Notebook | Lines | Key Concepts |
+|--------|------|----------|-------|--------------|
+| **1. Introduction** | 45 min | `01_introduction_to_context_engineering.ipynb` | ~600 | Four context types, context failures, token budgeting |
+| **2. RAG Essentials** | 60 min | `02_rag_essentials.ipynb` | ~1,000 | Vector embeddings, semantic search, HierarchicalCourseManager |
+| **3. Data Engineering** | 75 min | `03_data_engineering.ipynb` | ~1,700 | Data pipeline, chunking strategies, batch processing |
+| **4. Memory Systems** | 90 min | `04_memory_systems.ipynb` | ~2,000 | Working memory, long-term memory, memory-enhanced RAG |
+| **5. Building Agents** | 60 min | `05_building_agents.ipynb` | ~350 | LangGraph, tool calling, memory tools |
+| **6. Capstone** | 30 min | `06_capstone_comparison.ipynb` | ~300 | Stage 4 vs 6 comparison, production patterns |
+
+**Total:** ~6 hours | ~6,000 lines of comprehensive content
 
 ## 🔧 Prerequisites
 
 ### Required Software
-- Python 3.9+
+- Python 3.11+
 - Docker (for Redis and Agent Memory Server)
 - Jupyter Lab or VS Code with Jupyter extension
 
 ### API Keys
 - OpenAI API key (for embeddings and LLM)
+
+### Services Required
+- **Redis** (port 6379) - Required for all modules
+- **Agent Memory Server** (port 8088) - Required for Module 4 (Memory Systems)
+  - Must be started with `OPENAI_API_KEY` environment variable for long-term memory features
 
 ## 🚀 Quick Setup
 
@@ -115,37 +122,54 @@ curl http://localhost:8088/v1/health
 - **Context Rot**: Why longer context ≠ better context
 - **Best Practices**: 5 essential practices for production context engineering
 
-### Module 2: Data Engineering for Context (20 min)
+### Module 2: RAG Essentials (60 min) - ~1,000 lines
 
-**Preparing Data for LLM Consumption**
+**Understanding Retrieval-Augmented Generation** *(Comprehensive content from Section 2)*
+
+- **Vector Embeddings**: How semantic search captures meaning (with live similarity matrix demo)
+- **RAG Pipeline**: Query → Embed → Search → Retrieve → Assemble → Generate
+- **HierarchicalCourseManager**: Two-tier retrieval system
+  - Tier 1: Vector index of course summaries (for search)
+  - Tier 2: Hash storage of full course details (for deep dives)
+- **HierarchicalContextAssembler**: Progressive disclosure pattern
+  - `assemble_summary_only_context()` - Lightweight overview
+  - `assemble_hierarchical_context()` - Full details for top matches
+  - `assemble_with_budget()` - Token-aware assembly
+- **Hands-on**: Build course search with Redis Vector, compare search strategies
+
+### Module 3: Data Engineering for Context (75 min) - ~1,700 lines
+
+**Preparing Data for RAG** *(Comprehensive content from Section 2)*
 
 - **Data Pipeline**: Extract → Clean → Transform → Optimize → Store
-- **Chunking as a Design Choice**: Depends on data type and retrieval needs
-  - ❌ Don't chunk: Structured records with natural boundaries (courses, products, FAQs)
-  - ✅ Consider chunking: Long-form content with multiple distinct topics
-  - 📚 Research context: "Lost in the Middle" (Stanford) and "Context Rot" (Chroma) explain why this matters
-  - 💡 For our course catalog: whole-record embedding works best
-- **Live Demo**: Stage 1 (6,133 tokens) → Stage 2 (539 tokens) = **91% reduction**
+- **Three Engineering Approaches**:
+  - RAG (Semantic Search) - Dynamic retrieval
+  - Structured Views (Pre-Computed) - Static summaries
+  - Hybrid - Best of both worlds
+- **Chunking Strategies** (with LangChain):
+  - Document-Based (Structure-Aware)
+  - Fixed-Size (Token-Based with RecursiveCharacterTextSplitter)
+  - Semantic (Meaning-Based with SemanticChunker)
+  - When NOT to chunk: Structured records like courses
+- **Production Pipelines**: Request-Time, Batch, Event-Driven architectures
+- **Quality Metrics**: Relevance, Completeness, Efficiency, Accuracy
 
-### Module 3: RAG Essentials (55 min)
+### Module 4: Memory Systems (90 min) - ~2,000 lines
 
-**Building on Clean, Prepared Data**
+**Adding Persistence to Your Agent** *(Comprehensive content from Section 3)*
 
-- **Vector Embeddings**: How semantic search captures meaning
-- **RAG Pipeline**: Query → Embed → Search → Retrieve → Assemble → Generate
-- **Progressive Disclosure**: The key pattern
-  - Summaries for ALL matches (lightweight, ~60 tokens each)
-  - Full details for TOP N only (on-demand, ~200+ tokens each)
-- **Hands-on**: Build course search with Redis Vector
-
-### Module 4: Memory Systems (45 min)
-
-**Adding Persistence to Your Agent**
-
+- **The Grounding Problem**: Why agents need memory for reference resolution
 - **Working Memory**: Session-based conversation continuity
+  - Multi-turn conversation demos (Turn 1, 2, 3)
+  - Pronoun resolution ("it", "the first one", "those prerequisites")
 - **Long-term Memory**: Cross-session knowledge persistence
+  - Semantic memories (facts) vs Episodic memories (events)
+  - Topics and filtering
+  - Cross-session persistence verification
+- **Memory-Enhanced RAG**: All four context types working together
+  - System + User + Conversation + Retrieved
 - **Agent Memory Server**: Automatic compression and semantic extraction
-- **Hands-on**: Multi-turn conversation with context
+- **Hands-on**: Complete memory-enhanced course advisor
 
 ### Module 5: Building Agents (60 min)
 
@@ -165,6 +189,40 @@ curl http://localhost:8088/v1/health
 - **Production Patterns**: When to use what
 - **Next Steps**: Advanced topics and resources
 
+## 🏃 Executing the Notebooks
+
+All workshop notebooks have been tested and execute successfully. To run them:
+
+```bash
+# From the repository root
+cd workshop
+
+# Execute a specific notebook
+jupyter execute 02_rag_essentials.ipynb --inplace
+
+# Or run all notebooks
+for nb in 02_rag_essentials.ipynb 03_data_engineering.ipynb 04_memory_systems.ipynb; do
+  jupyter execute $nb --inplace
+done
+```
+
+**Note for Module 4 (Memory Systems):**
+The Agent Memory Server must be running with the `OPENAI_API_KEY` environment variable set:
+
+```bash
+# Restart Agent Memory Server with API key (from repository root)
+source .env
+docker stop agent-memory-server 2>/dev/null
+docker rm agent-memory-server 2>/dev/null
+docker run -d --name agent-memory-server \
+  -p 8088:8000 \
+  -e REDIS_URL=redis://host.docker.internal:6379 \
+  -e OPENAI_API_KEY=$OPENAI_API_KEY \
+  -e LOG_LEVEL=INFO \
+  ghcr.io/redis/agent-memory-server:0.12.3 \
+  agent-memory api --host 0.0.0.0 --port 8000 --no-worker
+```
+
 ## 🗂️ Data
 
 This workshop uses **hierarchical course data** for progressive disclosure:
@@ -173,6 +231,24 @@ This workshop uses **hierarchical course data** for progressive disclosure:
 - **CourseDetails**: Full syllabus and assignments (~200+ tokens each)
 
 Data location: `src/redis_context_course/data/hierarchical/hierarchical_courses.json`
+
+## 🔧 Technical Notes
+
+### HierarchicalCourseManager vs CourseManager
+
+All workshop modules use `HierarchicalCourseManager` for consistency:
+
+- **HierarchicalCourseManager**: Two-tier retrieval (summaries + details)
+  - `search_summaries()` - Search course summaries
+  - `fetch_details()` - Get full course details
+  - `hierarchical_search()` - Combined search with progressive disclosure
+- **CourseManager**: Basic single-tier retrieval (used in source notebooks)
+
+### File Paths
+
+Workshop notebooks use relative paths from the `workshop/` directory:
+- `../reference-agent` - Reference agent code
+- `../src/redis_context_course` - Core library
 
 ## 📖 Related Resources
 

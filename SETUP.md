@@ -53,6 +53,8 @@ You should see:
 - `redis-context-engineering` running on port 6379 (Redis 8)
 - `agent-memory-server` running on port 8088
 
+**Important:** The Agent Memory Server requires `OPENAI_API_KEY` for long-term memory features. The docker-compose.yml passes this from your `.env` file. If you see warnings about "OpenAI API key is required", ensure your `.env` file is properly configured and restart the services.
+
 ### Step 3: Install Python Dependencies
 
 ```bash
@@ -195,10 +197,18 @@ If you already have Redis running or want to use Redis Cloud:
 
 Once setup is complete:
 
+**For the Workshop (condensed, ~6 hours):**
+1. Start with **Module 1** (Introduction) to understand context types
+2. Work through **Module 2** (RAG Essentials) for vector search fundamentals
+3. Complete **Module 3** (Data Engineering) for data pipeline patterns
+4. Master **Module 4** (Memory Systems) for working and long-term memory
+5. Build agents in **Module 5** and compare in **Module 6**
+
+**For the Full Course (comprehensive, 15-20 hours):**
 1. Start with **Section 1** notebooks to understand core concepts
-2. Work through **Section 2** to learn system context setup
+2. Work through **Section 2** to learn RAG and context engineering
 3. Complete **Section 3** to master memory management (requires Agent Memory Server)
-4. Explore **Section 4** for advanced optimization techniques
+4. Explore **Section 4** for tools and agent development
 
 ## Getting Help
 

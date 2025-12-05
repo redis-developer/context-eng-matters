@@ -201,6 +201,12 @@ Chunking is **not a default step** — it's an engineering decision based on you
 - **HuggingFace** - Local embeddings (sentence-transformers)
 - **tiktoken** - Token counting
 
+## Key Classes
+
+- **CourseManager** - Basic Redis vector search (used in source notebooks)
+- **HierarchicalCourseManager** - Two-tier retrieval with summaries + details (used in workshop)
+- **HierarchicalContextAssembler** - Progressive disclosure pattern for context assembly
+
 ---
 
 ## Common Patterns
