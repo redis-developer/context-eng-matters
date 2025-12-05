@@ -70,12 +70,19 @@ pip install -e .
 ### Step 4: Load Course Data
 
 ```bash
-# Ingest courses into Redis (required for progressive agents)
+# Load hierarchical courses into Redis (required for notebooks and progressive agents)
+uv run python -m redis_context_course.scripts.load_hierarchical_courses \
+  -i src/redis_context_course/data/hierarchical/hierarchical_courses.json \
+  --force
+
+# Alternative: Load flat course format (for backward compatibility)
 uv run python -m redis_context_course.scripts.ingest_courses \
   --catalog src/redis_context_course/data/courses.json \
   --index-name hierarchical_courses \
   --clear
 ```
+
+**Note:** Use `--force` to clear and reload data if you've regenerated the course catalog or if you're seeing duplicate courses.
 
 ### Step 5: Run the Notebooks
 

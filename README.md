@@ -87,20 +87,29 @@ docker ps
 
 ### 5. Load Course Data into Redis
 
-The progressive agents require course data in Redis. The data must be loaded into the `hierarchical_courses` index, which contains courses with complete syllabus information.
+The notebooks and progressive agents require course data in Redis. Load the hierarchical course data:
 
 ```bash
-# Ingest courses into the hierarchical_courses index (required for progressive agents)
-uv run python -m redis_context_course.scripts.ingest_courses \
-  --catalog src/redis_context_course/data/courses.json \
-  --index-name hierarchical_courses \
-  --clear
+# Load hierarchical courses into Redis (recommended)
+uv run python -m redis_context_course.scripts.load_hierarchical_courses \
+  -i src/redis_context_course/data/hierarchical/hierarchical_courses.json \
+  --force
 ```
 
-> **Note:** The `courses.json` file is synced with `hierarchical_courses.json` to ensure all courses have complete syllabus data. If you modify the hierarchical data, regenerate `courses.json`:
+**Options:**
+- `--force` / `-f`: Clear existing data before loading (use when reloading after data changes)
+- `--summary-index` / `-s`: Custom index name (default: `course_summaries`)
+- `--details-prefix` / `-d`: Custom details prefix (default: `course_details`)
+
+> **Alternative:** For backward compatibility with flat course format:
 > ```bash
-> uv run python src/redis_context_course/scripts/generate_courses_from_hierarchical.py
+> uv run python -m redis_context_course.scripts.ingest_courses \
+>   --catalog src/redis_context_course/data/courses.json \
+>   --index-name hierarchical_courses \
+>   --clear
 > ```
+
+> **Note:** If you regenerate the course catalog, always use `--force` to reload Redis data.
 
 ### 6. Verify Installation
 
@@ -133,15 +142,15 @@ python cli.py --show-reasoning "What are the prerequisites for CS002?"
 
 🔧 Action: search_courses
    Input: {"query": "CS002", "intent": "PREREQUISITES", "search_strategy": "exact_match"}
-👁️  Observation: Found CS002 - Machine Learning Fundamentals...
+👁️  Observation: Found CS002 - Data Structures and Algorithms...
 
-💭 Thought: I found the course. Prerequisites field is empty - no prerequisites required.
+💭 Thought: I found the course. Prerequisites: CS001 (Introduction to Programming).
 
 ✅ FINISH
 ================================================================================
 
 📝 Answer:
-CS002 (Machine Learning Fundamentals) has no formal prerequisites listed.
+CS002 (Data Structures and Algorithms) requires CS001 (Introduction to Programming) as a prerequisite.
 ```
 
 ---
