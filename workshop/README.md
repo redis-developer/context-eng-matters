@@ -28,12 +28,12 @@ This workshop follows a deliberate learning progression:
 |--------|------|----------|-------|--------------|
 | **1. Introduction** | 45 min | `01_introduction_to_context_engineering.ipynb` | ~600 | Four context types, context failures, token budgeting |
 | **2. RAG Essentials** | 60 min | `02_rag_essentials.ipynb` | ~1,000 | Vector embeddings, semantic search, HierarchicalCourseManager |
-| **3. Data Engineering** | 75 min | `03_data_engineering.ipynb` | ~1,700 | Data pipeline, chunking strategies, batch processing |
+| **3. Data Engineering** | 75 min | `03_data_engineering.ipynb` | ~960 | Data pipeline, chunking strategies, real PDF examples |
 | **4. Memory Systems** | 90 min | `04_memory_systems.ipynb` | ~2,000 | Working memory, long-term memory, memory-enhanced RAG |
 | **5. Building Agents** | 60 min | `05_building_agents.ipynb` | ~350 | LangGraph, tool calling, memory tools |
 | **6. Capstone** | 30 min | `06_capstone_comparison.ipynb` | ~300 | Stage 4 vs 6 comparison, production patterns |
 
-**Total:** ~6 hours | ~6,000 lines of comprehensive content
+**Total:** ~6 hours | ~5,210 lines of comprehensive content
 
 ## 🔧 Prerequisites
 
@@ -137,7 +137,7 @@ curl http://localhost:8088/v1/health
   - `assemble_with_budget()` - Token-aware assembly
 - **Hands-on**: Build course search with Redis Vector, compare search strategies
 
-### Module 3: Data Engineering for Context (75 min) - ~1,700 lines
+### Module 3: Data Engineering for Context (75 min) - ~960 lines
 
 **Preparing Data for RAG** *(Comprehensive content from Section 2)*
 
@@ -151,6 +151,10 @@ curl http://localhost:8088/v1/health
   - Fixed-Size (Token-Based with RecursiveCharacterTextSplitter)
   - Semantic (Meaning-Based with SemanticChunker)
   - When NOT to chunk: Structured records like courses
+- **Real-World Examples**:
+  - Uses actual arXiv research paper (arxiv_2504_02268.pdf)
+  - Multimodal content handling: tables, formulas, figures
+  - Working code for PDF extraction and chunking
 - **Production Pipelines**: Request-Time, Batch, Event-Driven architectures
 - **Quality Metrics**: Relevance, Completeness, Efficiency, Accuracy
 
