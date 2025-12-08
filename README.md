@@ -166,10 +166,10 @@ context-eng-matters/
 │   ├── models.py                 # Pydantic data models
 │   └── scripts/                  # Data generation utilities
 │
-├── workshop/                     # Comprehensive workshop (6 notebooks, ~6,000 lines)
+├── workshop/                     # Comprehensive workshop (6 notebooks, ~5,210 lines)
 │   ├── 01_introduction_to_context_engineering.ipynb  # Context types, token budgeting
 │   ├── 02_rag_essentials.ipynb                       # Vector embeddings, semantic search (~1,000 lines)
-│   ├── 03_data_engineering.ipynb                     # Data pipelines, chunking strategies (~1,700 lines)
+│   ├── 03_data_engineering.ipynb                     # Data pipelines, chunking strategies (~960 lines)
 │   ├── 04_memory_systems.ipynb                       # Working + long-term memory (~2,000 lines)
 │   ├── 05_building_agents.ipynb                      # LangGraph, tool calling
 │   └── 06_capstone_comparison.ipynb                  # Stage 4 vs 6 comparison
