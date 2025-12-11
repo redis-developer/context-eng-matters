@@ -28,9 +28,11 @@ This hands-on course teaches practical context engineering patterns through buil
 |-------------|---------|
 | **Python** | 3.11 or higher |
 | **Redis Stack** | Local Docker or [Redis Cloud](https://redis.io/cloud/) |
-| **OpenAI API Key** | For GPT-4o access |
+| **OpenAI API Key** | For GPT-4o access (or Orchestra API key for BOA workshop) |
 | **Agent Memory Server** | For memory stages (5+) |
 | **Docker** | For running Redis and Agent Memory Server |
+
+> **🏦 For BOA:** Use `ORCHESTRA_API_KEY` instead of `OPENAI_API_KEY`. See [workshop_boa/](workshop_boa/) for details.
 
 ---
 
@@ -45,6 +47,9 @@ cd context-eng-matters
 
 ### 2. Create Virtual Environment
 
+<details>
+<summary><b>🐧 Linux / macOS</b></summary>
+
 ```bash
 # Using UV (recommended)
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -52,18 +57,73 @@ uv sync
 
 # Or using pip
 python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+source .venv/bin/activate
+pip install -e .
+```
+</details>
+
+<details>
+<summary><b>🪟 Windows</b></summary>
+
+```powershell
+# Using UV (recommended) - PowerShell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+uv sync
+
+# Or using pip - PowerShell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -e .
+
+# Or using pip - Command Prompt
+python -m venv .venv
+.venv\Scripts\activate.bat
 pip install -e .
 ```
 
+**Note:** If you get an execution policy error, run PowerShell as Administrator and execute:
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+</details>
+
 ### 3. Set Environment Variables
+
+<details>
+<summary><b>🐧 Linux / macOS</b></summary>
 
 ```bash
 # Create .env file from example
 cp .env.example .env
 
 # Edit .env and add your OpenAI API key
+# Use your preferred editor: nano, vim, or code
+nano .env
 ```
+</details>
+
+<details>
+<summary><b>🪟 Windows</b></summary>
+
+```powershell
+# PowerShell
+Copy-Item .env.example .env
+
+# Edit .env and add your OpenAI API key
+notepad .env
+
+# Or use VS Code
+code .env
+```
+
+```cmd
+# Command Prompt
+copy .env.example .env
+
+# Edit .env and add your OpenAI API key
+notepad .env
+```
+</details>
 
 **Environment Variables:**
 
@@ -74,8 +134,14 @@ cp .env.example .env
 | `AGENT_MEMORY_SERVER_URL` | No | `http://localhost:8088` | Agent Memory Server URL |
 | `REDIS_INDEX_NAME` | No | `course_catalog` | Redis index name for course data |
 | `OPENAI_MODEL` | No | `gpt-4o` | OpenAI model to use |
+| `ORCHESTRA_API_KEY` | No | - | 🏦 **BOA Only:** Bearer token for Orchestra API |
+
+> **🏦 For BOA Workshop:** See [`workshop_boa/QUICKSTART.md`](workshop_boa/QUICKSTART.md) for Orchestra API setup instructions.
 
 ### 4. Start Services
+
+<details>
+<summary><b>🐧 Linux / macOS</b></summary>
 
 ```bash
 # Start Redis and Agent Memory Server
@@ -84,10 +150,30 @@ docker-compose up -d
 # Verify services are running
 docker ps
 ```
+</details>
+
+<details>
+<summary><b>🪟 Windows</b></summary>
+
+```powershell
+# PowerShell or Command Prompt
+docker-compose up -d
+
+# Verify services are running
+docker ps
+```
+
+**Note:** Ensure Docker Desktop is installed and running on Windows.
+- Download from: https://www.docker.com/products/docker-desktop/
+- WSL 2 backend is recommended for better performance
+</details>
 
 ### 5. Load Course Data into Redis
 
 The notebooks and progressive agents require course data in Redis. Load the hierarchical course data:
+
+<details>
+<summary><b>🐧 Linux / macOS</b></summary>
 
 ```bash
 # Load hierarchical courses into Redis (recommended)
@@ -95,6 +181,30 @@ uv run python -m redis_context_course.scripts.load_hierarchical_courses \
   -i src/redis_context_course/data/hierarchical/hierarchical_courses.json \
   --force
 ```
+</details>
+
+<details>
+<summary><b>🪟 Windows</b></summary>
+
+```powershell
+# PowerShell (use backtick for line continuation)
+uv run python -m redis_context_course.scripts.load_hierarchical_courses `
+  -i src/redis_context_course/data/hierarchical/hierarchical_courses.json `
+  --force
+```
+
+```cmd
+# Command Prompt (use caret for line continuation)
+uv run python -m redis_context_course.scripts.load_hierarchical_courses ^
+  -i src/redis_context_course/data/hierarchical/hierarchical_courses.json ^
+  --force
+```
+
+**Or as a single line:**
+```powershell
+uv run python -m redis_context_course.scripts.load_hierarchical_courses -i src/redis_context_course/data/hierarchical/hierarchical_courses.json --force
+```
+</details>
 
 **Options:**
 - `--force` / `-f`: Clear existing data before loading (use when reloading after data changes)
@@ -155,6 +265,53 @@ CS002 (Data Structures and Algorithms) requires CS001 (Introduction to Programmi
 
 ---
 
+## 🏦 BOA Workshop
+
+The `workshop_boa/` directory contains a specialized version of the workshop with **Orchestra API integration** for BOA internal use.
+
+### Key Features
+
+- ✅ **Orchestra API Integration** - Uses BOA's internal Orchestra API instead of OpenAI
+- ✅ **CustomTextVectorizer** - RedisVL-compatible embedding function
+- ✅ **Placeholder Mode** - Test integration without Orchestra API (uses OpenAI fallback)
+- ✅ **Non-Breaking** - All existing code continues to work
+- ✅ **Clear Markers** - All changes marked with `#Orchestra change` comments
+
+### Quick Start (BOA)
+
+```bash
+# 1. Add Orchestra API key to .env
+echo "ORCHESTRA_API_KEY=your_bearer_token" >> .env
+
+# 2. Run test script
+python workshop_boa/test_orchestra.py
+
+# 3. If tests pass, update notebooks
+# (Uncomment #Orchestra change sections in notebooks)
+```
+
+### Documentation
+
+- **[QUICKSTART.md](workshop_boa/QUICKSTART.md)** - Simple 3-step setup guide
+- **[SETUP_INSTRUCTIONS.md](workshop_boa/SETUP_INSTRUCTIONS.md)** - Detailed setup instructions
+- **[ORCHESTRA_INTEGRATION.md](workshop_boa/ORCHESTRA_INTEGRATION.md)** - Complete technical reference
+- **[README.md](workshop_boa/README.md)** - Workshop overview
+
+### What's Included
+
+```
+workshop_boa/
+├── 01-04_*.ipynb             # Workshop notebooks with Orchestra integration
+├── orchestra_utils.py        # Orchestra API utilities
+├── redis_context_course_boa/ # BOA-specific package
+├── test_orchestra.py         # Comprehensive test suite (7 tests)
+└── *.md                      # Complete documentation
+```
+
+**See [`workshop_boa/QUICKSTART.md`](workshop_boa/QUICKSTART.md) for complete setup instructions.**
+
+---
+
 ## Project Structure
 
 ```
@@ -173,6 +330,15 @@ context-eng-matters/
 │   ├── 04_memory_systems.ipynb                       # Working + long-term memory (~2,000 lines)
 │   ├── 05_building_agents.ipynb                      # LangGraph, tool calling
 │   └── 06_capstone_comparison.ipynb                  # Stage 4 vs 6 comparison
+│
+├── workshop_boa/                 # 🏦 BOA-specific workshop with Orchestra API integration
+│   ├── 01-04_*.ipynb             # Workshop notebooks with #Orchestra change markers
+│   ├── orchestra_utils.py        # Orchestra API utilities (CustomTextVectorizer)
+│   ├── redis_context_course_boa/ # BOA-specific package with Orchestra embeddings
+│   ├── test_orchestra.py         # Comprehensive test suite
+│   ├── QUICKSTART.md             # Quick start guide for Orchestra integration
+│   ├── SETUP_INSTRUCTIONS.md     # Detailed setup instructions
+│   └── ORCHESTRA_INTEGRATION.md  # Complete technical reference
 │
 ├── progressive_agents/           # 6 agent implementations (learning path)
 │   ├── stage1_baseline_rag/
