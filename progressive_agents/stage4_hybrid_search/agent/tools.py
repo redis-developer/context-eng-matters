@@ -183,7 +183,7 @@ class SearchCoursesInput(BaseModel):
     departments: Optional[List[str]] = Field(default=None, description="Filter by department")
 
 
-def search_courses_sync(
+async def search_courses_async(
     query: str,
     top_k: int = 5,
     intent: str = "GENERAL",
@@ -191,7 +191,7 @@ def search_courses_sync(
     extracted_entities: Optional[Dict[str, Any]] = None,
 ) -> str:
     """
-    Synchronous search for courses using hybrid search with NER.
+    Async search for courses using hybrid search with NER.
 
     Uses FilterQuery for exact course code matching.
     """
@@ -201,12 +201,6 @@ def search_courses_sync(
         return "Error: Course search not initialized."
 
     logger.info(f"🔍 Searching courses: query='{query}', intent={intent}, strategy={search_strategy}")
-
-    try:
-        loop = asyncio.get_event_loop()
-    except RuntimeError:
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
 
     basic_results = []
     extracted_entities = extracted_entities or {}
@@ -239,9 +233,7 @@ def search_courses_sync(
     else:
         # Fall back to semantic search
         logger.info(f"   Using semantic search")
-        results = loop.run_until_complete(
-            course_manager.search_courses(query=query, limit=top_k)
-        )
+        results = await course_manager.search_courses(query=query, limit=top_k)
         basic_results = results
 
     if not basic_results:
@@ -309,7 +301,7 @@ async def search_courses_tool(
     if course_codes and search_strategy != "semantic_only":
         search_strategy = "exact_match"
 
-    return search_courses_sync(
+    return await search_courses_async(
         query=query,
         intent=intent,
         search_strategy=search_strategy,
