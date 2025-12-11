@@ -51,11 +51,6 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
-**Or use a single command (faster):**
-```powershell
-pip install "numpy>=2.1.0" langchain>=0.2.0 langchain-openai>=0.1.0 langchain-core>=0.2.0 langchain-community>=0.2.0 langchain-experimental>=0.3.0 langchain-text-splitters>=0.3.0 langgraph>=0.2.0 langgraph-checkpoint>=1.0.0 langgraph-checkpoint-redis>=0.1.0 redis>=6.0.0 redisvl>=0.8.0 openai>=1.0.0 agent-memory-client>=0.12.3 pydantic>=2.0.0 python-dotenv>=1.0.0 click>=8.0.0 rich>=13.0.0 tiktoken>=0.5.0 python-ulid>=3.0.0 faker>=20.0.0 pandas>=2.0.0 jupyter>=1.0.0 ipykernel>=6.0.0 sentence-transformers>=2.0.0 langchain-huggingface>=0.1.0 && pip install -e .
-```
-
 ### Step 4: Configure Environment Variables
 
 ```powershell
