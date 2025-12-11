@@ -46,7 +46,7 @@ ipykernel>=6.0.0
 # Embeddings (for notebooks)
 sentence-transformers>=2.0.0
 langchain-huggingface>=0.1.0
-pypdf>=6.4.1
+pypdf>=6.3.0
 
 # Testing (optional - uncomment if needed)
 # pytest>=7.0.0

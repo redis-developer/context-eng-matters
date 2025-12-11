@@ -41,9 +41,6 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 # Upgrade pip first
 python -m pip install --upgrade pip
 
-# Install numpy 2.1+ for Python 3.13 support
-pip install "numpy>=2.1.0"
-
 # Install all other dependencies (skip pypdf)
 pip install -r requirements.txt
 
