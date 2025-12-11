@@ -85,6 +85,44 @@ pip install -e .
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
+
+**🔒 For Corporate/Intranet Environments:**
+
+If you encounter DNS errors or can't access GitHub (e.g., `No such host is known`), use the standard Python installation method instead:
+
+```powershell
+# 1. Ensure Python 3.11+ is installed
+python --version
+
+# 2. Create virtual environment with system Python
+python -m venv .venv
+
+# 3. Activate virtual environment
+.venv\Scripts\Activate.ps1  # PowerShell
+# OR
+.venv\Scripts\activate.bat  # Command Prompt
+
+# 4. Upgrade pip (optional but recommended)
+python -m pip install --upgrade pip
+
+# 5. Install dependencies
+pip install -e .
+```
+
+**Alternative: Use `uv` with existing Python:**
+
+If you have `uv` installed but it can't download Python:
+```powershell
+# Tell uv to use your system Python instead of downloading
+uv sync --python python
+# OR specify exact Python path
+uv sync --python C:\Python311\python.exe
+```
+
+**Troubleshooting Network Issues:**
+- Ensure Python 3.11+ is installed from [python.org](https://www.python.org/downloads/)
+- Check with your IT department about proxy settings if needed
+- Use `pip` with your organization's internal PyPI mirror if available
 </details>
 
 ### 3. Set Environment Variables
@@ -204,6 +242,17 @@ uv run python -m redis_context_course.scripts.load_hierarchical_courses ^
 ```powershell
 uv run python -m redis_context_course.scripts.load_hierarchical_courses -i src/redis_context_course/data/hierarchical/hierarchical_courses.json --force
 ```
+
+**If not using `uv` (corporate/intranet environments):**
+```powershell
+# Ensure virtual environment is activated first
+.venv\Scripts\Activate.ps1  # PowerShell
+# OR
+.venv\Scripts\activate.bat  # Command Prompt
+
+# Then run the script
+python -m redis_context_course.scripts.load_hierarchical_courses -i src/redis_context_course/data/hierarchical/hierarchical_courses.json --force
+```
 </details>
 
 **Options:**
@@ -223,13 +272,34 @@ uv run python -m redis_context_course.scripts.load_hierarchical_courses -i src/r
 
 ### 6. Verify Installation
 
+<details>
+<summary><b>🐧 Linux / macOS</b></summary>
+
 ```bash
-# Run tests
+# Run tests with uv
 uv run pytest tests/ -v
 
-# Or with pip
+# Or with pip (if virtual environment is activated)
 pytest tests/ -v
 ```
+</details>
+
+<details>
+<summary><b>🪟 Windows</b></summary>
+
+```powershell
+# With uv
+uv run pytest tests/ -v
+
+# Or with pip (ensure virtual environment is activated)
+.venv\Scripts\Activate.ps1  # PowerShell
+pytest tests/ -v
+
+# Command Prompt
+.venv\Scripts\activate.bat
+pytest tests/ -v
+```
+</details>
 
 ---
 
@@ -241,6 +311,12 @@ Try the ReAct agent with visible reasoning in under 2 minutes:
 cd progressive_agents/stage4_hybrid_search
 
 # Ask about a course with visible reasoning
+python cli.py --show-reasoning "What are the prerequisites for CS002?"
+```
+
+**Windows (PowerShell/Command Prompt):**
+```powershell
+cd progressive_agents\stage4_hybrid_search
 python cli.py --show-reasoning "What are the prerequisites for CS002?"
 ```
 
@@ -398,7 +474,20 @@ graph LR
 
 **Start learning:**
 ```bash
+# With uv
 uv run jupyter notebook notebooks/
+
+# Or with pip (ensure virtual environment is activated)
+jupyter notebook notebooks/
+```
+
+**Windows:**
+```powershell
+# Activate virtual environment first
+.venv\Scripts\Activate.ps1  # PowerShell
+
+# Then start Jupyter
+jupyter notebook notebooks/
 ```
 
 Open: `section-1-context-engineering-foundations/01_what_is_context_engineering.ipynb`
