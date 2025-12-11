@@ -34,7 +34,13 @@ def get_react_llm() -> ChatOpenAI:
     global _react_llm
     if _react_llm is None:
         # ReAct uses text-based prompting, not function calling
-        _react_llm = ChatOpenAI(model="gpt-4o", temperature=0.1, max_tokens=2000)
+        _react_llm = ChatOpenAI(
+            model="gpt-4o",
+            temperature=0.1,
+            max_tokens=2000,
+            timeout=30,
+            max_retries=2
+        )
     return _react_llm
 
 

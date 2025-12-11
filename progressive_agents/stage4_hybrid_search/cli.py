@@ -28,9 +28,17 @@ if _quiet_mode:
 
 from dotenv import load_dotenv
 
-# Load .env from project root
-env_path = Path(__file__).parent.parent / "src" / ".env"
-load_dotenv(env_path)
+# Load .env from repository root (2 levels up from this file)
+env_path = Path(__file__).parent.parent.parent / ".env"
+if not load_dotenv(env_path):
+    # Fallback: try to find .env in current directory or parent directories
+    current = Path.cwd()
+    for _ in range(5):  # Try up to 5 levels up
+        test_path = current / ".env"
+        if test_path.exists():
+            load_dotenv(test_path)
+            break
+        current = current.parent
 
 # Add agent module to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
