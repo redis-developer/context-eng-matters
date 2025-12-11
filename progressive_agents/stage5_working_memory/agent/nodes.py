@@ -236,7 +236,7 @@ async def save_working_memory_node(state: WorkflowState) -> WorkflowState:
     return state
 
 
-def classify_intent_node(state: WorkflowState) -> WorkflowState:
+async def classify_intent_node(state: WorkflowState) -> WorkflowState:
     """Classify query intent and determine appropriate detail level."""
     start_time = time.perf_counter()
     query = state["original_query"]
@@ -289,7 +289,7 @@ OUTPUT FORMAT (respond with exactly this structure):
 INTENT: <category_name>
 """
 
-        response = get_analysis_llm().invoke([HumanMessage(content=intent_prompt)])
+        response = await get_analysis_llm().ainvoke([HumanMessage(content=intent_prompt)])
 
         # Track LLM usage
         llm_calls = state.get("llm_calls", {}).copy()
@@ -1052,7 +1052,7 @@ Just let me know what you're interested in!"""
         return state
 
 
-def handle_greeting_node(state: WorkflowState) -> WorkflowState:
+async def handle_greeting_node(state: WorkflowState) -> WorkflowState:
     """Handle greetings and non-course queries without course search."""
     start_time = time.perf_counter()
     query = state["original_query"]
@@ -1068,7 +1068,7 @@ def handle_greeting_node(state: WorkflowState) -> WorkflowState:
         Keep it brief and friendly (2-3 sentences max).
         """
 
-        response = get_analysis_llm().invoke([HumanMessage(content=greeting_prompt)])
+        response = await get_analysis_llm().ainvoke([HumanMessage(content=greeting_prompt)])
 
         # Track LLM usage
         llm_calls = state.get("llm_calls", {}).copy()
