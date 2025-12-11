@@ -64,6 +64,9 @@ test_output/
 *.log
 
 test_outputs/
+workshop/arch
+workshop/run_comparison.py
+workshop/test_agents_simple.py
 
 # Archived progressive agent stages
 progressive_agents/archive/
