@@ -251,13 +251,16 @@ Learning Objectives:
 
 ### Installation
 
+From the repository root:
+
 ```bash
-cd python-recipes/context-engineering/reference-agent/progressive_agents/stage2_context_engineered
+cd progressive_agents/stage2_context_engineered
 ```
 
 ### Environment Setup
 
-Make sure you have the `.env` file in `reference-agent/` with:
+Make sure you have set the required environment variables (either in a `.env` file at the repository root or exported in your shell):
+
 ```bash
 OPENAI_API_KEY=your_key_here
 REDIS_URL=redis://localhost:6379

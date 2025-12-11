@@ -4,7 +4,7 @@
 
 | Previous | Current | Next |
 |----------|---------|------|
-| [Stage 2: Context-Engineered](../stage2_context_engineered/) | **Stage 3: Full Agent** | [Stage 4: Hybrid Search](../stage4_hybrid_search_with_ner/) |
+| [Stage 2: Context-Engineered](../stage2_context_engineered/) | **Stage 3: Full Agent** | [Stage 4: Hybrid Search](../stage4_hybrid_search/) |
 
 This stage introduces **LangGraph workflows**, **intent classification**, and **progressive disclosure** - transforming the simple RAG pipeline into a full agent architecture.
 
@@ -205,13 +205,16 @@ stage3_full_agent_without_memory/
 
 ### Installation
 
-From the `reference-agent` directory:
+From the repository root:
 
 ```bash
-# Install the redis-context-course package
+# Install the redis-context-course package (if not already installed)
 pip install -e .
 
-# Set environment variables
+# Navigate to stage 3
+cd progressive_agents/stage3_full_agent_without_memory
+
+# Set environment variables (or add to .env file at repository root)
 export OPENAI_API_KEY="your-openai-api-key"
 export REDIS_URL="redis://localhost:6379"
 ```
@@ -220,7 +223,6 @@ export REDIS_URL="redis://localhost:6379"
 
 **Interactive Mode** (recommended):
 ```bash
-cd progressive_agents/stage3_full_agent_without_memory
 python cli.py
 ```
 
@@ -689,7 +691,7 @@ These are marked as "EXPERIMENTAL" and not used in the progressive agents to mai
 
 ### Learning Path Navigation
 - **Previous**: [Stage 2: Context-Engineered](../stage2_context_engineered/) - Context engineering without agent architecture
-- **Next**: [Stage 4: Hybrid Search](../stage4_hybrid_search_with_ner/) - Add NER and exact-match search
+- **Next**: [Stage 4: Hybrid Search](../stage4_hybrid_search/) - Add hybrid search and ReAct pattern
 
 ### Notebooks to Study
 - **[Section 4: Tools and LangGraph Fundamentals](../../notebooks/section-4-tools-and-agents/01_tools_and_langgraph_fundamentals.ipynb)**: LangGraph basics used in this stage

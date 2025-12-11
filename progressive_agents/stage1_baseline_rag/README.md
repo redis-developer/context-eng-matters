@@ -147,13 +147,16 @@ Returns FULL details for ALL 5 courses including:
 
 ### Installation
 
+From the repository root:
+
 ```bash
-cd python-recipes/context-engineering/reference-agent/progressive_agents/stage1_baseline_rag
+cd progressive_agents/stage1_baseline_rag
 ```
 
 ### Environment Setup
 
-Make sure you have the `.env` file in `reference-agent/` with:
+Make sure you have set the required environment variables (either in a `.env` file at the repository root or exported in your shell):
+
 ```bash
 OPENAI_API_KEY=your_key_here
 REDIS_URL=redis://localhost:6379
@@ -312,13 +315,12 @@ By default, basic courses persist in Redis between runs. Use `--cleanup` to remo
 
 ### Data Generation
 
-To regenerate hierarchical course data:
+To regenerate hierarchical course data (from repository root):
 ```bash
-cd ../../..  # Go to reference-agent/
 python -m redis_context_course.scripts.generate_hierarchical_courses \
   --count 50 \
   --seed 42 \
-  --output-dir redis_context_course/data/hierarchical
+  --output-dir src/redis_context_course/data/hierarchical
 ```
 
 ## 🔄 Next Steps

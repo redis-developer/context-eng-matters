@@ -86,6 +86,33 @@ graph TD
 
 ## 🚀 Usage
 
+### Prerequisites
+
+1. **Install the package** (from repository root):
+   ```bash
+   pip install -e .
+   ```
+
+2. **Set environment variables**:
+   ```bash
+   export OPENAI_API_KEY="your-openai-api-key"
+   export REDIS_URL="redis://localhost:6379"
+   export AGENT_MEMORY_URL="http://localhost:8088"  # Optional, defaults to this
+   ```
+
+3. **Start Agent Memory Server** (required for this stage):
+   ```bash
+   # Check if running
+   curl http://localhost:8088/v1/health
+
+   # Start if needed (see main README for docker-compose setup)
+   docker-compose up -d agent-memory-server
+   ```
+
+### Running the Agent
+
+From the repository root:
+
 ```bash
 cd progressive_agents/stage5_working_memory
 
@@ -171,54 +198,22 @@ workflow.add_edge("synthesize", "save_memory")  # End by saving memory
 workflow.add_edge("save_memory", END)
 ```
 
-## 🚀 Usage
-
-### Prerequisites
-
-1. **Agent Memory Server must be running**:
-```bash
-# Check if running
-curl http://localhost:8088/v1/health
-
-# Start if needed (see reference-agent/README.md)
-docker run -d --name agent-memory-server \
-  -p 8088:8000 \
-  -e REDIS_URL=redis://host.docker.internal:6379 \
-  -e OPENAI_API_KEY=your-key \
-  ghcr.io/redis/agent-memory-server:0.12.3
-```
-
-2. **Environment variables**:
-```bash
-export OPENAI_API_KEY=your-key
-export AGENT_MEMORY_URL=http://localhost:8088  # Optional, defaults to this
-```
-
-### Running the Agent
+## 📝 Additional Usage Examples
 
 **Single query**:
 ```bash
-python -m progressive_agents.stage5_working_memory.cli \
-  --student-id alice \
-  --session-id session_001 \
-  "What is CS004?"
+python cli.py --student-id alice --session-id session_001 "What is CS004?"
 ```
 
 **Interactive multi-turn conversation**:
 ```bash
-python -m progressive_agents.stage5_working_memory.cli \
-  --student-id alice \
-  --session-id session_001 \
-  --interactive
+python cli.py --student-id alice --session-id session_001
 ```
 
 **Resume previous session**:
 ```bash
 # Same session_id loads previous conversation
-python -m progressive_agents.stage5_working_memory.cli \
-  --student-id alice \
-  --session-id session_001 \
-  --interactive
+python cli.py --student-id alice --session-id session_001
 ```
 
 ## 🎓 Learning Objectives

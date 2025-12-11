@@ -159,20 +159,41 @@ Final Response + Reasoning Trace
 
 ### Prerequisites
 
-```bash
-# Install dependencies
-pip install -e .
+1. **Install the package** (from repository root):
+   ```bash
+   pip install -e .
+   ```
 
-# Set environment variables
-export OPENAI_API_KEY="your-api-key"
-export REDIS_URL="redis://localhost:6379"
-export AGENT_MEMORY_URL="http://localhost:8088"  # For stages 5+
-```
+2. **Set environment variables** (add to `.env` file at repository root or export in shell):
+   ```bash
+   export OPENAI_API_KEY="your-api-key"
+   export REDIS_URL="redis://localhost:6379"
+   export AGENT_MEMORY_URL="http://localhost:8088"  # For stages 5-6
+   ```
+
+3. **Start required services**:
+   ```bash
+   # Start Redis and Agent Memory Server (for stages 5-6)
+   docker-compose up -d
+
+   # Verify services are running
+   docker ps
+   ```
 
 ### Running Each Stage
 
+All commands assume you're starting from the repository root.
+
 ```bash
-# Stage 3: Basic agent
+# Stage 1: Baseline RAG (information overload)
+cd progressive_agents/stage1_baseline_rag
+python cli.py "What machine learning courses are available?"
+
+# Stage 2: Context-engineered RAG
+cd progressive_agents/stage2_context_engineered
+python cli.py "What machine learning courses are available?"
+
+# Stage 3: Full agent with hierarchical retrieval
 cd progressive_agents/stage3_full_agent_without_memory
 python cli.py "What courses teach machine learning?"
 
@@ -180,12 +201,12 @@ python cli.py "What courses teach machine learning?"
 cd progressive_agents/stage4_hybrid_search
 python cli.py --show-reasoning "What are the prerequisites for CS002?"
 
-# Stage 5: Working memory (session-based) - start Agent Memory Server first
+# Stage 5: Working memory (session-based) - requires Agent Memory Server
 cd progressive_agents/stage5_working_memory
 python cli.py --student-id alice --session-id s1 "What is CS004?"
 python cli.py --student-id alice --session-id s1 "Tell me more about it"
 
-# Stage 6: Full memory (working + long-term)
+# Stage 6: Full memory (working + long-term) - requires Agent Memory Server
 cd progressive_agents/stage6_full_memory
 python cli.py --student-id alice --show-reasoning "I prefer online courses"
 python cli.py --student-id alice --show-reasoning "What courses do you recommend?"
