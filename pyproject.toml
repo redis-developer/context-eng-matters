@@ -39,44 +39,36 @@ dependencies = [
     "langchain-community>=0.2.0",
     "langchain-experimental>=0.3.0",
     "langchain-text-splitters>=0.3.0",
-
     # LangGraph for agent workflows
     "langgraph>=0.2.0",
     "langgraph-checkpoint>=1.0.0",
     "langgraph-checkpoint-redis>=0.1.0",
-
     # Redis and vector search
     "redis>=6.0.0",
     "redisvl>=0.8.0",
-
     # OpenAI
     "openai>=1.0.0",
-
     # Agent Memory Server client
     "agent-memory-client>=0.12.3",
-
     # Data validation and models
     "pydantic>=2.0.0",
-
     # Utilities
     "python-dotenv>=1.0.0",
     "click>=8.0.0",
     "rich>=13.0.0",
     "tiktoken>=0.5.0",
     "python-ulid>=3.0.0",
-
     # Data generation
     "faker>=20.0.0",
     "pandas>=2.0.0",
     "numpy>=1.24.0",
-
     # Jupyter notebooks
     "jupyter>=1.0.0",
     "ipykernel>=6.0.0",
-
     # Embeddings (for notebooks)
     "sentence-transformers>=2.0.0",
     "langchain-huggingface>=0.1.0",
+    "pypdf>=6.4.1",
 ]
 
 [project.optional-dependencies]
