@@ -68,7 +68,13 @@ def get_analysis_llm():
     """Get the configured analysis LLM instance."""
     global _analysis_llm
     if _analysis_llm is None:
-        _analysis_llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.1, max_tokens=800)
+        _analysis_llm = ChatOpenAI(
+            model="gpt-4o-mini",
+            temperature=0.1,
+            max_tokens=800,
+            timeout=30,
+            max_retries=2
+        )
     return _analysis_llm
 
 
@@ -77,7 +83,11 @@ def get_research_llm():
     global _research_llm
     if _research_llm is None:
         _research_llm = ChatOpenAI(
-            model="gpt-4o-mini", temperature=0.3, max_tokens=3000
+            model="gpt-4o-mini",
+            temperature=0.3,
+            max_tokens=3000,
+            timeout=30,
+            max_retries=2
         )
     return _research_llm
 
@@ -86,7 +96,13 @@ def get_agent_llm():
     """Get the configured agent LLM instance with tool binding."""
     global _agent_llm
     if _agent_llm is None:
-        llm = ChatOpenAI(model="gpt-4o", temperature=0.1, max_tokens=2000)
+        llm = ChatOpenAI(
+            model="gpt-4o",
+            temperature=0.1,
+            max_tokens=2000,
+            timeout=30,
+            max_retries=2
+        )
         # Bind the search_courses tool
         _agent_llm = llm.bind_tools([search_courses_tool])
     return _agent_llm
