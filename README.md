@@ -208,14 +208,14 @@ graph LR
     S5 --> S6[Stage 6<br/>Full Memory]
 ```
 
-| Stage | Key Feature | What's New |
-|-------|-------------|------------|
-| **1** | Baseline RAG | Raw JSON context, ~5000 tokens |
-| **2** | Context Engineering | Progressive disclosure, ~1000 tokens |
-| **3** | Full Agent | LangGraph, intent classification, quality eval |
-| **4** | Hybrid Search | NER + FilterQuery, visible reasoning (ReAct) |
-| **5** | Working Memory | Session-based conversation history (1 tool) |
-| **6** | Full Memory | Working + long-term memory (3 tools) |
+| Stage | Key Feature | What's New | Reasoning |
+|-------|-------------|------------|-----------|
+| **1** | Baseline RAG | Information overload (~6,000 tokens) | Hidden |
+| **2** | Context Engineering | Progressive disclosure (~539 tokens) | Hidden |
+| **3** | Full Agent | LangGraph, intent classification, hierarchical retrieval | Hidden |
+| **4** | Hybrid Search | Hybrid search + ReAct pattern | **Visible** |
+| **5** | Working Memory | Session-based memory (1 tool) | **Visible** |
+| **6** | Full Memory | Working + long-term memory (3 tools) | **Visible** |
 
 👉 **[See full documentation →](progressive_agents/README.md)**
 

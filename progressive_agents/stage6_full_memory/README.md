@@ -112,6 +112,33 @@ graph TD
 
 ## 🚀 Usage
 
+### Prerequisites
+
+1. **Install the package** (from repository root):
+   ```bash
+   pip install -e .
+   ```
+
+2. **Set environment variables**:
+   ```bash
+   export OPENAI_API_KEY="your-openai-api-key"
+   export REDIS_URL="redis://localhost:6379"
+   export AGENT_MEMORY_URL="http://localhost:8088"  # Optional, defaults to this
+   ```
+
+3. **Start Agent Memory Server** (required for this stage):
+   ```bash
+   # Check if running
+   curl http://localhost:8088/v1/health
+
+   # Start if needed (see main README for docker-compose setup)
+   docker-compose up -d agent-memory-server
+   ```
+
+### Running the Agent
+
+From the repository root:
+
 ```bash
 cd progressive_agents/stage6_full_memory
 
@@ -180,7 +207,7 @@ stage6_full_memory/
 - **Stage 4** (`stage4_hybrid_search/`): ReAct + hybrid search (no memory)
 - **Stage 3** (`stage3_full_agent_without_memory/`): Basic agent with tool calling
 
-**Note:** `--student-id` is required! This identifies the student for long-term memory storage.
+**Important:** `--student-id` is required for this stage! This identifies the student for long-term memory storage.
 
 ### Example Conversations
 

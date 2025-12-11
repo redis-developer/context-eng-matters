@@ -70,6 +70,20 @@ graph TD
 
 ## 🚀 Usage
 
+### Prerequisites
+
+Make sure you have:
+- Installed the package: `pip install -e .` (from repository root)
+- Set environment variables:
+  ```bash
+  export OPENAI_API_KEY="your-openai-api-key"
+  export REDIS_URL="redis://localhost:6379"
+  ```
+
+### Running the Agent
+
+From the repository root:
+
 ```bash
 cd progressive_agents/stage4_hybrid_search
 
@@ -81,9 +95,6 @@ python cli.py --show-reasoning "What are the prerequisites for CS009?"
 
 # Interactive mode
 python cli.py
-
-# Debug mode
-python cli.py --debug "What's the syllabus for CS006?"
 ```
 
 ## 📁 File Structure
