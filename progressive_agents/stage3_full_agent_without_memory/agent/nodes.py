@@ -759,7 +759,11 @@ After calling the tool and getting results, provide a clear, helpful answer to t
         state["final_response"] = final_answer
         state["llm_calls"] = llm_calls
         state["execution_path"].append("agent_completed")
+
+        # Update metrics
         state["metrics"]["total_latency"] = latency
+        state["metrics"]["sub_question_count"] = 0  # Agent doesn't decompose
+        state["metrics"]["questions_researched"] = len(response.tool_calls) if response.tool_calls else 0
 
         logger.info(f"🤖 Agent complete in {latency:.2f}ms")
         logger.info(f"   Response: {final_answer[:100]}...")

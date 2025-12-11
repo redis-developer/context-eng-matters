@@ -99,7 +99,26 @@ def create_workflow(course_manager, verbose: bool = True):
 
 def run_agent(agent, query: str, enable_caching: bool = False) -> Dict[str, Any]:
     """
-    Run the Course Q&A agent on a query.
+    Run the Course Q&A agent on a query (synchronous wrapper).
+
+    Args:
+        agent: Compiled LangGraph workflow
+        query: User query about courses
+        enable_caching: Whether to use semantic caching (currently disabled)
+
+    Returns:
+        Dictionary with results and metrics
+    """
+    import asyncio
+
+    return asyncio.run(run_agent_async(agent, query, enable_caching))
+
+
+async def run_agent_async(
+    agent, query: str, enable_caching: bool = False
+) -> Dict[str, Any]:
+    """
+    Run the Course Q&A agent on a query (async).
 
     Args:
         agent: Compiled LangGraph workflow
@@ -139,8 +158,8 @@ def run_agent(agent, query: str, enable_caching: bool = False) -> Dict[str, Any]
     logger.info(f"🚀 Starting Course Q&A workflow for query: '{query[:50]}...'")
 
     try:
-        # Execute the workflow
-        final_state = agent.invoke(initial_state)
+        # Execute the workflow (async)
+        final_state = await agent.ainvoke(initial_state)
 
         # Calculate final metrics
         total_time = (time.perf_counter() - start_time) * 1000

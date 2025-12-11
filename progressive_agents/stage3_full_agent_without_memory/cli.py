@@ -104,7 +104,7 @@ class CourseQACLI:
                 traceback.print_exc()
             sys.exit(1)
 
-    def ask_question(self, query: str, show_details: bool = True):
+    async def ask_question(self, query: str, show_details: bool = True):
         """Ask a question and get a response."""
         if self.verbose:
             print("=" * 80)
@@ -112,8 +112,9 @@ class CourseQACLI:
             print("=" * 80)
             print()
 
-        # Run the agent
-        result = run_agent(self.agent, query, enable_caching=False)
+        # Run the agent (async)
+        from agent.workflow import run_agent_async
+        result = await run_agent_async(self.agent, query, enable_caching=False)
 
         # Always print the response
         if self.verbose:
@@ -172,7 +173,7 @@ class CourseQACLI:
 
                 # Ask the question
                 print()
-                self.ask_question(query, show_details=True)
+                await self.ask_question(query, show_details=True)
 
             except KeyboardInterrupt:
                 if self.verbose:
@@ -208,7 +209,7 @@ class CourseQACLI:
                 print(f"Example {i}/{len(example_queries)}")
                 print(f"{'=' * 80}\n")
 
-            self.ask_question(query, show_details=True)
+            await self.ask_question(query, show_details=True)
 
             # Pause between queries
             if i < len(example_queries) and self.verbose:
@@ -302,7 +303,7 @@ async def main():
             cleanup_on_exit=cleanup_on_exit, debug=args.debug, verbose=verbose
         )
         await cli.initialize()
-        cli.ask_question(args.query, show_details=True)
+        await cli.ask_question(args.query, show_details=True)
     else:
         # Interactive mode
         cli = CourseQACLI(
