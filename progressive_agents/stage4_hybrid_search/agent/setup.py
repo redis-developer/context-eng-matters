@@ -68,7 +68,7 @@ async def load_courses_if_needed(
 
         logger.info(f"💾 Saved catalog to {temp_catalog_path}")
 
-        ingestion = CourseIngestionPipeline()
+        ingestion = CourseIngestionPipeline(config=course_manager._config)
 
         if force_reload or not existing_courses:
             logger.info("🧹 Clearing existing course data...")
@@ -141,7 +141,7 @@ async def cleanup_courses(course_manager: CourseManager):
     logger.info("🧹 Cleaning up courses from Redis...")
 
     try:
-        ingestion = CourseIngestionPipeline()
+        ingestion = CourseIngestionPipeline(config=course_manager._config)
         ingestion.clear_existing_data()
         logger.info("✅ Courses cleaned up successfully")
     except Exception as e:
