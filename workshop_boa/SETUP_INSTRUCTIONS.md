@@ -6,9 +6,12 @@ Follow these steps to configure and test Orchestra API integration.
 
 ### Option A: Using .env file (Recommended)
 
+<details>
+<summary><b>🐧 Linux / macOS</b></summary>
+
 ```bash
 # Navigate to project root
-cd /Users/nitin.kanukolanu/workspace/context-eng-matters
+cd /path/to/context-eng-matters
 
 # Add to your .env file
 echo "ORCHESTRA_API_KEY=your_actual_bearer_token_here" >> .env
@@ -17,14 +20,67 @@ echo "ORCHESTRA_API_KEY=your_actual_bearer_token_here" >> .env
 echo "ORCHESTRA_EMBED_URL=https://api-orchestra-dev.bankofamerica.com/api/v1/embed" >> .env
 echo "ORCHESTRA_LLM_URL=https://api-orchestra-dev.bankofamerica.com/api/v1/chat/completions" >> .env
 ```
+</details>
+
+<details>
+<summary><b>🪟 Windows</b></summary>
+
+```powershell
+# PowerShell - Navigate to project root
+cd C:\path\to\context-eng-matters
+
+# Add to your .env file
+Add-Content .env "ORCHESTRA_API_KEY=your_actual_bearer_token_here"
+
+# Optional: Customize API endpoints if needed
+Add-Content .env "ORCHESTRA_EMBED_URL=https://api-orchestra-dev.bankofamerica.com/api/v1/embed"
+Add-Content .env "ORCHESTRA_LLM_URL=https://api-orchestra-dev.bankofamerica.com/api/v1/chat/completions"
+```
+
+```cmd
+# Command Prompt - Navigate to project root
+cd C:\path\to\context-eng-matters
+
+# Add to your .env file
+echo ORCHESTRA_API_KEY=your_actual_bearer_token_here >> .env
+
+# Optional: Customize API endpoints if needed
+echo ORCHESTRA_EMBED_URL=https://api-orchestra-dev.bankofamerica.com/api/v1/embed >> .env
+echo ORCHESTRA_LLM_URL=https://api-orchestra-dev.bankofamerica.com/api/v1/chat/completions >> .env
+```
+</details>
 
 ### Option B: Export in terminal session
+
+<details>
+<summary><b>🐧 Linux / macOS</b></summary>
 
 ```bash
 export ORCHESTRA_API_KEY="your_actual_bearer_token_here"
 export ORCHESTRA_EMBED_URL="https://api-orchestra-dev.bankofamerica.com/api/v1/embed"
 export ORCHESTRA_LLM_URL="https://api-orchestra-dev.bankofamerica.com/api/v1/chat/completions"
 ```
+</details>
+
+<details>
+<summary><b>🪟 Windows</b></summary>
+
+```powershell
+# PowerShell
+$env:ORCHESTRA_API_KEY="your_actual_bearer_token_here"
+$env:ORCHESTRA_EMBED_URL="https://api-orchestra-dev.bankofamerica.com/api/v1/embed"
+$env:ORCHESTRA_LLM_URL="https://api-orchestra-dev.bankofamerica.com/api/v1/chat/completions"
+```
+
+```cmd
+# Command Prompt
+set ORCHESTRA_API_KEY=your_actual_bearer_token_here
+set ORCHESTRA_EMBED_URL=https://api-orchestra-dev.bankofamerica.com/api/v1/embed
+set ORCHESTRA_LLM_URL=https://api-orchestra-dev.bankofamerica.com/api/v1/chat/completions
+```
+
+**Note:** Environment variables set this way only persist for the current session.
+</details>
 
 ## Step 2: Update Configuration Parameters
 
@@ -50,6 +106,9 @@ def create_orchestra_embeddings(
 
 ## Step 3: Run Test Script
 
+<details>
+<summary><b>🐧 Linux / macOS</b></summary>
+
 ```bash
 # Navigate to workshop_boa directory
 cd workshop_boa
@@ -57,6 +116,20 @@ cd workshop_boa
 # Run the test script
 python test_orchestra.py
 ```
+</details>
+
+<details>
+<summary><b>🪟 Windows</b></summary>
+
+```powershell
+# PowerShell or Command Prompt
+# Navigate to workshop_boa directory
+cd workshop_boa
+
+# Run the test script
+python test_orchestra.py
+```
+</details>
 
 The test script will:
 1. ✅ Verify environment variables are set

@@ -6,15 +6,49 @@ Follow these 3 simple steps:
 
 ### Step 1: Add API Key to .env File
 
+<details>
+<summary><b>🐧 Linux / macOS</b></summary>
+
 ```bash
 # Navigate to project root
-cd /Users/nitin.kanukolanu/workspace/context-eng-matters
+cd /path/to/context-eng-matters
 
 # Add your Orchestra API key
 echo "ORCHESTRA_API_KEY=your_actual_bearer_token_here" >> .env
 ```
+</details>
+
+<details>
+<summary><b>🪟 Windows</b></summary>
+
+```powershell
+# PowerShell - Navigate to project root
+cd C:\path\to\context-eng-matters
+
+# Add your Orchestra API key
+Add-Content .env "ORCHESTRA_API_KEY=your_actual_bearer_token_here"
+
+# Or edit manually
+notepad .env
+# Add this line: ORCHESTRA_API_KEY=your_actual_bearer_token_here
+```
+
+```cmd
+# Command Prompt - Navigate to project root
+cd C:\path\to\context-eng-matters
+
+# Add your Orchestra API key
+echo ORCHESTRA_API_KEY=your_actual_bearer_token_here >> .env
+
+# Or edit manually
+notepad .env
+```
+</details>
 
 ### Step 2: Run Test Script
+
+<details>
+<summary><b>🐧 Linux / macOS</b></summary>
 
 ```bash
 # Test with Orchestra API
@@ -23,6 +57,22 @@ python workshop_boa/test_orchestra.py
 # Or test with placeholder mode first (uses OpenAI)
 python workshop_boa/test_orchestra.py --placeholder
 ```
+</details>
+
+<details>
+<summary><b>🪟 Windows</b></summary>
+
+```powershell
+# PowerShell or Command Prompt
+# Test with Orchestra API
+python workshop_boa\test_orchestra.py
+
+# Or test with placeholder mode first (uses OpenAI)
+python workshop_boa\test_orchestra.py --placeholder
+```
+
+**Note:** Use backslashes (`\`) for paths on Windows.
+</details>
 
 **Expected output:**
 ```
