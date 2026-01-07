@@ -82,3 +82,7 @@ docs/
 
 # Examples (keep local only)
 examples/
+
+# Test/debug scripts (keep local only)
+test_openai_connection.py
+test_queries.py
