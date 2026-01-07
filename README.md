@@ -28,11 +28,9 @@ This hands-on course teaches practical context engineering patterns through buil
 |-------------|---------|
 | **Python** | 3.11 or higher |
 | **Redis Stack** | Local Docker or [Redis Cloud](https://redis.io/cloud/) |
-| **OpenAI API Key** | For GPT-4o access (or Orchestra API key for BOA workshop) |
+| **OpenAI API Key** | For GPT-4o access |
 | **Agent Memory Server** | For memory stages (5+) |
 | **Docker** | For running Redis and Agent Memory Server |
-
-> **🏦 For BOA:** Use `ORCHESTRA_API_KEY` instead of `OPENAI_API_KEY`. See [workshop_boa/](workshop_boa/) for details.
 
 ---
 
@@ -172,9 +170,6 @@ notepad .env
 | `AGENT_MEMORY_SERVER_URL` | No | `http://localhost:8088` | Agent Memory Server URL |
 | `REDIS_INDEX_NAME` | No | `course_catalog` | Redis index name for course data |
 | `OPENAI_MODEL` | No | `gpt-4o` | OpenAI model to use |
-| `ORCHESTRA_API_KEY` | No | - | 🏦 **BOA Only:** Bearer token for Orchestra API |
-
-> **🏦 For BOA Workshop:** See [`workshop_boa/QUICKSTART.md`](workshop_boa/QUICKSTART.md) for Orchestra API setup instructions.
 
 ### 4. Start Services
 
@@ -341,53 +336,6 @@ CS002 (Data Structures and Algorithms) requires CS001 (Introduction to Programmi
 
 ---
 
-## 🏦 BOA Workshop
-
-The `workshop_boa/` directory contains a specialized version of the workshop with **Orchestra API integration** for BOA internal use.
-
-### Key Features
-
-- ✅ **Orchestra API Integration** - Uses BOA's internal Orchestra API instead of OpenAI
-- ✅ **CustomTextVectorizer** - RedisVL-compatible embedding function
-- ✅ **Placeholder Mode** - Test integration without Orchestra API (uses OpenAI fallback)
-- ✅ **Non-Breaking** - All existing code continues to work
-- ✅ **Clear Markers** - All changes marked with `#Orchestra change` comments
-
-### Quick Start (BOA)
-
-```bash
-# 1. Add Orchestra API key to .env
-echo "ORCHESTRA_API_KEY=your_bearer_token" >> .env
-
-# 2. Run test script
-python workshop_boa/test_orchestra.py
-
-# 3. If tests pass, update notebooks
-# (Uncomment #Orchestra change sections in notebooks)
-```
-
-### Documentation
-
-- **[QUICKSTART.md](workshop_boa/QUICKSTART.md)** - Simple 3-step setup guide
-- **[SETUP_INSTRUCTIONS.md](workshop_boa/SETUP_INSTRUCTIONS.md)** - Detailed setup instructions
-- **[ORCHESTRA_INTEGRATION.md](workshop_boa/ORCHESTRA_INTEGRATION.md)** - Complete technical reference
-- **[README.md](workshop_boa/README.md)** - Workshop overview
-
-### What's Included
-
-```
-workshop_boa/
-├── 01-04_*.ipynb             # Workshop notebooks with Orchestra integration
-├── orchestra_utils.py        # Orchestra API utilities
-├── redis_context_course_boa/ # BOA-specific package
-├── test_orchestra.py         # Comprehensive test suite (7 tests)
-└── *.md                      # Complete documentation
-```
-
-**See [`workshop_boa/QUICKSTART.md`](workshop_boa/QUICKSTART.md) for complete setup instructions.**
-
----
-
 ## Project Structure
 
 ```
@@ -406,15 +354,6 @@ context-eng-matters/
 │   ├── 04_memory_systems.ipynb                       # Working + long-term memory (~2,000 lines)
 │   ├── 05_building_agents.ipynb                      # LangGraph, tool calling
 │   └── 06_capstone_comparison.ipynb                  # Stage 4 vs 6 comparison
-│
-├── workshop_boa/                 # 🏦 BOA-specific workshop with Orchestra API integration
-│   ├── 01-04_*.ipynb             # Workshop notebooks with #Orchestra change markers
-│   ├── orchestra_utils.py        # Orchestra API utilities (CustomTextVectorizer)
-│   ├── redis_context_course_boa/ # BOA-specific package with Orchestra embeddings
-│   ├── test_orchestra.py         # Comprehensive test suite
-│   ├── QUICKSTART.md             # Quick start guide for Orchestra integration
-│   ├── SETUP_INSTRUCTIONS.md     # Detailed setup instructions
-│   └── ORCHESTRA_INTEGRATION.md  # Complete technical reference
 │
 ├── progressive_agents/           # 6 agent implementations (learning path)
 │   ├── stage1_baseline_rag/

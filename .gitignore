@@ -76,3 +76,6 @@ local_analysis/
 
 # BOA-specific workshop (keep local only)
 workshop_boa/
+
+# Documentation (keep local only)
+docs/
