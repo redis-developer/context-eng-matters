@@ -2,7 +2,7 @@
 Tools for the Redis University Class Agent.
 
 This module defines the tools that the agent can use to interact with
-the course catalog and student data. These tools are used in the notebooks
+the course catalog and student data. These tools are used in the workshop notebooks
 throughout the course.
 """
 
@@ -50,16 +50,16 @@ class CheckPrerequisitesInput(BaseModel):
     )
 
 
-# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
+# EXPERIMENTAL: Not currently used in workshop notebooks or demos but available for external use
 # Notebooks and agents create tools inline for educational clarity
 # Course Tools
 def create_course_tools(course_manager: CourseManager):
     """
     Create course-related tools.
 
-    These tools are demonstrated in Section 2 notebooks.
+    These tools are demonstrated in the workshop notebooks.
 
-    Note: This is experimental API surface. Notebooks and progressive_agents
+    Note: This is experimental API surface. Workshop notebooks and demos
     implement tools inline for educational purposes.
     """
 
@@ -182,7 +182,7 @@ Missing:
     return [search_courses, get_course_details, check_prerequisites]
 
 
-# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
+# EXPERIMENTAL: Not currently used in workshop notebooks or demos but available for external use
 # Memory Tools
 def create_memory_tools(memory_client: MemoryAPIClient, session_id: str, user_id: str):
     """
@@ -209,7 +209,7 @@ def create_memory_tools(memory_client: MemoryAPIClient, session_id: str, user_id
     )
 
 
-# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
+# EXPERIMENTAL: Not currently used in workshop notebooks or demos but available for external use
 # Tool Selection Helpers (from Section 4, notebook 04_tool_optimization.ipynb)
 def select_tools_by_keywords(query: str, all_tools: dict) -> List:
     """

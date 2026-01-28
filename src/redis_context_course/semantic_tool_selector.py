@@ -43,7 +43,7 @@ class ToolIntent:
     confidence_threshold: float = 0.6
 
 
-# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
+# EXPERIMENTAL: Not currently used in workshop notebooks or demos but available for external use
 # Note: Notebooks implement their own inline version for educational clarity
 class SemanticToolSelector:
     """
@@ -348,7 +348,7 @@ class SemanticToolSelector:
         }
 
 
-# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
+# EXPERIMENTAL: Not currently used in workshop notebooks or demos but available for external use
 # Utility function for easy integration
 async def create_semantic_selector(tools: List[BaseTool]) -> SemanticToolSelector:
     """

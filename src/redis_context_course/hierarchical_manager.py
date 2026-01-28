@@ -24,7 +24,7 @@ from .redis_config import redis_config
 logger = logging.getLogger(__name__)
 
 
-# EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
+# EXPERIMENTAL: Not currently used in workshop notebooks or demos but available for external use
 # This class is used only by scripts/load_hierarchical_courses.py for data loading
 class HierarchicalCourseManager:
     """

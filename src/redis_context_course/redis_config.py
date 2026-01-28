@@ -114,7 +114,7 @@ class RedisConfig:
         except Exception:
             return False
 
-    # EXPERIMENTAL: Not currently used in notebooks or progressive_agents but available for external use
+    # EXPERIMENTAL: Not currently used in workshop notebooks or demos but available for external use
     def cleanup(self):
         """Clean up connections."""
         if self._redis_client:

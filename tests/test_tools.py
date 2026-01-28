@@ -66,4 +66,4 @@ def test_select_tools_by_keywords():
 
 # NOTE: Agent-specific tool tests have been removed.
 # The tools are now available via create_agent_tools() in tools.py
-# Use the progressive_agents stages for testing full agent functionality.
+# Use the demos stages for testing full agent functionality.

@@ -1,6 +1,6 @@
-# Setup Guide for Context Engineering Course
+# Setup Guide for Context Engineering Workshop
 
-This guide will help you set up everything you need to run the Context Engineering notebooks and progressive agents.
+This guide will help you set up everything you need to run the workshop notebooks (`workshop/`) and the staged agent demos (`demos/`).
 
 ## Prerequisites
 
@@ -70,8 +70,8 @@ pip install -e .
 ### Step 4: Load Course Data
 
 ```bash
-# Load hierarchical courses into Redis (required for notebooks and progressive agents)
-uv run python -m redis_context_course.scripts.load_hierarchical_courses \
+# Load hierarchical courses into Redis (required for workshop and demos)
+uv run load-hierarchical-courses \
   -i src/redis_context_course/data/hierarchical/hierarchical_courses.json \
   --force
 
@@ -84,13 +84,10 @@ uv run python -m redis_context_course.scripts.ingest_courses \
 
 **Note:** Use `--force` to clear and reload data if you've regenerated the course catalog or if you're seeing duplicate courses.
 
-### Step 5: Run the Notebooks
+### Step 5: Run the Workshop Notebooks
 
 ```bash
-# Start Jupyter
-uv run jupyter notebook notebooks/
-
-# Or for the workshop
+# Start Jupyter for the workshop
 uv run jupyter notebook workshop/
 ```
 
@@ -204,22 +201,15 @@ If you already have Redis running or want to use Redis Cloud:
 
 Once setup is complete:
 
-**For the Workshop (condensed, ~6 hours):**
+**For the Workshop (condensed):**
 1. Start with **Module 1** (Introduction) to understand context types
 2. Work through **Module 2** (RAG Essentials) for vector search fundamentals
 3. Complete **Module 3** (Data Engineering) for data pipeline patterns
 4. Master **Module 4** (Memory Systems) for working and long-term memory
-5. Build agents in **Module 5** and compare in **Module 6**
-
-**For the Full Course (comprehensive, 15-20 hours):**
-1. Start with **Section 1** notebooks to understand core concepts
-2. Work through **Section 2** to learn RAG and context engineering
-3. Complete **Section 3** to master memory management (requires Agent Memory Server)
-4. Explore **Section 4** for tools and agent development
+5. Explore the staged demos in `demos/` to see the same ideas evolve into increasingly capable agents
 
 ## Getting Help
 
 - Check the main [README.md](README.md) for course structure and learning path
-- Review [workshop/README.md](workshop/README.md) for the condensed workshop
-- Open an issue if you encounter problems with the setup
+- Review the **Workshop Outline** and **Agent Demos (CLI)** sections in the main [README.md](README.md)
 
